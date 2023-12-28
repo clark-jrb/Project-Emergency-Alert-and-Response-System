@@ -1,0 +1,52 @@
+:root {
+    --light-green: #d9f3ea;
+    --green: #00b074;
+    --font-text: #5d5a6a;
+}
+
+.home-container {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.forLogin, .forRegister {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    width: 400px;
+    background-color: var(--light-green);
+    border-radius: 10px;
+}
+
+.logo-container {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.login-btn, .reg-btn {
+    width: 250px;
+}
+
+.forLogo {
+    display: flex;
+    justify-content: center;
+}
+
+.forLogo img{
+    height: 150px;
+}
+
+.forTitle {
+    text-align: center;
+    color: var(--font-text);
+}
+
+.forTitle h3 {
+    font-weight: bold;
+}

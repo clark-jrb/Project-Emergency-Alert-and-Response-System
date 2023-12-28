@@ -1,0 +1,26 @@
+:root {
+    --light-green: #d9f3ea;
+    --green: #00b074;
+    --font-text: #5d5a6a;
+}
+
+.login-con {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    width: 400px;
+    border-radius: 10px;
+}
+
+.forEmail, .forPass {
+
+}
+
+.loginTitle {
+    text-align: center;
+    color: var(--font-text);
+}
