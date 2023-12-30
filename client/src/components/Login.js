@@ -13,7 +13,19 @@ const Login = () => {
         try {
             await signInWithEmailAndPassword(auth, email, password)
             console.log('Sign-in successful')
-            navigate('/dashboard')
+            console.log(email)
+
+            if (email.includes('usf')) {
+                navigate('/usf/dashboard')
+            }
+            else if (email.includes('infirmary')) {
+                navigate('/infirmary/dashboard')
+            }
+            else {
+                navigate('/login')
+                console.log('You dont have access to this software')
+            }
+            // navigate('/dashboard')
         } catch (error) {
             console.error('Error signing in:', error.message)
         }
