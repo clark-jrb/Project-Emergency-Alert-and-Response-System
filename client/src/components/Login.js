@@ -7,6 +7,7 @@ import '../styles/login.css'
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
     const navigate = useNavigate()
 
     const handleLogin = async () => {
@@ -27,6 +28,7 @@ const Login = () => {
             }
             // navigate('/dashboard')
         } catch (error) {
+            setError('Incorrect credentials')
             console.error('Error signing in:', error.message)
         }
     };
@@ -37,6 +39,8 @@ const Login = () => {
                 <div className='loginTitle m-3'>
                     <h2>Log In</h2>
                 </div>
+
+                {error && <div className='m-3' style={{ color: 'red' }}>{error}</div>}
 
                 <div className='forEmail m-3'>
                     <input className='form-control' type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
