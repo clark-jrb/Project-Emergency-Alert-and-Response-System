@@ -18,7 +18,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-bottom: var(--green) solid 2px;
+    border-bottom: var(--green) solid 5px;
 }
 
 .nav-bottom {
@@ -41,7 +41,7 @@
 .nav-bottom ul li {
     /* border: black 1px solid; */
     height: 100%;
-    width: 170px;
+    width: auto;
     float: left;
     padding: 5px;
 }
@@ -55,30 +55,52 @@
     text-decoration: none;
     height: 100%;
     gap: 5px;
-}
-
-.nav-bottom ul li a:is(:link, :active, :visited) {
+    padding: 0px 15px;
     color: var(--font-text);
 }
 
-.nav-bottom ul li a:is(:link, :active, :visited).active {
+/* .nav-bottom ul li a:is(:link, :active, :visited) {
+    color: var(--font-text);
+} */
+
+/* .nav-bottom ul li a:is(:link, :active, :visited).active {
     color: var(--green);
     background-color: var(--light-green);
-}
+} */
 
-.nav-bottom ul li:hover a {
+.nav-bottom ul li:hover a,
+.nav-bottom ul li.active a {
     background-color: rgb(0, 176, 116, 0.2);
     color: var(--green);
 }
 
-.dashboard-icon, .emergency-icon {
+/* ICONS  */
+
+.dashboard-icon, .emergency-icon, .map-icon {
     fill: var(--font-text);
 }
 
 .nav-bottom li:hover .dashboard-icon,
-.nav-bottom li:hover .emergency-icon {
+.nav-bottom li:hover .emergency-icon,
+.nav-bottom li:hover .map-icon,
+.nav-bottom li.active .dashboard-icon,
+.nav-bottom li.active .emergency-icon,
+.nav-bottom li.active .map-icon {
     fill: var(--green);
 }
+
+.messages-icon, .history-icon {
+    stroke: var(--font-text);
+}
+
+.nav-bottom li:hover .messages-icon,
+.nav-bottom li:hover .history-icon,
+.nav-bottom li.active .messages-icon,
+.nav-bottom li.active .history-icon {
+    stroke: var(--green);
+}
+
+/* END ICONS  */
 
 .navbar-brand {
     color: var(--font-text);
