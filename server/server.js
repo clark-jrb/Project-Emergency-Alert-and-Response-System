@@ -1,6 +1,7 @@
 const express = require('express')
 require('dotenv').config()
 const port = process.env.PORT
+const cors = require('cors')
 
 // Routes
 const usfRoutes = require('./routes/usfRoutes')
@@ -17,6 +18,7 @@ app.listen(port, () => {
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 
 // routes
 app.get('/', (req, res) => {
