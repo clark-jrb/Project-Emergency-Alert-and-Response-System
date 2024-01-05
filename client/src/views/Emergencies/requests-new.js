@@ -12,12 +12,11 @@ const New = () => {
                 try {
                     const response = await fetch('http://localhost:4000/usf/emergencies')
 
-                    console.log(response)
                     if (response.ok) {
                         const data = await response.json()
-                        // console.log(response)
                         setRequests(data)
                         console.log('Data loaded!')
+                        console.log(data)
                     } else {
                         console.log('Error occurred')
                     }
@@ -40,7 +39,17 @@ const New = () => {
     return (
         <div className='request-new'>
             <h3>New</h3>
-            {/* <button className='btn btn-success'>datas</button> */}
+            <div>
+                {requests.length > 0 ? (
+                    <ul>
+                        {requests.map(request => (
+                            <li key={request.id}>{request.status}</li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No data available</p>
+                )}
+            </div>
         </div>
     )
 }
