@@ -1,10 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import New from './requests-new'
+import Ongoing from './requests-ongoing'
+import Complete from './requests-complete'
 
 const Emergency_lists = () => {
+    const [selectedComponent, setSelectedComponent] = useState(null)
+
+    const handleClick = (component) => {
+        setSelectedComponent(component)
+    }
+
     return (
-        <div className='emer-lists'>
-            <h2>lists</h2>
+        <div className='emer-lists p-3'>
+            <div className='filters d-flex p-2'>
+                <div className={`new flex-fill p-2 py-3 ${selectedComponent === 'New' ? 'active' : ''}`} onClick={() => handleClick('New')}>
+                    <h6>New</h6>
+                </div>
+                <div className={`new flex-fill p-2 py-3 ${selectedComponent === 'Ongoing' ? 'active' : ''}`} onClick={() => handleClick('Ongoing')}>
+                    <h6>Ongoing</h6>
+                </div>
+                <div className={`new flex-fill p-2 py-3 ${selectedComponent === 'Complete' ? 'active' : ''}`} onClick={() => handleClick('Complete')}>
+                    <h6>Completed</h6>
+                </div>
+            </div>
+            <div className='requests d-flex border mt-3'>
+                {selectedComponent === 'New' && <New />}
+                {selectedComponent === 'Ongoing' && <Ongoing />}
+                {selectedComponent === 'Complete' && <Complete />}
+            </div>
         </div>
     )
 }

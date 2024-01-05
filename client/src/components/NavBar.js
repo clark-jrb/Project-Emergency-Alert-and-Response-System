@@ -51,7 +51,7 @@ const NavBar = () => {
 
                 <button className='btn btn-danger' onClick={handleSignOut}>Sign Out</button>
             </div>
-            <div className="nav-bottom px-2">
+            <div className="nav-bottom px-3">
                 <ul>    
                     <li onClick={() => handleClick(1)} className={activeItem === 1 ? 'active' : ''}>
                         <Link to="dashboard">
