@@ -1,7 +1,7 @@
 const db = require('../config/firebase')
 
 // set responder to the collection name in firestore
-const requests = db.collection('requests')
+const requests = db.collection('emergency_requests')
 
 const getRequests = async (req, res) => {
     try {

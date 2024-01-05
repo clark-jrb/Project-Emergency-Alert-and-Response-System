@@ -1,6 +1,8 @@
 const express = require('express')
 require('dotenv').config()
 const port = process.env.PORT
+
+// Routes
 const usfRoutes = require('./routes/usfRoutes')
 const infirmaryRoutes = require('./routes/infirmaryRoutes')
 

@@ -1,0 +1,22 @@
+
+.emergency-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emer-lists {
+    height: 100%;
+    width: 30dvw;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+}
+
+.emergency-info {
+    height: 100%;
+    width: 70dvw;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    margin: 0 10px;
+}

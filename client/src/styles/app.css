@@ -4,3 +4,11 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
+.usf-container {
+    height: 100dvh;
+}
+
+.content {
+    height: 85%;
+}
