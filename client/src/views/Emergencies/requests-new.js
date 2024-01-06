@@ -1,55 +1,29 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import { useRequestContext } from '../../context/RequestContext'
 
 const New = () => {
-    const [requests, setRequests] = useState([])
-    const hasRendered = useRef(false)
-
-    useEffect(() => {
-        if (!hasRendered.current) {
-            const fetchRequests = async () => {
-                try {
-                    const response = await fetch('http://localhost:4000/usf/emergencies')
-
-                    if (response.ok) {
-                        const data = await response.json()
-                        setRequests(data)
-                        console.log('Data loaded!')
-                        console.log(data)
-                    } else {
-                        console.log('Error occurred')
-                    }
-                } catch (error) {
-                    console.error('Error fetching data:', error)
-                }
-            }
-
-            fetchRequests()
-
-            // Set hasRendered to true after the initial render
-            hasRendered.current = true
-        }
-
-        // console.log(requests)
-        
-    }, [])
-
+    const requests = useRequestContext()
 
     return (
-        <div className='request-new'>
-            <h3>New</h3>
-            <div>
-                {requests.length > 0 ? (
-                    <ul>
-                        {requests.map(request => (
-                            <li key={request.id}>{request.status}</li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No data available</p>
-                )}
-            </div>
+        <div className='request-new d-flex pt-3'>
+            {requests.filter(request => request.status === 'New').map(request => (
+                <div className='req-data container border d-flex py-2 px-0' key={request.id}>
+                    <div className='count d-flex'>
+                        <p className='m-0'>1</p>
+                    </div>
+                    <div className='level-logo d-flex'>
+                        <p className='m-0'>L1</p>
+                    </div>
+                    <div className='req-information'>
+                        <p className='m-0'>{request.emergency_description}</p>
+                        <p className='m-0'>: {request.emergency_type}</p>
+                    </div>
+                    <div className='duration d-flex'>
+                        <p className='m-0'>1h</p>
+                    </div>
+                </div>
+            ))}
         </div>
     )
 }

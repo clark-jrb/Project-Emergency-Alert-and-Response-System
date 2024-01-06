@@ -1,37 +1,29 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useRequestContext } from '../../context/RequestContext'
 
 const Complete = () => {
-    const [requests, setRequests] = useState(null)
-    const hasRendered = useRef(false)
-
-    useEffect(() => {
-        if (!hasRendered.current) {
-            const fetchRequests = async () => {
-                try {
-                    const response = await fetch('/usf/emergencies')
-
-                    if (response.ok) {
-                        setRequests(response)
-                        console.log('Data loaded!')
-                    } else {
-                        console.log('Error occurred')
-                    }
-                } catch (error) {
-                    console.error('Error fetching data:', error)
-                }
-            }
-
-            fetchRequests()
-
-            // Set hasRendered to true after the initial render
-            hasRendered.current = true
-        }
-    }, [])
+    const requests = useRequestContext()
 
     return (
-        <div className='request-complete'>
-            <h3>Complete</h3>
+        <div className='request-complete d-flex pt-3'>
+            {requests.filter(request => request.status === 'Complete').map(request => (
+                <div className='req-data container border d-flex py-2 px-0' key={request.id}>
+                    <div className='count d-flex'>
+                        <p className='m-0'>1</p>
+                    </div>
+                    <div className='level-logo d-flex'>
+                        <p className='m-0'>L1</p>
+                    </div>
+                    <div className='req-information'>
+                        <p className='m-0'>{request.emergency_description}</p>
+                        <p className='m-0'>: {request.emergency_type}</p>
+                    </div>
+                    <div className='duration d-flex'>
+                        <p className='m-0'>1h</p>
+                    </div>
+                </div>
+            ))}
         </div>
     )
 }
