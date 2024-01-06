@@ -11,9 +11,9 @@ const Ongoing = () => {
         setID(component)
     }
 
-    useEffect(() => {
-        console.log(requestID)
-    }, [requestID])
+    // useEffect(() => {
+    //     console.log(requestID)
+    // }, [requestID])
 
     return (
         <div className='request-ongoing d-flex pt-3'>

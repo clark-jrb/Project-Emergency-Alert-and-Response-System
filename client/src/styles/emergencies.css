@@ -87,6 +87,11 @@
     border-radius: 10px;
     gap: 10px;
     cursor: pointer;
+    user-select: none;
+}
+
+.req-data:hover {
+    box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
 .request-new {

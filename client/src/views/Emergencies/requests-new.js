@@ -11,9 +11,9 @@ const New = () => {
         setID(component)
     }
 
-    useEffect(() => {
-        console.log(requestID)
-    }, [requestID])
+    // useEffect(() => {
+    //     console.log(requestID)
+    // }, [requestID])
 
     return (
         <div className='request-new d-flex pt-3'>

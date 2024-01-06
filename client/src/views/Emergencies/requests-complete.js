@@ -11,9 +11,9 @@ const Complete = () => {
         setID(component)
     }
 
-    useEffect(() => {
-        console.log(requestID)
-    }, [requestID])
+    // useEffect(() => {
+    //     console.log(requestID)
+    // }, [requestID])
 
     return (
         <div className='request-complete d-flex pt-3'>

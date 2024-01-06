@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import New from './requests-new'
 import Ongoing from './requests-ongoing'
 import Complete from './requests-complete'
-import { RequestProvider } from '../../context/RequestContext'
 
 const Emergency_lists = () => {
     const [selectedComponent, setSelectedComponent] = useState(null)
@@ -26,11 +25,9 @@ const Emergency_lists = () => {
                 </div>
             </div>
             <div className='requests d-flex mt-3'>
-                <RequestProvider>
-                    {selectedComponent === 'New' && <New />}
-                    {selectedComponent === 'Ongoing' && <Ongoing />}
-                    {selectedComponent === 'Complete' && <Complete />}
-                </RequestProvider>
+                {selectedComponent === 'New' && <New />}
+                {selectedComponent === 'Ongoing' && <Ongoing />}
+                {selectedComponent === 'Complete' && <Complete />}
             </div>
         </div>
     )
