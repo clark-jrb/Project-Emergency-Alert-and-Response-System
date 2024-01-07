@@ -132,4 +132,56 @@
     width: 60%;
     color: var(--font-text);
 }
+
 /* For Information */
+
+.emer-title, .person-info {
+    border-bottom: #ccc solid 1px;
+    color: var(--font-text);
+}
+
+.emer-container {
+    /* border: #ccc solid 1px; */
+    border-radius: 10px;
+    height: 90%;
+    display: flex;
+}
+
+.info-left, .info-right {
+    height: 100%;
+}
+
+.info-left {
+    width: 50dvw;
+}
+
+.info-right {
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    width: 50dvw;
+}
+
+.data {
+    text-align: center;
+}
+
+/* info left container */
+p {
+    white-space: pre-line;
+}
+
+.section-1, .section-2, .section-3 {
+    border-bottom: #ccc solid 1px;
+}
+
+.section-buttons {
+    gap: 15px;
+}
+
+.name_gender, .occup_cont, .email_cont {
+    color: var(--font-text);
+}
+
+.person_gender, .person_contact {
+    border-left: #ccc solid 1px;
+}
