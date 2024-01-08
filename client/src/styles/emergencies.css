@@ -135,8 +135,26 @@
 
 /* For Information */
 
-.emer-title, .person-info {
-    border-bottom: #ccc solid 1px;
+.emer-title {
+    gap: 50px;
+}
+
+.forEmer-title {
+    /* font-size: large; */
+}
+
+.forDescriptionLvl {
+    gap: 10px;
+}
+
+.forAlert p, .forLevel p{
+    display: inline-block;
+}
+
+.person-info, .emer-title {
+    background-color: whitesmoke;
+    /* box-shadow: 0 1.5px 3px 0 #ccc; */
+    border-radius: 10px;
     color: var(--font-text);
 }
 
@@ -156,6 +174,7 @@
 }
 
 .info-right {
+    box-shadow: 0 1.5px 3px 0 #ccc;
     border: #ccc solid 1px;
     border-radius: 10px;
     width: 50dvw;
@@ -166,6 +185,17 @@
 }
 
 /* info left container */
+
+.highlight {
+    color: var(--font-text);
+}
+
+.forLabel {
+    width: fit-content;
+    border-bottom: 2px solid var(--green);
+    color: var(--font-text);
+}
+
 p {
     white-space: pre-line;
 }
