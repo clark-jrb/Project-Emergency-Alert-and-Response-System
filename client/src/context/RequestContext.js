@@ -2,6 +2,10 @@ import { createContext, useContext, useState, useEffect, useRef } from 'react'
 
 const RequestContext = createContext()
 
+export const useRequestContext = () => {
+    return useContext(RequestContext)
+}
+
 export const RequestProvider = ({ children }) => {
     const [requests, setRequests] = useState([])
     const hasFetched = useRef(false)
@@ -35,6 +39,3 @@ export const RequestProvider = ({ children }) => {
     )
 }
 
-export const useRequestContext = () => {
-    return useContext(RequestContext)
-}

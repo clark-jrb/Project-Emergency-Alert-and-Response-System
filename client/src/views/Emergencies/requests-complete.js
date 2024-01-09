@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
 import { useRequestInfoContext } from '../../context/RequestInfoContext'
+import { useActiveContext } from '../../context/ActiveContext'
 
 const Complete = () => {
     const requests = useRequestContext()
-    const { requestID, setID } = useRequestInfoContext()
-    const [selectedComponent, setSelectedComponent] = useState(null)
+    const { setID } = useRequestInfoContext()
+    const { active, setTheActive } = useActiveContext()
 
     const handleClick = (component) => {
         setID(component)
-        setSelectedComponent(component)
+        setTheActive(component)
     }
 
     return (
         <div className='request-complete d-flex pt-3'>
             {requests.filter(request => request.status === 'Complete').map(request => (
                 <div 
-                    className={`req-data container border d-flex py-2 px-0 ${selectedComponent === request.id ? 'active' : ''}`} 
+                    className={`req-data container d-flex py-2 px-0 ${active === request.id ? 'active' : ''}`} 
                     key={request.id} 
                     onClick={() => handleClick(request.id)}
                 >

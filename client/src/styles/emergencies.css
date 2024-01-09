@@ -87,6 +87,7 @@
 .req-data {
     height: 70px;
     border-radius: 10px;
+    border: 1px #ccc solid;
     gap: 10px;
     cursor: pointer;
     user-select: none;
@@ -98,6 +99,7 @@
 
 .req-data.active {
     background-color: whitesmoke;
+    /* border: 2px #ccc solid; */
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
@@ -209,8 +211,12 @@
     display: flex;
 }
 
-.info-left, .info-right {
+.info-left {
     height: 100%;
+}
+
+.info-right {
+    height: 90%;
 }
 
 .info-left {

@@ -29,7 +29,7 @@ const Emergency_info = () => {
                         </div>
                         <div className='forAlert'>
                             <p className='m-0'>Alert</p>
-                            <p className={`alertHighlight m-0 px-2 fs-5 fw-bold ${request.      emergency_description === 'NON-URGENT' ? 
+                            <p className={`alertHighlight m-0 px-2 fs-5 fw-bold ${request.emergency_description === 'NON-URGENT' ? 
                                 "blue" : request.emergency_description === 'SEMI-URGENT' ? 
                                 "green" : request.emergency_description === 'URGENT' ? 
                                 "yellow" : request.emergency_description === 'IMMEDIATE' ? 
@@ -41,9 +41,9 @@ const Emergency_info = () => {
                     </div>
                 </div>
                 {/* Content */}
-                <div className='emer-container mt-3' key={request.id}>
+                <div className='emer-container' key={request.id}>
                     {/* Info-left */}
-                    <div className='info-left px-3'>
+                    <div className='info-left px-3 mt-3'>
 
                         <div className='section-1'>
                             <div className='date-time'>
@@ -78,7 +78,7 @@ const Emergency_info = () => {
                     </div>
                     {/* Info-right */}
                     {users.filter(user => user.id === request.userID ).map(user => (
-                        <div className='info-right p-3' key={user.id}>
+                        <div className='info-right p-3 mt-3' key={user.id}>
 
                             <div className='person-info py-2 px-3'>
                                 <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>

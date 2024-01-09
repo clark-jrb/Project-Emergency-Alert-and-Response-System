@@ -1,11 +1,13 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/emergencies.css'
-import Emergency_info from '../views/Emergencies/emergency-info'
-import Emergency_lists from '../views/Emergencies/emergency-lists'
+import EmergencyInfo from '../views/Emergencies/emergency-info'
+import EmergencyLists from '../views/Emergencies/emergency-lists'
 import { RequestInfoProvider } from '../context/RequestInfoContext'
 import { RequestProvider } from '../context/RequestContext'
 import { UsersProvider } from '../context/UsersContext'
+import { ActiveProvider } from '../context/ActiveContext'
+import { FilterListProvider } from '../context/FilterListContext'
 
 const Emergencies = () => {
     return (
@@ -13,8 +15,16 @@ const Emergencies = () => {
             <RequestProvider>
                 <RequestInfoProvider>
                     <UsersProvider>
-                        <Emergency_lists/>
-                        <Emergency_info/>
+
+                        <FilterListProvider>
+                            <ActiveProvider>
+                                <EmergencyLists/>
+                            </ActiveProvider>
+                        </FilterListProvider>
+                        
+
+                        <EmergencyInfo/>
+
                     </UsersProvider>
                 </RequestInfoProvider>
             </RequestProvider>
