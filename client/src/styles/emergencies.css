@@ -5,6 +5,7 @@
     --nav-top: #008e5f;
     --yellow: #F7C604;
     --red: #FE5B5B;
+    --blue: #2D9CDB;
 } 
 
 .emergency-content {
@@ -12,14 +13,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 15px;
 }
 
 .emer-lists {
     height: 100%;
-    width: 30dvw;
+    width: 30%;
     border: #ccc solid 1px;
     border-radius: 10px;
-    margin: 5px;
+    /* margin: 5px; */
     display: flex;
     flex-direction: column;
     box-shadow: 0 1.5px 3px 0 #ccc;
@@ -27,11 +29,11 @@
 
 .emergency-info {
     height: 100%;
-    width: 70dvw;
+    width: 69%;
     border: #ccc solid 1px;
     border-radius: 10px;
-    margin: 5px;
-    margin-left: 15px;
+    /* margin: 5px;
+    margin-left: 15px; */
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
@@ -94,6 +96,11 @@
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
+.req-data.active {
+    background-color: whitesmoke;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+}
+
 .request-new {
     flex-direction: column;
     gap: 10px;
@@ -113,9 +120,25 @@
     width: 15%;
     border-radius: 10px;
     font-size: large;
-    background-color: var(--red);
+    /* background-color: #ccc; */
     color: white;
     font-weight: bold;
+}
+
+.level-logo.red {
+    background-color: var(--red);
+}
+
+.level-logo.green {
+    background-color: var(--green);
+}
+
+.level-logo.yellow {
+    background-color: var(--yellow);
+}
+
+.level-logo.blue {
+    background-color: var(--blue);
 }
 
 .duration {
@@ -139,9 +162,30 @@
     gap: 50px;
 }
 
-.forEmer-title {
-    /* font-size: large; */
+.alertHighlight {
+    text-decoration: underline;
+    /* color: var(--yellow); */
 }
+
+.alertHighlight.blue {
+    color: var(--blue);
+}
+
+.alertHighlight.green {
+    color: var(--green);
+}
+
+.alertHighlight.yellow {
+    color: var(--yellow);
+}
+
+.alertHighlight.red {
+    color: var(--red);
+}
+
+/* .forEmer-title {
+    /* font-size: large; */
+/* } */ 
 
 .forDescriptionLvl {
     gap: 10px;

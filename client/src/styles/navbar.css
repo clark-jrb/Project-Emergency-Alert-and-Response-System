@@ -44,6 +44,8 @@
     width: auto;
     float: left;
     padding: 5px;
+    user-select: none;
+
 }
 
 .nav-bottom li a{

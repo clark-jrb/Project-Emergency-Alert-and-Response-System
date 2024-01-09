@@ -12,7 +12,7 @@ const Emergency_lists = () => {
     }
 
     return (
-        <div className='emer-lists p-3'>
+        <div className='emer-lists p-3 m-0'>
             <div className='filters d-flex p-2'>
                 <div className={`new flex-fill p-2 py-2 ${selectedComponent === 'New' ? 'active' : ''}`} onClick={() => handleClick('New')}>
                     <h6>New</h6>

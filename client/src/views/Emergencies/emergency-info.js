@@ -14,25 +14,32 @@ const Emergency_info = () => {
     return (
         <div className='emergency-info p-3'>
             {requests.filter(request => request.id === requestID).map(request => (
-            <div key={request.id}>
+            <div key={request.id} className='h-100'>
                 {/* Header  */}
                 <div className='emer-title d-flex px-3 py-2'>
                     <div className='forEmer-title'>
                         <p className='m-0 fs-5'>Emergency</p>
                     </div>
                     <div className='forDescriptionLvl d-flex'>
-                        <div className='forAlert'>
-                            <p className='m-0'>Alert</p>
-                            <p className='m-0 px-2 fs-5 fw-bold'>{request.emergency_description}</p>
-                        </div>
                         <div className='forLevel'>
                             <p className='m-0'>Level</p>
                             <p className='m-0 px-2 fs-5 fw-bold'>{request.emergency_level}</p>
                         </div>
+                        <div className='forAlert'>
+                            <p className='m-0'>Alert</p>
+                            <p className={`alertHighlight m-0 px-2 fs-5 fw-bold ${request.      emergency_description === 'NON-URGENT' ? 
+                                "blue" : request.emergency_description === 'SEMI-URGENT' ? 
+                                "green" : request.emergency_description === 'URGENT' ? 
+                                "yellow" : request.emergency_description === 'IMMEDIATE' ? 
+                                "red" : ""}`}
+                            >
+                                {request.emergency_description}
+                            </p>
+                        </div>
                     </div>
                 </div>
                 {/* Content */}
-                <div className='emer-container my-3' key={request.id}>
+                <div className='emer-container mt-3' key={request.id}>
                     <div className='info-left px-3'>
 
                         <div className='section-1'>
@@ -68,7 +75,7 @@ const Emergency_info = () => {
                     </div>
                     <div className='info-right p-3'>
 
-                        <div className='person-info p-2'>
+                        <div className='person-info py-2 px-3'>
                             <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>
                         </div>
 
@@ -106,16 +113,6 @@ const Emergency_info = () => {
             </div>
             
             ))}
-            {/* {requests.filter(request => request.id === requestID).map(request => (
-                <div key={request.id}>
-                    <h2>{request.id}</h2>
-                    <h2>{request.emergency_description}</h2>
-                    <h2>{request.emergency_type}</h2>
-                    <h2>{request.emergency_level}</h2>
-                    <h2>{request.status}</h2>
-                </div>
-                
-            ))} */}
         </div>
     )
 }
