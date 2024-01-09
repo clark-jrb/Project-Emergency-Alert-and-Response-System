@@ -7,11 +7,14 @@ import Map from "../Map"
 import History from "../History"
 import Settings from "../Settings"
 import NavBar from "../NavBar"
+import { NavActiveProvider } from "../../context/NavActiveContext"
 
 const USF = () => {
     return (
         <div className="usf-container">
-            <NavBar/>
+            <NavActiveProvider>
+                <NavBar/>
+            </NavActiveProvider>
             <div className="content">
                 <Routes>
                     <Route path="dashboard" element={<Dashboard/>}></Route>

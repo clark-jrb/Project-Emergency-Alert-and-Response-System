@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestInfoContext } from '../../context/RequestInfoContext'
 import { useRequestContext } from '../../context/RequestContext'
@@ -8,10 +8,6 @@ const Emergency_info = () => {
     const requests = useRequestContext()
     const users = useUsersContext()
     const { requestID } = useRequestInfoContext()
-
-    useEffect(() => {
-        console.log(requestID)
-    }, [requestID])
 
     return (
         <div className='emergency-info p-3'>

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -9,32 +9,23 @@ import { ReactComponent as EmergencyIcon } from '../images/icons/emergency.svg'
 import { ReactComponent as MessagesIcon } from '../images/icons/message.svg'
 import { ReactComponent as MapIcon } from '../images/icons/map.svg'
 import { ReactComponent as HistoryIcon } from '../images/icons/history.svg'
+import { useNavActiveContext } from "../context/NavActiveContext"
 
 const NavBar = () => {
     const { currentUser, signOut } = useAuth()
     const navigate = useNavigate()
+
+    // console.log(currentUser)
 
     const handleSignOut = async () => {
         await signOut()
         navigate('/')
     }
 
-    // const [isHovered, setHovered] = useState(false);
-    
-    // const handleMouseOver = () => {
-    //     setHovered(true);
-    // };
-
-    // const handleMouseOut = () => {
-    //     setHovered(false);
-    // };
-    
-    // const iconSrc = isHovered ? dashboardHoverSVG : dashboardSVG;
-
-    const [activeItem, setActiveItem] = useState(null)
+    const { NavActive, setTheNav } = useNavActiveContext()
 
     const handleClick = (e) => {
-        setActiveItem(e)
+        setTheNav(e)
     }
 
     return (
@@ -53,31 +44,31 @@ const NavBar = () => {
             </div>
             <div className="nav-bottom px-3">
                 <ul>    
-                    <li onClick={() => handleClick(1)} className={activeItem === 1 ? 'active' : ''}>
+                    <li onClick={() => handleClick('/usf/dashboard')} className={NavActive === '/usf/dashboard' ? 'active' : ''}>
                         <Link to="dashboard">
                             <DashboardIcon className="dashboard-icon" height="25" width="25"/>
                             Dashboard
                         </Link>
                     </li>
-                    <li onClick={() => handleClick(2)} className={activeItem === 2 ? 'active' : ''}>
+                    <li onClick={() => handleClick('/usf/emergencies')} className={NavActive === '/usf/emergencies' ? 'active' : ''}>
                         <Link to="emergencies">
                             <EmergencyIcon className="emergency-icon" height="25" width="25"/>
                             Emergencies
                         </Link>
                     </li>
-                    <li onClick={() => handleClick(3)} className={activeItem === 3 ? 'active' : ''}>
+                    <li onClick={() => handleClick('/usf/messages')} className={NavActive === '/usf/messages' ? 'active' : ''}>
                         <Link to="messages">
                             <MessagesIcon className="messages-icon" height="25" width="25"/>
                             Messages
                         </Link>
                     </li>
-                    <li onClick={() => handleClick(4)} className={activeItem === 4 ? 'active' : ''}>
+                    <li onClick={() => handleClick('/usf/map')} className={NavActive === '/usf/map' ? 'active' : ''}>
                         <Link to="map">
                             <MapIcon className="map-icon" height="25" width="25"/>
                             Map
                         </Link>
                     </li>
-                    <li onClick={() => handleClick(5)} className={activeItem === 5 ? 'active' : ''}>
+                    <li onClick={() => handleClick('/usf/history')} className={NavActive === '/usf/history' ? 'active' : ''}>
                         <Link to="history">
                             <HistoryIcon className="history-icon" height="25" width="25"/>
                             History

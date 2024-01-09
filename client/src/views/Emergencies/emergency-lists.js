@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import New from './requests-new'
 import Ongoing from './requests-ongoing'
