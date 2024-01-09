@@ -6,6 +6,7 @@ const cors = require('cors')
 // Routes
 const usfRoutes = require('./routes/usfRoutes')
 const infirmaryRoutes = require('./routes/infirmaryRoutes')
+const users = require('./routes/usersRoutes')
 
 // express app
 const app = express()
@@ -24,6 +25,6 @@ app.use(cors())
 app.get('/', (req, res) => {
     res.json({msg: 'Hello World!'})
 })
-
+app.use('/users', users)
 app.use('/usf', usfRoutes)
 app.use('/infirmary', infirmaryRoutes)
