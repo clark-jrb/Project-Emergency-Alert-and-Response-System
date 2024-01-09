@@ -216,7 +216,7 @@
 }
 
 .info-right {
-    height: 90%;
+    height: auto;
 }
 
 .info-left {
@@ -258,10 +258,26 @@ p {
     gap: 15px;
 }
 
-.name_gender, .occup_cont, .email_cont {
+.name_gender, .occup_cont, .email_cont, .button_cont {
     color: var(--font-text);
 }
 
 .person_gender, .person_contact {
     border-left: #ccc solid 1px;
+}
+
+.button_cont {
+    border-top: #ccc solid 1px;
+}
+
+.call-btn, .chat-btn {
+    width: 40%;
+}
+
+.forOr {
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    width: 20%;
+    text-align: center;
 }

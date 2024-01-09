@@ -20,11 +20,11 @@ const Emergency_info = () => {
                     </div>
                     <div className='forDescriptionLvl d-flex'>
                         <div className='forLevel'>
-                            <p className='m-0'>Level</p>
+                            <p className='m-0'>Level »</p>
                             <p className='m-0 px-2 fs-5 fw-bold'>{request.emergency_level}</p>
                         </div>
                         <div className='forAlert'>
-                            <p className='m-0'>Alert</p>
+                            <p className='m-0'>Alert »</p>
                             <p className={`alertHighlight m-0 px-2 fs-5 fw-bold ${request.emergency_description === 'NON-URGENT' ? 
                                 "blue" : request.emergency_description === 'SEMI-URGENT' ? 
                                 "green" : request.emergency_description === 'URGENT' ? 
@@ -51,14 +51,14 @@ const Emergency_info = () => {
                         <div className='section-2'>
                             <div className='emer-type'>
                                 <p className='m-0 pt-3 highlight'><i className="fa-solid fa-notes-medical"></i> Emergency Type:</p>
-                                <p className='m-0 py-2 data'>{request.emergency_type}</p>
+                                <p className='m-0 py-2 data fs-5'>{request.emergency_type}</p>
                             </div>
                         </div>
 
                         <div className='section-3'>
                             <div className='location'>
                                 <p className='m-0 pt-3 highlight'><i className="fa-solid fa-location-arrow"></i> Location:</p>
-                                <p className='m-0 py-2 data'>Location</p>
+                                <p className='m-0 py-2 data fs-5'>Location</p>
                             </div>
                         </div>
 
@@ -106,6 +106,16 @@ const Emergency_info = () => {
                                 <div className='person_email'>
                                     <p className='m-0 forLabel'>Email</p>
                                     <p className='m-0 py-2'>» {user.email}</p>
+                                </div>
+                            </div>
+
+                            <div className='button_cont mt-3 px-2 py-3'>
+                                <div className='call_message d-flex'>
+                                    <button className='call-btn btn btn-success'><i class="fa-regular fa-message"></i> Message</button>
+                                    <div className='forOr d-flex'>
+                                        <p className='m-0'>or</p>
+                                    </div>
+                                    <button className='chat-btn btn btn-success'><i class="fa-solid fa-phone"></i> Call</button>
                                 </div>
                             </div>
 
