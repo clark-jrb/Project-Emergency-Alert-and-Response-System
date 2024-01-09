@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestInfoContext } from '../../context/RequestInfoContext'
 import { useRequestContext } from '../../context/RequestContext'
+import { useUsersContext } from '../../context/UsersContext'
 
 const Emergency_info = () => {
     const requests = useRequestContext()
+    const users = useUsersContext()
     const { requestID } = useRequestInfoContext()
 
     useEffect(() => {
@@ -40,6 +42,7 @@ const Emergency_info = () => {
                 </div>
                 {/* Content */}
                 <div className='emer-container mt-3' key={request.id}>
+                    {/* Info-left */}
                     <div className='info-left px-3'>
 
                         <div className='section-1'>
@@ -73,42 +76,45 @@ const Emergency_info = () => {
                         </div>
 
                     </div>
-                    <div className='info-right p-3'>
+                    {/* Info-right */}
+                    {users.filter(user => user.id === request.userID ).map(user => (
+                        <div className='info-right p-3' key={user.id}>
 
-                        <div className='person-info py-2 px-3'>
-                            <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>
+                            <div className='person-info py-2 px-3'>
+                                <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>
+                            </div>
+
+                            <div className='name_gender d-flex mt-3 px-2'>
+                                <div className='person_name w-50'>
+                                    <p className='m-0 forLabel'>Name</p>
+                                    <p className='m-0 py-2'>» {user.fullname}</p>
+                                </div>
+                                <div className='person_gender w-50 ps-3'>
+                                    <p className='m-0 forLabel'>Gender</p>
+                                    <p className='m-0 py-2'>» {user.gender}</p>
+                                </div>
+                            </div>
+
+                            <div className='occup_cont d-flex mt-3 px-2'>
+                                <div className='person_occupation w-50'>
+                                    <p className='m-0 forLabel'>Occupation</p>
+                                    <p className='m-0 py-2'>» {user.occupation}</p>
+                                </div>
+                                <div className='person_contact w-50 ps-3'>
+                                    <p className='m-0 forLabel'>Contact</p>
+                                    <p className='m-0 py-2'>» {user.contact}</p>
+                                </div>
+                            </div>
+
+                            <div className='email_cont mt-3 px-2'>
+                                <div className='person_email'>
+                                    <p className='m-0 forLabel'>Email</p>
+                                    <p className='m-0 py-2'>» {user.email}</p>
+                                </div>
+                            </div>
+
                         </div>
-
-                        <div className='name_gender d-flex mt-3 px-2'>
-                            <div className='person_name w-50'>
-                                <p className='m-0 forLabel'>Name</p>
-                                <p className='m-0 py-2'>» Pogi</p>
-                            </div>
-                            <div className='person_gender w-50 ps-3'>
-                                <p className='m-0 forLabel'>Gender</p>
-                                <p className='m-0 py-2'>» Male</p>
-                            </div>
-                        </div>
-
-                        <div className='occup_cont d-flex mt-3 px-2'>
-                            <div className='person_occupation w-50'>
-                                <p className='m-0 forLabel'>Occupation</p>
-                                <p className='m-0 py-2'>» Student</p>
-                            </div>
-                            <div className='person_contact w-50 ps-3'>
-                                <p className='m-0 forLabel'>Contact</p>
-                                <p className='m-0 py-2'>» 12345678</p>
-                            </div>
-                        </div>
-
-                        <div className='email_cont mt-3 px-2'>
-                            <div className='person_email'>
-                                <p className='m-0 forLabel'>Email</p>
-                                <p className='m-0 py-2'>» pogi@pogi.com</p>
-                            </div>
-                        </div>
-
-                    </div>
+                    ))}
                 </div>
             </div>
             
