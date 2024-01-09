@@ -41,10 +41,22 @@ const Emergency_info = () => {
                     {/* Info-left */}
                     <div className='info-left px-3 mt-3'>
 
-                        <div className='section-1'>
-                            <div className='date-time'>
-                                <p className='m-0 highlight'><i className="fa-solid fa-calendar-day"></i> Date:</p>
-                                <p className='m-0 py-2 highlight'><i className="fa-regular fa-clock"></i> Time:</p>
+                        <div className='section-1 d-flex'>
+                            <div className='date-time w-50'>
+
+                                <p className='m-0 highlight'><i className="fa-solid fa-calendar-day"></i> Date: </p>
+                                <span style={{fontSize: "large", textAlign: "center"}}>
+                                    <p>» {request.date}</p>
+                                </span>
+
+                                <p className='m-0 highlight'><i className="fa-regular fa-clock"></i> Time: </p>
+                                <span style={{fontSize: "large", textAlign: "center"}}>
+                                    <p>» {request.time}</p>
+                                </span>
+
+                            </div>
+                            <div className='emertype-icon w-50 py-2'>
+                                <div className='border h-100'></div>
                             </div>
                         </div>
                             
@@ -111,11 +123,11 @@ const Emergency_info = () => {
 
                             <div className='button_cont mt-3 px-2 py-3'>
                                 <div className='call_message d-flex'>
-                                    <button className='call-btn btn btn-success'><i class="fa-regular fa-message"></i> Message</button>
+                                    <button className='call-btn btn btn-success'><i className="fa-regular fa-message"></i> Message</button>
                                     <div className='forOr d-flex'>
                                         <p className='m-0'>or</p>
                                     </div>
-                                    <button className='chat-btn btn btn-success'><i class="fa-solid fa-phone"></i> Call</button>
+                                    <button className='chat-btn btn btn-success'><i className="fa-solid fa-phone"></i> Call</button>
                                 </div>
                             </div>
 

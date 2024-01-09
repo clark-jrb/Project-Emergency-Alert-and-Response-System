@@ -215,10 +215,6 @@
     height: 100%;
 }
 
-.info-right {
-    height: auto;
-}
-
 .info-left {
     width: 50dvw;
 }
@@ -228,6 +224,7 @@
     border: #ccc solid 1px;
     border-radius: 10px;
     width: 50dvw;
+    height: auto;
 }
 
 .data {
@@ -256,6 +253,10 @@ p {
 
 .section-buttons {
     gap: 15px;
+}
+
+.date-time {
+    color: var(--font-text);
 }
 
 .name_gender, .occup_cont, .email_cont, .button_cont {
