@@ -1,11 +1,15 @@
 :root {
-    --light-green: #d9f3ea;
     --green: #00b074;
     --font-text: #5d5a6a;
     --nav-top: #008e5f;
     --yellow: #F7C604;
     --red: #FE5B5B;
     --blue: #2D9CDB;
+    
+    --light-green: #d9f3ea;
+    --light-red: #f9bdbd;
+    --light-blue: #9cdbff;
+    --light-yellow: #fff2be;
 } 
 
 .emergency-content {
@@ -281,4 +285,120 @@ p {
     font-size: large;
     width: 20%;
     text-align: center;
+}
+
+.emertype-icon-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emertype-icon {
+    /* border: #ccc solid 1px; */
+    border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+    justify-content: center;
+    align-items: center;
+}
+
+.emertype-icon.blue {
+    background-color: var(--light-blue);
+}
+
+.emertype-icon.red {
+    background-color: var(--light-red);
+}
+
+.emertype-icon.green {
+    background-color: var(--light-green);
+}
+
+.emertype-icon.yellow {
+    background-color: var(--light-yellow);
+}
+
+/* for security icon  */
+.security-icon {
+    fill: black;
+}
+
+.security-icon.blue {
+    fill: var(--blue);
+}
+
+.security-icon.red {
+    fill: var(--red);
+}
+
+.security-icon.green {
+    fill: var(--green);
+}
+
+.security-icon.yellow {
+    fill: var(--yellow);
+}
+
+/* for accident icon  */
+
+.accident-icon {
+    fill: black;
+}
+
+.accident-icon.blue {
+    fill: var(--blue);
+}
+
+.accident-icon.red {
+    fill: var(--red);
+}
+
+.accident-icon.green {
+    fill: var(--green);
+}
+
+.accident-icon.yellow {
+    fill: var(--yellow);
+}
+
+/* for assit icon  */
+
+.assist-icon {
+    fill: black;
+}
+
+.assist-icon.blue {
+    fill: var(--blue);
+}
+
+.assist-icon.red {
+    fill: var(--red);
+}
+
+.assist-icon.green {
+    fill: var(--green);
+}
+
+.assist-icon.yellow {
+    fill: var(--yellow);
+}
+/* for violence icon  */
+
+.violence-icon {
+    fill: black;
+}
+
+.violence-icon.blue {
+    fill: var(--blue);
+}
+
+.violence-icon.red {
+    fill: var(--red);
+}
+
+.violence-icon.green {
+    fill: var(--green);
+}
+
+.violence-icon.yellow {
+    fill: var(--yellow);
 }

@@ -23,7 +23,7 @@ const New = () => {
                     onClick={() => handleClick(request.id)}
                 >
                     <div className='count d-flex'>
-                        <p className='m-0'>1</p>
+                        <p className='m-0'>{request.req_no}</p>
                     </div>
                     <div className={`level-logo d-flex 
                         ${request.emergency_level === '1' ? 

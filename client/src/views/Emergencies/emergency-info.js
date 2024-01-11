@@ -3,6 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestInfoContext } from '../../context/RequestInfoContext'
 import { useRequestContext } from '../../context/RequestContext'
 import { useUsersContext } from '../../context/UsersContext'
+import { ReactComponent as SecuritySVG } from './icons/security.svg'
+import { ReactComponent as AssistSVG } from './icons/assistance.svg'
+import { ReactComponent as ViolenceSVG } from './icons/violence.svg'
+import { ReactComponent as AccidentSVG } from './icons/accident.svg'
 
 const Emergency_info = () => {
     const requests = useRequestContext()
@@ -55,8 +59,41 @@ const Emergency_info = () => {
                                 </span>
 
                             </div>
-                            <div className='emertype-icon w-50 py-2'>
-                                <div className='border h-100'></div>
+                            <div className='emertype-icon-con w-50 pb-4'>
+                                <div className={`emertype-icon h-100 w-50 d-flex ${request.emergency_level === '1' ? 
+                                "blue" : request.emergency_level === '2' ? 
+                                "green" : request.emergency_level === '3' ? 
+                                "yellow" : request.emergency_level === '4' ? 
+                                "red" : ""}`}>
+
+                                    {request.emergency_type === 'Security' 
+                                        ? 
+                                            <SecuritySVG className={`security-icon ${request.emergency_level === '1' ? 
+                                            "blue" : request.emergency_level === '2' ? 
+                                            "green" : request.emergency_level === '3' ? 
+                                            "yellow" : request.emergency_level === '4' ? 
+                                            "red" : ""}`} height="65" width="65"></SecuritySVG> : request.emergency_type === 'Accident' 
+                                        ? 
+                                            <AccidentSVG className={`accident-icon ${request.emergency_level === '1' ? 
+                                            "blue" : request.emergency_level === '2' ? 
+                                            "green" : request.emergency_level === '3' ? 
+                                            "yellow" : request.emergency_level === '4' ? 
+                                            "red" : ""}`} height="65" width="65"></AccidentSVG> : request.emergency_type === 'Assistance' 
+                                        ? 
+                                            <AssistSVG className={`assist-icon ${request.emergency_level === '1' ? 
+                                            "blue" : request.emergency_level === '2' ? 
+                                            "green" : request.emergency_level === '3' ? 
+                                            "yellow" : request.emergency_level === '4' ? 
+                                            "red" : ""}`} height="65" width="65"></AssistSVG> : request.emergency_type === 'Violence' 
+                                        ? 
+                                            <ViolenceSVG className={`violence-icon ${request.emergency_level === '1' ? 
+                                            "blue" : request.emergency_level === '2' ? 
+                                            "green" : request.emergency_level === '3' ? 
+                                            "yellow" : request.emergency_level === '4' ? 
+                                            "red" : ""}`} height="65" width="65"></ViolenceSVG> : 'N/A'
+                                    }
+
+                                </div>
                             </div>
                         </div>
                             
