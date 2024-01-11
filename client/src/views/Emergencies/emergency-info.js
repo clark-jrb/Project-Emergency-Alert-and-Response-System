@@ -14,13 +14,19 @@ const Emergency_info = () => {
     const { requestID } = useRequestInfoContext()
 
     return (
+        // Emergency Information 
         <div className='emergency-info p-3'>
             {requests.filter(request => request.id === requestID).map(request => (
             <div key={request.id} className='h-100'>
+
                 {/* Header  */}
-                <div className='emer-title d-flex px-3 py-2'>
+                <div className={`emer-title d-flex px-3 py-2 ${request.emergency_level === '1' ? 
+                                "blue" : request.emergency_level === '2' ? 
+                                "green" : request.emergency_level === '3' ? 
+                                "yellow" : request.emergency_level === '4' ? 
+                                "red" : ""}`}>
                     <div className='forEmer-title'>
-                        <p className='m-0 fs-5'>Emergency</p>
+                        <p className='m-0 fs-5 fw-bold'>Emergency # {request.req_no}</p>
                     </div>
                     <div className='forDescriptionLvl d-flex'>
                         <div className='forLevel'>
@@ -40,11 +46,13 @@ const Emergency_info = () => {
                         </div>
                     </div>
                 </div>
+
                 {/* Content */}
                 <div className='emer-container' key={request.id}>
+
                     {/* Info-left */}
                     <div className='info-left px-3 mt-3'>
-
+                        {/* Date & Time with Emergency Type Icon Section */}
                         <div className='section-1 d-flex'>
                             <div className='date-time w-50'>
 
@@ -96,80 +104,80 @@ const Emergency_info = () => {
                                 </div>
                             </div>
                         </div>
-                            
+                        {/* Emergency Type Section */}
                         <div className='section-2'>
                             <div className='emer-type'>
                                 <p className='m-0 pt-3 highlight'><i className="fa-solid fa-notes-medical"></i> Emergency Type:</p>
                                 <p className='m-0 py-2 data fs-5'>{request.emergency_type}</p>
                             </div>
                         </div>
-
+                        {/* Location Section */}
                         <div className='section-3'>
                             <div className='location'>
                                 <p className='m-0 pt-3 highlight'><i className="fa-solid fa-location-arrow"></i> Location:</p>
                                 <p className='m-0 py-2 data fs-5'>Location</p>
                             </div>
                         </div>
-
+                        {/* Buttons Section */}
                         <div className='section-buttons d-flex py-3'>
-                            <div className='accept-button w-50'>
-                                <button className='btn btn-success w-100'>Accept</button>
+                            <div className='accept-cont w-50'>
+                                <button className='accept-btn w-100 py-2'>Accept</button>
                             </div>
-                            <div className='decline-button w-50'>
-                                <button className='btn btn-danger w-100'>Decline</button>
+                            <div className='decline-cont w-50'>
+                                <button className='decline-btn w-100 py-2'>Decline</button>
                             </div>
                         </div>
-
                     </div>
+
                     {/* Info-right */}
-                    {users.filter(user => user.id === request.userID ).map(user => (
-                        <div className='info-right p-3 mt-3' key={user.id}>
+                        {users.filter(user => user.id === request.userID ).map(user => (
+                            <div className='info-right p-3 mt-3' key={user.id}>
 
-                            <div className='person-info py-2 px-3'>
-                                <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>
-                            </div>
+                                <div className='person-info py-2 px-3'>
+                                    <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>
+                                </div>
 
-                            <div className='name_gender d-flex mt-3 px-2'>
-                                <div className='person_name w-50'>
-                                    <p className='m-0 forLabel'>Name</p>
-                                    <p className='m-0 py-2'>» {user.fullname}</p>
-                                </div>
-                                <div className='person_gender w-50 ps-3'>
-                                    <p className='m-0 forLabel'>Gender</p>
-                                    <p className='m-0 py-2'>» {user.gender}</p>
-                                </div>
-                            </div>
-
-                            <div className='occup_cont d-flex mt-3 px-2'>
-                                <div className='person_occupation w-50'>
-                                    <p className='m-0 forLabel'>Occupation</p>
-                                    <p className='m-0 py-2'>» {user.occupation}</p>
-                                </div>
-                                <div className='person_contact w-50 ps-3'>
-                                    <p className='m-0 forLabel'>Contact</p>
-                                    <p className='m-0 py-2'>» {user.contact}</p>
-                                </div>
-                            </div>
-
-                            <div className='email_cont mt-3 px-2'>
-                                <div className='person_email'>
-                                    <p className='m-0 forLabel'>Email</p>
-                                    <p className='m-0 py-2'>» {user.email}</p>
-                                </div>
-                            </div>
-
-                            <div className='button_cont mt-3 px-2 py-3'>
-                                <div className='call_message d-flex'>
-                                    <button className='call-btn btn btn-success'><i className="fa-regular fa-message"></i> Message</button>
-                                    <div className='forOr d-flex'>
-                                        <p className='m-0'>or</p>
+                                <div className='name_gender d-flex mt-3 px-2'>
+                                    <div className='person_name w-50'>
+                                        <p className='m-0 forLabel'>Name</p>
+                                        <p className='m-0 py-2'>» {user.fullname}</p>
                                     </div>
-                                    <button className='chat-btn btn btn-success'><i className="fa-solid fa-phone"></i> Call</button>
+                                    <div className='person_gender w-50 ps-3'>
+                                        <p className='m-0 forLabel'>Gender</p>
+                                        <p className='m-0 py-2'>» {user.gender}</p>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
-                    ))}
+                                <div className='occup_cont d-flex mt-3 px-2'>
+                                    <div className='person_occupation w-50'>
+                                        <p className='m-0 forLabel'>Occupation</p>
+                                        <p className='m-0 py-2'>» {user.occupation}</p>
+                                    </div>
+                                    <div className='person_contact w-50 ps-3'>
+                                        <p className='m-0 forLabel'>Contact</p>
+                                        <p className='m-0 py-2'>» {user.contact}</p>
+                                    </div>
+                                </div>
+
+                                <div className='email_cont mt-3 px-2'>
+                                    <div className='person_email'>
+                                        <p className='m-0 forLabel'>Email</p>
+                                        <p className='m-0 py-2'>» {user.email}</p>
+                                    </div>
+                                </div>
+
+                                <div className='button_cont mt-3 px-2 py-3'>
+                                    <div className='call_message d-flex'>
+                                        <button className='call-btn py-2'><i className="fa-regular fa-message"></i> Message</button>
+                                        <div className='forOr d-flex'>
+                                            <p className='m-0'>or</p>
+                                        </div>
+                                        <button className='chat-btn py-2'><i className="fa-solid fa-phone"></i> Call</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        ))}
                 </div>
             </div>
             

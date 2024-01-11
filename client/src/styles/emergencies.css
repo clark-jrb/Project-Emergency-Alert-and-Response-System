@@ -166,6 +166,25 @@
 
 .emer-title {
     gap: 50px;
+    background-color: whitesmoke;
+    color: var(--font-text);
+    border-radius: 10px;
+}
+
+.emer-title.blue {
+    background-color: var(--light-blue);
+}
+
+.emer-title.red {
+    background-color: var(--light-red);
+}
+
+.emer-title.yellow {
+    background-color: var(--light-yellow);
+}
+
+.emer-title.green {
+    background-color: var(--light-green);
 }
 
 .alertHighlight {
@@ -201,7 +220,7 @@
     display: inline-block;
 }
 
-.person-info, .emer-title {
+.person-info{
     background-color: whitesmoke;
     /* box-shadow: 0 1.5px 3px 0 #ccc; */
     border-radius: 10px;
@@ -232,6 +251,7 @@
 }
 
 .data {
+    color: var(--font-text);
     text-align: center;
 }
 
@@ -273,10 +293,6 @@ p {
 
 .button_cont {
     border-top: #ccc solid 1px;
-}
-
-.call-btn, .chat-btn {
-    width: 40%;
 }
 
 .forOr {
@@ -401,4 +417,30 @@ p {
 
 .violence-icon.yellow {
     fill: var(--yellow);
+}
+
+/* BUTTONS  */
+
+.accept-btn, .decline-btn {
+    border: none;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+
+}
+
+.accept-btn {
+    background-color: var(--red);
+}
+
+.decline-btn {
+    background-color: var(--green);
+}
+
+.call-btn, .chat-btn {
+    width: 40%;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--nav-top);
 }
