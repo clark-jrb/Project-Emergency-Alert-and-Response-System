@@ -7,6 +7,8 @@ import { ReactComponent as SecuritySVG } from './icons/security.svg'
 import { ReactComponent as AssistSVG } from './icons/assistance.svg'
 import { ReactComponent as ViolenceSVG } from './icons/violence.svg'
 import { ReactComponent as AccidentSVG } from './icons/accident.svg'
+import AcceptButton from '../../hooks/buttons/AcceptButton'
+import DeclineButton from '../../hooks/buttons/DeclineButton'
 
 const Emergency_info = () => {
     const requests = useRequestContext()
@@ -120,12 +122,8 @@ const Emergency_info = () => {
                         </div>
                         {/* Buttons Section */}
                         <div className='section-buttons d-flex py-3'>
-                            <div className='accept-cont w-50'>
-                                <button className='accept-btn w-100 py-2'>Accept</button>
-                            </div>
-                            <div className='decline-cont w-50'>
-                                <button className='decline-btn w-100 py-2'>Decline</button>
-                            </div>
+                            <AcceptButton reqID={request.id}></AcceptButton>
+                            <DeclineButton></DeclineButton>
                         </div>
                     </div>
 

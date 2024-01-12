@@ -31,6 +31,28 @@ const getRequests = async (req, res) => {
     }
 }
 
+// UPDATE FUNCTION (UPDATE REQUEST STATUS)
+
+async function updateRequest(reqID, updatedData) {
+    const specRequest = requests.doc(reqID);
+    
+    try {
+        const requestDoc = await specRequest.get();
+    
+        if (!requestDoc.exists) {
+            throw new Error('Request not found');
+        }
+    
+        await specRequest.update(updatedData);
+    
+        return 'Request updated successfully';
+    } catch (error) {
+        console.error('Error updating request:', error.message);
+        throw error;
+    }
+}
+
 module.exports = {
     getRequests,
+    updateRequest,
 }
