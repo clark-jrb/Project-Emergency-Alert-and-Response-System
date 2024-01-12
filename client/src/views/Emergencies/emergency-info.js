@@ -11,7 +11,7 @@ import AcceptButton from '../../hooks/buttons/AcceptButton'
 import DeclineButton from '../../hooks/buttons/DeclineButton'
 
 const Emergency_info = () => {
-    const requests = useRequestContext()
+    const { requests } = useRequestContext()
     const users = useUsersContext()
     const { requestID } = useRequestInfoContext()
 

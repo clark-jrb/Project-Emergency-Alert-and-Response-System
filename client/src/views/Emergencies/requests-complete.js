@@ -5,7 +5,7 @@ import { useRequestInfoContext } from '../../context/RequestInfoContext'
 import { useActiveContext } from '../../context/ActiveContext'
 
 const Complete = () => {
-    const requests = useRequestContext()
+    const { requests } = useRequestContext()
     const { setID } = useRequestInfoContext()
     const { active, setTheActive } = useActiveContext()
 

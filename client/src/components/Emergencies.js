@@ -20,10 +20,11 @@ const Emergencies = () => {
                             <ActiveProvider>
                                 <EmergencyLists/>
                             </ActiveProvider>
+
+                            <EmergencyInfo/>
                         </FilterListProvider>
                         
 
-                        <EmergencyInfo/>
 
                     </UsersProvider>
                 </RequestInfoProvider>
