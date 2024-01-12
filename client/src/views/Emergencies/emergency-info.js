@@ -122,8 +122,18 @@ const Emergency_info = () => {
                         </div>
                         {/* Buttons Section */}
                         <div className='section-buttons d-flex py-3'>
-                            <AcceptButton reqID={request.id}></AcceptButton>
-                            <DeclineButton></DeclineButton>
+                            {request.status === 'New' ? (
+                            <>
+                                <AcceptButton reqID={request.id}></AcceptButton>
+                                <DeclineButton></DeclineButton>
+                            </>) : request.status === 'Ongoing' ? (
+                            <>
+                                <div><p>Ongoing</p></div>
+                            </>) : request.status === 'Complete' ? (
+                            <>
+                                <div><p>Complete</p></div>
+                            </>) : 'N/A'}
+                            
                         </div>
                     </div>
 

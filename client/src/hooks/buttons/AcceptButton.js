@@ -16,26 +16,26 @@ const AcceptButton = ({ reqID }) => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-            },
+                },
             // Example updated data for username and email
-            body: JSON.stringify({
-                "status": setStatus
-            }),
-        })
+                body: JSON.stringify({
+                    "status": setStatus
+                }),
+            })
 
         
-        if (response.ok) {
-            navigate('/usf/emergencies')
-            reloadRequests()
-            setTheFilter(setStatus)
-            
-            console.log('Request updated successfully')
-        } else {
-            console.error('Failed to update request:', response.statusText)
+            if (response.ok) {
+                navigate('/usf/emergencies')
+                reloadRequests()
+                setTheFilter(setStatus)
+                
+                console.log('Request updated successfully')
+            } else {
+                console.error('Failed to update request:', response.statusText)
+            }
+        } catch (error) {
+            console.error('Error updating request:', error.message)
         }
-    } catch (error) {
-        console.error('Error updating request:', error.message)
-    }
     }
     
     return (
