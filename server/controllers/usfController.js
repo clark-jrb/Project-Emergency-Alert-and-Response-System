@@ -43,7 +43,9 @@ async function updateRequest(reqID, updatedData) {
             throw new Error('Request not found');
         }
     
-        await specRequest.update(updatedData);
+        await specRequest.update({
+            ...updatedData
+        });
     
         return 'Request updated successfully';
     } catch (error) {

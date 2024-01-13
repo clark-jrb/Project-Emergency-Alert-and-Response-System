@@ -1,11 +1,13 @@
 import React from 'react'
 import { useFilterListContext } from '../../context/FilterListContext'
 import { useRequestContext } from '../../context/RequestContext'
+import moment from 'moment'
 
 const CompleteButton = ({ reqID }) => {
     const { reloadRequests } = useRequestContext()
     const { setTheFilter } = useFilterListContext()
     const setStatus = "Complete"
+    const currentDateTime = moment().format('LLLL');
 
     const setComplete = async () => {
         try {
@@ -17,7 +19,8 @@ const CompleteButton = ({ reqID }) => {
                 },
             // Example updated data for username and email
                 body: JSON.stringify({
-                    "status": setStatus
+                    "status": setStatus,
+                    "time_completed": currentDateTime
                 }),
             })
 

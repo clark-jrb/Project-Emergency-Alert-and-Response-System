@@ -151,7 +151,9 @@ const Emergency_info = () => {
                                     <div className='completed-bar py-2'>
                                         <p className='m-0'>Completed <i className="fa-regular fa-circle-check"></i></p>
                                     </div>
-                                    <p>Completed at:</p>
+                                    <div className='status-title py-2'>
+                                        <p>Completed at » {request.time_completed}</p>
+                                    </div>
                                 </div>
                             </>) : 'N/A'}
                             
