@@ -123,9 +123,9 @@
 .level-logo {
     justify-content: center;
     align-items: center;
-    width: 15%;
+    width: 55px;
     border-radius: 10px;
-    font-size: large;
+    font-size: x-large;
     /* background-color: #ccc; */
     color: white;
     font-weight: bold;
@@ -448,10 +448,23 @@ p {
     background-color: var(--green);
 }
 
-.complete-cont {
+.ongoing-cont {
     width: 100%;
 }
 
-.confirm-title {
+.status-title {
     color: var(--font-text);
+}
+
+.completed-cont {
+    width: 100%;
+}
+
+.completed-bar {
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ccc;
+    color: var(--font-text);
+    font-weight: bold;
+    font-size: large;
 }

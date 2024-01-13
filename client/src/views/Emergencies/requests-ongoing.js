@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
 import { useRequestInfoContext } from '../../context/RequestInfoContext'
 import { useActiveContext } from '../../context/ActiveContext'
+import TimeAgo from '../../hooks/buttons/TimeAgo'
 
 const Ongoing = () => {
     const { requests } = useRequestContext()
@@ -53,7 +54,7 @@ const Ongoing = () => {
                         <p className='m-0'>: {request.emergency_type}</p>
                     </div>
                     <div className='duration d-flex'>
-                        <p className='m-0'>1h</p>
+                        <p className='m-0'><TimeAgo date={request.date} time={request.time}></TimeAgo></p>
                     </div>
                 </div>
             ))}

@@ -37,8 +37,8 @@ const CompleteButton = ({ reqID }) => {
     }
     
     return (
-        <div className='complete-cont'>
-            <div className='confirm-title'>
+        <div className='ongoing-cont'>
+            <div className='status-title'>
                 <p className='mb-2'>Is the request completed?</p>
             </div>
             <button className='complete-btn w-100 py-2' onClick={setComplete}>Yes</button>

@@ -129,17 +129,29 @@ const Emergency_info = () => {
                         <div className='section-buttons d-flex py-3'>
                             {request.status === 'New' ? (
                             <>
-                                <AcceptButton reqID={request.id}></AcceptButton>
-                                <DeclineButton></DeclineButton>
+                                <div className='w-100'>
+                                    <div className='status-title'>
+                                        <p className='mb-2'>Are you ready to take action?</p>
+                                    </div>
+                                    <div className='d-flex w-100 gap-3'>
+                                        <AcceptButton reqID={request.id}></AcceptButton>
+                                        <DeclineButton></DeclineButton>
+                                    </div>
+                                </div>
+                                
                             </>) : request.status === 'Ongoing' ? (
                             <>
                                 <CompleteButton reqID={request.id}></CompleteButton>
                             </>) : request.status === 'Complete' ? (
                             <>
-                                <div className=''>
-                                    <div>
-                                        <p>Complete</p>
+                                <div className='completed-cont'>
+                                    <div className='status-title'>
+                                        <p className='mb-2'>Status:</p>
                                     </div>
+                                    <div className='completed-bar py-2'>
+                                        <p className='m-0'>Completed <i className="fa-regular fa-circle-check"></i></p>
+                                    </div>
+                                    <p>Completed at:</p>
                                 </div>
                             </>) : 'N/A'}
                             

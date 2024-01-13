@@ -37,7 +37,7 @@ const AcceptButton = ({ reqID }) => {
     
     return (
         <div className='accept-cont w-50'>
-            <button className='accept-btn w-100 py-2' onClick={setOngoing}>Accept</button>
+            <button className='accept-btn w-100 py-2' onClick={setOngoing}><i className="fa-solid fa-check"></i> Accept</button>
         </div>
     )
 }
