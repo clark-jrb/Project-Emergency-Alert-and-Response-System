@@ -37,13 +37,17 @@ const Emergency_info = () => {
                         </div>
                         <div className='forAlert'>
                             <p className='m-0'>Alert »</p>
-                            <p className={`alertHighlight m-0 px-2 fs-5 fw-bold ${request.emergency_description === 'NON-URGENT' ? 
-                                "blue" : request.emergency_description === 'SEMI-URGENT' ? 
-                                "green" : request.emergency_description === 'URGENT' ? 
-                                "yellow" : request.emergency_description === 'IMMEDIATE' ? 
+                            <p className={`alertHighlight m-0 px-2 fs-5 fw-bold ${request.emergency_level === '1' ? 
+                                "blue" : request.emergency_level === '2' ? 
+                                "green" : request.emergency_level === '3' ? 
+                                "yellow" : request.emergency_level === '4' ? 
                                 "red" : ""}`}
                             >
-                                {request.emergency_description}
+                                {request.emergency_level === '1' ? 
+                                "NON-URGENT" : request.emergency_level === '2' ? 
+                                "SEMI-URGENT" : request.emergency_level === '3' ? 
+                                "URGENT" : request.emergency_level === '4' ? 
+                                "IMMEDIATE" : "N/A"}
                             </p>
                         </div>
                     </div>

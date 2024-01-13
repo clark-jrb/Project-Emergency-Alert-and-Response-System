@@ -42,7 +42,14 @@ const Ongoing = () => {
                         </p>
                     </div>
                     <div className='req-information'>
-                        <p className='m-0'>{request.emergency_description}</p>
+                        <p className='m-0'>
+                            {request.emergency_level === '1' ? 
+                                "NON-URGENT" : request.emergency_level === '2' ? 
+                                "SEMI-URGENT" : request.emergency_level === '3' ? 
+                                "URGENT" : request.emergency_level === '4' ? 
+                                "IMMEDIATE" : "N/A"
+                            }
+                        </p>
                         <p className='m-0'>: {request.emergency_type}</p>
                     </div>
                     <div className='duration d-flex'>
