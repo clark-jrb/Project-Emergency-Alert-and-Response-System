@@ -421,20 +421,19 @@ p {
 
 /* BUTTONS  */
 
-.accept-btn, .decline-btn {
+.accept-btn, .decline-btn, .complete-btn {
     border: none;
     border-radius: 10px;
     color: white;
     box-shadow: 0 1.5px 3px 0 #ccc;
-
 }
 
 .accept-btn {
-    background-color: var(--red);
+    background-color: var(--green);
 }
 
 .decline-btn {
-    background-color: var(--green);
+    background-color: var(--red);
 }
 
 .call-btn, .chat-btn {
@@ -443,4 +442,16 @@ p {
     border-radius: 10px;
     color: white;
     background-color: var(--nav-top);
+}
+
+.complete-btn {
+    background-color: var(--green);
+}
+
+.complete-cont {
+    width: 100%;
+}
+
+.confirm-title {
+    color: var(--font-text);
 }

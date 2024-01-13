@@ -2,12 +2,12 @@ import React from 'react'
 import { useFilterListContext } from '../../context/FilterListContext'
 import { useRequestContext } from '../../context/RequestContext'
 
-const AcceptButton = ({ reqID }) => {
+const CompleteButton = ({ reqID }) => {
     const { reloadRequests } = useRequestContext()
     const { setTheFilter } = useFilterListContext()
-    const setStatus = "Ongoing"
+    const setStatus = "Complete"
 
-    const setOngoing = async () => {
+    const setComplete = async () => {
         try {
             // Make an HTTP PUT request to update the user status
             const response = await fetch(`http://localhost:4000/usf/emergencies/${reqID}`, {
@@ -23,23 +23,27 @@ const AcceptButton = ({ reqID }) => {
 
         
             if (response.ok) {
+                // navigate('/usf/emergencies')
                 reloadRequests()
                 setTheFilter(setStatus)
                 
-                console.log('Request updated successfully')
+                console.log('Request complete')
             } else {
-                console.error('Failed to update request:', response.statusText)
+                console.error('Failed to complete request:', response.statusText)
             }
         } catch (error) {
-            console.error('Error updating request:', error.message)
+            console.error('Error completing request:', error.message)
         }
     }
     
     return (
-        <div className='accept-cont w-50'>
-            <button className='accept-btn w-100 py-2' onClick={setOngoing}>Accept</button>
+        <div className='complete-cont'>
+            <div className='confirm-title'>
+                <p className='mb-2'>Is the request completed?</p>
+            </div>
+            <button className='complete-btn w-100 py-2' onClick={setComplete}>Yes</button>
         </div>
     )
 }
 
-export default AcceptButton
+export default CompleteButton

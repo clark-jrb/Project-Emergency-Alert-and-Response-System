@@ -9,6 +9,7 @@ import { ReactComponent as ViolenceSVG } from './icons/violence.svg'
 import { ReactComponent as AccidentSVG } from './icons/accident.svg'
 import AcceptButton from '../../hooks/buttons/AcceptButton'
 import DeclineButton from '../../hooks/buttons/DeclineButton'
+import CompleteButton from '../../hooks/buttons/CompleteButton'
 
 const Emergency_info = () => {
     const { requests } = useRequestContext()
@@ -132,10 +133,14 @@ const Emergency_info = () => {
                                 <DeclineButton></DeclineButton>
                             </>) : request.status === 'Ongoing' ? (
                             <>
-                                <div><p>Ongoing</p></div>
+                                <CompleteButton reqID={request.id}></CompleteButton>
                             </>) : request.status === 'Complete' ? (
                             <>
-                                <div><p>Complete</p></div>
+                                <div className=''>
+                                    <div>
+                                        <p>Complete</p>
+                                    </div>
+                                </div>
                             </>) : 'N/A'}
                             
                         </div>
