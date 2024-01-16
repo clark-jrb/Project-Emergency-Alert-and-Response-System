@@ -1,4 +1,7 @@
-import { createContext, useContext, useState, useEffect, useRef } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
+import { collection, getDocs, onSnapshot } from 'firebase/firestore'
+import { db } from '../firebase'
+import moment from 'moment'
 
 const RequestContext = createContext()
 
@@ -8,38 +11,72 @@ export const useRequestContext = () => {
 
 export const RequestProvider = ({ children }) => {
     const [requests, setRequests] = useState([])
-    const hasFetched = useRef(false)
+    // const hasFetched = useRef(false)
+    // const [loading, setLoading] = useState(true)
 
     const fetchRequests = async () => {
         try {
-            const response = await fetch('http://localhost:4000/usf/emergencies')
+            const querySnapshot = await getDocs(collection(db, 'emergency_requests'))
+            const data = querySnapshot.docs.map((doc) => {
+                const { timestamp, ...rest } = doc.data()
+                const timepoint = timestamp.toDate()
+        
+                const dataComponent = moment(timepoint).format('LL')
+                const timeComponent = moment(timepoint).format('LT')
+        
+                return {
+                    id: doc.id,
+                    date: dataComponent,
+                    time: timeComponent,
+                    ...rest
+                }
+            })
 
-            if (response.ok) {
-                const data = await response.json()
-                setRequests(data)
-            } else {
-                console.log('Error occurred')
-            }
+            setRequests(data)
         } catch (error) {
             console.error('Error fetching data:', error)
         }
     }
 
     useEffect(() => {
-        if (!hasFetched.current) {
-            
-        fetchRequests()
-        hasFetched.current = true
-        }
+        const unsubscribe = onSnapshot(collection(db, 'emergency_requests'), (snapshot) => {
+            const data = snapshot.docs.map((doc) => {
+                const { timestamp, ...rest } = doc.data()
+                const timepoint = timestamp.toDate()
+
+                const dataComponent = moment(timepoint).format('LL')
+                const timeComponent = moment(timepoint).format('LT')
+
+                return {
+                    id: doc.id,
+                    date: dataComponent,
+                    time: timeComponent,
+                    ...rest
+                }
+            })
+
+            setRequests(data)
+        })
+
+        // Cleanup function to unsubscribe from real-time updates when the component unmounts
+        return () => unsubscribe()
     }, [])
+
+    // useEffect(() => {
+    //     if (!hasFetched.current) {
+            
+    //     fetchRequests()
+    //         hasFetched.current = true
+    //     }
+    // }, [])
 
     // Reload requests
     const reloadRequests = () => {
-        fetchRequests();
-    };
+        fetchRequests()
+    }
 
     return (
-        <RequestContext.Provider value={{ requests, reloadRequests}}>
+        <RequestContext.Provider value={{ requests, reloadRequests }}>
             {children}
         </RequestContext.Provider>
     )

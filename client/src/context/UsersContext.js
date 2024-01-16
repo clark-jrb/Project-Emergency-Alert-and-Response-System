@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect, useRef } from 'react'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../firebase'
 
 const UsersContext = createContext()
 
@@ -10,21 +12,18 @@ export const UsersProvider = ({ children }) => {
         if (!hasFetched.current) {
         const fetchUsers = async () => {
             try {
-            const response = await fetch('http://localhost:4000/users')
+                // const response = await fetch('http://localhost:4000/users')
+                const querySnapshot = await getDocs(collection(db, 'users'))
+                const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
 
-            if (response.ok) {
-                const data = await response.json()
-                setUsers(data)
-            } else {
-                console.log('Error occurred')
-            }
+            setUsers(data)
             } catch (error) {
-            console.error('Error fetching data:', error)
+                console.error('Error fetching data:', error)
             }
         }
 
-        fetchUsers()
-        hasFetched.current = true
+            fetchUsers()
+            hasFetched.current = true
         }
     }, [])
 

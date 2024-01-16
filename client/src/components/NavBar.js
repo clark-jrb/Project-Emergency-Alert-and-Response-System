@@ -37,7 +37,9 @@ const NavBar = () => {
                 </a>
                 
                 <div className="status-bar d-flex align-items-center">
-                    <i className="fa-regular fa-bell fa-xl"></i>
+                    <div className="notif-animation green bell-icon p-2">
+                        <i className="fa-regular fa-bell fa-xl"></i>
+                    </div>
                 </div>
 
                 <button className='btn btn-danger' onClick={handleSignOut}>Sign Out</button>

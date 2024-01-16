@@ -1,8 +1,15 @@
 :root {
-    --light-green: #d9f3ea;
     --green: #00b074;
     --font-text: #5d5a6a;
     --nav-top: #008e5f;
+    --yellow: #F7C604;
+    --red: #FE5B5B;
+    --blue: #2D9CDB;
+    
+    --light-green: #d9f3ea;
+    --light-red: #f9bdbd;
+    --light-blue: #9cdbff;
+    --light-yellow: #fff2be;
 }
 
 .navbar {
@@ -111,4 +118,71 @@
 
 .status-bar {
     color: var(--font-text);
+}
+
+
+/* NOTIF BELL ANIMATION */
+
+.bell-icon {
+    border-radius: 50%;
+}
+
+/* RED NOTIF */
+.notif-animation.red{
+    height: auto;
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0px var(--red);
+    }
+    100% {
+        box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+    }
+}
+
+/* BLUE NOTIF */
+.notif-animation.blue{
+    height: auto;
+    animation: pulse-blue 2s infinite;
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0px rgb(45, 156, 219);
+    }
+    100% {
+        box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+    }
+}
+
+/* YELLOW NOTIF */
+.notif-animation.yellow{
+    height: auto;
+    animation: pulse-yellow 2s infinite;
+}
+
+@keyframes pulse-yellow {
+    0% {
+        box-shadow: 0 0 0 0px var(--yellow);
+    }
+    100% {
+        box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+    }
+}
+
+/* GREEN NOTIF */
+.notif-animation.green{
+    height: auto;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0px var(--green);
+    }
+    100% {
+        box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+    }
 }
