@@ -8,23 +8,26 @@ import History from "../History"
 import Settings from "../Settings"
 import NavBar from "../NavBar"
 import { NavActiveProvider } from "../../context/NavActiveContext"
+import { RequestProvider } from "../../context/RequestContext"
 
 const USF = () => {
     return (
         <div className="usf-container">
-            <NavActiveProvider>
-                <NavBar/>
-            </NavActiveProvider>
-            <div className="content">
-                <Routes>
-                    <Route path="dashboard" element={<Dashboard/>}></Route>
-                    <Route path="emergencies" element={<Emergencies/>}></Route>
-                    <Route path="messages" element={<Messages/>}></Route>
-                    <Route path="map" element={<Map/>}></Route>
-                    <Route path="history" element={<History/>}></Route>
-                    <Route path="settings" element={<Settings/>}></Route>
-                </Routes>
-            </div>
+            <RequestProvider>
+                <NavActiveProvider>
+                        <NavBar/>
+                </NavActiveProvider>
+                <div className="content">
+                    <Routes>
+                        <Route path="dashboard" element={<Dashboard/>}></Route>
+                        <Route path="emergencies" element={<Emergencies/>}></Route>
+                        <Route path="messages" element={<Messages/>}></Route>
+                        <Route path="map" element={<Map/>}></Route>
+                        <Route path="history" element={<History/>}></Route>
+                        <Route path="settings" element={<Settings/>}></Route>
+                    </Routes>
+                </div>
+            </RequestProvider>
         </div>
     )
 }

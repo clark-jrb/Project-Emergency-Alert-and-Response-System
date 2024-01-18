@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -10,12 +10,14 @@ import { ReactComponent as MessagesIcon } from '../images/icons/message.svg'
 import { ReactComponent as MapIcon } from '../images/icons/map.svg'
 import { ReactComponent as HistoryIcon } from '../images/icons/history.svg'
 import { useNavActiveContext } from "../context/NavActiveContext"
+import { useRequestContext } from "../context/RequestContext"
 
 const NavBar = () => {
     const { currentUser, signOut } = useAuth()
     const navigate = useNavigate()
+    const { count, recentRequest } = useRequestContext()
 
-    // console.log(currentUser)
+    // console.log(recentRequest.status)
 
     const handleSignOut = async () => {
         await signOut()
@@ -28,6 +30,13 @@ const NavBar = () => {
         setTheNav(e)
     }
 
+    // useEffect(() => {
+    //     if (count === 0) {
+    //         setRRCount([])
+    //     }
+    // }, [count])
+    
+
     return (
         <nav className="navbar">
             <div className="nav-top p-1">
@@ -36,8 +45,15 @@ const NavBar = () => {
                     <span className="system-name mx-1">EARS</span>
                 </a>
                 
+                {/* NOTIFICATION BELL  */}
                 <div className="status-bar d-flex align-items-center">
-                    <div className="notif-animation green bell-icon p-2">
+                    <div className={`notif-animation bell-icon p-2 ${
+                        count > 0 ? (recentRequest.emergency_level === '1' ? 
+                                        "blue" : recentRequest.emergency_level === '2' ? 
+                                        "green" : recentRequest.emergency_level === '3' ? 
+                                        "yellow" : recentRequest.emergency_level === '4' ? 
+                                        "red" : "") : ''
+                    }`}>
                         <i className="fa-regular fa-bell fa-xl"></i>
                     </div>
                 </div>
