@@ -62,32 +62,36 @@ const NavBar = () => {
             </div>
             <div className="nav-bottom px-3">
                 <ul>    
-                    <li onClick={() => handleClick('/usf/dashboard')} className={NavActive === '/usf/dashboard' ? 'active' : ''}>
-                        <Link to="dashboard">
+                    <li className={NavActive === '/usf/dashboard' ? 'active' : ''}>
+                        <Link to="dashboard" onClick={() => handleClick('/usf/dashboard')}>
                             <DashboardIcon className="dashboard-icon" height="25" width="25"/>
                             Dashboard
                         </Link>
                     </li>
-                    <li onClick={() => handleClick('/usf/emergencies')} className={NavActive === '/usf/emergencies' ? 'active' : ''}>
-                        <Link to="emergencies">
+
+                    <li className={NavActive === '/usf/emergencies' ? 'active' : ''}>
+                        <Link to="emergencies" onClick={() => handleClick('/usf/emergencies')}>
                             <EmergencyIcon className="emergency-icon" height="25" width="25"/>
                             Emergencies
                         </Link>
                     </li>
-                    <li onClick={() => handleClick('/usf/messages')} className={NavActive === '/usf/messages' ? 'active' : ''}>
-                        <Link to="messages">
+
+                    <li className={NavActive === '/usf/messages' ? 'active' : ''}>
+                        <Link to="messages" onClick={() => handleClick('/usf/messages')}>
                             <MessagesIcon className="messages-icon" height="25" width="25"/>
                             Messages
                         </Link>
                     </li>
-                    <li onClick={() => handleClick('/usf/map')} className={NavActive === '/usf/map' ? 'active' : ''}>
-                        <Link to="map">
+
+                    <li className={NavActive === '/usf/map' ? 'active' : ''}>
+                        <Link to="map" onClick={() => handleClick('/usf/map')}>
                             <MapIcon className="map-icon" height="25" width="25"/>
                             Map
                         </Link>
                     </li>
-                    <li onClick={() => handleClick('/usf/history')} className={NavActive === '/usf/history' ? 'active' : ''}>
-                        <Link to="history">
+
+                    <li className={NavActive === '/usf/history' ? 'active' : ''}>
+                        <Link to="history" onClick={() => handleClick('/usf/history')}>
                             <HistoryIcon className="history-icon" height="25" width="25"/>
                             History
                         </Link>

@@ -124,7 +124,7 @@
 /* NOTIF BELL ANIMATION */
 
 .bell-icon {
-    border-radius: 50%;
+    border-radius: 100%;
 }
 
 /* RED NOTIF */
@@ -137,7 +137,7 @@
 .notif-animation.red{
     box-shadow: 0 1.5px 3px 0 #ccc;
     height: auto;
-    animation: pulse-red 2s infinite;
+    animation: pulse-red 1.5s infinite;
 }
 
 @keyframes pulse-red {
@@ -152,7 +152,7 @@
 /* BLUE NOTIF */
 .notif-animation.blue{
     height: auto;
-    animation: pulse-blue 2s infinite;
+    animation: pulse-blue 1.5s infinite;
 }
 
 @keyframes pulse-blue {
@@ -167,7 +167,7 @@
 /* YELLOW NOTIF */
 .notif-animation.yellow{
     height: auto;
-    animation: pulse-yellow 2s infinite;
+    animation: pulse-yellow 1.5s infinite;
 }
 
 @keyframes pulse-yellow {
@@ -182,7 +182,7 @@
 /* GREEN NOTIF */
 .notif-animation.green{
     height: auto;
-    animation: pulse-green 2s infinite;
+    animation: pulse-green 1.5s infinite;
 }
 
 @keyframes pulse-green {

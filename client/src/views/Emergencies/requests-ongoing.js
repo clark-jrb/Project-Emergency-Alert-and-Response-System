@@ -16,7 +16,7 @@ const Ongoing = () => {
     }
 
     return (
-        <div className='request-ongoing d-flex pt-3'>
+        <div className='request-ongoing d-flex py-3'>
             {requests.filter(request => request.status === 'Ongoing').map(request => (
                 <div 
                     className={`req-data container d-flex py-2 px-0 ${active === request.id ? 'active' : ''}`} 
