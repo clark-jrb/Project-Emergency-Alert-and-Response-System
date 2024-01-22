@@ -10,7 +10,7 @@ import { FilterListProvider } from '../context/FilterListContext'
 
 const Emergencies = () => {
     return (
-        <div className='emergency-content p-3'>
+        <div className='emergency-content p-4'>
             
                 <RequestInfoProvider>
                     <UsersProvider>
@@ -23,8 +23,6 @@ const Emergencies = () => {
                             <EmergencyInfo/>
                         </FilterListProvider>
                         
-
-
                     </UsersProvider>
                 </RequestInfoProvider>
         </div>

@@ -1,0 +1,38 @@
+:root {
+    --green: #00b074;
+    --font-text: #5d5a6a;
+    --nav-top: #008e5f;
+    --yellow: #F7C604;
+    --red: #FE5B5B;
+    --blue: #2D9CDB;
+    
+    --light-green: #d9f3ea;
+    --light-red: #f9bdbd;
+    --light-blue: #9cdbff;
+    --light-yellow: #fff2be;
+} 
+
+.history-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.history-filters {
+    height: 100%;
+    width: 20%;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+}
+
+.history-datas {
+    height: 100%;
+    width: 78%;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+}
+

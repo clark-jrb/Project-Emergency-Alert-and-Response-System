@@ -17,7 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 25px;
 }
 
 .emer-lists {
@@ -33,7 +33,7 @@
 
 .emergency-info {
     height: 100%;
-    width: 69%;
+    width: 68%;
     border: #ccc solid 1px;
     border-radius: 10px;
     /* margin: 5px;
