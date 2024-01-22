@@ -36,3 +36,136 @@
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
+.sort-title {
+    color: var(--font-text);
+    font-size: medium;
+}
+
+.forMonth, .forYear {
+    gap: 10px;
+}
+
+.forLvl {
+    height: 65px;
+    border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+    /* background-color: rgb(254, 91, 91, .20); */
+}
+
+.lvl-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: x-large;
+    font-weight: bold;
+    /* box-shadow: 0 1.5px 3px 0 #ccc; */
+    color: white;
+}
+
+.lvl-info {
+    color: var(--font-text);
+    display: flex;
+    align-items: center;
+}
+
+.forLvl.one  {
+    background-color: rgb(45, 156, 219, .20);
+}
+
+.lvl-logo.one {
+    background-color: var(--blue);
+}
+
+.forLvl.two  {
+    background-color: rgb(0, 176, 116, .20);
+}
+
+.lvl-logo.two {
+    background-color: var(--green);
+}
+
+.forLvl.three  {
+    background-color: rgb(247, 198, 4, .20);
+}
+
+.lvl-logo.three {
+    background-color: var(--yellow);
+}
+
+.forLvl.four  {
+    background-color: rgb(254, 91, 91, .20);
+}
+
+.lvl-logo.four {
+    background-color: var(--red);
+}
+
+
+/* FOR EMERGENCY DATAS  */
+
+.datas-title {
+    font-size: x-large;
+    color: var(--font-text);
+    font-weight: bold;
+}
+
+.datas-table {
+    height: 90%;
+}
+
+table {
+    width: 100%;
+}
+
+thead {
+    display: block;
+    background-color: whitesmoke;
+    color: var(--font-text);
+    border-radius: 10px;
+}
+
+th, td {
+    text-align: center;
+    padding: 5px 0 5px 0;
+    font-weight: 500;
+    border: 1px black solid;
+}
+
+tr {
+    width: 100%;
+    display: inline-table;
+}
+
+.table-num {
+    width: 50px;
+}
+
+.table-date {
+    width: 200px;
+}
+
+.table-level {
+    width: 70px;
+}
+
+.table-ET {
+    width: 250px;
+}
+
+.table-user {
+    width: 150px;
+}
+
+.table-time {
+    width: 100px;
+}
+
+.userID-text {
+    max-width: 150px;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /* padding: 0 5px 0 5px; */
+}
