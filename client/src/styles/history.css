@@ -169,3 +169,15 @@ tr {
     white-space: nowrap;
     /* padding: 0 5px 0 5px; */
 }
+
+.td-level {
+    /* border: red solid 1px; */
+    height: 40px;
+}
+
+.td-level-con {
+    background-color: var(--blue);
+    border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+    color: white;
+}
