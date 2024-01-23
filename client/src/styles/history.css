@@ -36,20 +36,101 @@
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
+.sortByDate {
+    border-bottom: #ccc solid 1px;
+}
+
+.description {
+    font-size: small;
+}
+
+.select-box {
+    color: var(--font-text);
+    border: var(--green) solid 2px;
+    border-radius: 10px;
+    height: 40px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.select-box:focus {
+    border: var(--light-green) solid 2px;
+    /* background-color: green; */
+    outline: var(--green);
+}
+
+option {
+    color: var(--font-text);
+}
+
 .sort-title {
     color: var(--font-text);
     font-size: medium;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title-date {
+    width: 80px;
+    color: var(--font-text);
+}
+
+.highlight.one {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.highlight.two {
+    color: var(--green);
+    font-weight: 600;
+}
+
+.highlight.three {
+    color: var(--yellow);
+    font-weight: 600;
+}
+
+.highlight.four {
+    color: var(--red);
+    font-weight: 600;
+}
+
+.lvl-title {
+    width: 80%;
+}
+
+.all-btn:hover {
+    /* text-decoration: underline; */
+    color: var(--green);
+    cursor: pointer;
+}
+
+.reset-btn {
+    color: var(--font-text);
+}
+
+.reset-btn:hover {
+    color: var(--green);
+    cursor: pointer;
 }
 
 .forMonth, .forYear {
     gap: 10px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .forLvl {
     height: 65px;
     border-radius: 10px;
-    box-shadow: 0 1.5px 3px 0 #ccc;
+    /* box-shadow: 0 1.5px 3px 0 #ccc; */
     /* background-color: rgb(254, 91, 91, .20); */
+}
+
+.forLvl:hover {
+    box-shadow: 0 1.5px 3px 0 #ccc;
+    cursor: pointer;
 }
 
 .lvl-logo {
@@ -112,6 +193,7 @@
 
 .datas-table {
     height: 90%;
+    position: relative;
 }
 
 table {
@@ -129,12 +211,16 @@ th, td {
     text-align: center;
     padding: 5px 0 5px 0;
     font-weight: 500;
-    border: 1px black solid;
+    /* border: 1px black solid; */
 }
 
 tr {
     width: 100%;
     display: inline-table;
+}
+
+.tr-table {
+    border-bottom: 1px #ccc solid;
 }
 
 .table-num {
@@ -176,8 +262,64 @@ tr {
 }
 
 .td-level-con {
-    background-color: var(--blue);
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 1.5px 3px 0 #ccc;
     color: white;
+    font-weight: bold;
+}
+
+.td-level-con.blue {
+    background-color: var(--blue);
+}
+
+.td-level-con.green {
+    background-color: var(--green);
+}
+
+.td-level-con.yellow {
+    background-color: var(--yellow);
+}
+
+.td-level-con.red {
+    background-color: var(--red);
+}
+
+/* previous and next button */
+
+.pagination {
+    gap: 5px;
+    position: absolute;
+    bottom: 0;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+}
+
+.prev-btn, .next-btn, .num-btn {
+    color: var(--green);
+    /* font-weight: bold; */
+    font-size: large;
+    border: none;
+    background-color: white;
+}
+
+.prev-btn:hover, .next-btn:hover, .num-btn:hover {
+    background-color: var(--light-green);
+    border-radius: 10px;
+}
+
+.prev-btn.disabled {
+    background-color: white;
+    color: var(--light-green);
+}
+
+.next-btn.disabled {
+    background-color: white;
+    color: var(--light-green);
+}
+
+.num-btn.active {
+    background-color: var(--light-green);
+    border-radius: 10px;
 }

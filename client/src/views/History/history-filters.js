@@ -32,6 +32,10 @@ const HistoryFilters = () => {
         setTheYearFilter('')
     }
 
+    const resetLevel = () => {
+        setTheLevelFilter('')
+    }
+
     // HandleClick to filter emergency level
     const handleFilterLevel = (event) => {
         setTheLevelFilter(event)
@@ -44,14 +48,14 @@ const HistoryFilters = () => {
 
     return (
         <div className='history-filters'>
-            <div className='sortByDate border p-3'>
+            <div className='sortByDate m-3 pb-3'>
                 <div className='sort-title pt-2'>
                     <p className='m-0'>Sort by Date</p>
                 </div>
 
                 <div className='forMonth d-flex pt-3'>
-                    <p className='m-0'>Month</p>
-                    <Form.Select onChange={handleMonthChange} value={month}>
+                    <p className='m-0 title-date px-2'>» Month</p>
+                    <select className='select-box px-2' onChange={handleMonthChange} value={month}>
                         <option disabled>Month</option>
                         {/* Map through months and create option elements */}
                         {months.map((option, index) => (
@@ -59,15 +63,15 @@ const HistoryFilters = () => {
                             {option}
                         </option>
                         ))}
-                    </Form.Select>
-                    <button className='btn btn-danger' onClick={resetMonth}>
+                    </select>
+                    <div className='reset-btn px-2' onClick={resetMonth}>
                         <i className="fa-solid fa-arrow-rotate-right"></i>
-                    </button>
+                    </div>
                 </div>
 
                 <div className='forYear d-flex pt-3'>
-                    <p className='m-0'>Year</p>
-                    <Form.Select onChange={handleYearChange} value={year}>
+                    <p className='m-0 title-date px-2'>» Year</p>
+                    <select className='select-box px-2' onChange={handleYearChange} value={year}>
                         <option disabled>Year</option>
                         {/* Map through months and create option elements */}
                         {years.map((option, index) => (
@@ -75,16 +79,19 @@ const HistoryFilters = () => {
                             {option}
                         </option>
                         ))}
-                    </Form.Select>
-                    <button className='btn btn-danger' onClick={resetYear}>
+                    </select>
+                    <div className='reset-btn px-2' onClick={resetYear}>
                         <i className="fa-solid fa-arrow-rotate-right"></i>
-                    </button>
+                    </div>
                 </div>
 
             </div>
-            <div className='sortByLevel border p-3'>
+            <div className='sortByLevel mx-3'>
                 <div className='sort-title pt-2'>
-                    <p className='m-0'>Level of Emergency</p>
+                    <p className='m-0 lvl-title'>Level of Emergency</p>
+                    <div className='all-btn' onClick={resetLevel}>
+                        All <i className="fa-solid fa-check-double"></i>
+                    </div>
                 </div>
                 {/* LEVEL 1 */}
                 <div className='forLvl one d-flex mt-3' onClick={() => handleFilterLevel('1')}>
@@ -93,8 +100,8 @@ const HistoryFilters = () => {
                     </div>
                     <div className='lvl-info w-75'>
                         <div className='px-3'>
-                            <p className='m-0'>NON-URGENT</p>
-                            <p className='m-0'>Lorem</p>
+                            <p className='m-0 highlight one'>NON-URGENT</p>
+                            <p className='m-0 description'>Minor Emergency</p>
                         </div>
                     </div>
                 </div>
@@ -105,8 +112,8 @@ const HistoryFilters = () => {
                     </div>
                     <div className='lvl-info w-75'>
                         <div className='px-3'>
-                            <p className='m-0'>SEMI-URGENT</p>
-                            <p className='m-0'>Lorem</p>
+                            <p className='m-0 highlight two'>SEMI-URGENT</p>
+                            <p className='m-0 description'>Non Life Threatening</p>
                         </div>
                     </div>
                 </div>
@@ -117,8 +124,8 @@ const HistoryFilters = () => {
                     </div>
                     <div className='lvl-info w-75'>
                         <div className='px-3'>
-                            <p className='m-0'>URGENT</p>
-                            <p className='m-0'>Lorem</p>
+                            <p className='m-0 highlight three'>URGENT</p>
+                            <p className='m-0 description'>Can be Life Threatening</p>
                         </div>
                     </div>
                 </div>
@@ -129,8 +136,8 @@ const HistoryFilters = () => {
                     </div>
                     <div className='lvl-info w-75'>
                         <div className='px-3'>
-                            <p className='m-0'>IMMEDIATE</p>
-                            <p className='m-0'>Lorem</p>
+                            <p className='m-0 highlight four'>IMMEDIATE</p>
+                            <p className='m-0 description'>Life Threatening</p>
                         </div>
                     </div>
                 </div>

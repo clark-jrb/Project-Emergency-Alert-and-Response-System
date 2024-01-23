@@ -26,7 +26,7 @@ const HistoryDatas = () => {
         setCurrentPage((prevPage) => prevPage - 1);
     };
 
-    const filteredRequests = requests.filter((data) => {
+    const filteredRequests = currentRequests.filter((data) => {
         // Apply filters based on state variables
 
         const levelMatch = !levelFilter || data.emergency_level === levelFilter
@@ -43,9 +43,9 @@ const HistoryDatas = () => {
             <div className='datas-title px-2 mb-3'>
                 <p className='m-0'>Emergency Records</p>
             </div>
-            <div className='datas-table border'>
+            <div className='datas-table'>
                 <table>
-                    <thead>
+                    <thead className='mb-2'>
                         <tr>
                             <th className='table-num px-1'>#</th>
                             <th className='table-level'>Level</th>
@@ -58,10 +58,16 @@ const HistoryDatas = () => {
                     </thead>
                     <tbody>
                         {filteredRequests.map((data) => (
-                            <tr key={data.id}>
+                            <tr key={data.id} className='tr-table'>
                                 <td className='table-num px-1'>{data.req_no}</td>
                                 <td className='table-level td-level px-2'>
-                                    <div className='td-level-con py-1'>
+                                    <div className={`td-level-con py-1 
+                                        ${data.emergency_level === '1' ? 
+                                            "blue" : data.emergency_level === '2' ? 
+                                            "green" : data.emergency_level === '3' ? 
+                                            "yellow" : data.emergency_level === '4' ? 
+                                            "red" : "N/A"
+                                        }`}>
                                         {data.emergency_level}
                                     </div>
                                 </td>
@@ -75,19 +81,23 @@ const HistoryDatas = () => {
                     </tbody>
                 </table>
                 {/* Pagination */}
-                <div>
-                    <button onClick={prevPage} disabled={currentPage === 1}>
-                        Previous
+                <div className='pagination py-2'>
+                    <button className={`prev-btn px-2 ${currentPage === 1 ? 'disabled' : ''}`} onClick={prevPage} disabled={currentPage === 1}>
+                        <i className="fa-solid fa-arrow-left"></i>
                     </button>
 
                     {Array.from({ length: Math.ceil(requests.length / itemsPerPage) }).map((_, index) => (
-                    <button key={index} onClick={() => paginate(index + 1)} className={`px-2 ${currentPage === index + 1 ? 'active' : ''}`}>
-                        {index + 1}
-                    </button>
+                        <button key={index} onClick={() => paginate(index + 1)} className={`num-btn px-2 ${currentPage === index + 1 ? 'active' : ''}`}>
+                            {index + 1}
+                        </button>
                     ))}
 
-                    <button onClick={nextPage} disabled={currentPage === Math.ceil(requests.length / itemsPerPage)}>
-                        Next
+                    <button 
+                        className={`next-btn px-2 ${currentPage === Math.ceil(requests.length / itemsPerPage) ? 'disabled' : ''}`} 
+                        onClick={nextPage} 
+                        disabled={currentPage === Math.ceil(requests.length / itemsPerPage)}
+                    >
+                        <i className="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
