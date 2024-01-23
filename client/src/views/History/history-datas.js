@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
+import { useRequestsFilterContext } from '../../context/RequestsFilterContext'
 
 const HistoryDatas = () => {
+    const { levelFilter, statusFilter, monthFilter, yearFilter } = useRequestsFilterContext()
     const { requests } = useRequestContext()
     const [currentPage, setCurrentPage] = useState(1)
     const itemsPerPage = 10
 
+    // Pagination 
     const indexOfLastItem = currentPage * itemsPerPage
     const indexOfFirstItem = indexOfLastItem - itemsPerPage
     const currentRequests = requests.slice(indexOfFirstItem, indexOfLastItem)
@@ -22,6 +25,18 @@ const HistoryDatas = () => {
     const prevPage = () => {
         setCurrentPage((prevPage) => prevPage - 1);
     };
+
+    const filteredRequests = requests.filter((data) => {
+        // Apply filters based on state variables
+
+        const levelMatch = !levelFilter || data.emergency_level === levelFilter
+        const statusMatch = !statusFilter || data.status === statusFilter
+        const dateMatch = !monthFilter || data.date.includes(monthFilter)
+        const yearMatch = !yearFilter || data.date.includes(yearFilter)
+    
+        // Return true if all filters match
+        return levelMatch && statusMatch && dateMatch && yearMatch
+    })
 
     return (
         <div className='history-datas p-3'>
@@ -42,7 +57,7 @@ const HistoryDatas = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {currentRequests.map((data) => (
+                        {filteredRequests.map((data) => (
                             <tr key={data.id}>
                                 <td className='table-num px-1'>{data.req_no}</td>
                                 <td className='table-level td-level px-2'>

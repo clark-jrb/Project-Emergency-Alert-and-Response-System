@@ -1,29 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Form } from 'react-bootstrap'
+import { useRequestsFilterContext } from '../../context/RequestsFilterContext'
 
 const HistoryFilters = () => {
     // State to manage the selected value
+    const { setTheLevelFilter, setTheMonthFilter, setTheYearFilter } = useRequestsFilterContext()
     const [month, setMonth] = useState('Month')
     const [year, setYear] = useState('Year')
 
     // Handler function to update the selected value
     const handleMonthChange  = (event) => {
         setMonth(event.target.value)
+        setTheMonthFilter(event.target.value)
     }
 
     const handleYearChange  = (event) => {
         setYear(event.target.value)
+        setTheYearFilter(event.target.value)
     }
 
     // reset buttons
 
     const resetMonth = () => {
         setMonth('Month')
+        setTheMonthFilter('')
     }
 
     const resetYear = () => {
         setYear('Year')
+        setTheYearFilter('')
+    }
+
+    // HandleClick to filter emergency level
+    const handleFilterLevel = (event) => {
+        setTheLevelFilter(event)
     }
 
     // List of months for the dropdown
@@ -76,7 +87,7 @@ const HistoryFilters = () => {
                     <p className='m-0'>Level of Emergency</p>
                 </div>
                 {/* LEVEL 1 */}
-                <div className='forLvl one d-flex mt-3'>
+                <div className='forLvl one d-flex mt-3' onClick={() => handleFilterLevel('1')}>
                     <div className='lvl-logo one w-25'>
                         <p className='m-0'>L1</p>
                     </div>
@@ -88,7 +99,7 @@ const HistoryFilters = () => {
                     </div>
                 </div>
                 {/* LEVEL 2 */}
-                <div className='forLvl two d-flex mt-3'>
+                <div className='forLvl two d-flex mt-3' onClick={() => handleFilterLevel('2')}>
                     <div className='lvl-logo two w-25'>
                         <p className='m-0'>L2</p>
                     </div>
@@ -100,7 +111,7 @@ const HistoryFilters = () => {
                     </div>
                 </div>
                 {/* LEVEL 3 */}
-                <div className='forLvl three d-flex mt-3'>
+                <div className='forLvl three d-flex mt-3' onClick={() => handleFilterLevel('3')}>
                     <div className='lvl-logo three w-25'>
                         <p className='m-0'>L3</p>
                     </div>
@@ -112,7 +123,7 @@ const HistoryFilters = () => {
                     </div>
                 </div>
                 {/* LEVEL 4 */}
-                <div className='forLvl four d-flex mt-3'>
+                <div className='forLvl four d-flex mt-3' onClick={() => handleFilterLevel('4')}>
                     <div className='lvl-logo four w-25'>
                         <p className='m-0'>L4</p>
                     </div>
