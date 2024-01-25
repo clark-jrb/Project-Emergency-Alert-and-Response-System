@@ -1,14 +1,62 @@
-:root {
-    --green: #00b074;
-    --font-text: #5d5a6a;
-    --nav-top: #008e5f;
-    --yellow: #F7C604;
-    --red: #FE5B5B;
-    --blue: #2D9CDB;
-    
-    --light-green: #d9f3ea;
-    --light-red: #f9bdbd;
-    --light-blue: #9cdbff;
-    --light-yellow: #fff2be;
-} 
 
+.messages-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.mess-list {
+    height: 100%;
+    width: 25%;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+    flex-direction: column;
+}
+
+.mess-content {
+    height: 100%;
+    width: 73%;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+}
+
+/* MESSAGES LIST  */
+.mess-sections {
+    background-color: whitesmoke;
+    display: flex;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.messages-section, .calls-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    /* background-color: var(--green); */
+    color: var(--font-text);
+}
+
+.messages-section:hover, .calls-section:hover {
+    cursor: pointer;
+}
+
+.messages-section.active, .calls-section.active {
+    background-color: var(--green);
+    color: white;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+}
+
+/* MESSAGES CONTENT  */
+
+.mess-calls {
+    flex-direction: column;
+    border-top: #ccc 1px solid;
+    border-bottom: #ccc 1px solid;
+    height: 100%;
+    overflow: auto;
+}

@@ -7,7 +7,7 @@ import { FilterRequestsProvider } from '../context/RequestsFilterContext'
 
 const History = () => {
     return (
-        <div className='history-content border p-4'>
+        <div className='history-content p-4'>
             <FilterRequestsProvider>
                 <HistoryFilters/>
                 <HistoryDatas/>

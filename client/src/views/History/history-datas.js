@@ -68,14 +68,14 @@ const HistoryDatas = () => {
                                             "yellow" : data.emergency_level === '4' ? 
                                             "red" : "N/A"
                                         }`}>
-                                        {data.emergency_level}
+                                        L{data.emergency_level}
                                     </div>
                                 </td>
                                 <td className='table-date'>{data.date}</td>
                                 <td className='table-time'>{data.time}</td>
                                 <td className='table-ET'>{data.emergency_type}</td>
                                 <td className='userID-text px-3'>{data.userID}</td>
-                                <td className='data-status'>• {data.status}</td>
+                                <td className='data-status'><i className="fa-solid fa-check"></i> {data.status}</td>
                             </tr>
                         ))}
                     </tbody>
