@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --green: #00b074;
     --font-text: #5d5a6a;
     --nav-top: #008e5f;
@@ -8,9 +8,9 @@
     
     --light-green: #d9f3ea;
     --light-red: #f9bdbd;
-    --light-blue: #9cdbff;
+    --light-blue: #D5EBF8;
     --light-yellow: #fff2be;
-} 
+}  */
 
 .history-content {
     height: 100%;
@@ -51,6 +51,7 @@
     height: 40px;
     width: 150px;
     cursor: pointer;
+    transition: border-color 0.2s ease-in-out
 }
 
 .select-box:focus {
@@ -156,6 +157,7 @@ option {
 
 .lvl-logo.one {
     background-color: var(--blue);
+    border: var(--light-blue) solid 3px;
 }
 
 .forLvl.two  {
@@ -164,6 +166,7 @@ option {
 
 .lvl-logo.two {
     background-color: var(--green);
+    border: var(--light-green) solid 3px;
 }
 
 .forLvl.three  {
@@ -172,6 +175,7 @@ option {
 
 .lvl-logo.three {
     background-color: var(--yellow);
+    border: var(--light-yellow) solid 3px;
 }
 
 .forLvl.four  {
@@ -180,6 +184,7 @@ option {
 
 .lvl-logo.four {
     background-color: var(--red);
+    border: var(--light-red) solid 3px;
 }
 
 
@@ -207,11 +212,19 @@ thead {
     border-radius: 10px;
 }
 
+th {
+    font-weight: bold;
+}
+
 th, td {
     text-align: center;
     padding: 5px 0 5px 0;
-    font-weight: 500;
+    /* font-weight: 500; */
     /* border: 1px black solid; */
+}
+
+td {
+    font-weight: 500;
 }
 
 tr {
@@ -256,6 +269,10 @@ tr {
     /* padding: 0 5px 0 5px; */
 }
 
+.data-status {
+    color: var(--green);
+}
+
 .td-level {
     /* border: red solid 1px; */
     height: 40px;
@@ -270,19 +287,23 @@ tr {
 }
 
 .td-level-con.blue {
-    background-color: var(--blue);
+    background-color: var(--light-blue);
+    color: var(--blue);
 }
 
 .td-level-con.green {
-    background-color: var(--green);
+    background-color: var(--light-green);
+    color: var(--green);
 }
 
 .td-level-con.yellow {
-    background-color: var(--yellow);
+    background-color: var(--light-yellow);
+    color: var(--yellow);
 }
 
 .td-level-con.red {
-    background-color: var(--red);
+    background-color: var(--light-red);
+    color: var(--red);
 }
 
 /* previous and next button */

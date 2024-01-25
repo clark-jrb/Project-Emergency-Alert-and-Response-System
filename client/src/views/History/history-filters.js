@@ -49,7 +49,7 @@ const HistoryFilters = () => {
     return (
         <div className='history-filters'>
             <div className='sortByDate m-3 pb-3'>
-                <div className='sort-title pt-2'>
+                <div className='sort-title pt-2 px-2'>
                     <p className='m-0'>Sort by Date</p>
                 </div>
 
@@ -86,7 +86,7 @@ const HistoryFilters = () => {
                 </div>
 
             </div>
-            <div className='sortByLevel mx-3'>
+            <div className='sortByLevel mx-3 px-2'>
                 <div className='sort-title pt-2'>
                     <p className='m-0 lvl-title'>Level of Emergency</p>
                     <div className='all-btn' onClick={resetLevel}>
@@ -99,7 +99,7 @@ const HistoryFilters = () => {
                         <p className='m-0'>L1</p>
                     </div>
                     <div className='lvl-info w-75'>
-                        <div className='px-3'>
+                        <div className='px-2'>
                             <p className='m-0 highlight one'>NON-URGENT</p>
                             <p className='m-0 description'>Minor Emergency</p>
                         </div>
@@ -111,7 +111,7 @@ const HistoryFilters = () => {
                         <p className='m-0'>L2</p>
                     </div>
                     <div className='lvl-info w-75'>
-                        <div className='px-3'>
+                        <div className='px-2'>
                             <p className='m-0 highlight two'>SEMI-URGENT</p>
                             <p className='m-0 description'>Non Life Threatening</p>
                         </div>
@@ -123,7 +123,7 @@ const HistoryFilters = () => {
                         <p className='m-0'>L3</p>
                     </div>
                     <div className='lvl-info w-75'>
-                        <div className='px-3'>
+                        <div className='px-2'>
                             <p className='m-0 highlight three'>URGENT</p>
                             <p className='m-0 description'>Can be Life Threatening</p>
                         </div>
@@ -135,7 +135,7 @@ const HistoryFilters = () => {
                         <p className='m-0'>L4</p>
                     </div>
                     <div className='lvl-info w-75'>
-                        <div className='px-3'>
+                        <div className='px-2'>
                             <p className='m-0 highlight four'>IMMEDIATE</p>
                             <p className='m-0 description'>Life Threatening</p>
                         </div>

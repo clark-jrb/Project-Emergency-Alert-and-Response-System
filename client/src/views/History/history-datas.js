@@ -40,10 +40,10 @@ const HistoryDatas = () => {
 
     return (
         <div className='history-datas p-3'>
-            <div className='datas-title px-2 mb-3'>
+            <div className='datas-title px-3 mb-3'>
                 <p className='m-0'>Emergency Records</p>
             </div>
-            <div className='datas-table'>
+            <div className='datas-table px-3'>
                 <table>
                     <thead className='mb-2'>
                         <tr>
@@ -75,7 +75,7 @@ const HistoryDatas = () => {
                                 <td className='table-time'>{data.time}</td>
                                 <td className='table-ET'>{data.emergency_type}</td>
                                 <td className='userID-text px-3'>{data.userID}</td>
-                                <td>{data.status}</td>
+                                <td className='data-status'>• {data.status}</td>
                             </tr>
                         ))}
                     </tbody>
