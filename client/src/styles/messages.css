@@ -60,3 +60,67 @@
     height: 100%;
     overflow: auto;
 }
+
+/* MESSAGES PERSON  */
+.get-messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-person-con {
+    display: flex;
+    /* border-top: 1px #ccc solid; */
+    border-bottom: 1px whitesmoke solid;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.message-person-con:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+.name-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    border-radius: 10px;
+    font-size: x-large;
+    background-color: #ccc;
+    border: #ccc solid 1px;
+    /* font-weight: bold; */
+    height: 55px;
+    color: var(--font-text);
+}
+
+.message-info {
+    color: var(--font-text);
+    width: 75%;
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+}
+
+.person-name {
+    font-weight: bold;
+}
+
+.person-mess-cont {
+    gap: 5px;
+}
+
+.timestamp {
+    font-size: small;
+
+}
+
+.person-message {
+    font-size: small;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 80%;
+}
