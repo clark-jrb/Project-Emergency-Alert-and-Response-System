@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
-import { collection, getDocs, onSnapshot } from 'firebase/firestore'
+import { collection, getDocs, onSnapshot, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import moment from 'moment'
 
@@ -16,68 +16,117 @@ export const MessageProvider = ({ children }) => {
 
     const fetchMessages = async () => {
         try {
-            const querySnapshot = await getDocs(collection(db, 'chatroom'))
-            const data = querySnapshot.docs.map((doc) => {
-                const { timestamp, ...rest } = doc.data()
-                const timepoint = timestamp.toDate()
-        
-                const dataComponent = moment(timepoint).format('LL')
-                const timeComponent = moment(timepoint).format('LT')
-        
-                return {
-                    date: dataComponent,
-                    time: timeComponent,
-                    ...rest
-                }
-            })
+            const querySnapshot = await getDocs(collection(db, 'chatroom'));
+            const data = [];
+    
+            for (const doc of querySnapshot.docs) {
+                const { timestamp, ...rest } = doc.data();
+                const timepoint = timestamp.toDate();
+    
+                const date = moment(timepoint).format('LL');
+                const time = moment(timepoint).format('LT');
+    
+                const chatCollection = collection(db, 'chatroom', doc.id, 'chats');
+                const chatQuerySnapshot = await getDocs(chatCollection);
+                const chatData = chatQuerySnapshot.docs.map((chatDoc) => {
+                    const chatTimestamp = chatDoc.data().timestamp.toDate();
+                    const chatDate = moment(chatTimestamp).format('LL');
+                    const chatTime = moment(chatTimestamp).format('LT');
 
-            setMessages(data)
+                    return {
+                        date: chatDate,
+                        time: chatTime,
+                        ...chatDoc.data()
+                    };
+                });
+
+                // Sort the data array based on the timestamp in descending order
+
+                const sortedChat = chatData.sort((a, b) => {
+                    const dateA = new Date(`${a.date} ${a.time}`);
+                    const dateB = new Date(`${b.date} ${b.time}`);
+
+                    return dateB - dateA;
+                });
+
+                // Take the first element (most recent request) from the sorted array
+                const lastSentChat = sortedChat.length > 0 ? sortedChat[0].message.toString() : ''
+
+                console.log('Recent chat: ', lastSentChat)
+    
+                const message = {
+                    date: date,
+                    time: time,
+                    chats: sortedChat,
+                    ...rest
+                };
+    
+                data.push(message);
+            }
+    
+            setMessages(data);
         } catch (error) {
-            console.error('Error fetching data:', error)
+            console.error('Error fetching data:', error);
         }
-    }
+    };
 
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, 'chatroom'), (snapshot) => {
-            const data = snapshot.docs.map((doc) => {
-                const { timestamp, ...rest } = doc.data()
-                const timepoint = timestamp.toDate()
+        const unsubscribe = onSnapshot(collection(db, 'chatroom'), async (snapshot) => {
+            const data = [];
+    
+            for (const doc of snapshot.docs) {
+                const { timestamp, ...rest } = doc.data();
+                const timepoint = timestamp.toDate();
+    
+                const date = moment(timepoint).format('LL');
+                const time = moment(timepoint).format('LT');
+    
+                const chatCollection = collection(db, 'chatroom', doc.id, 'chats');
+                const chatQuerySnapshot = await getDocs(chatCollection);
+                const chatData = chatQuerySnapshot.docs.map((chatDoc) => {
+                    const chatTimestamp = chatDoc.data().timestamp.toDate();
+                    const chatDate = moment(chatTimestamp).format('LL');
+                    const chatTime = moment(chatTimestamp).format('LT');
 
-                const dataComponent = moment(timepoint).format('LL')
-                const timeComponent = moment(timepoint).format('LT')
+                    return {
+                        id: chatDoc.id,
+                        date: chatDate,
+                        time: chatTime,
+                        ...chatDoc.data()
+                    };
+                });
 
-                return {
-                    date: dataComponent,
-                    time: timeComponent,
+                const sortedChat = chatData.sort((a, b) => {
+                    const dateA = new Date(`${a.date} ${a.time}`);
+                    const dateB = new Date(`${b.date} ${b.time}`);
+
+                    return dateB - dateA;
+                });
+
+                // Take the first element (most recent request) from the sorted array
+                const lastSentChat = sortedChat.length > 0 ? sortedChat[0].message.toString() : ''
+
+                console.log('Recent chat: ', lastSentChat)
+
+                const chatroomDocRef = doc.ref;
+                await updateDoc(chatroomDocRef, { lastSentMessage: lastSentChat });
+    
+                const message = {
+                    lastSentMessage: lastSentChat,
+                    date: date,
+                    time: time,
+                    chats: sortedChat,
                     ...rest
-                }
-            })
-
-            // const newStatusCount = data.length
-
-            // Sort the data array based on the timestamp in descending order
-
-            // const sortedData = data.sort((a, b) => {
-            //     const dateA = new Date(`${a.date} ${a.time}`);
-            //     const dateB = new Date(`${b.date} ${b.time}`);
-
-            //     return dateB - dateA;
-            // });
-
-            // const newSortedData = sortedData
-            // Take the first element (most recent request) from the sorted array
-            // const mostRecent = newSortedData.length > 0 ? newSortedData[0] : null
-
-            // console.log('Count of "New" status:', newStatusCount)
-            // console.log('Recent request: ', mostRecent)
-
-            setMessages(data)
-            // setCount(newStatusCount)
-            // setRecentRequest(mostRecent)
-        })
-
+                };
+    
+                data.push(message);
+            }
+    
+            setMessages(data);
+        });
+    
         // Cleanup function to unsubscribe from real-time updates when the component unmounts
-        return () => unsubscribe()
+        return () => unsubscribe();
     }, [])
 
     // Reload requests

@@ -10,7 +10,7 @@ const GetMessages = () => {
     const { messages } = useMessageContext()
 
     const filteredMessages = messages.filter(message =>
-        message.chatroomID.includes('j4hWDaKPCdyv5yWWHSSg')
+        message.chatroomID.includes('TXmvnpBMntCramMNxwNs')
     )
     
     return (
@@ -25,7 +25,7 @@ const GetMessages = () => {
                 <div key={user.id} className='message-person-con container py-2'>
                     {/* Person Name Initials */}
                     <div className='name-logo'>
-                        <p className='m-0'>X</p>
+                        <p className='m-0'>{user.fullname.slice(0, 1)}</p>
                     </div>
                     {/* Message */}
                     <div className='message-info'>
@@ -33,7 +33,7 @@ const GetMessages = () => {
                         <p className='m-0 person-name'>{user.fullname}</p>
                         {/* Person Message */}
                         <div className='person-mess-cont d-flex'>
-                            <p className='m-0 person-message'>{message.content}</p>
+                            <p className='m-0 person-message'>{message.lastSentMessage}</p>
                             <span className='timestamp'> • <TimeAgo date={message.date} time={message.time}/></span>
                         </div>
                     </div>
