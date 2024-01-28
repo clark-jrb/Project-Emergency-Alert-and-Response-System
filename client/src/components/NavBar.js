@@ -65,7 +65,7 @@ const NavBar = () => {
                 <Dropdown className="mx-2">
                     <Dropdown.Toggle variant="custom" id="dropdown-basic" className="dropdown-profile">
                         {admins.filter(admin => admin.id === currentUser.uid).map(admin => (
-                            <span className="user-name px-2">
+                            <span className="user-name px-2" key={admin.id}>
                                 {admin.userName}
                             </span>
                         ))}

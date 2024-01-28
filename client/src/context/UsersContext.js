@@ -7,7 +7,7 @@ const UsersContext = createContext()
 export const UsersProvider = ({ children }) => {
     const [users, setUsers] = useState([])
     const [admins, setAdmins] = useState([])
-    const hasFetched = useRef(false)
+    // const hasFetched = useRef(false)
 
     useEffect(() => {
         const fetchUsers = async () => {
