@@ -1,9 +1,11 @@
 import React, { useEffect } from "react"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Dropdown } from 'react-bootstrap'
+import '../styles/navbar.css'
 import { Link } from "react-router-dom"
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import logo from '../images/logo/clsu_logo.png'
-import '../styles/navbar.css'
 import { ReactComponent as DashboardIcon } from '../images/icons/dashboard.svg'
 import { ReactComponent as EmergencyIcon } from '../images/icons/emergency.svg'
 import { ReactComponent as MessagesIcon } from '../images/icons/message.svg'
@@ -11,9 +13,11 @@ import { ReactComponent as MapIcon } from '../images/icons/map.svg'
 import { ReactComponent as HistoryIcon } from '../images/icons/history.svg'
 import { useNavActiveContext } from "../context/NavActiveContext"
 import { useRequestContext } from "../context/RequestContext"
+import { useUsersContext } from "../context/UsersContext";
 
 const NavBar = () => {
     const { currentUser, signOut } = useAuth()
+    const { admins } = useUsersContext()
     const navigate = useNavigate()
     const { count, recentRequest } = useRequestContext()
 
@@ -39,7 +43,7 @@ const NavBar = () => {
 
     return (
         <nav className="navbar">
-            <div className="nav-top p-1">
+            <div className="nav-top p-1 px-3">
                 <a className="navbar-brand mx-2" href="dashboard">
                     <img src={logo} alt="logo" width="35" height="35" className="d-inline-block align-text-middle"></img>
                     <span className="system-name mx-1">EARS</span>
@@ -58,7 +62,21 @@ const NavBar = () => {
                     </div>
                 </div>
 
-                <button className='btn btn-danger' onClick={handleSignOut}>Sign Out</button>
+                <Dropdown className="mx-2">
+                    <Dropdown.Toggle variant="custom" id="dropdown-basic" className="dropdown-profile">
+                        {admins.filter(admin => admin.id === currentUser.uid).map(admin => (
+                            <span className="user-name px-2">
+                                {admin.userName}
+                            </span>
+                        ))}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={handleSignOut}>Sign Out</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+
+                {/* <button className='btn btn-danger' onClick={handleSignOut}>Sign Out</button> */}
             </div>
             <div className="nav-bottom px-3">
                 <ul>    

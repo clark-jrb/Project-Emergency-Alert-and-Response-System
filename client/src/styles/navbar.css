@@ -21,6 +21,27 @@
     font-weight: bold;
 }
 
+.dropdown-profile {
+    background-color: white;
+    color: var(--font-text);
+    height: 100%;
+    font-weight: bold;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+
+}
+
+.dropdown-profile:hover {
+    background-color: whitesmoke;
+    color: var(--font-text);
+}
+
+.dropdown-profile:active {
+    background-color: whitesmoke;
+    /* border: 2px solid #008e5f; */
+}
+
 .nav-top {
     width: 100%;
     display: flex;

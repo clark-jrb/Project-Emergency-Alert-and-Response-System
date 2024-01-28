@@ -6,29 +6,48 @@ const UsersContext = createContext()
 
 export const UsersProvider = ({ children }) => {
     const [users, setUsers] = useState([])
+    const [admins, setAdmins] = useState([])
     const hasFetched = useRef(false)
 
     useEffect(() => {
-        if (!hasFetched.current) {
         const fetchUsers = async () => {
             try {
-                // const response = await fetch('http://localhost:4000/users')
                 const querySnapshot = await getDocs(collection(db, 'users'))
                 const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
 
-            setUsers(data)
+                setUsers(data)
             } catch (error) {
                 console.error('Error fetching data:', error)
             }
         }
 
-            fetchUsers()
-            hasFetched.current = true
-        }
+        fetchUsers()
     }, [])
 
+    useEffect(() => {
+        const fetchAdmins = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, 'response_team'))
+                const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+
+                setAdmins(data)
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
+        }
+
+        fetchAdmins()
+        
+    }, [])
+
+    useEffect(() => {
+        if (admins.length > 0) {
+            console.log(admins);
+        }
+    }, [admins]);
+
     return (
-        <UsersContext.Provider value={users}>
+        <UsersContext.Provider value={ { users, admins } }>
             {children}
         </UsersContext.Provider>
     )

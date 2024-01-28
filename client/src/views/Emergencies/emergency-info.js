@@ -13,7 +13,7 @@ import CompleteButton from '../../hooks/buttons/CompleteButton'
 
 const Emergency_info = () => {
     const { requests } = useRequestContext()
-    const users = useUsersContext()
+    const { users } = useUsersContext()
     const { requestID } = useRequestInfoContext()
 
     return (
