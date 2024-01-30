@@ -138,11 +138,11 @@ export const MessageProvider = ({ children }) => {
     //     setRecentRequest(e)
     // }
 
-    useEffect(() => {
-        if (messages.length > 0) {
-            console.log(messages);
-        }
-    }, [messages]);
+    // useEffect(() => {
+    //     if (messages.length > 0) {
+    //         console.log(messages);
+    //     }
+    // }, [messages]);
 
     return (
         <MessageContext.Provider value={{ messages, reloadMessages }}>

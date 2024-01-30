@@ -10,6 +10,7 @@ import NavBar from "../NavBar"
 import { NavActiveProvider } from "../../context/NavActiveContext"
 import { RequestProvider } from "../../context/RequestContext"
 import { UsersProvider } from "../../context/UsersContext"
+import { MessageProvider } from "../../context/MessagesContext"
 
 const USF = () => {
     return (
@@ -19,7 +20,8 @@ const USF = () => {
                     <NavActiveProvider>
                             <NavBar/>
                     </NavActiveProvider>
-                    <div className="content">
+                    <MessageProvider>
+                        <div className="content">
                         <Routes>
                             <Route path="dashboard" element={<Dashboard/>}></Route>
                             <Route path="emergencies" element={<Emergencies/>}></Route>
@@ -27,8 +29,9 @@ const USF = () => {
                             <Route path="map" element={<Map/>}></Route>
                             <Route path="history" element={<History/>}></Route>
                             <Route path="settings" element={<Settings/>}></Route>
-                        </Routes>
-                    </div>
+                            </Routes>
+                        </div>
+                    </MessageProvider>
                 </RequestProvider>
             </UsersProvider>
         </div>

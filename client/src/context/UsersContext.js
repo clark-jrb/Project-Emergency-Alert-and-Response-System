@@ -40,11 +40,11 @@ export const UsersProvider = ({ children }) => {
         
     }, [])
 
-    useEffect(() => {
-        if (admins.length > 0) {
-            console.log(admins);
-        }
-    }, [admins]);
+    // useEffect(() => {
+    //     if (admins.length > 0) {
+    //         console.log(admins);
+    //     }
+    // }, [admins]);
 
     return (
         <UsersContext.Provider value={ { users, admins } }>

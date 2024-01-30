@@ -16,13 +16,6 @@
     flex-direction: column;
 }
 
-.mess-content {
-    height: 100%;
-    width: 73%;
-    border: #ccc solid 1px;
-    border-radius: 10px;
-    box-shadow: 0 1.5px 3px 0 #ccc;
-}
 
 /* MESSAGES LIST  */
 .mess-sections {
@@ -50,8 +43,6 @@
     color: white;
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
-
-/* MESSAGES CONTENT  */
 
 .mess-calls {
     flex-direction: column;
@@ -123,4 +114,58 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 80%;
+}
+
+/* MESSAGES CONTENT  */
+
+.mess-content {
+    height: 100%;
+    width: 73%;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+}
+
+.mess-contents {
+    height: 100%;
+
+    flex-direction: column;
+}
+
+.mess-header {
+    border-bottom: #ccc solid 1px;
+}
+
+.mess-body {
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: white;
+}
+
+.mess-footer {
+    border-top: #ccc solid 1px;
+}
+
+.chat-person-name {
+    color: var(--font-text);
+    font-weight: bold;
+    font-size: larger;
+}
+
+.mess-chat {
+    background-color: white;
+    /* overflow: hidden; */
+}
+
+.mess-chat-container {
+    background-color: var(--light-green);
+    width: fit-content;
+    max-width: 35%;
+    border-radius: 10px;
+    text-align: justify;
+    float: left;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+
 }
