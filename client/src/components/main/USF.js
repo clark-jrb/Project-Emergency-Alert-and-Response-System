@@ -11,6 +11,7 @@ import { NavActiveProvider } from "../../context/NavActiveContext"
 import { RequestProvider } from "../../context/RequestContext"
 import { UsersProvider } from "../../context/UsersContext"
 import { MessageProvider } from "../../context/MessagesContext"
+import { ActiveProvider } from "../../context/ActiveContext"
 
 const USF = () => {
     return (
@@ -21,16 +22,18 @@ const USF = () => {
                             <NavBar/>
                     </NavActiveProvider>
                     <MessageProvider>
-                        <div className="content">
-                        <Routes>
-                            <Route path="dashboard" element={<Dashboard/>}></Route>
-                            <Route path="emergencies" element={<Emergencies/>}></Route>
-                            <Route path="messages" element={<Messages/>}></Route>
-                            <Route path="map" element={<Map/>}></Route>
-                            <Route path="history" element={<History/>}></Route>
-                            <Route path="settings" element={<Settings/>}></Route>
+                        <ActiveProvider>
+                            <div className="content">
+                            <Routes>
+                                <Route path="dashboard" element={<Dashboard/>}></Route>
+                                <Route path="emergencies" element={<Emergencies/>}></Route>
+                                <Route path="messages" element={<Messages/>}></Route>
+                                <Route path="map" element={<Map/>}></Route>
+                                <Route path="history" element={<History/>}></Route>
+                                <Route path="settings" element={<Settings/>}></Route>
                             </Routes>
-                        </div>
+                            </div>
+                        </ActiveProvider>
                     </MessageProvider>
                 </RequestProvider>
             </UsersProvider>

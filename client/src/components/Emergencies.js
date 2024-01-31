@@ -4,7 +4,6 @@ import '../styles/emergencies.css'
 import EmergencyInfo from '../views/Emergencies/emergency-info'
 import EmergencyLists from '../views/Emergencies/emergency-lists'
 import { RequestInfoProvider } from '../context/RequestInfoContext'
-import { ActiveProvider } from '../context/ActiveContext'
 import { FilterListProvider } from '../context/FilterListContext'
 
 const Emergencies = () => {
@@ -14,9 +13,7 @@ const Emergencies = () => {
                 <RequestInfoProvider>
 
                         <FilterListProvider>
-                            <ActiveProvider>
-                                <EmergencyLists/>
-                            </ActiveProvider>
+                            <EmergencyLists/>
 
                             <EmergencyInfo/>
                         </FilterListProvider>

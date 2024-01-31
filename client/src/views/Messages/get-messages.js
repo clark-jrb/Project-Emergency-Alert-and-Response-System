@@ -3,15 +3,21 @@ import { useUsersContext } from '../../context/UsersContext'
 import { useMessageContext } from '../../context/MessagesContext'
 import TimeAgo from '../../hooks/buttons/TimeAgo'
 import { useAuth } from '../../context/AuthContext'
+import { useActiveContext } from '../../context/ActiveContext'
 
 const GetMessages = () => {
     const { currentUser } = useAuth()
     const { users, admins } = useUsersContext()
     const { messages } = useMessageContext()
+    const { activeMessage, setTheMessageActive } = useActiveContext()
 
     const filteredMessages = messages.filter(message =>
         message.chatroomID.includes('TXmvnpBMntCramMNxwNs')
     )
+
+    const handleClick = (component) => {
+        setTheMessageActive(component)
+    }
     
     return (
         <div className='get-messages'>
@@ -22,7 +28,7 @@ const GetMessages = () => {
             return (
             <div key={message.chatroomID}>
                 {user && (
-                <div key={user.id} className='message-person-con container py-2'>
+                <div key={user.id} className={`message-person-con container py-2 ${activeMessage === message.chatroomID ? 'active' : ''}`} onClick={() => handleClick(message.chatroomID)}>
                     {/* Person Name Initials */}
                     <div className='name-logo'>
                         <p className='m-0'>{user.fullname.slice(0, 1)}</p>
