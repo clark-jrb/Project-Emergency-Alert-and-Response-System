@@ -1,10 +1,10 @@
 import React from 'react'
 import { useFilterListContext } from '../../context/FilterListContext'
-import { useRequestContext } from '../../context/RequestContext'
+// import { useRequestContext } from '../../context/RequestContext'
 import moment from 'moment'
 
 const CompleteButton = ({ reqID }) => {
-    const { reloadRequests } = useRequestContext()
+    // const { reloadRequests } = useRequestContext()
     const { setTheFilter } = useFilterListContext()
     const setStatus = "Complete"
     const currentDateTime = moment().format('LLLL');
@@ -27,7 +27,7 @@ const CompleteButton = ({ reqID }) => {
         
             if (response.ok) {
                 // navigate('/usf/emergencies')
-                reloadRequests()
+                // reloadRequests()
                 setTheFilter(setStatus)
                 
                 console.log('Request complete')

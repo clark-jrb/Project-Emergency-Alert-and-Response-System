@@ -9,21 +9,22 @@ const GetMessages = () => {
     const { currentUser } = useAuth()
     const { users, admins } = useUsersContext()
     const { messages } = useMessageContext()
-    const { activeMessage, setTheMessageActive } = useActiveContext()
+    const { activeMessage, setTheMessageActive, setTheActiveUser } = useActiveContext()
 
     const filteredMessages = messages.filter(message =>
         message.chatroomID.includes('TXmvnpBMntCramMNxwNs')
     )
-
-    const handleClick = (component) => {
-        setTheMessageActive(component)
-    }
     
     return (
         <div className='get-messages'>
         {filteredMessages.map(message => {
             const userId = message.chatroomID.slice(0, message.chatroomID.indexOf('_'))
             const user = users.find(user => user.id === userId)
+
+            const handleClick = (component) => {
+                setTheMessageActive(component)
+                setTheActiveUser(user.id)
+            }
     
             return (
             <div key={message.chatroomID}>

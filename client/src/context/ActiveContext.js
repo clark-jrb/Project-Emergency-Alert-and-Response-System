@@ -5,6 +5,7 @@ const ActiveContext = createContext()
 export const ActiveProvider = ({ children }) => {
     const [active, setActive] = useState(null)
     const [activeMessage, setMessageActive] = useState(null)
+    const [activeUser, setActiveUser] = useState(null)
 
     const setTheActive = (id) => {
         setActive(id)
@@ -14,12 +15,20 @@ export const ActiveProvider = ({ children }) => {
         setMessageActive(id)
     }
 
+    const setTheActiveUser = (id) => {
+        setActiveUser(id)
+    }
+
+    // console.log(activeUser);
+
     return (
     <ActiveContext.Provider value={{ 
         active, 
         setTheActive, 
         activeMessage, 
-        setTheMessageActive 
+        setTheMessageActive, 
+        activeUser,
+        setTheActiveUser
     }}>
         {children}
     </ActiveContext.Provider>

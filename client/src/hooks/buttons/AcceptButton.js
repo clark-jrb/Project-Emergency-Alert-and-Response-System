@@ -1,9 +1,9 @@
 import React from 'react'
 import { useFilterListContext } from '../../context/FilterListContext'
-import { useRequestContext } from '../../context/RequestContext'
+// import { useRequestContext } from '../../context/RequestContext'
 
 const AcceptButton = ({ reqID }) => {
-    const { reloadRequests } = useRequestContext()
+    // const { reloadRequests } = useRequestContext()
     const { setTheFilter } = useFilterListContext()
     const setStatus = "Ongoing"
 
@@ -23,7 +23,7 @@ const AcceptButton = ({ reqID }) => {
 
         
             if (response.ok) {
-                reloadRequests()
+                // reloadRequests()
                 setTheFilter(setStatus)
                 
                 console.log('Request updated successfully')

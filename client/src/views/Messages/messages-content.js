@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useMessageContext } from '../../context/MessagesContext'
 import { useUsersContext } from '../../context/UsersContext'
 import { useActiveContext } from '../../context/ActiveContext'
+import { addDoc, collection, getDocs, serverTimestamp  } from 'firebase/firestore'
+import { db } from '../../firebase'
 
 const MessagesContent = () => {
     const { messages } = useMessageContext()
     const { users, admins } = useUsersContext()
-    const { activeMessage, setTheMessageActive } = useActiveContext()
+    const { activeMessage, setTheMessageActive, activeUser } = useActiveContext()
     const [ formValue, setFormValue ] = useState('')
 
     // const user = messages.find(user => user.id === messages)
@@ -27,6 +29,28 @@ const MessagesContent = () => {
 
     const sendChat = async(e) => {
         e.preventDefault()
+        const chatroomCollection = collection(db, 'chatroom');
+        const querySnapshot = await getDocs(chatroomCollection);
+
+        const chat = {
+            message: formValue,
+            timestamp: serverTimestamp(),
+            receiver: activeUser,
+            sender: 'TXmvnpBMntCramMNxwNs',
+            seen: false,
+            delivered: true
+        };
+
+        // Use Promise.all to parallelize the asynchronous calls
+        await Promise.all(
+            querySnapshot.docs
+                .filter(doc => doc.id === 'cera32lkXHPz3vctjYFq3yRPiCd2_TXmvnpBMntCramMNxwNs')
+                .map(async (doc) => {
+                    const chatCollection = collection(db, 'chatroom', doc.id, 'chats');
+                    await addDoc(chatCollection, chat);
+                })
+        );
+
         setFormValue('')
     }
 
