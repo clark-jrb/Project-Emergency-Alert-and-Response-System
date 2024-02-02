@@ -74,6 +74,7 @@
 
 .message-person-con.active {
     background-color: whitesmoke;
+    border: #ccc 1px solid;
 }
 
 .name-logo {

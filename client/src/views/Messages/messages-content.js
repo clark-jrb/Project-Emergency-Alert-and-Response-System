@@ -14,7 +14,7 @@ const MessagesContent = () => {
     // const user = messages.find(user => user.id === messages)
 
     const filteredMessage = messages.filter(message =>
-        message.chatroomID.includes('cera32lkXHPz3vctjYFq3yRPiCd2_TXmvnpBMntCramMNxwNs')
+        message.chatroomID.includes(activeMessage)
     )
 
     // useEffect(() => {
@@ -34,7 +34,7 @@ const MessagesContent = () => {
 
         const chat = {
             message: formValue,
-            timestamp: serverTimestamp(),
+            timestamp: new Date(),
             receiver: activeUser,
             sender: 'TXmvnpBMntCramMNxwNs',
             seen: false,
@@ -44,7 +44,7 @@ const MessagesContent = () => {
         // Use Promise.all to parallelize the asynchronous calls
         await Promise.all(
             querySnapshot.docs
-                .filter(doc => doc.id === 'cera32lkXHPz3vctjYFq3yRPiCd2_TXmvnpBMntCramMNxwNs')
+                .filter(doc => doc.id === activeMessage)
                 .map(async (doc) => {
                     const chatCollection = collection(db, 'chatroom', doc.id, 'chats');
                     await addDoc(chatCollection, chat);
