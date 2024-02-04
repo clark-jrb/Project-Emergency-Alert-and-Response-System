@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useMessageContext } from '../../context/MessagesContext'
 import { useUsersContext } from '../../context/UsersContext'
 import { useActiveContext } from '../../context/ActiveContext'
-import { addDoc, collection, getDocs, serverTimestamp  } from 'firebase/firestore'
+import { addDoc, collection, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase'
 
 const MessagesContent = () => {
@@ -11,14 +11,27 @@ const MessagesContent = () => {
     const { activeMessage, setTheMessageActive, activeUser } = useActiveContext()
     const [ formValue, setFormValue ] = useState('')
 
-    // const user = messages.find(user => user.id === messages)
+    const filteredMessage = messages.find(messages => messages.chatroomID === activeMessage)
+    // const userIds = fmessage.chatroomID.slice(0, fmessage.chatroomID.indexOf('_'))
 
-    const filteredMessage = messages.filter(message =>
-        message.chatroomID.includes(activeMessage)
-    )
+    // if (typeof fmessage === 'undefined') {
+    //     console.log('fmessage is undefined');
+    // } else {
+    //     const userIds = fmessage.chatroomID.slice(0, fmessage.chatroomID.indexOf('_'))
+    //     console.log(userIds);
+    // }
+    // const lastSent = fmessage.lastSentMessage
+    
 
+    // const filteredMessage = messages.filter(message =>
+    //     message.chatroomID.includes(activeMessage)
+    // )
+
+    const user = users.find(user => user.id === activeUser)
+
+    
     // useEffect(() => {
-    //     if (filteredMessage.length > 0) {
+    //     if (filteredMessage) {
     //         console.log(filteredMessage);
     //     }
     // }, [filteredMessage]);
@@ -29,7 +42,7 @@ const MessagesContent = () => {
 
     const sendChat = async(e) => {
         e.preventDefault()
-        const chatroomCollection = collection(db, 'chatroom');
+        const chatroomCollection = collection(db, 'message_usf');
         const querySnapshot = await getDocs(chatroomCollection);
 
         const chat = {
@@ -46,7 +59,7 @@ const MessagesContent = () => {
             querySnapshot.docs
                 .filter(doc => doc.id === activeMessage)
                 .map(async (doc) => {
-                    const chatCollection = collection(db, 'chatroom', doc.id, 'chats');
+                    const chatCollection = collection(db, 'message_usf', doc.id, 'chats');
                     await addDoc(chatCollection, chat);
                 })
         );
@@ -56,13 +69,8 @@ const MessagesContent = () => {
 
     return (
         <div className='mess-content'>
-            {filteredMessage.filter(message => message.chatroomID === activeMessage).map(message => {
-                const userId = message.chatroomID.slice(0, message.chatroomID.indexOf('_'))
-                const user = users.find(user => user.id === userId)
-                
-                return (
-                    
-                    <div className='mess-contents p-4 d-flex' key={message.chatroomID}>
+            {filteredMessage && (
+                    <div className='mess-contents p-4 d-flex'>
 
                         <div className='mess-header pb-2 d-flex'>
                             <div className='chat-person-name'>
@@ -76,11 +84,11 @@ const MessagesContent = () => {
                         </div>
 
                         <div className='mess-body py-2'>
-                            {message.chats.map(chat => (
-                                <div className='mess-chat p-2 px-3' key={chat.id}>
+                            {filteredMessage.chats.map(({ id, message }) => (
+                                <div className='mess-chat p-2 px-3' key={id}>
                                     <div className='mess-chat-container p-2 px-3'>
                                         <p className='m-0'>
-                                            {chat.message}
+                                            {message}
                                         </p>
                                     </div>
                                 </div>
@@ -99,8 +107,7 @@ const MessagesContent = () => {
                         </div>
                         
                     </div>
-                )
-            })}
+            )}
         </div>
         
     )

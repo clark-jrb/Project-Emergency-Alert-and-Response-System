@@ -80,36 +80,36 @@ const NavBar = () => {
             </div>
             <div className="nav-bottom px-3">
                 <ul>    
-                    <li className={NavActive === '/usf/dashboard' ? 'active' : ''}>
-                        <Link to="dashboard" onClick={() => handleClick('/usf/dashboard')}>
+                    <li className={NavActive === 'dashboard' ? 'active' : ''}>
+                        <Link to="dashboard" onClick={() => handleClick('dashboard')}>
                             <DashboardIcon className="dashboard-icon" height="25" width="25"/>
                             Dashboard
                         </Link>
                     </li>
 
-                    <li className={NavActive === '/usf/emergencies' ? 'active' : ''}>
-                        <Link to="emergencies" onClick={() => handleClick('/usf/emergencies')}>
+                    <li className={NavActive === 'emergencies' ? 'active' : ''}>
+                        <Link to="emergencies" onClick={() => handleClick('emergencies')}>
                             <EmergencyIcon className="emergency-icon" height="25" width="25"/>
                             Emergencies
                         </Link>
                     </li>
 
-                    <li className={NavActive === '/usf/messages' ? 'active' : ''}>
-                        <Link to="messages" onClick={() => handleClick('/usf/messages')}>
+                    <li className={NavActive === 'messages' ? 'active' : ''}>
+                        <Link to="messages" onClick={() => handleClick('messages')}>
                             <MessagesIcon className="messages-icon" height="25" width="25"/>
                             Messages
                         </Link>
                     </li>
 
-                    <li className={NavActive === '/usf/map' ? 'active' : ''}>
-                        <Link to="map" onClick={() => handleClick('/usf/map')}>
+                    <li className={NavActive === 'map' ? 'active' : ''}>
+                        <Link to="map" onClick={() => handleClick('map')}>
                             <MapIcon className="map-icon" height="25" width="25"/>
                             Map
                         </Link>
                     </li>
 
-                    <li className={NavActive === '/usf/history' ? 'active' : ''}>
-                        <Link to="history" onClick={() => handleClick('/usf/history')}>
+                    <li className={NavActive === 'history' ? 'active' : ''}>
+                        <Link to="history" onClick={() => handleClick('history')}>
                             <HistoryIcon className="history-icon" height="25" width="25"/>
                             History
                         </Link>

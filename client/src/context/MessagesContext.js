@@ -13,7 +13,7 @@ export const MessageProvider = ({ children }) => {
     const [messages, setMessages] = useState([])
 
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, 'chatroom'), async (snapshot) => {
+        const unsubscribe = onSnapshot(collection(db, 'message_usf'), async (snapshot) => {
         const data = []
 
             for (const doc of snapshot.docs) {
@@ -23,12 +23,12 @@ export const MessageProvider = ({ children }) => {
                 const date = moment(timepoint).format('LL')
                 const time = moment(timepoint).format('LT')
 
-                const chatCollection = collection(db, 'chatroom', doc.id, 'chats')
+                const chatCollection = collection(db, 'message_usf', doc.id, 'chats')
                 const chatUnsubscribe = onSnapshot(chatCollection, (chatSnapshot) => {
                     const chatData = chatSnapshot.docs.map((chatDoc) => {
                         const chatTimestamp = chatDoc.data().timestamp.toDate()
                         const chatDate = moment(chatTimestamp).format('LL')
-                        const chatTime = moment(chatTimestamp).format('LT')
+                        const chatTime = moment(chatTimestamp).format('LTS')
 
                         return {
                             id: chatDoc.id,
@@ -77,11 +77,11 @@ export const MessageProvider = ({ children }) => {
         return () => unsubscribe()
     }, [])
 
-    useEffect(() => {
-        if (messages.length > 0) {
-            console.log(messages)
-        }
-    }, [messages])
+    // useEffect(() => {
+    //     if (messages.length > 0) {
+    //         console.log(messages)
+    //     }
+    // }, [messages])
 
     return (
         <MessageContext.Provider value={{ messages }}>
