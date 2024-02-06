@@ -139,7 +139,7 @@
 
 .status-bar {
     color: var(--font-text);
-    gap: 5px;
+    gap: 10px;
 }
 
 

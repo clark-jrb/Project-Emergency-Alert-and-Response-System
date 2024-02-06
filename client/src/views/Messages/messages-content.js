@@ -44,16 +44,6 @@ const MessagesContent = () => {
 
         await addDoc(chatroomCollection, chat);
 
-        // Use Promise.all to parallelize the asynchronous calls
-        // await Promise.all(
-        //     querySnapshot.docs
-        //         // .filter(doc => doc.id === activeMessage)
-        //         .map(async (doc) => {
-        //             const chatCollection = collection(db, 'message_usf', activeMessage, 'chats');
-        //             await addDoc(chatCollection, chat);
-        //         })
-        // );
-
         setFormValue('')
     }
 

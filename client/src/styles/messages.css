@@ -120,6 +120,10 @@
     width: 80%;
 }
 
+.person-message.new-chat {
+    font-weight: bold;
+}
+
 /* MESSAGES CONTENT  */
 
 .mess-content {

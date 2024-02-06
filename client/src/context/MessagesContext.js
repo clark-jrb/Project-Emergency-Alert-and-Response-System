@@ -100,6 +100,8 @@ export const MessageProvider = ({ children }) => {
     useEffect(() => {
         if (chats.length > 0) {
             console.log(chats);
+        } else {
+            console.log('no chat selected');
         }
     }, [chats]);
 

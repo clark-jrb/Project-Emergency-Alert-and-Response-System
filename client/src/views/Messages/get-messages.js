@@ -4,6 +4,8 @@ import { useMessageContext } from '../../context/MessagesContext'
 import TimeAgo from '../../hooks/buttons/TimeAgo'
 import { useAuth } from '../../context/AuthContext'
 import { useActiveContext } from '../../context/ActiveContext'
+import { updateDoc, doc } from 'firebase/firestore'
+import { db } from '../../firebase'
 
 const GetMessages = () => {
     const { currentUser } = useAuth()
@@ -28,6 +30,11 @@ const GetMessages = () => {
                 const handleClick = () => {
                     setTheMessageActive(message.chatroomID.toString())
                     setTheActiveUser(user.id)
+
+                    const specDoc = doc(db, 'message_usf', message.chatroomID)
+                    updateDoc(specDoc, {
+                        unread: false
+                    })
                 }
         
                 return (
@@ -44,7 +51,7 @@ const GetMessages = () => {
                             <p className='m-0 person-name'>{user.fullname}</p>
                             {/* Person Message */}
                             <div className='person-mess-cont d-flex'>
-                                <p className='m-0 person-message'>{message.lastSentMessage}</p>
+                                <p className={`m-0 person-message ${message.unread === true ? 'new-chat' : ''}`}>{message.lastSentMessage}</p>
                                 <span className='timestamp'> • <TimeAgo date={message.date} time={message.time}/></span>
                             </div>
                         </div>

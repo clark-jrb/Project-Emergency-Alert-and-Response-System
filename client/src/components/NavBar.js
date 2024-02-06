@@ -64,7 +64,7 @@ const NavBar = () => {
                         <i className="fa-regular fa-bell fa-xl"></i>
                     </div>
 
-                    <div className="notif-message p-2 d-flex">
+                    <div className="notif-message p-2 px-3 d-flex">
                         <div className="mess-icon">
                             <i className="fa-regular fa-message fa-xl"></i>
                         </div>
