@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
-import { collection, getDocs, onSnapshot, updateDoc } from 'firebase/firestore'
+import { collection, count, getDocs, onSnapshot, updateDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase'
 import moment from 'moment'
 
@@ -11,80 +11,106 @@ export const useMessageContext = () => {
 
 export const MessageProvider = ({ children }) => {
     const [messages, setMessages] = useState([])
+    const [chats, setChats] = useState([])
+    const [messCount, setMessCount] = useState(0);
+    const [activeMessage, setMessageActive] = useState(null)
 
+    const setTheMessageActive = (id) => {
+        setMessageActive(id)
+    }
+
+    const messageCollection = collection(db, 'message_usf')
+    
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, 'message_usf'), async (snapshot) => {
-        const data = []
-
-            for (const doc of snapshot.docs) {
+        onSnapshot(messageCollection, (messageSnapshot) => {
+            // console.log('Main collection updated:', messageSnapshot.docs.map(doc => doc.data()));
+            const data = messageSnapshot.docs.map((doc) => {
                 const { timestamp, ...rest } = doc.data()
                 const timepoint = timestamp.toDate()
 
-                const date = moment(timepoint).format('LL')
-                const time = moment(timepoint).format('LT')
+                const dataComponent = moment(timepoint).format('LL')
+                const timeComponent = moment(timepoint).format('LT')
 
-                const chatCollection = collection(db, 'message_usf', doc.id, 'chats')
-                const chatUnsubscribe = onSnapshot(chatCollection, (chatSnapshot) => {
-                    const chatData = chatSnapshot.docs.map((chatDoc) => {
-                        const chatTimestamp = chatDoc.data().timestamp.toDate()
-                        const chatDate = moment(chatTimestamp).format('LL')
-                        const chatTime = moment(chatTimestamp).format('LTS')
+                return {
+                    id: doc.id,
+                    date: dataComponent,
+                    time: timeComponent,
+                    ...rest
+                }
+            })
 
-                        return {
-                            id: chatDoc.id,
-                            date: chatDate,
-                            time: chatTime,
-                            ...chatDoc.data()
-                        }
-                    })
+            const readFalseCount = data.filter(item => item.read === false).length
 
-                    const sortedChat = chatData.sort((a, b) => {
-                        const dateA = new Date(`${a.date} ${a.time}`)
-                        const dateB = new Date(`${b.date} ${b.time}`)
+            setMessages(data)
+            setMessCount(readFalseCount)
+        });
+    }, []);
 
-                        return dateB - dateA
-                    })
+    useEffect(() => {
+        if (activeMessage != null) {
+            const chatsCollection = collection(messageCollection, activeMessage, 'chats')
 
-                    const lastSentChat = sortedChat.length > 0 ? sortedChat[0].message.toString() : ''
-                    const lastSender = sortedChat.length > 0 ? sortedChat[0].sender.toString() : ''
-                    const lastTimestamp = sortedChat.length > 0 ? sortedChat[0].timestamp : ''
+            onSnapshot(chatsCollection, (chatsSnapshot) => {
+                // console.log('Sub-collection updated:', chatsSnapshot.docs.map(doc => doc.data()));
+                const chatData = chatsSnapshot.docs.map((chatDoc) => {
+                    const chatTimestamp = chatDoc.data().timestamp.toDate()
+                    const chatDate = moment(chatTimestamp).format('LL')
+                    const chatTime = moment(chatTimestamp).format('LTS')
 
-                    const chatroomDocRef = doc.ref
-                    updateDoc(chatroomDocRef, {
-                        lastSentMessage: lastSentChat,
-                        lastSenderID: lastSender,
-                        timestamp: lastTimestamp
-                    })
-
-                    const message = {
-                        date: date,
-                        time: time,
-                        chats: sortedChat,
-                        ...rest
-                    }
-
-                    data.push(message)
-                    setMessages(data)
-
-                    return () => {
-                        // Unsubscribe from the 'chats' sub-collection when the component is unmounted
-                        chatUnsubscribe()
+                    return {
+                        id: chatDoc.id,
+                        date: chatDate,
+                        time: chatTime,
+                        ...chatDoc.data()
                     }
                 })
-            }
-        })
 
-        return () => unsubscribe()
-    }, [])
+                const sortedChat = chatData.sort((a, b) => {
+                    const dateA = new Date(`${a.date} ${a.time}`)
+                    const dateB = new Date(`${b.date} ${b.time}`)
+
+                    return dateB - dateA
+                })
+
+                const lastSentChat = sortedChat.length > 0 ? sortedChat[0].message.toString() : ''
+                const lastSender = sortedChat.length > 0 ? sortedChat[0].sender.toString() : ''
+                const lastTimestamp = sortedChat.length > 0 ? sortedChat[0].timestamp : ''
+
+                const specChatDoc = doc(db, 'message_usf', activeMessage)
+                updateDoc(specChatDoc, {
+                    lastSentMessage: lastSentChat,
+                    lastSenderID: lastSender,
+                    timestamp: lastTimestamp
+                })
+
+                setChats(sortedChat)
+            });
+        } else {
+            setChats([])
+        }
+    }, [activeMessage]);
+
 
     // useEffect(() => {
     //     if (messages.length > 0) {
-    //         console.log(messages)
+    //         console.log(messages);
     //     }
-    // }, [messages])
+    // }, [messages]);
+
+    useEffect(() => {
+        if (chats.length > 0) {
+            console.log(chats);
+        }
+    }, [chats]);
 
     return (
-        <MessageContext.Provider value={{ messages }}>
+        <MessageContext.Provider value={{ 
+            messages, 
+            messCount, 
+            setTheMessageActive, 
+            activeMessage, 
+            chats 
+        }}>
             {children}
         </MessageContext.Provider>
     )

@@ -61,7 +61,7 @@
 .message-person-con {
     display: flex;
     /* border-top: 1px #ccc solid; */
-    border-bottom: 1px whitesmoke solid;
+    border: 1px white solid;
     justify-content: space-between;
     gap: 10px;
     border-radius: 10px;
@@ -177,8 +177,10 @@
     /* overflow: hidden; */
 }
 
+
+
 .mess-chat-container {
-    background-color: var(--light-green);
+    background-color: #ccc;
     width: fit-content;
     max-width: 35%;
     border-radius: 10px;
@@ -186,6 +188,11 @@
     float: left;
     box-shadow: 0 1.5px 3px 0 #ccc;
 
+}
+
+.mess-chat-container.sender {
+    background-color: var(--light-green);
+    float: right;
 }
 
 .mess-foot-cont {

@@ -4,15 +4,10 @@ const ActiveContext = createContext()
 
 export const ActiveProvider = ({ children }) => {
     const [active, setActive] = useState(null)
-    const [activeMessage, setMessageActive] = useState(null)
     const [activeUser, setActiveUser] = useState(null)
 
     const setTheActive = (id) => {
         setActive(id)
-    }
-
-    const setTheMessageActive = (id) => {
-        setMessageActive(id)
     }
 
     const setTheActiveUser = (id) => {
@@ -25,8 +20,6 @@ export const ActiveProvider = ({ children }) => {
     <ActiveContext.Provider value={{ 
         active, 
         setTheActive, 
-        activeMessage, 
-        setTheMessageActive, 
         activeUser,
         setTheActiveUser
     }}>

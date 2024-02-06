@@ -14,8 +14,10 @@ import { ReactComponent as HistoryIcon } from '../images/icons/history.svg'
 import { useNavActiveContext } from "../context/NavActiveContext"
 import { useRequestContext } from "../context/RequestContext"
 import { useUsersContext } from "../context/UsersContext";
+import { useMessageContext } from "../context/MessagesContext";
 
 const NavBar = () => {
+    const { messCount } = useMessageContext()
     const { currentUser, signOut } = useAuth()
     const { admins } = useUsersContext()
     const navigate = useNavigate()
@@ -51,6 +53,7 @@ const NavBar = () => {
                 
                 {/* NOTIFICATION BELL  */}
                 <div className="status-bar d-flex align-items-center">
+
                     <div className={`notif-animation bell-icon p-2 ${
                         count > 0 ? (recentRequest.emergency_level === '1' ? 
                                         "blue" : recentRequest.emergency_level === '2' ? 
@@ -60,6 +63,19 @@ const NavBar = () => {
                     }`}>
                         <i className="fa-regular fa-bell fa-xl"></i>
                     </div>
+
+                    <div className="notif-message p-2 d-flex">
+                        <div className="mess-icon">
+                            <i className="fa-regular fa-message fa-xl"></i>
+                        </div>
+
+                        <div className="mess-count">
+                            <span className="m-0">{messCount}</span>
+                        </div>
+                    </div>
+
+                    
+                    
                 </div>
 
                 <Dropdown className="mx-2">

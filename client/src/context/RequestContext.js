@@ -13,8 +13,6 @@ export const RequestProvider = ({ children }) => {
     const [requests, setRequests] = useState([])
     const [count, setCount] = useState(0)
     const [recentRequest, setRecentRequest] = useState([])
-    // const hasFetched = useRef(false)
-    // const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'emergency_requests'), (snapshot) => {
@@ -33,10 +31,10 @@ export const RequestProvider = ({ children }) => {
                 }
             })
 
+            // count 'new' requests
             const newStatusCount = data.filter(item => item.status === 'New').length
 
             // Sort the data array based on the timestamp in descending order
-
             const sortedData = data.sort((a, b) => {
                 const dateA = new Date(`${a.date} ${a.time}`);
                 const dateB = new Date(`${b.date} ${b.time}`);

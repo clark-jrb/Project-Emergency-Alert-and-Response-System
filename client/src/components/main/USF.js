@@ -18,10 +18,11 @@ const USF = () => {
         <div className="usf-container">
             <UsersProvider>
                 <RequestProvider>
-                    <NavActiveProvider>
-                            <NavBar/>
-                    </NavActiveProvider>
                     <MessageProvider>
+                        <NavActiveProvider>
+                                <NavBar/>
+                        </NavActiveProvider>
+                    
                         <ActiveProvider>
                             <div className="content">
                             <Routes>

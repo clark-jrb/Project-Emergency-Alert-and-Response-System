@@ -6,35 +6,23 @@ import { addDoc, collection, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase'
 
 const MessagesContent = () => {
-    const { messages } = useMessageContext()
+    const { activeMessage, setTheMessageActive, messages, chats } = useMessageContext()
     const { users, admins } = useUsersContext()
-    const { activeMessage, setTheMessageActive, activeUser } = useActiveContext()
+    const { activeUser } = useActiveContext()
     const [ formValue, setFormValue ] = useState('')
 
-    const filteredMessage = messages.find(messages => messages.chatroomID === activeMessage)
-    // const userIds = fmessage.chatroomID.slice(0, fmessage.chatroomID.indexOf('_'))
-
-    // if (typeof fmessage === 'undefined') {
-    //     console.log('fmessage is undefined');
-    // } else {
-    //     const userIds = fmessage.chatroomID.slice(0, fmessage.chatroomID.indexOf('_'))
-    //     console.log(userIds);
-    // }
-    // const lastSent = fmessage.lastSentMessage
-    
-
-    // const filteredMessage = messages.filter(message =>
-    //     message.chatroomID.includes(activeMessage)
-    // )
-
+    const filteredMessage = messages.find(messages => messages.id === activeMessage)
     const user = users.find(user => user.id === activeUser)
-
     
     // useEffect(() => {
     //     if (filteredMessage) {
-    //         console.log(filteredMessage);
+            // console.log(filteredMessage);
     //     }
-    // }, [filteredMessage]);
+    // }, []);
+
+    // useEffect(() => {
+    //     console.log(activeMessage);
+    // }, [activeMessage]);
 
     const handleCloseBtn = (e) => {
         setTheMessageActive(e)
@@ -42,27 +30,29 @@ const MessagesContent = () => {
 
     const sendChat = async(e) => {
         e.preventDefault()
-        const chatroomCollection = collection(db, 'message_usf');
-        const querySnapshot = await getDocs(chatroomCollection);
+        const chatroomCollection = collection(db, 'message_usf', activeMessage, 'chats');
+        // const querySnapshot = await getDocs(chatroomCollection);
 
         const chat = {
             message: formValue,
             timestamp: new Date(),
             receiver: activeUser,
             sender: 'TXmvnpBMntCramMNxwNs',
-            seen: false,
-            delivered: true
+            // seen: false,
+            // delivered: true
         };
 
+        await addDoc(chatroomCollection, chat);
+
         // Use Promise.all to parallelize the asynchronous calls
-        await Promise.all(
-            querySnapshot.docs
-                .filter(doc => doc.id === activeMessage)
-                .map(async (doc) => {
-                    const chatCollection = collection(db, 'message_usf', doc.id, 'chats');
-                    await addDoc(chatCollection, chat);
-                })
-        );
+        // await Promise.all(
+        //     querySnapshot.docs
+        //         // .filter(doc => doc.id === activeMessage)
+        //         .map(async (doc) => {
+        //             const chatCollection = collection(db, 'message_usf', activeMessage, 'chats');
+        //             await addDoc(chatCollection, chat);
+        //         })
+        // );
 
         setFormValue('')
     }
@@ -75,7 +65,7 @@ const MessagesContent = () => {
                         <div className='mess-header pb-2 d-flex'>
                             <div className='chat-person-name'>
                                 {user && (
-                                    <p className='m-0' key={user.id}>{user.fullname}</p>
+                                    <p className='m-0'>{user.fullname}</p>
                                 )}
                             </div>
                             <div className='close-btn' onClick={() => handleCloseBtn(null)}>
@@ -84,9 +74,9 @@ const MessagesContent = () => {
                         </div>
 
                         <div className='mess-body py-2'>
-                            {filteredMessage.chats.map(({ id, message }) => (
+                            {chats.map(({ id, message, sender }) => (
                                 <div className='mess-chat p-2 px-3' key={id}>
-                                    <div className='mess-chat-container p-2 px-3'>
+                                    <div className={`mess-chat-container p-2 px-3 ${sender === 'TXmvnpBMntCramMNxwNs' ? 'sender': ''}`}>
                                         <p className='m-0'>
                                             {message}
                                         </p>
@@ -98,7 +88,7 @@ const MessagesContent = () => {
                         <div className='mess-footer pt-2 '>
                             <form onSubmit={sendChat}>
                                 <div className='mess-foot-cont d-flex w-50'>
-                                    <input className='chat-input-field px-2' value={formValue} onChange={(e) => setFormValue(e.target.value)}></input>
+                                    <input className='chat-input-field px-2' value={formValue} onChange={(e) => setFormValue(e.target.value)} ></input>
                                     <button className='send-btn px-2' type='submit'>
                                         <i className="fa-regular fa-paper-plane"></i>
                                     </button>
