@@ -4,8 +4,7 @@ import { useMessageContext } from '../../context/MessagesContext'
 import TimeAgo from '../../hooks/buttons/TimeAgo'
 import { useAuth } from '../../context/AuthContext'
 import { useActiveContext } from '../../context/ActiveContext'
-import { updateDoc, doc } from 'firebase/firestore'
-import { db } from '../../firebase'
+
 
 const GetMessages = () => {
     const { currentUser } = useAuth()
@@ -30,11 +29,6 @@ const GetMessages = () => {
                 const handleClick = () => {
                     setTheMessageActive(message.chatroomID.toString())
                     setTheActiveUser(user.id)
-
-                    const specDoc = doc(db, 'message_usf', message.chatroomID)
-                    updateDoc(specDoc, {
-                        unread: false
-                    })
                 }
         
                 return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useMessageContext } from '../../context/MessagesContext'
 import { useUsersContext } from '../../context/UsersContext'
 import { useActiveContext } from '../../context/ActiveContext'
-import { addDoc, collection, getDocs } from 'firebase/firestore'
+import { addDoc, collection, updateDoc, doc, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase'
 
 const MessagesContent = () => {
@@ -38,13 +38,43 @@ const MessagesContent = () => {
             timestamp: new Date(),
             receiver: activeUser,
             sender: 'TXmvnpBMntCramMNxwNs',
-            // seen: false,
-            // delivered: true
+            seen: false,
+            delivered: true
         };
 
         await addDoc(chatroomCollection, chat);
 
+        const specDoc = doc(db, 'message_usf', activeMessage)
+        updateDoc(specDoc, {
+            read: true
+        })
+
         setFormValue('')
+    }
+
+    const handleInputChange = async (e) => {
+        const value = e.target.value
+        // console.log('Input value:', value)
+
+        const specDoc = doc(db, 'message_usf', activeMessage)
+        updateDoc(specDoc, {
+            unread: false
+        })
+
+        // update each message to seen: true
+        const chatroomCollection = collection(db, 'message_usf', activeMessage, 'chats')
+        const querySnapshot = await getDocs(chatroomCollection);
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            
+            if (data.seen === false) {
+                const docRef = doc.ref;
+                updateDoc(docRef, { seen: true });
+            }
+        });
+
+        setFormValue(value)
     }
 
     return (
@@ -78,7 +108,7 @@ const MessagesContent = () => {
                         <div className='mess-footer pt-2 '>
                             <form onSubmit={sendChat}>
                                 <div className='mess-foot-cont d-flex w-50'>
-                                    <input className='chat-input-field px-2' value={formValue} onChange={(e) => setFormValue(e.target.value)} ></input>
+                                    <input className='chat-input-field px-2' value={formValue} onChange={handleInputChange} ></input>
                                     <button className='send-btn px-2' type='submit'>
                                         <i className="fa-regular fa-paper-plane"></i>
                                     </button>

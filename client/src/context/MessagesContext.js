@@ -24,6 +24,16 @@ export const MessageProvider = ({ children }) => {
     useEffect(() => {
         onSnapshot(messageCollection, (messageSnapshot) => {
             // console.log('Main collection updated:', messageSnapshot.docs.map(doc => doc.data()));
+
+            if (messageSnapshot.docs.length === 0) {
+                // Handle empty collection
+                console.log('Collection is empty');
+                // You can set state or handle it in any way you prefer
+                setMessages([]);
+                setMessCount(0);
+                return;
+            }
+            
             const data = messageSnapshot.docs.map((doc) => {
                 const { timestamp, ...rest } = doc.data()
                 const timepoint = timestamp.toDate()
@@ -50,41 +60,46 @@ export const MessageProvider = ({ children }) => {
         if (activeMessage != null) {
             const chatsCollection = collection(messageCollection, activeMessage, 'chats')
 
-            onSnapshot(chatsCollection, (chatsSnapshot) => {
-                // console.log('Sub-collection updated:', chatsSnapshot.docs.map(doc => doc.data()));
-                const chatData = chatsSnapshot.docs.map((chatDoc) => {
-                    const chatTimestamp = chatDoc.data().timestamp.toDate()
-                    const chatDate = moment(chatTimestamp).format('LL')
-                    const chatTime = moment(chatTimestamp).format('LTS')
+            if (chatsCollection) {
+                onSnapshot(chatsCollection, (chatsSnapshot) => {
+                    // console.log('Sub-collection updated:', chatsSnapshot.docs.map(doc => doc.data()));
+                    const chatData = chatsSnapshot.docs.map((chatDoc) => {
+                        const chatTimestamp = chatDoc.data().timestamp.toDate()
+                        const chatDate = moment(chatTimestamp).format('LL')
+                        const chatTime = moment(chatTimestamp).format('LTS')
 
-                    return {
-                        id: chatDoc.id,
-                        date: chatDate,
-                        time: chatTime,
-                        ...chatDoc.data()
-                    }
-                })
+                        return {
+                            id: chatDoc.id,
+                            date: chatDate,
+                            time: chatTime,
+                            ...chatDoc.data()
+                        }
+                    })
 
-                const sortedChat = chatData.sort((a, b) => {
-                    const dateA = new Date(`${a.date} ${a.time}`)
-                    const dateB = new Date(`${b.date} ${b.time}`)
+                    const sortedChat = chatData.sort((a, b) => {
+                        const dateA = new Date(`${a.date} ${a.time}`)
+                        const dateB = new Date(`${b.date} ${b.time}`)
 
-                    return dateB - dateA
-                })
+                        return dateB - dateA
+                    })
 
-                const lastSentChat = sortedChat.length > 0 ? sortedChat[0].message.toString() : ''
-                const lastSender = sortedChat.length > 0 ? sortedChat[0].sender.toString() : ''
-                const lastTimestamp = sortedChat.length > 0 ? sortedChat[0].timestamp : ''
+                    const lastSentChat = sortedChat.length > 0 ? sortedChat[0].message.toString() : ''
+                    const lastSender = sortedChat.length > 0 ? sortedChat[0].sender.toString() : ''
+                    const lastTimestamp = sortedChat.length > 0 ? sortedChat[0].timestamp : ''
 
-                const specChatDoc = doc(db, 'message_usf', activeMessage)
-                updateDoc(specChatDoc, {
-                    lastSentMessage: lastSentChat,
-                    lastSenderID: lastSender,
-                    timestamp: lastTimestamp
-                })
+                    const specChatDoc = doc(db, 'message_usf', activeMessage)
+                    updateDoc(specChatDoc, {
+                        lastSentMessage: lastSentChat,
+                        lastSenderID: lastSender,
+                        timestamp: lastTimestamp
+                    })
 
-                setChats(sortedChat)
-            });
+                    setChats(sortedChat)
+                });
+            } else {
+                console.log('Collection does not exist yet');
+            }
+
         } else {
             setChats([])
         }
@@ -97,13 +112,13 @@ export const MessageProvider = ({ children }) => {
     //     }
     // }, [messages]);
 
-    useEffect(() => {
-        if (chats.length > 0) {
-            console.log(chats);
-        } else {
-            console.log('no chat selected');
-        }
-    }, [chats]);
+    // useEffect(() => {
+    //     if (chats.length > 0) {
+    //         console.log(chats);
+    //     } else {
+    //         console.log('no chat selected');
+    //     }
+    // }, [chats]);
 
     return (
         <MessageContext.Provider value={{ 
