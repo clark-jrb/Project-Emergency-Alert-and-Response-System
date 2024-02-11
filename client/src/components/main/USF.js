@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import React from "react"
 import { Routes, Route } from "react-router-dom"
 import Dashboard from "../Dashboard"
 import Emergencies from "../Emergencies"
@@ -12,11 +12,10 @@ import { RequestProvider } from "../../context/RequestContext"
 import { UsersProvider } from "../../context/UsersContext"
 import { MessageProvider } from "../../context/MessagesContext"
 import { ActiveProvider } from "../../context/ActiveContext"
-import Loading from '../Loading'
+// import Loading from '../Loading'
 
 const USF = () => {
     return (
-        <Suspense fallback={<Loading/>}>
             <div className="usf-container">
                 <UsersProvider>
                     <RequestProvider>
@@ -41,7 +40,6 @@ const USF = () => {
                     </RequestProvider>
                 </UsersProvider>
             </div>
-        </Suspense>
         
     )
 }

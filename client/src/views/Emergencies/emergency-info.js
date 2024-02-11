@@ -7,9 +7,10 @@ import { ReactComponent as SecuritySVG } from './icons/security.svg'
 import { ReactComponent as AssistSVG } from './icons/assistance.svg'
 import { ReactComponent as ViolenceSVG } from './icons/violence.svg'
 import { ReactComponent as AccidentSVG } from './icons/accident.svg'
-import AcceptButton from '../../hooks/buttons/AcceptButton'
+
 import DeclineButton from '../../hooks/buttons/DeclineButton'
 import CompleteButton from '../../hooks/buttons/CompleteButton'
+import AcceptButton from '../../hooks/buttons/AcceptButton'
 
 const Emergency_info = () => {
     const { requests } = useRequestContext()
@@ -126,37 +127,35 @@ const Emergency_info = () => {
                             </div>
                         </div>
                         {/* Buttons Section */}
-                        <div className='section-buttons d-flex py-3'>
-                            {request.status === 'New' ? (
-                            <>
-                                <div className='w-100'>
-                                    <div className='status-title'>
-                                        <p className='mb-2'>Are you ready to take action?</p>
+                        <div className="section-buttons d-flex py-3">
+                            {request.status === 'New' && (
+                                <div className="w-100">
+                                    <div className="status-title">
+                                        <p className="mb-2">Are you ready to take action?</p>
                                     </div>
-                                    <div className='d-flex w-100 gap-3'>
-                                        <AcceptButton reqID={request.id}></AcceptButton>
-                                        <DeclineButton></DeclineButton>
+                                    <div className="d-flex w-100 gap-3">
+                                        <AcceptButton reqID={request.id} />
+                                        <DeclineButton />
                                     </div>
                                 </div>
-                                
-                            </>) : request.status === 'Ongoing' ? (
-                            <>
-                                <CompleteButton reqID={request.id}></CompleteButton>
-                            </>) : request.status === 'Complete' ? (
-                            <>
-                                <div className='completed-cont'>
-                                    <div className='status-title'>
-                                        <p className='mb-2'>Status:</p>
+                            )}
+                            {request.status === 'Ongoing' && (
+                                <CompleteButton reqID={request.id} />
+                            )}
+                            {request.status === 'Complete' && (
+                                <div className="completed-cont">
+                                    <div className="status-title">
+                                        <p className="mb-2">Status:</p>
                                     </div>
-                                    <div className='completed-bar py-2'>
-                                        <p className='m-0'>Completed <i className="fa-regular fa-circle-check"></i></p>
+                                    <div className="completed-bar py-2">
+                                        <p className="m-0">Completed <i className="fa-regular fa-circle-check"></i></p>
                                     </div>
-                                    <div className='status-title py-2'>
+                                    <div className="status-title py-2">
                                         <p>Completed at » {request.time_completed}</p>
                                     </div>
                                 </div>
-                            </>) : 'N/A'}
-                            
+                            )}
+                            {['New', 'Ongoing', 'Complete'].indexOf(request.status) === -1 && 'N/A'}
                         </div>
                     </div>
 
