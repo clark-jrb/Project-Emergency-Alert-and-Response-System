@@ -39,7 +39,7 @@ const HistoryDatas = () => {
     })
 
     return (
-        <div className='history-datas p-3'>
+        <div className='history-datas p-4'>
             <div className='datas-title px-3 mb-3'>
                 <p className='m-0'>Emergency Records</p>
             </div>

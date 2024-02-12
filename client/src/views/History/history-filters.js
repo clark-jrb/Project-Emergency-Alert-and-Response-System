@@ -48,13 +48,13 @@ const HistoryFilters = () => {
 
     return (
         <div className='history-filters'>
-            <div className='sortByDate m-3 pb-3'>
-                <div className='sort-title pt-2 px-2'>
+            <div className='sortByDate mx-4 mt-4 mb-0 pb-3'>
+                <div className='sort-title'>
                     <p className='m-0'>Sort by Date</p>
                 </div>
 
                 <div className='forMonth d-flex pt-3'>
-                    <p className='m-0 title-date px-2'>» Month</p>
+                    <p className='m-0 title-date px-1'>» Month</p>
                     <select className='select-box px-2' onChange={handleMonthChange} value={month}>
                         <option disabled>Month</option>
                         {/* Map through months and create option elements */}
@@ -70,7 +70,7 @@ const HistoryFilters = () => {
                 </div>
 
                 <div className='forYear d-flex pt-3'>
-                    <p className='m-0 title-date px-2'>» Year</p>
+                    <p className='m-0 title-date px-1'>» Year</p>
                     <select className='select-box px-2' onChange={handleYearChange} value={year}>
                         <option disabled>Year</option>
                         {/* Map through months and create option elements */}
@@ -86,7 +86,7 @@ const HistoryFilters = () => {
                 </div>
 
             </div>
-            <div className='sortByLevel mx-3 px-2'>
+            <div className='sortByLevel px-4 pt-3'>
                 <div className='sort-title pt-2'>
                     <p className='m-0 lvl-title'>Level of Emergency</p>
                     <div className='all-btn' onClick={resetLevel}>
