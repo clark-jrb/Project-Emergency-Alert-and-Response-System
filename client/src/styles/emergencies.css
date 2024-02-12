@@ -158,6 +158,7 @@
     background-color: whitesmoke;
     color: var(--font-text);
     border-radius: 10px;
+    justify-content: space-between;
 }
 
 .emer-title.blue {
@@ -456,4 +457,24 @@ p {
     color: var(--font-text);
     font-weight: bold;
     font-size: large;
+}
+
+.status-complete {
+    color: var(--font-text);
+    text-align: center;
+}
+
+.close-request-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: inline-end;
+    font-size: x-large;
+    color: var(--font-text);
+}
+
+.close-request-btn:hover {
+    cursor: pointer;
+    color: #ccc;
+    transition: 0.2s;
 }

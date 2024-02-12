@@ -69,9 +69,16 @@ const NavBar = () => {
                             <i className="fa-regular fa-message fa-xl"></i>
                         </div>
 
-                        <div className="mess-count">
-                            <span className="m-0">{messCount}</span>
-                        </div>
+                        {messCount > 0 ? 
+                        <>
+                            <div className="mess-count">
+                                <span className="m-0">{messCount}</span>
+                            </div>
+                        </> : 
+                        <>
+                            <div></div>
+                        </>}
+                        
                     </div>
 
                     
