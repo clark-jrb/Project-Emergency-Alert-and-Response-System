@@ -5,3 +5,58 @@
 .leaflet-container {
     height: 100%;
 }
+
+.info-highlight {
+    font-size: large;
+    color: var(--font-text);
+}
+
+.level-highlight {
+    font-weight: bold;
+}
+
+.level-highlight.blue {
+    font-size: large;
+    color: var(--blue);
+}
+
+.level-highlight.red {
+    font-size: large;
+    color: var(--red);
+}
+
+.level-highlight.yellow {
+    font-size: large;
+    color: var(--yellow);
+}
+
+.level-highlight.green {
+    font-size: large;
+    color: var(--green);
+}
+
+/* .details-btn-con {
+    display: flex;
+    justify-content: end;
+} */
+
+.see-det-btn {
+    /* outline: none; */
+    border: none;
+    font-size: medium;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+    border-radius: 10px;
+}
+
+.see-det-btn:hover {
+    background-color: #ccc;
+    transition: 0.2s;
+}
+
+.ongoing-cont {
+    background-color: #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+}

@@ -22,8 +22,6 @@ const USF = () => {
                         <MessageProvider>
                             <NavActiveProvider>
                                     <NavBar/>
-                            </NavActiveProvider>
-                        
                             <ActiveProvider>
                                 <div className="content">
                                 <Routes>
@@ -36,6 +34,7 @@ const USF = () => {
                                 </Routes>
                                 </div>
                             </ActiveProvider>
+                            </NavActiveProvider>
                         </MessageProvider>
                     </RequestProvider>
                 </UsersProvider>
