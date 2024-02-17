@@ -31,10 +31,21 @@ const Map = () => {
         setTheNav('emergencies')
     }
 
-    const handleClickCenter = (e) => {
+    const handleClickCenter = async (e) => {
         e.originalEvent.preventDefault();
         const markerPosition = e.target.getLatLng();
         const setThePosition = [markerPosition.lat, markerPosition.lng];
+
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${setThePosition[0].toFixed(7)}&lon=${setThePosition[1].toFixed(7)}`);
+        const data = await response.json();
+
+        if (data && data.display_name) {
+            const locationName = data.display_name;
+            console.log('Location Name:', locationName);
+            // Do something with the location name, e.g., display it in a tooltip or popup.
+        } else {
+            console.log('Location name not found.');
+        }
         // setCenter(setThePosition)
         mapRef.current.panTo(setThePosition);
         // mapRef.current.setView(setThePosition, mapRef.current.getZoom())
