@@ -7,21 +7,33 @@ import Map from "../Map"
 import History from "../History"
 import Settings from "../Settings"
 import NavBar from "../NavBar"
+import { NavActiveProvider } from "../../context/NavActiveContext"
+import { RequestProvider } from "../../context/RequestContext"
+import { MessageProvider } from "../../context/MessagesContext"
+import { ActiveProvider } from "../../context/ActiveContext"
 
 const Infirmary = () => {
     return (
         <div className="infi-container">
-            <NavBar/>
-            <div className="content">
-                <Routes>
-                    <Route path="dashboard" element={<Dashboard/>}></Route>
-                    <Route path="emergencies" element={<Emergencies/>}></Route>
-                    <Route path="messages" element={<Messages/>}></Route>
-                    <Route path="map" element={<Map/>}></Route>
-                    <Route path="history" element={<History/>}></Route>
-                    <Route path="settings" element={<Settings/>}></Route>
-                </Routes>
-            </div>
+            <RequestProvider>
+                <MessageProvider>
+                    <NavActiveProvider>
+                            <NavBar/>
+                    <ActiveProvider>
+                        <div className="content">
+                        <Routes>
+                            <Route path="dashboard" element={<Dashboard/>}></Route>
+                            <Route path="emergencies" element={<Emergencies/>}></Route>
+                            <Route path="messages" element={<Messages/>}></Route>
+                            <Route path="map" element={<Map/>}></Route>
+                            <Route path="history" element={<History/>}></Route>
+                            <Route path="settings" element={<Settings/>}></Route>
+                        </Routes>
+                        </div>
+                    </ActiveProvider>
+                    </NavActiveProvider>
+                </MessageProvider>
+            </RequestProvider>
         </div>
     )
 }

@@ -6,7 +6,7 @@
     user-select: none;
 }
 
-.usf-container {
+.usf-container, .infi-container {
     height: 100dvh;
 }
 
