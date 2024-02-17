@@ -3,30 +3,28 @@ import { useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase'
 import '../styles/login.css'
+import { useUsersContext } from '../context/UsersContext'
 
 const Login = () => {
+    const { admins } = useUsersContext()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate()
 
+    const findEmail = admins.find(admin => admin.email === email)
+
+    // console.log(findEmail);
+
     const handleLogin = async () => {
         try {
             await signInWithEmailAndPassword(auth, email, password)
             console.log('Sign-in successful')
-            console.log(email)
 
-            if (email.includes('usf')) {
-                navigate('/usf/dashboard')
+            if (findEmail) {
+                navigate(`/${findEmail.route}/dashboard`)
             }
-            else if (email.includes('infirmary')) {
-                navigate('/infirmary/dashboard')
-            }
-            else {
-                navigate('/login')
-                console.log('You dont have access to this software')
-            }
-            // navigate('/dashboard')
+            
         } catch (error) {
             setError('Incorrect credentials')
             console.error('Error signing in:', error.message)

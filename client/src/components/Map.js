@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'leaflet/dist/leaflet.css'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-// import { Icon } from 'leaflet';
 import '../styles/map.css'
 import { useRequestContext } from '../context/RequestContext'
 import MarkerIcons from '../hooks/buttons/MarkerIcons'

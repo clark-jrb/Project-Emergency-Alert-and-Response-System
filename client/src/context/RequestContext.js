@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react'
 import { collection, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 import moment from 'moment'
+import { useAuth } from './AuthContext'
 
 const RequestContext = createContext()
 
@@ -10,9 +11,12 @@ export const useRequestContext = () => {
 }
 
 export const RequestProvider = ({ children }) => {
+    const { currentUser } = useAuth()
     const [requests, setRequests] = useState([])
     const [count, setCount] = useState(0)
     const [recentRequest, setRecentRequest] = useState([])
+
+    console.log('Current User: ', currentUser);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, 'emergency_requests'), (snapshot) => {

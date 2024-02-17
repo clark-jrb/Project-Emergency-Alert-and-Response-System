@@ -17,29 +17,26 @@ import { ActiveProvider } from "../../context/ActiveContext"
 const USF = () => {
     return (
             <div className="usf-container">
-                <UsersProvider>
-                    <RequestProvider>
-                        <MessageProvider>
-                            <NavActiveProvider>
-                                    <NavBar/>
-                            <ActiveProvider>
-                                <div className="content">
-                                <Routes>
-                                    <Route path="dashboard" element={<Dashboard/>}></Route>
-                                    <Route path="emergencies" element={<Emergencies/>}></Route>
-                                    <Route path="messages" element={<Messages/>}></Route>
-                                    <Route path="map" element={<Map/>}></Route>
-                                    <Route path="history" element={<History/>}></Route>
-                                    <Route path="settings" element={<Settings/>}></Route>
-                                </Routes>
-                                </div>
-                            </ActiveProvider>
-                            </NavActiveProvider>
-                        </MessageProvider>
-                    </RequestProvider>
-                </UsersProvider>
+                <RequestProvider>
+                    <MessageProvider>
+                        <NavActiveProvider>
+                                <NavBar/>
+                        <ActiveProvider>
+                            <div className="content">
+                            <Routes>
+                                <Route path="dashboard" element={<Dashboard/>}></Route>
+                                <Route path="emergencies" element={<Emergencies/>}></Route>
+                                <Route path="messages" element={<Messages/>}></Route>
+                                <Route path="map" element={<Map/>}></Route>
+                                <Route path="history" element={<History/>}></Route>
+                                <Route path="settings" element={<Settings/>}></Route>
+                            </Routes>
+                            </div>
+                        </ActiveProvider>
+                        </NavActiveProvider>
+                    </MessageProvider>
+                </RequestProvider>
             </div>
-        
     )
 }
 
