@@ -59,7 +59,7 @@ const HistoryDatas = () => {
                     <tbody>
                         {filteredRequests.map((data) => (
                             <tr key={data.id} className='tr-table'>
-                                <td className='table-num px-1'>{data.req_no}</td>
+                                <td className='table-num px-1'>{data.request_no}</td>
                                 <td className='table-level td-level px-2'>
                                     <div className={`td-level-con py-1 
                                         ${data.emergency_level === '1' ? 

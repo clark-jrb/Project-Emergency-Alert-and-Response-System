@@ -9,7 +9,7 @@ import Settings from "../Settings"
 import NavBar from "../NavBar"
 import { NavActiveProvider } from "../../context/NavActiveContext"
 import { RequestProvider } from "../../context/RequestContext"
-import { UsersProvider } from "../../context/UsersContext"
+// import { UsersProvider } from "../../context/UsersContext"
 import { MessageProvider } from "../../context/MessagesContext"
 import { ActiveProvider } from "../../context/ActiveContext"
 // import Loading from '../Loading'

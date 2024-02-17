@@ -8,37 +8,29 @@ export const UsersProvider = ({ children }) => {
     const [users, setUsers] = useState([])
     const [admins, setAdmins] = useState([])
     // const hasFetched = useRef(false)
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchData = async () => {
             try {
-                const querySnapshot = await getDocs(collection(db, 'users'))
-                const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+                setLoading(true);
 
-                setUsers(data)
+                const userQuerySnapshot = await getDocs(collection(db, 'users'));
+                const userData = userQuerySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+                setUsers(userData);
+
+                const adminQuerySnapshot = await getDocs(collection(db, 'response_team'));
+                const adminData = adminQuerySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+                setAdmins(adminData);
             } catch (error) {
-                console.error('Error fetching data:', error)
+                console.error('Error fetching data:', error);
+            } finally {
+                setLoading(false);
             }
-        }
+        };
 
-        fetchUsers()
-    }, [])
-
-    useEffect(() => {
-        const fetchAdmins = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, 'response_team'))
-                const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-
-                setAdmins(data)
-            } catch (error) {
-                console.error('Error fetching data:', error)
-            }
-        }
-
-        fetchAdmins()
-        
-    }, [])
+        fetchData();
+    }, []);
 
     // useEffect(() => {
     //     if (admins.length > 0) {
@@ -48,7 +40,7 @@ export const UsersProvider = ({ children }) => {
 
     return (
         <UsersContext.Provider value={ { users, admins } }>
-            {children}
+            {!loading && children}
         </UsersContext.Provider>
     )
 }

@@ -36,7 +36,7 @@ const Emergency_info = () => {
                                     "yellow" : specificReq.emergency_level === '4' ? 
                                     "red" : ""}`}>
                         <div className='forEmer-title'>
-                            <p className='m-0 fs-5 fw-bold'>Emergency # {specificReq.req_no}</p>
+                            <p className='m-0 fs-5 fw-bold'>Emergency # {specificReq.request_no}</p>
                         </div>
                         <div className='forDescriptionLvl d-flex'>
                             <div className='forLevel'>

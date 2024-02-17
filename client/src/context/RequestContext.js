@@ -3,6 +3,7 @@ import { collection, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 import moment from 'moment'
 import { useAuth } from './AuthContext'
+import { useUsersContext } from './UsersContext'
 
 const RequestContext = createContext()
 
@@ -12,14 +13,20 @@ export const useRequestContext = () => {
 
 export const RequestProvider = ({ children }) => {
     const { currentUser } = useAuth()
+    const { admins } = useUsersContext()
     const [requests, setRequests] = useState([])
     const [count, setCount] = useState(0)
     const [recentRequest, setRecentRequest] = useState([])
+    const [loading, setLoading] = useState(true)
 
-    console.log('Current User: ', currentUser);
+    // const [adminRoute, setAdminRoute] = useState(null);
+
+    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+
+    console.log('admin route: ', findAdmin.route);
 
     useEffect(() => {
-        const unsubscribe = onSnapshot(collection(db, 'emergency_requests'), (snapshot) => {
+        const unsubscribe = onSnapshot(collection(db, `alert_${findAdmin.route}`), (snapshot) => {
             const data = snapshot.docs.map((doc) => {
                 const { timestamp, ...rest } = doc.data()
                 const timepoint = timestamp.toDate()
@@ -56,6 +63,7 @@ export const RequestProvider = ({ children }) => {
             setRequests(data)
             setCount(newStatusCount)
             setRecentRequest(mostRecent)
+            setLoading(false)
         })
 
         // Cleanup function to unsubscribe from real-time updates when the component unmounts
@@ -73,7 +81,7 @@ export const RequestProvider = ({ children }) => {
 
     return (
         <RequestContext.Provider value={{ requests, count, recentRequest, setRRCount }}>
-            {children}
+            {!loading && children}
         </RequestContext.Provider>
     )
 }
