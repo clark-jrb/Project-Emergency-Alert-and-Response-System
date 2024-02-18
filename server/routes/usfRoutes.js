@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const { getRequests, updateRequest } = require('../controllers/usfController')
+const { updateRequest } = require('../controllers/usfController')
 
 router.get('/')
 
-router.get('/emergencies', getRequests)
+// router.get('/emergencies', getRequests)
 
 router.put('/emergencies/:reqID', async (req, res) => {
     const reqID = req.params.reqID

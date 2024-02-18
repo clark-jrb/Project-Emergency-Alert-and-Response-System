@@ -3,7 +3,7 @@ import { useFilterListContext } from '../../context/FilterListContext'
 // import { useRequestContext } from '../../context/RequestContext'
 import moment from 'moment'
 
-const CompleteButton = ({ reqID }) => {
+const CompleteButton = ({ reqID, adminRoute }) => {
     // const { reloadRequests } = useRequestContext()
     const { setTheFilter } = useFilterListContext()
     const setStatus = "Complete"
@@ -14,7 +14,7 @@ const CompleteButton = ({ reqID }) => {
         try {
             setIsLoading(true)
             // Make an HTTP PUT request to update the user status
-            const response = await fetch(`http://localhost:4000/usf/emergencies/${reqID}`, {
+            const response = await fetch(`http://localhost:4000/${adminRoute}/emergencies/${reqID}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,11 +30,9 @@ const CompleteButton = ({ reqID }) => {
             if (response.ok) {
                 // navigate('/usf/emergencies')
                 // reloadRequests()
-                setTimeout(() => {
                     setTheFilter(setStatus)
                     console.log('Request complete')
-                }, 2000);
-                
+
             } else {
                 console.error('Failed to complete request:', response.statusText)
             }

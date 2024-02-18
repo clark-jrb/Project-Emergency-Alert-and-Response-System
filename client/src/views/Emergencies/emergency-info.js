@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
 import { useUsersContext } from '../../context/UsersContext'
 import { useActiveContext } from '../../context/ActiveContext'
+import { useAuth } from '../../context/AuthContext'
 import { ReactComponent as SecuritySVG } from './icons/security.svg'
 import { ReactComponent as AssistSVG } from './icons/assistance.svg'
 import { ReactComponent as ViolenceSVG } from './icons/violence.svg'
@@ -13,11 +14,15 @@ import CompleteButton from '../../hooks/buttons/CompleteButton'
 import AcceptButton from '../../hooks/buttons/AcceptButton'
 
 const Emergency_info = () => {
+    const { currentUser } = useAuth()
     const { requests } = useRequestContext()
-    const { users } = useUsersContext()
+    const { users, admins } = useUsersContext()
     const { active, setTheActive } = useActiveContext()
 
     const specificReq = requests.find(request => request.id === active)
+
+    // for Route
+    const findAdmin = admins.find(admin => admin.email === currentUser.email)
 
     const handleCloseBtn = (e) => {
         setTheActive(e)
@@ -143,13 +148,13 @@ const Emergency_info = () => {
                                             <p className="mb-2">Are you ready to take action?</p>
                                         </div>
                                         <div className="d-flex w-100 gap-3">
-                                            <AcceptButton reqID={specificReq.id} />
+                                            <AcceptButton reqID={specificReq.id} adminRoute={findAdmin.route}/>
                                             <DeclineButton />
                                         </div>
                                     </div>
                                 )}
                                 {specificReq.status === 'Ongoing' && (
-                                    <CompleteButton reqID={specificReq.id} />
+                                    <CompleteButton reqID={specificReq.id} adminRoute={findAdmin.route}/>
                                 )}
                                 {specificReq.status === 'Complete' && (
                                     <div className="completed-cont">

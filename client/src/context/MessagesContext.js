@@ -14,6 +14,7 @@ export const MessageProvider = ({ children }) => {
     const [chats, setChats] = useState([])
     const [messCount, setMessCount] = useState(0);
     const [activeMessage, setMessageActive] = useState(null)
+    const [loadingMessages, setLoadingMessages] = useState(true)
 
     const setTheMessageActive = (id) => {
         setMessageActive(id)
@@ -53,6 +54,7 @@ export const MessageProvider = ({ children }) => {
 
             setMessages(data)
             setMessCount(readFalseCount)
+            setLoadingMessages(false)
         });
     }, []);
 
@@ -128,7 +130,7 @@ export const MessageProvider = ({ children }) => {
             activeMessage, 
             chats 
         }}>
-            {children}
+            {!loadingMessages && children}
         </MessageContext.Provider>
     )
 }

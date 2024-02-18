@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useFilterListContext } from '../../context/FilterListContext'
 // import { useRequestContext } from '../../context/RequestContext'
 
-const AcceptButton = ({ reqID }) => {
+const AcceptButton = ({ reqID, adminRoute }) => {
     // const { reloadRequests } = useRequestContext()
     const { setTheFilter } = useFilterListContext()
     const setStatus = "Ongoing"
@@ -15,7 +15,7 @@ const AcceptButton = ({ reqID }) => {
 
             // setTimeout(async () => {
                 // Make an HTTP PUT request to update the user status
-                const response = await fetch(`http://localhost:4000/usf/emergencies/${reqID}`, {
+                const response = await fetch(`http://localhost:4000/${adminRoute}/emergencies/${reqID}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

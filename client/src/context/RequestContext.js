@@ -23,7 +23,7 @@ export const RequestProvider = ({ children }) => {
 
     const findAdmin = admins.find(admin => admin.email === currentUser.email)
 
-    console.log('admin route: ', findAdmin.route);
+    // console.log('admin route: ', findAdmin.route);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, `alert_${findAdmin.route}`), (snapshot) => {

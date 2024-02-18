@@ -1,42 +1,9 @@
 const db = require('../config/firebase')
-const moment = require('moment')
 
 // set responder to the collection name in firestore
-const requests = db.collection('emergency_requests')
-
-// GET ALL REQUEST DATA
-const getRequests = (req, res) => {
-    try {
-        const unsubscribe = requests.onSnapshot((snapshot) => {
-        const data = snapshot.docs.map((doc) => {
-        const { timestamp, ...rest } = doc.data()
-        const timepoint = timestamp.toDate()
-
-        const dataComponent = moment(timepoint).format('LL')
-        const timeComponent = moment(timepoint).format('LT')
-
-        return {
-            id: doc.id,
-            date: dataComponent,
-            time: timeComponent,
-            ...rest
-        }
-        })
-
-        res.json(data)
-    })
-
-      // Cleanup the listener when the request is completed
-    res.on('finish', () => {
-        unsubscribe()
-    })
-    } catch (error) {
-        res.status(500).json({ error: error.message })
-    }
-}
+const requests = db.collection('alert_usf')
 
 // UPDATE FUNCTION (UPDATE REQUEST STATUS)
-
 async function updateRequest(reqID, updatedData) {
     const specRequest = requests.doc(reqID)
     
@@ -58,7 +25,38 @@ async function updateRequest(reqID, updatedData) {
     }
 }
 
+
+// GET ALL REQUEST DATA
+// const getRequests = (req, res) => {
+//     try {
+//         const unsubscribe = requests.onSnapshot((snapshot) => {
+//         const data = snapshot.docs.map((doc) => {
+//         const { timestamp, ...rest } = doc.data()
+//         const timepoint = timestamp.toDate()
+
+//         const dataComponent = moment(timepoint).format('LL')
+//         const timeComponent = moment(timepoint).format('LT')
+
+//         return {
+//             id: doc.id,
+//             date: dataComponent,
+//             time: timeComponent,
+//             ...rest
+//         }
+//         })
+
+//         res.json(data)
+//     })
+
+//       // Cleanup the listener when the request is completed
+//     res.on('finish', () => {
+//         unsubscribe()
+//     })
+//     } catch (error) {
+//         res.status(500).json({ error: error.message })
+//     }
+// }
+
 module.exports = {
-    getRequests,
-    updateRequest,
+    updateRequest
 }
