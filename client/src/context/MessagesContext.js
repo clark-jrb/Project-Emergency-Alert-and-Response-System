@@ -2,6 +2,8 @@ import { createContext, useContext, useState, useEffect } from 'react'
 import { collection, count, getDocs, onSnapshot, updateDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase'
 import moment from 'moment'
+import { useAuth } from './AuthContext'
+import { useUsersContext } from './UsersContext'
 
 const MessageContext = createContext()
 
@@ -10,17 +12,21 @@ export const useMessageContext = () => {
 }
 
 export const MessageProvider = ({ children }) => {
+    const { currentUser } = useAuth()
+    const { admins } = useUsersContext()
     const [messages, setMessages] = useState([])
     const [chats, setChats] = useState([])
     const [messCount, setMessCount] = useState(0);
     const [activeMessage, setMessageActive] = useState(null)
     const [loadingMessages, setLoadingMessages] = useState(true)
 
+    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+
     const setTheMessageActive = (id) => {
         setMessageActive(id)
     }
 
-    const messageCollection = collection(db, 'message_usf')
+    const messageCollection = collection(db, `message_${findAdmin.route}`)
     
     useEffect(() => {
         onSnapshot(messageCollection, (messageSnapshot) => {
@@ -89,7 +95,7 @@ export const MessageProvider = ({ children }) => {
                     const lastSender = sortedChat.length > 0 ? sortedChat[0].sender.toString() : ''
                     const lastTimestamp = sortedChat.length > 0 ? sortedChat[0].timestamp : ''
 
-                    const specChatDoc = doc(db, 'message_usf', activeMessage)
+                    const specChatDoc = doc(messageCollection, activeMessage)
                     updateDoc(specChatDoc, {
                         lastSentMessage: lastSentChat,
                         lastSenderID: lastSender,

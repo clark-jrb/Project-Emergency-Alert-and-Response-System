@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useMessageContext } from '../../context/MessagesContext'
 import { useUsersContext } from '../../context/UsersContext'
 import { useActiveContext } from '../../context/ActiveContext'
+import { useAuth } from '../../context/AuthContext'
 import { addDoc, collection, updateDoc, doc, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase'
 
 const MessagesContent = () => {
+    const { currentUser } = useAuth()
     const { activeMessage, setTheMessageActive, messages, chats } = useMessageContext()
     const { users, admins } = useUsersContext()
     const { activeUser } = useActiveContext()
@@ -13,6 +15,8 @@ const MessagesContent = () => {
 
     const filteredMessage = messages.find(messages => messages.id === activeMessage)
     const user = users.find(user => user.id === activeUser)
+
+    const findAdmin = admins.find(admin => admin.email === currentUser.email)
     
     // useEffect(() => {
     //     if (filteredMessage) {
@@ -24,13 +28,15 @@ const MessagesContent = () => {
     //     console.log(activeMessage);
     // }, [activeMessage]);
 
+    const messagesCollection = collection(db, `message_${findAdmin.route}`) 
+
     const handleCloseBtn = (e) => {
         setTheMessageActive(e)
     }
 
     const sendChat = async(e) => {
         e.preventDefault()
-        const chatroomCollection = collection(db, 'message_usf', activeMessage, 'chats');
+        const chatsCollection = collection(messagesCollection, activeMessage, 'chats');
         // const querySnapshot = await getDocs(chatroomCollection);
 
         const chat = {
@@ -42,9 +48,9 @@ const MessagesContent = () => {
             delivered: true
         };
 
-        await addDoc(chatroomCollection, chat);
+        await addDoc(chatsCollection, chat);
 
-        const specDoc = doc(db, 'message_usf', activeMessage)
+        const specDoc = doc(messagesCollection, activeMessage)
         updateDoc(specDoc, {
             read: true
         })
@@ -56,13 +62,13 @@ const MessagesContent = () => {
         const value = e.target.value
         // console.log('Input value:', value)
 
-        const specDoc = doc(db, 'message_usf', activeMessage)
+        const specDoc = doc(messagesCollection, activeMessage)
         updateDoc(specDoc, {
             unread: false
         })
 
         // update each message to seen: true
-        const chatroomCollection = collection(db, 'message_usf', activeMessage, 'chats')
+        const chatroomCollection = collection(messagesCollection, activeMessage, 'chats')
         const querySnapshot = await getDocs(chatroomCollection);
 
         querySnapshot.forEach((doc) => {
