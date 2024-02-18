@@ -9,6 +9,7 @@
 }
 
 .history-filters {
+    background-color: white;
     height: 100%;
     width: 20%;
     border: #ccc solid 1px;
@@ -17,6 +18,7 @@
 }
 
 .history-datas {
+    background-color: white;
     height: 100%;
     width: 78%;
     border: #ccc solid 1px;

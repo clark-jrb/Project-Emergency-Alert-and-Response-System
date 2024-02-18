@@ -8,6 +8,7 @@
 }
 
 .mess-list {
+    background-color: white;
     height: 100%;
     width: 25%;
     border: #ccc solid 1px;
@@ -127,6 +128,7 @@
 /* MESSAGES CONTENT  */
 
 .mess-content {
+    background-color: white;
     height: 100%;
     width: 73%;
     border: #ccc solid 1px;

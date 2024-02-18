@@ -8,6 +8,7 @@
 }
 
 .emer-lists {
+    background-color: white;
     height: 100%;
     width: 30%;
     border: #ccc solid 1px;
@@ -19,6 +20,7 @@
 }
 
 .emergency-info {
+    background-color: white;
     height: 100%;
     width: 68%;
     border: #ccc solid 1px;
