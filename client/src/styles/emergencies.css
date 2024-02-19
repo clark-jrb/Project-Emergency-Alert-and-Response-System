@@ -480,3 +480,19 @@ p {
     color: #ccc;
     transition: 0.2s;
 }
+
+
+.set-limit {
+    color: var(--font-text);
+    gap: 10px;
+}
+
+.input-limit {
+    color: var(--font-text);
+    border-radius: 10px;
+    border: var(--green) solid 2px;
+}
+
+.set-limit-title {
+    align-items: center;
+}
