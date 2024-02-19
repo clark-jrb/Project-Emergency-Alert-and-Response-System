@@ -1,13 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import New from './requests-new'
 import Ongoing from './requests-ongoing'
 import Complete from './requests-complete'
 import { useFilterListContext } from '../../context/FilterListContext'
+import { useAuth } from '../../context/AuthContext'
+import { useUsersContext } from '../../context/UsersContext'
+import { collection, updateDoc, doc } from 'firebase/firestore'
+import { db } from '../../firebase'
 
 const Emergency_lists = () => {
+    const { currentUser } = useAuth()
+    const { admins } = useUsersContext()
     const { activeFilter, setTheFilter } = useFilterListContext()
-    const [limit, setLimit] = useState(1)
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    
+    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+    const [limit, setLimit] = useState(findAdmin.available)
 
     const handleClick = (component) => {
         setTheFilter(component)
@@ -15,10 +24,29 @@ const Emergency_lists = () => {
 
     const handleLimitChange = (event) => {
         // Update the state with the new value
-        const newLimit = parseInt(event.target.value, 10);
-        setLimit(newLimit);
-        console.log(limit);
+        let newLimit = parseInt(event.target.value, 10);
+        // make the number above max into max number
+        newLimit = Math.min(Math.max(newLimit, 1), 10);
+        setLimit(isNaN(newLimit) ? 1 : newLimit);
     };
+
+    const handleSetLimit = () => {
+        const adminsCollection = collection(db, `response_team`)
+
+        const specAdmin = doc(adminsCollection, findAdmin.id)
+        updateDoc(specAdmin, {
+            available: limit
+        })
+        console.log(limit);
+        
+    }
+
+    useEffect(() => {
+        // Check if limit is the same of available responders
+        setIsButtonDisabled(limit === findAdmin.available);
+    }, [limit, findAdmin.available]);
+
+    // console.log(limit);
 
     return (
         <div className='emer-lists p-4 m-0'>
@@ -36,7 +64,10 @@ const Emergency_lists = () => {
             <div className='set-limit mt-3 d-flex'>
                 <div className='set-limit-title d-flex'>Set limit &#40;max of 10&#41;</div>
                 <div className='input-limit-con'>
-                    <input type='number' min="1" max="10" className='input-limit px-2 py-1' value={limit} onChange={handleLimitChange}></input>
+                    <input type='number' min='1' max='10' className='input-limit px-2 py-1' onChange={handleLimitChange} value={limit}></input>
+                </div>
+                <div className='set-limit-button-con'>
+                    <button onClick={handleSetLimit} className='set-limit-button px-2 py-1' disabled={isButtonDisabled}>SET</button>
                 </div>
             </div>
             <div className='requests d-flex mt-3'>
