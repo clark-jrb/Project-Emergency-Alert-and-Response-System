@@ -1,23 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useRequestContext } from '../../context/RequestContext'
 import { useOngoingArray } from '../../context/OngoingArray'
 import { useRequestInfoContext } from '../../context/RequestInfoContext'
 import { useActiveContext } from '../../context/ActiveContext'
-import { useAuth } from '../../context/AuthContext'
-import { useUsersContext } from '../../context/UsersContext'
 import TimeAgo from '../../hooks/buttons/TimeAgo'
 
 const Ongoing = () => {
-    // const { currentUser } = useAuth()
-    // const { admins } = useUsersContext()
     const { ongoingArray } = useOngoingArray()
     const { setID } = useRequestInfoContext()
     const { active, setTheActive } = useActiveContext()
 
     // console.log(ongoingArray);
-
-    // const ongoingArray = ongoingRequests.slice(0, maxSlots);
 
     const handleClick = (component) => {
         setID(component)

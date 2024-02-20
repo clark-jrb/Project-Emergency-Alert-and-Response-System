@@ -156,6 +156,11 @@ const Emergency_info = () => {
                                 {specificReq.status === 'Ongoing' && (
                                     <CompleteButton reqID={specificReq.id} adminRoute={findAdmin.route}/>
                                 )}
+                                {specificReq.status === 'Inqueue' && (
+                                    <div className="w-100">
+                                        <p className="m-0">In Queue</p>
+                                    </div>
+                                )}
                                 {specificReq.status === 'Complete' && (
                                     <div className="completed-cont">
                                         <div className="status-title">

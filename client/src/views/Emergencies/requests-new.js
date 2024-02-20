@@ -17,7 +17,7 @@ const New = () => {
 
     return (
         <div className='request-new d-flex py-3'>
-            {requests.filter(request => request.status === 'New').map(request => (
+            {requests.filter(request => request.status === 'New' || request.status === 'Inqueue').map(request => (
                 <div 
                     className={`req-data container d-flex py-2 px-0 ${active === request.id ? 'active' : ''}`} 
                     key={request.id} 
@@ -63,8 +63,8 @@ const New = () => {
                     <div className='req-status-con w-25'>
                         <p className='m-0 req-status'>
                             {request.status === 'New' ? 
-                                "New" : request.status === 'Complete' ? 
-                                "Complete" : "N/A"
+                                "New" : request.status === 'Inqueue' ? 
+                                "Inqueue" : "N/A"
                             }
                         </p>
                     </div>
