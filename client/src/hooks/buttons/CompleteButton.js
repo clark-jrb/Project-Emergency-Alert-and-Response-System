@@ -42,7 +42,7 @@ const CompleteButton = ({ reqID, adminRoute }) => {
     }
     
     return (
-        <div className='ongoing-cont'>
+        <div className='ongoing-cont-status'>
             <div className='status-title'>
                 <p className='mb-2'>Is the request completed?</p>
             </div>
