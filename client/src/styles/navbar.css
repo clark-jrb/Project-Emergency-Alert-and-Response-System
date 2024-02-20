@@ -10,6 +10,11 @@
     --light-red: #FFDEDE;
     --light-blue: #D5EBF8;
     --light-yellow: #FEF4CC;
+
+    --bottom-green: #00895b;
+    --bottom-blue: #e8cbcb;
+    /* --bottom-yellow: ;
+    --bottom-red: ; */
 }
 
 .navbar {

@@ -26,7 +26,7 @@ const Emergency_lists = () => {
         // Update the state with the new value
         let newLimit = parseInt(event.target.value, 10);
         // make the number above max into max number
-        newLimit = Math.min(Math.max(newLimit, 1), 10);
+        newLimit = Math.min(Math.max(newLimit, 1), 50);
         setLimit(isNaN(newLimit) ? 1 : newLimit);
     };
 
@@ -61,16 +61,16 @@ const Emergency_lists = () => {
                     <h6>Completed</h6>
                 </div>
             </div>
-            <div className='set-limit mt-3 d-flex'>
-                <div className='set-limit-title d-flex'>Set limit &#40;max of 10&#41;</div>
+            <div className='set-limit p-2 d-flex'>
+                <div className='set-limit-title d-flex'>Set available &#40;max of 50&#41;</div>
                 <div className='input-limit-con'>
-                    <input type='number' min='1' max='10' className='input-limit px-2 py-1' onChange={handleLimitChange} value={limit}></input>
+                    <input type='number' min='1' max='50' className='input-limit px-2 py-1' onChange={handleLimitChange} value={limit}></input>
                 </div>
                 <div className='set-limit-button-con'>
                     <button onClick={handleSetLimit} className='set-limit-button px-2 py-1' disabled={isButtonDisabled}>SET</button>
                 </div>
             </div>
-            <div className='requests d-flex mt-3'>
+            <div className='requests d-flex '>
                 {activeFilter === 'New' && <New />}
                 {activeFilter === 'Ongoing' && <Ongoing />}
                 {activeFilter === 'Complete' && <Complete />}

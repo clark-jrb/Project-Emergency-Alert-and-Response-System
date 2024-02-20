@@ -83,9 +83,10 @@
     height: 70px;
     border-radius: 10px;
     border: 1px #ccc solid;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
     cursor: pointer;
-    user-select: none;
+    /* user-select: none; */
 }
 
 .req-data:hover {
@@ -104,11 +105,10 @@
 }
 
 .count {
-    justify-content: center;
-    align-items: center;
-    width: 10%;
+    width: auto;
     border-right: #ccc solid 1px;
     color: var(--font-text);
+    padding: 0 1rem;
 }
 
 .level-logo {
@@ -139,17 +139,30 @@
 }
 
 .duration {
-    justify-content: center;
-    align-items: center;
-    width: 5%;
+    width: auto;
     color: var(--font-text);
+    padding: 0 1rem;
 }
 
 .req-information {
-    /* flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-    width: 60%;
+    width: auto;
+    padding: 0 .5rem;
+    color: var(--font-text);
+}
+
+.req-status {
+    text-align: center;
+    font-size: small;
+    color: var(--green);
+}
+
+.req-status.complete {
+    font-weight: bold;
+    color: var(--green);
+}
+
+.req-status.ongoing {
+    /* font-weight: bold; */
     color: var(--font-text);
 }
 
@@ -161,6 +174,7 @@
     color: var(--font-text);
     border-radius: 10px;
     justify-content: space-between;
+    box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
 .emer-title.blue {
@@ -455,8 +469,8 @@ p {
 .completed-bar {
     text-align: center;
     border-radius: 10px;
-    background-color: #ccc;
-    color: var(--font-text);
+    background-color: var(--light-green);
+    color: var(--green);
     font-weight: bold;
     font-size: large;
 }
@@ -485,9 +499,11 @@ p {
 .set-limit {
     color: var(--font-text);
     gap: 10px;
+    font-size: medium;
 }
 
 .input-limit {
+    cursor: default;
     color: var(--font-text);
     border-radius: 10px;
     border: var(--green) solid 2px;

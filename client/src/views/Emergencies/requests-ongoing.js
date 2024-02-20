@@ -23,37 +23,53 @@ const Ongoing = () => {
                     key={request.id} 
                     onClick={() => handleClick(request.id)}
                 >
-                    <div className='count d-flex'>
+                    <div className='count'>
                         <p className='m-0'>{request.request_no}</p>
                     </div>
-                    <div className={`level-logo d-flex
-                        ${request.emergency_level === '1' ? 
-                            "blue" : request.emergency_level === '2' ? 
-                            "green" : request.emergency_level === '3' ? 
-                            "yellow" : request.emergency_level === '4' ? 
-                            "red" : "N/A"
-                        }`}>
-                        <p className='m-0'>
-                            {request.emergency_level === '1' ? 
-                                "L1" : request.emergency_level === '2' ? 
-                                "L2" : request.emergency_level === '3' ? 
-                                "L3" : request.emergency_level === '4' ? 
-                                "L4" : "N/A"
-                            }
+
+                    <div className='ps-3 d-flex w-75'>
+                        <div className={`level-logo d-flex
+                            ${request.emergency_level === '1' ? 
+                                "blue" : request.emergency_level === '2' ? 
+                                "green" : request.emergency_level === '3' ? 
+                                "yellow" : request.emergency_level === '4' ? 
+                                "red" : "N/A"
+                            }`}>
+                            <p className='m-0'>
+                                {request.emergency_level === '1' ? 
+                                    "L1" : request.emergency_level === '2' ? 
+                                    "L2" : request.emergency_level === '3' ? 
+                                    "L3" : request.emergency_level === '4' ? 
+                                    "L4" : "N/A"
+                                }
+                            </p>
+                        </div>
+                        <div className='req-information d-flex'>
+                            <div>
+                                <p className='m-0'>
+                                    {request.emergency_level === '1' ? 
+                                        "NON-URGENT" : request.emergency_level === '2' ? 
+                                        "SEMI-URGENT" : request.emergency_level === '3' ? 
+                                        "URGENT" : request.emergency_level === '4' ? 
+                                        "IMMEDIATE" : "N/A"
+                                    }
+                                </p>
+                                <p className='m-0'>: {request.emergency_type}</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div className='req-status-con w-25'>
+                        <p className={`m-0 req-status ongoing`}>
+                            <i className="fa-solid fa-clock-rotate-left"></i>
+                            {/* <br/> */}
+                            &nbsp;
+                            {request.status}
                         </p>
                     </div>
-                    <div className='req-information'>
-                        <p className='m-0'>
-                            {request.emergency_level === '1' ? 
-                                "NON-URGENT" : request.emergency_level === '2' ? 
-                                "SEMI-URGENT" : request.emergency_level === '3' ? 
-                                "URGENT" : request.emergency_level === '4' ? 
-                                "IMMEDIATE" : "N/A"
-                            }
-                        </p>
-                        <p className='m-0'>: {request.emergency_type}</p>
-                    </div>
-                    <div className='duration d-flex'>
+
+                    <div className='duration'>
                         <p className='m-0'><TimeAgo date={request.date} time={request.time}></TimeAgo></p>
                     </div>
                 </div>
