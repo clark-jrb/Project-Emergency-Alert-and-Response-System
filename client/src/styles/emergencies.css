@@ -66,7 +66,7 @@
 .completed.active {
     color: white;
     background-color: var(--green);
-    cursor: pointer;
+    cursor: default;
     border-radius: 10px;
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
@@ -140,6 +140,7 @@
 }
 
 .duration {
+    font-size: small;
     width: auto;
     color: var(--font-text);
     padding: 0 1rem;
@@ -157,12 +158,12 @@
     color: var(--green);
 }
 
-.req-status.complete {
+.req-status.complete-status {
     font-weight: bold;
     color: var(--green);
 }
 
-.req-status.ongoing {
+.req-status.ongoing-status {
     /* font-weight: bold; */
     color: var(--font-text);
 }

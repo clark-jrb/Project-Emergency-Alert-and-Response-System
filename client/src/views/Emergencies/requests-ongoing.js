@@ -1,14 +1,41 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
 import { useRequestInfoContext } from '../../context/RequestInfoContext'
 import { useActiveContext } from '../../context/ActiveContext'
+import { useAuth } from '../../context/AuthContext'
+import { useUsersContext } from '../../context/UsersContext'
 import TimeAgo from '../../hooks/buttons/TimeAgo'
 
 const Ongoing = () => {
+    const { currentUser } = useAuth()
+    const { admins } = useUsersContext()
     const { requests } = useRequestContext()
     const { setID } = useRequestInfoContext()
     const { active, setTheActive } = useActiveContext()
+    let ongoingArray = []
+
+    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+
+    const ongoingRequests = requests.filter(request => request.status === 'Ongoing');
+
+    const maxSlots = findAdmin.available;
+
+    function addToOngoingArray(element) {
+        if (ongoingArray.length < maxSlots) {
+            ongoingArray.push(element);
+            console.log(`Added request: ${element}`);
+        } else {
+            console.log('Maximum slots reached. Cannot add more request.');
+        }
+    }
+        
+    ongoingRequests.forEach(request => addToOngoingArray(request));
+
+    // const ongoingArray = ongoingRequests.slice(0, maxSlots);
+
+    console.log(ongoingArray.length);
+    console.log(ongoingArray);
 
     const handleClick = (component) => {
         setID(component)
@@ -17,7 +44,7 @@ const Ongoing = () => {
 
     return (
         <div className='request-ongoing d-flex py-3'>
-            {requests.filter(request => request.status === 'Ongoing').map(request => (
+            {ongoingArray.map(request => (
                 <div 
                     className={`req-data container d-flex py-2 px-0 ${active === request.id ? 'active' : ''}`} 
                     key={request.id} 
@@ -61,7 +88,7 @@ const Ongoing = () => {
                     </div>
 
                     <div className='req-status-con w-25'>
-                        <p className={`m-0 req-status ongoing`}>
+                        <p className={`m-0 req-status ongoing-status`}>
                             <i className="fa-solid fa-clock-rotate-left"></i>
                             {/* <br/> */}
                             &nbsp;

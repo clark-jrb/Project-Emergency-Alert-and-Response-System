@@ -61,7 +61,7 @@ const Complete = () => {
                     </div>
 
                     <div className='req-status-con w-25'>
-                        <p className={`m-0 req-status complete`}>
+                        <p className={`m-0 req-status complete-status`}>
                             <i className="fa-regular fa-circle-check"></i>
                             {/* <br/> */}
                             &nbsp;
