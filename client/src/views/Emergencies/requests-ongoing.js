@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
+import { useOngoingArray } from '../../context/OngoingArray'
 import { useRequestInfoContext } from '../../context/RequestInfoContext'
 import { useActiveContext } from '../../context/ActiveContext'
 import { useAuth } from '../../context/AuthContext'
@@ -8,34 +9,15 @@ import { useUsersContext } from '../../context/UsersContext'
 import TimeAgo from '../../hooks/buttons/TimeAgo'
 
 const Ongoing = () => {
-    const { currentUser } = useAuth()
-    const { admins } = useUsersContext()
-    const { requests } = useRequestContext()
+    // const { currentUser } = useAuth()
+    // const { admins } = useUsersContext()
+    const { ongoingArray } = useOngoingArray()
     const { setID } = useRequestInfoContext()
     const { active, setTheActive } = useActiveContext()
-    let ongoingArray = []
 
-    const findAdmin = admins.find(admin => admin.email === currentUser.email)
-
-    const ongoingRequests = requests.filter(request => request.status === 'Ongoing');
-
-    const maxSlots = findAdmin.available;
-
-    function addToOngoingArray(element) {
-        if (ongoingArray.length < maxSlots) {
-            ongoingArray.push(element);
-            console.log(`Added request: ${element}`);
-        } else {
-            console.log('Maximum slots reached. Cannot add more request.');
-        }
-    }
-        
-    ongoingRequests.forEach(request => addToOngoingArray(request));
+    // console.log(ongoingArray);
 
     // const ongoingArray = ongoingRequests.slice(0, maxSlots);
-
-    console.log(ongoingArray.length);
-    console.log(ongoingArray);
 
     const handleClick = (component) => {
         setID(component)

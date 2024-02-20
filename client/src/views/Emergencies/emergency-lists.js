@@ -4,6 +4,7 @@ import New from './requests-new'
 import Ongoing from './requests-ongoing'
 import Complete from './requests-complete'
 import { useFilterListContext } from '../../context/FilterListContext'
+import { OngoingArrayProvider } from '../../context/OngoingArray'
 import { useAuth } from '../../context/AuthContext'
 import { useUsersContext } from '../../context/UsersContext'
 import { collection, updateDoc, doc } from 'firebase/firestore'
@@ -71,8 +72,11 @@ const Emergency_lists = () => {
                 </div>
             </div>
             <div className='requests d-flex '>
-                {activeFilter === 'New' && <New />}
-                {activeFilter === 'Ongoing' && <Ongoing />}
+                <OngoingArrayProvider>
+                    {activeFilter === 'New' && <New />}
+                    {activeFilter === 'Ongoing' && <Ongoing />}
+                </OngoingArrayProvider>
+                
                 {activeFilter === 'Complete' && <Complete />}
             </div>
         </div>
