@@ -28,8 +28,6 @@ const AcceptButton = ({ reqID, adminRoute }) => {
                         "status": setStatus
                     }),
                 });
-
-                
     
                 if (response.ok) {
                     // reloadRequests()
@@ -61,8 +59,6 @@ const AcceptButton = ({ reqID, adminRoute }) => {
                         "status": setQueue
                     }),
                 });
-
-                
     
                 if (response.ok) {
                     // reloadRequests()
@@ -79,7 +75,7 @@ const AcceptButton = ({ reqID, adminRoute }) => {
     
     return (
         <div className='accept-cont w-50'>
-            <button className='accept-btn w-100 py-2' onClick={ongoingArray.length === maxSlots ? setInqueue: setOngoing} disabled={isLoading}>
+            <button className='accept-btn w-100 py-2' onClick={ongoingArray.length === maxSlots ? setInqueue : setOngoing} disabled={isLoading}>
                 <i className="fa-solid fa-check"></i> {isLoading ? 'Accepting...' : 'Accept'}
             </button>
         </div>
