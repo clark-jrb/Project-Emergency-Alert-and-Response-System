@@ -5,11 +5,13 @@ import Ongoing from './requests-ongoing'
 import Complete from './requests-complete'
 import { useFilterListContext } from '../../context/FilterListContext'
 import { useAuth } from '../../context/AuthContext'
+import { useOngoingArray } from '../../context/OngoingArray'
 import { useUsersContext } from '../../context/UsersContext'
-import { collection, updateDoc, doc } from 'firebase/firestore'
+import { collection, updateDoc, doc, query, getDocs, where } from 'firebase/firestore'
 import { db } from '../../firebase'
 
 const Emergency_lists = () => {
+    const { ongoingArray } = useOngoingArray()
     const { currentUser } = useAuth()
     const { admins } = useUsersContext()
     const { activeFilter, setTheFilter } = useFilterListContext()
@@ -30,7 +32,7 @@ const Emergency_lists = () => {
         setLimit(isNaN(newLimit) ? 1 : newLimit);
     };
 
-    const handleSetLimit = () => {
+    const handleSetLimit = async () => {
         const adminsCollection = collection(db, `response_team`)
 
         const specAdmin = doc(adminsCollection, findAdmin.id)
@@ -38,6 +40,35 @@ const Emergency_lists = () => {
             available: limit
         })
         console.log(limit);
+
+        const requestCollection = collection(db, `alert_${findAdmin.route}`);
+        const querySnapshot = await getDocs(query(requestCollection, where("status", "==", "Inqueue")))
+
+        let vacant = ongoingArray.findIndex(element => element === undefined)
+        const docsToUpdate = querySnapshot.docs.slice(0, vacant + 2);
+
+        console.log("vacant: ", Math.abs(vacant));
+        console.log("docs that has inqueue: ", docsToUpdate);
+
+        for (const docToUpdate of docsToUpdate) {
+            const specReq = doc(requestCollection, docToUpdate.id);
+
+            // Update the document to have status 'Ongoing'
+            await updateDoc(specReq, {
+                status: 'Ongoing'
+            });
+
+            // Uncomment the line below if you want to log the result
+            console.log(`Document with ID ${docToUpdate.id} updated to "Ongoing"`);
+        }
+
+        if (docsToUpdate.length > 0) {
+            // Uncomment the line below if you want to log the result
+            console.log(`${docsToUpdate.length} document(s) with status "Inqueue" updated to "Ongoing"`);
+        } else {
+            // Uncomment the line below if you want to log the result
+            console.log('No document with status "Inqueue" found');
+        }
         
     }
 
