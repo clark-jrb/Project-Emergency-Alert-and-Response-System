@@ -32,7 +32,7 @@ export const RequestProvider = ({ children }) => {
                 const timepoint = timestamp.toDate()
 
                 const dataComponent = moment(timepoint).format('LL')
-                const timeComponent = moment(timepoint).format('LT')
+                const timeComponent = moment(timepoint).format('LTS')
 
                 return {
                     id: doc.id,
@@ -68,7 +68,7 @@ export const RequestProvider = ({ children }) => {
 
         // Cleanup function to unsubscribe from real-time updates when the component unmounts
         return () => unsubscribe()
-    }, [])
+    }, [findAdmin.route])
 
     // Reload requests
     // const reloadRequests = () => {

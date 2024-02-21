@@ -168,6 +168,10 @@
     color: var(--font-text);
 }
 
+.req-status.inqueue-status {
+    color: var(--font-text);
+}
+
 /* For Information */
 
 .emer-title {
@@ -177,6 +181,9 @@
     border-radius: 10px;
     justify-content: space-between;
     box-shadow: 0 1.5px 3px 0 #ccc;
+    /* width: 69.2%; */
+    /* width:; */
+    flex: 1;
 }
 
 .emer-title.blue {
@@ -216,9 +223,16 @@
     color: var(--red);
 }
 
-/* .forEmer-title {
-    /* font-size: large; */
-/* } */ 
+.forEmer-title {
+    width: fit-content;
+    font-size: large;
+    color: var(--font-text);
+} 
+
+.emer-header-cont {
+    width: 100%;
+    justify-content: space-between;
+}
 
 .forDescriptionLvl {
     gap: 10px;

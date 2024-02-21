@@ -39,7 +39,7 @@ const Emergency_lists = () => {
         updateDoc(specAdmin, {
             available: limit
         })
-        console.log(limit);
+        // console.log(limit);
 
         const requestCollection = collection(db, `alert_${findAdmin.route}`);
         const querySnapshot = await getDocs(query(requestCollection, where("status", "==", "Inqueue")))
@@ -47,8 +47,8 @@ const Emergency_lists = () => {
         let vacant = ongoingArray.findIndex(element => element === undefined)
         const docsToUpdate = querySnapshot.docs.slice(0, vacant + 2);
 
-        console.log("vacant: ", Math.abs(vacant));
-        console.log("docs that has inqueue: ", docsToUpdate);
+        // console.log("vacant: ", Math.abs(vacant));
+        // console.log("docs that has inqueue: ", docsToUpdate);
 
         for (const docToUpdate of docsToUpdate) {
             const specReq = doc(requestCollection, docToUpdate.id);
@@ -59,17 +59,16 @@ const Emergency_lists = () => {
             });
 
             // Uncomment the line below if you want to log the result
-            console.log(`Document with ID ${docToUpdate.id} updated to "Ongoing"`);
+            // console.log(`Document with ID ${docToUpdate.id} updated to "Ongoing"`);
         }
 
-        if (docsToUpdate.length > 0) {
+        // if (docsToUpdate.length > 0) {
             // Uncomment the line below if you want to log the result
-            console.log(`${docsToUpdate.length} document(s) with status "Inqueue" updated to "Ongoing"`);
-        } else {
+            // console.log(`${docsToUpdate.length} document(s) with status "Inqueue" updated to "Ongoing"`);
+        // } else {
             // Uncomment the line below if you want to log the result
-            console.log('No document with status "Inqueue" found');
-        }
-        
+            // console.log('No document with status "Inqueue" found');
+        // }
     }
 
     useEffect(() => {

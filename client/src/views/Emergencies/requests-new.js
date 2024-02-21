@@ -61,10 +61,13 @@ const New = () => {
                     </div>
                     
                     <div className='req-status-con w-25'>
-                        <p className='m-0 req-status'>
+                        <p className={`m-0 req-status 
+                            ${request.status === 'Inqueue' ? 'inqueue-status' : "N/A"
+                            }`}>
                             {request.status === 'New' ? 
-                                "New" : request.status === 'Inqueue' ? 
-                                "Inqueue" : "N/A"
+                                'New' : request.status === 'Inqueue' ? 
+                                <><i className="fa-regular fa-clock"></i>&nbsp;In Queue</> : 
+                                'N/A'
                             }
                         </p>
                     </div>

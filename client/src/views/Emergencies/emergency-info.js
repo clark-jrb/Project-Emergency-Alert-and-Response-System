@@ -35,39 +35,43 @@ const Emergency_info = () => {
                 <div key={specificReq.id} className='h-100'>
 
                     {/* Header  */}
-                    <div className={`emer-title d-flex px-3 py-2 ${specificReq.emergency_level === '1' ? 
-                                    "blue" : specificReq.emergency_level === '2' ? 
-                                    "green" : specificReq.emergency_level === '3' ? 
-                                    "yellow" : specificReq.emergency_level === '4' ? 
-                                    "red" : ""}`}>
-                        <div className='forEmer-title'>
+                    <div className='d-flex emer-header-cont'>
+                        <div className='forEmer-title px-3 py-2'>
                             <p className='m-0 fs-5 fw-bold'>Emergency # {specificReq.request_no}</p>
                         </div>
-                        <div className='forDescriptionLvl d-flex'>
-                            <div className='forLevel'>
-                                <p className='m-0'>Level »</p>
-                                <p className='m-0 px-2 fs-5 fw-bold'>{specificReq.emergency_level}</p>
+                        <div className={`emer-title d-flex px-3 py-2 ${specificReq.emergency_level === '1' ? 
+                                        "blue" : specificReq.emergency_level === '2' ? 
+                                        "green" : specificReq.emergency_level === '3' ? 
+                                        "yellow" : specificReq.emergency_level === '4' ? 
+                                        "red" : ""}`}>
+                            
+                            <div className='forDescriptionLvl d-flex'>
+                                <div className='forLevel'>
+                                    <p className='m-0'>Level »</p>
+                                    <p className='m-0 px-2 fs-5 fw-bold'>{specificReq.emergency_level}</p>
+                                </div>
+                                <div className='forAlert'>
+                                    <p className='m-0'>Alert »</p>
+                                    <p className={`alertHighlight m-0 px-2 fs-5 fw-bold ${specificReq.emergency_level === '1' ? 
+                                        "blue" : specificReq.emergency_level === '2' ? 
+                                        "green" : specificReq.emergency_level === '3' ? 
+                                        "yellow" : specificReq.emergency_level === '4' ? 
+                                        "red" : ""}`}
+                                    >
+                                        {specificReq.emergency_level === '1' ? 
+                                        "NON-URGENT" : specificReq.emergency_level === '2' ? 
+                                        "SEMI-URGENT" : specificReq.emergency_level === '3' ? 
+                                        "URGENT" : specificReq.emergency_level === '4' ? 
+                                        "IMMEDIATE" : "N/A"}
+                                    </p>
+                                </div>
                             </div>
-                            <div className='forAlert'>
-                                <p className='m-0'>Alert »</p>
-                                <p className={`alertHighlight m-0 px-2 fs-5 fw-bold ${specificReq.emergency_level === '1' ? 
-                                    "blue" : specificReq.emergency_level === '2' ? 
-                                    "green" : specificReq.emergency_level === '3' ? 
-                                    "yellow" : specificReq.emergency_level === '4' ? 
-                                    "red" : ""}`}
-                                >
-                                    {specificReq.emergency_level === '1' ? 
-                                    "NON-URGENT" : specificReq.emergency_level === '2' ? 
-                                    "SEMI-URGENT" : specificReq.emergency_level === '3' ? 
-                                    "URGENT" : specificReq.emergency_level === '4' ? 
-                                    "IMMEDIATE" : "N/A"}
-                                </p>
+                            <div className='close-request-btn' onClick={() => handleCloseBtn(null)}>
+                                <i className="fa-solid fa-xmark"></i>
                             </div>
-                        </div>
-                        <div className='close-request-btn' onClick={() => handleCloseBtn(null)}>
-                            <i className="fa-solid fa-xmark"></i>
                         </div>
                     </div>
+                    
 
                     {/* Content */}
                     <div className='emer-container' key={specificReq.id}>
