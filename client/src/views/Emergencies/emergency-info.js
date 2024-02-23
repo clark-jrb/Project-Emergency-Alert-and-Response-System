@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
 import { useUsersContext } from '../../context/UsersContext'
@@ -89,7 +90,7 @@ const Emergency_info = () => {
 
                                     <p className='m-0 highlight'><i className="fa-regular fa-clock"></i> Time: </p>
                                     <span style={{fontSize: "large", textAlign: "center"}}>
-                                        <p>» {specificReq.time}</p>
+                                        <p>» {moment(specificReq.timestamp).format('LT')}</p>
                                     </span>
 
                                 </div>

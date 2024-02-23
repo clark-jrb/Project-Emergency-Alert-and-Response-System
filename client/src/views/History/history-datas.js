@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import moment from 'moment'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
 import { useRequestsFilterContext } from '../../context/RequestsFilterContext'
@@ -72,7 +73,7 @@ const HistoryDatas = () => {
                                     </div>
                                 </td>
                                 <td className='table-date'>{data.date}</td>
-                                <td className='table-time'>{data.time}</td>
+                                <td className='table-time'>{moment(data.timestamp).format('LT')}</td>
                                 <td className='table-ET'>{data.emergency_type}</td>
                                 <td className='userID-text px-3'>{data.userID}</td>
                                 <td className='data-status'><i className="fa-solid fa-check"></i> {data.status}</td>
