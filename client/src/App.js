@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Router from './Routes'
 import { AuthProvider } from "./context/AuthContext"
 import { UsersProvider } from "./context/UsersContext"
+import { ActiveProvider } from "./context/ActiveContext"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
     <div className="App">
       <UsersProvider>
         <AuthProvider>
-          <Router/>
+          <ActiveProvider>
+            <Router/>
+          </ActiveProvider>
         </AuthProvider>
       </UsersProvider>
     </div>

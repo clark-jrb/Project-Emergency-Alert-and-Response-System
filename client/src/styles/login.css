@@ -12,15 +12,54 @@
 }
 
 .login-form {
-    width: 400px;
+    width: auto;
     border-radius: 10px;
+    /* border: #ccc solid 1px; */
+    box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
-.forEmail, .forPass {
+/* .forEmail, .forPass {
 
-}
+} */
 
 .loginTitle {
     text-align: center;
     color: var(--font-text);
+}
+
+.pick-responder {
+    gap: 20px;
+}
+
+/* .pick-usf, .pick-infi {
+    border: #ccc solid 1px;
+} */
+
+.pick-usf-logo, .pick-infi-logo {
+    border: whitesmoke solid 2px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    transition: border 0.2s ease;
+
+}
+
+.pick-usf-logo:hover, .pick-infi-logo:hover {
+    cursor: pointer;
+    border: var(--green) solid 2px;
+}
+
+.pick-usf-logo.active, .pick-infi-logo.active {
+    border: var(--green) solid 2px;
+}
+
+.pick-usf-logo img, .pick-infi-logo img {
+    height: 150px;
+    width: 150px;
+}
+
+.pick-usf-title, .pick-infi-title {
+    text-align: center;
+    color: var(--font-text);
+    font-size: large;
 }
