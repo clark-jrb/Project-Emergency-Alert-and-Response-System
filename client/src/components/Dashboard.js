@@ -2,6 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useAuth } from '../context/AuthContext'
 import { useUsersContext } from '../context/UsersContext'
+import '../styles/dashboard.css'
 
 const Dashboard = () => {
     const { currentUser } = useAuth()
@@ -10,8 +11,15 @@ const Dashboard = () => {
     const isResponder = admins.some(admin => admin.id === currentUser.uid);
 
     return (
-        <div className='dashboard'>
-            {currentUser.uid ? (
+        <div className='dashboard-content p-4'>
+            <div className='dashboard p-4 d-flex'>
+                <div className='adminProfile'></div>
+                <div className='forContent d-flex'>
+                    <div className='totals-section'></div>
+                    <div className='history-section'></div>
+                </div>
+            </div>
+            {/* {currentUser.uid ? (
                 <>
                 <h2>Dashboard</h2>
 
@@ -34,7 +42,7 @@ const Dashboard = () => {
                 </>
             ) : (
                 <p>You are not logged in.</p>
-            )}
+            )} */}
         </div>
     )
 }

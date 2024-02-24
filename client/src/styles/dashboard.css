@@ -1,0 +1,27 @@
+
+.dashboard-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.dashboard {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+}
+
+.adminProfile {
+    height: 100%;
+    width: 25%;
+    border-right: #ccc solid 1px;
+}
+
+.forContent {
+    height: 100%;
+    flex-direction: column;
+}
