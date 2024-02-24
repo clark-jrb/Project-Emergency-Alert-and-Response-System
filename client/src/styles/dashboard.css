@@ -13,6 +13,7 @@
     width: 100%;
     border: #ccc solid 1px;
     border-radius: 10px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
 .adminProfile {
@@ -22,6 +23,35 @@
 }
 
 .forContent {
+    flex: 1;
     height: 100%;
     flex-direction: column;
+}
+
+.totals-section {
+    width: 100%;
+    gap: 10px;
+}
+
+.total-emergency, .total-ongoing, .total-complete, .total-canceled {
+    flex: 1;
+    border: #ccc solid 1px;
+    border-radius: 10px;
+    color: var(--font-text);
+    gap: 3px;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+}
+
+:is(.total-emergency, .total-ongoing, .total-complete, .total-canceled) img {
+    height: 60px;
+}
+
+.total-count {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.total-title {
+    flex: 1;
+    text-align: center;
 }
