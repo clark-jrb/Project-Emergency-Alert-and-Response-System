@@ -2,6 +2,7 @@
     --light-green: #d9f3ea;
     --green: #00b074;
     --font-text: #5d5a6a;
+    --light-green: #CCEFE3;
 }
 
 .login-con {
@@ -9,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--light-green);
 }
 
 .login-form {
@@ -16,6 +18,7 @@
     border-radius: 10px;
     /* border: #ccc solid 1px; */
     box-shadow: 0 1.5px 3px 0 #ccc;
+    background-color: white;
 }
 
 /* .forEmail, .forPass {

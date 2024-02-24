@@ -92,6 +92,7 @@
     gap: 5px;
     padding: 0px 15px;
     color: var(--font-text);
+    transition: color .2s ease;
 }
 
 /* .nav-bottom ul li a:is(:link, :active, :visited) {
@@ -103,17 +104,23 @@
     background-color: var(--light-green);
 } */
 
-.nav-bottom ul li:hover a,
+
 .nav-bottom ul li.active a {
     background-color: rgb(0, 176, 116, 0.2);
     color: var(--green);
     box-shadow: 0 1.5px 3px 0 #ccc;
+    cursor: default;
+}
+
+.nav-bottom ul li:hover a {
+    color: var(--green);
 }
 
 /* ICONS  */
 
 .dashboard-icon, .emergency-icon, .map-icon {
     fill: var(--font-text);
+    transition: fill .2s ease;
 }
 
 .nav-bottom li:hover .dashboard-icon,
@@ -127,6 +134,7 @@
 
 .messages-icon, .history-icon {
     stroke: var(--font-text);
+    transition: stroke .2s ease;
 }
 
 .nav-bottom li:hover .messages-icon,

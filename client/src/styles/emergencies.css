@@ -50,6 +50,7 @@
     color: var(--font-text);
     user-select: none;
     border-radius: 10px;
+    transition: background-color .2s ease;
 }
 
 .new:hover, 
@@ -58,7 +59,7 @@
     /* color: white; */
     background-color: #ccc;
     cursor: pointer;
-    transition: .2s;
+    
 }
 
 .new.active, 

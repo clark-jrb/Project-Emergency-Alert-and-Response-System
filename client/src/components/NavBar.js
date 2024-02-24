@@ -1,8 +1,8 @@
 import React, { useEffect } from "react"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { Dropdown } from 'react-bootstrap'
 import '../styles/navbar.css'
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import logo from '../images/logo/clsu_logo.png'
@@ -13,8 +13,8 @@ import { ReactComponent as MapIcon } from '../images/icons/map.svg'
 import { ReactComponent as HistoryIcon } from '../images/icons/history.svg'
 import { useNavActiveContext } from "../context/NavActiveContext"
 import { useRequestContext } from "../context/RequestContext"
-import { useUsersContext } from "../context/UsersContext";
-import { useMessageContext } from "../context/MessagesContext";
+import { useUsersContext } from "../context/UsersContext"
+import { useMessageContext } from "../context/MessagesContext"
 
 const NavBar = () => {
     const { messCount } = useMessageContext()
@@ -22,26 +22,23 @@ const NavBar = () => {
     const { admins } = useUsersContext()
     const navigate = useNavigate()
     const { count, recentRequest } = useRequestContext()
+    const location = useLocation()
+    const { NavActive, setTheNav } = useNavActiveContext()
 
-    // console.log(recentRequest.status)
+    useEffect(() => {
+        const pathSegments = location.pathname.split('/')
+        const lastSegment = pathSegments[pathSegments.length - 1]
+        setTheNav(lastSegment)
+    }, [location, setTheNav])
 
     const handleSignOut = async () => {
         await signOut()
         navigate('/')
     }
 
-    const { NavActive, setTheNav } = useNavActiveContext()
-
     const handleClick = (e) => {
         setTheNav(e)
     }
-
-    // useEffect(() => {
-    //     if (count === 0) {
-    //         setRRCount([])
-    //     }
-    // }, [count])
-    
 
     return (
         <nav className="navbar">
