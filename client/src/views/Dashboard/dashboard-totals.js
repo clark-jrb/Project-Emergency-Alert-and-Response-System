@@ -73,9 +73,10 @@ const DashboardTotals = ({ requests }) => {
                                 <tr>
                                     <th className='table-num px-1'>#</th>
                                     <th className='table-level'>Level</th>
-                                    <th className='table-time'>Time</th>
-                                    <th className='table-ET'>Emergency Type</th>
-                                    <th>Status</th>
+                                    <th className='table-time-dash'>Time</th>
+                                    <th className='table-ET-dash'>Emergency Type</th>
+                                    <th className='data-status-dash'>Status</th>
+                                    <th className='table-actions'>Action</th>
                                 </tr>
                             </thead>
                             <tbody className='table-tbody'>
@@ -93,9 +94,16 @@ const DashboardTotals = ({ requests }) => {
                                                 L{data.emergency_level}
                                             </div>
                                         </td>
-                                        <td className='table-time'>{moment(data.timestamp).format('LT')}</td>
-                                        <td className='table-ET'>{data.emergency_type}</td>
-                                        <td className='data-status'><i className="fa-solid fa-check"></i> {data.status}</td>
+                                        <td className='table-time-dash'>{moment(data.timestamp).format('LT')}</td>
+                                        <td className='table-ET-dash'>{data.emergency_type}</td>
+                                        <td className='data-status-dash'><i className="fa-solid fa-check"></i> {data.status}</td>
+                                        <td className='table-actions'>
+                                            <button className='go-to-details p-1 px-2 mx-1'>
+                                                {/* <i class="fa-solid fa-chevron-right"/> */}
+                                                Details
+                                            </button>
+                                            <button className='go-to-location p-1 px-2 mx-1'>Locate</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

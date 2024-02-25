@@ -188,3 +188,28 @@
 .tr-table.tr-table-dash {
     height: 60px;
 }
+
+.table-time-dash {
+    width: 150px;
+}
+
+.table-ET-dash {
+    width: 150px;
+}
+
+.data-status-dash {
+    width: 150px;
+}
+
+.table-actions {
+    width: fit-content;
+}
+
+.go-to-details, .go-to-location {
+    /* font-weight: bold; */
+    border: none;
+    border-radius: 10px;
+    background-color: var(--green);
+    color: white;
+    box-shadow: 0 1.5px 3px 0 #ccc;
+}
