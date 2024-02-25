@@ -27,7 +27,7 @@ const New = () => {
                         <p className='m-0'>{request.request_no}</p>
                     </div>
 
-                    <div className='d-flex w-75 ps-3'>
+                    <div className='d-flex w-75 ps-3 h-100'>
                         <div className={`level-logo d-flex 
                             ${request.emergency_level === '1' ? 
                                 "blue" : request.emergency_level === '2' ? 

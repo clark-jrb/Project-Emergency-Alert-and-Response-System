@@ -29,7 +29,7 @@ const Ongoing = () => {
                         <p className='m-0'>{request.request_no}</p>
                     </div>
 
-                    <div className='ps-3 d-flex w-75'>
+                    <div className='ps-3 d-flex w-75 h-100'>
                         <div className={`level-logo d-flex
                             ${request.emergency_level === '1' ? 
                                 "blue" : request.emergency_level === '2' ? 

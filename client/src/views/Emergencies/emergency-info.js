@@ -85,7 +85,7 @@ const Emergency_info = () => {
 
                                     <p className='m-0 highlight'><i className="fa-solid fa-calendar-day"></i> Date: </p>
                                     <span style={{fontSize: "large", textAlign: "center"}}>
-                                        <p>» {specificReq.date}</p>
+                                        <p className="pb-3" style={{borderBottom: "1px solid #ccc"}}>» {specificReq.date}</p>
                                     </span>
 
                                     <p className='m-0 highlight'><i className="fa-regular fa-clock"></i> Time: </p>
