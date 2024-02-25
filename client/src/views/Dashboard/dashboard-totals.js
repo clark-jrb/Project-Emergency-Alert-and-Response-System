@@ -11,6 +11,11 @@ const DashboardTotals = ({ requests }) => {
     let ongoingRequest = requests.filter(request => request.status === 'Ongoing').length;
     let canceledRequest = requests.filter(request => request.status === 'Declined').length;
 
+    const getLvlTotals = (lvl) => {
+        let lvlTotal = requests.filter(request => request.emergency_level === lvl).length;
+        return lvlTotal
+    }
+
     return (
         <div className='forContent d-flex'>
 
@@ -56,103 +61,110 @@ const DashboardTotals = ({ requests }) => {
                 </div>
             </div>
 
-            <div className='history-section d-flex p-4 h-100'>
+            <div className='history-section d-flex p-4'>
                 <div className='today-requests w-75'>
                     <div className='today-request-title-date'>
-                        <p>Today's Requests</p>
+                        <p className=''>Today's Emergencies » <span style={{fontWeight: "bold", fontSize: "large"}}>{moment().format('LL')}</span></p>
                     </div>
-                    <table>
-                        <thead className='mb-2'>
-                            <tr>
-                                <th className='table-num px-1'>#</th>
-                                <th className='table-level'>Level</th>
-                                <th className='table-time'>Time</th>
-                                <th className='table-ET'>Emergency Type</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {requests.map((data) => (
-                                <tr key={data.id} className='tr-table'>
-                                    <td className='table-num px-1'>{data.request_no}</td>
-                                    <td className='table-level td-level px-2'>
-                                        <div className={`td-level-con py-1 
-                                            ${data.emergency_level === '1' ? 
-                                                "blue" : data.emergency_level === '2' ? 
-                                                "green" : data.emergency_level === '3' ? 
-                                                "yellow" : data.emergency_level === '4' ? 
-                                                "red" : "N/A"
-                                            }`}>
-                                            L{data.emergency_level}
-                                        </div>
-                                    </td>
-                                    <td className='table-time'>{moment(data.timestamp).format('LT')}</td>
-                                    <td className='table-ET'>{data.emergency_type}</td>
-                                    <td className='data-status'><i className="fa-solid fa-check"></i> {data.status}</td>
+
+                    <div className='today-request-table'>
+                        <table>
+                            <thead className='mb-2'>
+                                <tr>
+                                    <th className='table-num px-1'>#</th>
+                                    <th className='table-level'>Level</th>
+                                    <th className='table-time'>Time</th>
+                                    <th className='table-ET'>Emergency Type</th>
+                                    <th>Status</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody className='table-tbody'>
+                                {requests.map((data) => (
+                                    <tr key={data.id} className='tr-table tr-table-dash'>
+                                        <td className='table-num px-1'>{data.request_no}</td>
+                                        <td className='table-level td-level px-2'>
+                                            <div className={`td-level-con py-1 
+                                                ${data.emergency_level === '1' ? 
+                                                    "blue" : data.emergency_level === '2' ? 
+                                                    "green" : data.emergency_level === '3' ? 
+                                                    "yellow" : data.emergency_level === '4' ? 
+                                                    "red" : "N/A"
+                                                }`}>
+                                                L{data.emergency_level}
+                                            </div>
+                                        </td>
+                                        <td className='table-time'>{moment(data.timestamp).format('LT')}</td>
+                                        <td className='table-ET'>{data.emergency_type}</td>
+                                        <td className='data-status'><i className="fa-solid fa-check"></i> {data.status}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <div className='totals-per-level d-flex'>
-                    <div className='totals-lvl4 p-3 d-flex'>
+                    <div className='totals-lvl4 p-2 d-flex'>
                         <div className='d-flex'>
                             <div className='totals-lvl4-logo d-flex'>
                                 <p className='m-0'>L4</p>
                             </div>
-                            <div className='totals-lvl4-desc px-3'>
+                            <div className='totals-lvl4-desc px-2'>
+                                <p className='m-0 lvl-desc'>Total</p>
                                 <p className='m-0'>Immediate</p>
                             </div>
                         </div>
                         
-                        <div className='totals-lvl4-count px-2'>
-                            <p className='m-0'>5</p>
+                        <div className='totals-lvl4-count px-3'>
+                            <p className='m-0'>{getLvlTotals('4')}</p>
                         </div>
                     </div>
 
-                    <div className='totals-lvl3 p-3 d-flex'>
+                    <div className='totals-lvl3 p-2 d-flex'>
                         <div className='d-flex'>
                             <div className='totals-lvl3-logo d-flex'>
                                 <p className='m-0'>L3</p>
                             </div>
-                            <div className='totals-lvl3-desc px-3'>
+                            <div className='totals-lvl3-desc px-2'>
+                                <p className='m-0 lvl-desc'>Total</p>
                                 <p className='m-0'>Urgent</p>
                             </div>
                         </div>
                         
-                        <div className='totals-lvl3-count px-2'>
-                            <p className='m-0'>9</p>
+                        <div className='totals-lvl3-count px-3'>
+                            <p className='m-0'>{getLvlTotals('3')}</p>
                         </div>
                     </div>
 
-                    <div className='totals-lvl2 p-3 d-flex'>
+                    <div className='totals-lvl2 p-2 d-flex'>
                         <div className='d-flex'>
                             <div className='totals-lvl2-logo d-flex'>
                                 <p className='m-0'>L2</p>
                             </div>
-                            <div className='totals-lvl2-desc px-3'>
-                                <p className='m-0'>SEMI <br/> Urgent</p>
+                            <div className='totals-lvl2-desc px-2'>
+                                <p className='m-0 lvl-desc'>Total</p>
+                                <p className='m-0'>SEMI-Urgent</p>
                             </div>
                         </div>
                         
-                        <div className='totals-lvl2-count px-2'>
-                            <p className='m-0'>3</p>
+                        <div className='totals-lvl2-count px-3'>
+                            <p className='m-0'>{getLvlTotals('2')}</p>
                         </div>
                     </div>
 
-                    <div className='totals-lvl1 p-3 d-flex'>
+                    <div className='totals-lvl1 p-2 d-flex'>
                         <div className='d-flex'>
                             <div className='totals-lvl1-logo d-flex'>
                                 <p className='m-0'>L1</p>
                             </div>
-                            <div className='totals-lvl1-desc px-3'>
-                                <p className='m-0'>NON <br/> Urgent</p>
+                            <div className='totals-lvl1-desc px-2'>
+                                <p className='m-0 lvl-desc'>Total</p>
+                                <p className='m-0'>NON-Urgent</p>
                             </div>
                         </div>
                         
-                        <div className='totals-lvl1-count px-2'>
-                            <p className='m-0'>0</p>
+                        <div className='totals-lvl1-count px-3'>
+                            <p className='m-0'>{getLvlTotals('1')}</p>
                         </div>
                     </div>
                 </div>

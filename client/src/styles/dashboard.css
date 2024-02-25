@@ -89,10 +89,18 @@
 
 .totals-lvl1-desc, .totals-lvl2-desc, .totals-lvl3-desc, .totals-lvl4-desc {
     font-size: large;
-    font-weight: 500;
+    font-weight: bold;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+    flex-direction: column;
+    /* color: var(--font-text); */
+    flex: 1;
+}
+
+.lvl-desc {
+    font-size: medium;
+    font-weight: lighter;
     color: var(--font-text);
 }
 
@@ -138,4 +146,45 @@
 
 .totals-lvl4-logo {
     background-color: var(--red);
+}
+
+/* DESCRIPTION  */
+.totals-lvl1-desc{
+    color: var(--blue);
+} 
+
+.totals-lvl2-desc {
+    color: var(--green);
+} 
+
+.totals-lvl3-desc {
+    color: var(--yellow);
+}
+
+.totals-lvl4-desc {
+    color: var(--red);
+}
+
+/* .today-requests {
+    height: 100%;
+} */
+
+.table-tbody {
+    height: 300px;
+    display: block;
+    overflow: auto;
+}
+
+.history-section {
+    flex: 1;
+    /* height: 80%; */
+}
+
+.today-request-title-date {
+    font-size: medium;
+    color: var(--font-text);
+}
+
+.tr-table.tr-table-dash {
+    height: 60px;
 }
