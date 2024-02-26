@@ -32,7 +32,7 @@ const DashboardTotals = ({ requests }) => {
 
                 <div className='total-ongoing d-flex p-4'>
                     <div className='total-icon'>
-                        <img src={Ongoing} alt='ambulance-logo'/>
+                        <img src={Ongoing} alt='ongoing-logo'/>
                     </div>
                     <div className='total-title'>
                         <p className='m-0 total-count'>{ongoingRequest}</p>
@@ -96,13 +96,40 @@ const DashboardTotals = ({ requests }) => {
                                         </td>
                                         <td className='table-time-dash'>{moment(data.timestamp).format('LT')}</td>
                                         <td className='table-ET-dash'>{data.emergency_type}</td>
-                                        <td className='data-status-dash'><i className="fa-solid fa-check"></i> {data.status}</td>
+                                        <td className='data-status-dash'>
+                                            {data.status === 'New' ? 
+                                                <>
+                                                    <span style={{ color: "var(--green)", fontWeight: "bold"}}>
+                                                        {data.status}
+                                                    </span>
+                                                </> : data.status === 'Inqueue' ?
+                                                <>
+                                                    <span style={{ color: "var(--font-text)"}}>
+                                                        <i className="fa-regular fa-clock"/> {data.status}
+                                                    </span>
+                                                </> : data.status === 'Ongoing' ?
+                                                <>
+                                                    <span style={{ color: "var(--font-text)"}}>
+                                                        <i className="fa-solid fa-clock-rotate-left"/> {data.status}
+                                                    </span>
+                                                </> : data.status === 'Complete' ?
+                                                <>
+                                                    <span style={{ color: "var(--green)"}}>
+                                                        <i className="fa-regular fa-circle-check"></i> {data.status}
+                                                    </span>
+                                                </> :
+                                                <></>
+                                            }
+                                        </td>
                                         <td className='table-actions'>
-                                            <button className='go-to-details p-1 px-2 mx-1'>
-                                                {/* <i class="fa-solid fa-chevron-right"/> */}
-                                                Details
-                                            </button>
-                                            <button className='go-to-location p-1 px-2 mx-1'>Locate</button>
+                                            {data.status === 'New' || data.status === 'Ongoing' || data.status === 'Inqueue' ? 
+                                                <>
+                                                    <button className='go-to-details p-1 px-2 mx-1'>
+                                                        Details
+                                                    </button>
+                                                    <button className='go-to-location p-1 px-2 mx-1'>Locate</button>
+                                                </> : 
+                                                <></>}
                                         </td>
                                     </tr>
                                 ))}

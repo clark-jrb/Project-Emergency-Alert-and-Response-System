@@ -7,6 +7,7 @@ import { useUsersContext } from '../context/UsersContext'
 import { useActiveContext } from '../context/ActiveContext'
 import doktor from '../images/logo/doktor.png'
 import sekyu from '../images/logo/sekyu.png'
+import kap from '../images/logo/kap.png'
 
 const Login = () => {
     const { admins } = useUsersContext()
@@ -67,7 +68,7 @@ const Login = () => {
                             className={`pick-usf-logo d-flex ${activeAdmin === 'usf@example.com' ? 'active' : ''}`} 
                             onClick={() => {handleAdmin('usf@example.com')}}
                         >
-                            <img src={sekyu} alt='sekyu-logo'></img>
+                            <img src={kap} alt='sekyu-logo'></img>
                         </div>
                     </div>
 

@@ -228,10 +228,12 @@ tr {
 
 .table-num {
     width: 50px;
+    color: var(--font-text);
 }
 
 .table-date {
     width: 200px;
+    color: var(--font-text);
 }
 
 .table-level {
@@ -240,6 +242,7 @@ tr {
 
 .table-ET {
     width: 250px;
+    color: var(--font-text);
 }
 
 .table-user {
@@ -248,6 +251,7 @@ tr {
 
 .table-time {
     width: 100px;
+    color: var(--font-text);
 }
 
 .userID-text {
@@ -256,6 +260,7 @@ tr {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: var(--font-text);
     /* padding: 0 5px 0 5px; */
 }
 

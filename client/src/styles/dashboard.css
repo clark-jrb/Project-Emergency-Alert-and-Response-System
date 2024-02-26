@@ -189,12 +189,18 @@
     height: 60px;
 }
 
+.table-num {
+    color: var(--font-text);
+}
+
 .table-time-dash {
     width: 150px;
+    color: var(--font-text);
 }
 
 .table-ET-dash {
     width: 150px;
+    color: var(--font-text);
 }
 
 .data-status-dash {

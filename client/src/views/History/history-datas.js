@@ -76,7 +76,7 @@ const HistoryDatas = () => {
                                 <td className='table-time'>{moment(data.timestamp).format('LT')}</td>
                                 <td className='table-ET'>{data.emergency_type}</td>
                                 <td className='userID-text px-3'>{data.userID}</td>
-                                <td className='data-status'><i className="fa-solid fa-check"></i> {data.status}</td>
+                                <td className='data-status'><i className="fa-regular fa-circle-check"></i> {data.status}</td>
                             </tr>
                         ))}
                     </tbody>
