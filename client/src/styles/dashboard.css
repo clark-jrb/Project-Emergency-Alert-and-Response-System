@@ -20,6 +20,7 @@
     height: 100%;
     width: 25%;
     border-right: #ccc solid 1px;
+    flex-direction: column;
 }
 
 .forContent {
@@ -218,4 +219,40 @@
     background-color: var(--green);
     color: white;
     box-shadow: 0 1.5px 3px 0 #ccc;
+}
+
+/* ADMIN PROFILE  */
+
+.set-status-buttons {
+    /* border: #ccc solid 1px; */
+    border-radius: 10px;
+    gap: 10px;
+    background-color: whitesmoke;
+}
+
+
+.set-online, .set-away {
+    text-align: center;
+    border: whitesmoke solid 2px;
+    flex: 1;
+    border-radius: 10px;
+    color: var(--font-text);
+}
+
+.set-online:hover, .set-away:hover {
+    cursor: pointer;
+}
+
+.set-online.active {
+    border: var(--green) solid 2px;
+    background-color: var(--light-green);
+    box-shadow: 0 1.5px 3px 0 #ccc;
+    color: var(--green);
+}
+
+.set-away.active {
+    border: var(--red) solid 2px;
+    background-color: var(--light-red);
+    box-shadow: 0 1.5px 3px 0 #ccc;
+    color: var(--red);
 }

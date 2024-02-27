@@ -1,11 +1,19 @@
 import React, { createContext, useContext, useState } from 'react'
+import { useAuth } from './AuthContext'
+import { useUsersContext } from './UsersContext'
 
 const ActiveContext = createContext()
 
 export const ActiveProvider = ({ children }) => {
+    const { currentUser } = useAuth()
+    const { admins } = useUsersContext()
+
+    const findAdmin = admins.find(admin => admin.id === currentUser.uid);
+
     const [active, setActive] = useState(null)
     const [activeUser, setActiveUser] = useState(null)
     const [activeAdmin, setActiveAdmin] = useState(null)
+    const [activeStatus, setActiveStatus] = useState(findAdmin.status)
 
     const setTheActive = (id) => {
         setActive(id)
@@ -19,6 +27,10 @@ export const ActiveProvider = ({ children }) => {
         setActiveAdmin(id)
     }
 
+    const setTheActiveStatus = (id) => {
+        setActiveStatus(id)
+    }
+
     // console.log(activeUser);
 
     return (
@@ -28,7 +40,9 @@ export const ActiveProvider = ({ children }) => {
         activeUser,
         setTheActiveUser,
         activeAdmin,
-        setTheActiveAdmin
+        setTheActiveAdmin,
+        activeStatus,
+        setTheActiveStatus
     }}>
         {children}
     </ActiveContext.Provider>

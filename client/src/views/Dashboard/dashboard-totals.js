@@ -1,19 +1,34 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'
 import Siren from '../../images/logo/siren.png'
 import Ongoing from '../../images/logo/ongoing.png'
 import Cancel from  '../../images/logo/cancel.png'
 import Checked from '../../images/logo/checked.png'
 import moment from 'moment';
+import { useNavActiveContext } from '../../context/NavActiveContext';
+import { useActiveContext } from '../../context/ActiveContext';
 
-const DashboardTotals = ({ requests }) => {
+const DashboardTotals = ({ requests, currentUser, admins }) => {
+    const { setTheNav } = useNavActiveContext()
+    const { setTheActive } = useActiveContext()
+    const navigate = useNavigate()
+
     let totalRequest = requests.length;
     let completedRequest = requests.filter(request => request.status === 'Complete').length;
     let ongoingRequest = requests.filter(request => request.status === 'Ongoing').length;
     let canceledRequest = requests.filter(request => request.status === 'Declined').length;
 
+    const currentAdmin = admins.find(admin => admin.id === currentUser.uid)
+
     const getLvlTotals = (lvl) => {
         let lvlTotal = requests.filter(request => request.emergency_level === lvl).length;
         return lvlTotal
+    }
+
+    const handleDetailsBtn = (e) => {
+        navigate(`/${currentAdmin.route}/emergencies`)
+        setTheActive(e)
+        setTheNav('emergencies')
     }
 
     return (
@@ -124,7 +139,7 @@ const DashboardTotals = ({ requests }) => {
                                         <td className='table-actions'>
                                             {data.status === 'New' || data.status === 'Ongoing' || data.status === 'Inqueue' ? 
                                                 <>
-                                                    <button className='go-to-details p-1 px-2 mx-1'>
+                                                    <button className='go-to-details p-1 px-2 mx-1' onClick={() => handleDetailsBtn(data.id)}>
                                                         Details
                                                     </button>
                                                     <button className='go-to-location p-1 px-2 mx-1'>Locate</button>
