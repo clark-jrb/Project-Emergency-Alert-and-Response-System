@@ -24,8 +24,10 @@ const DashboardEdit = ({ currentUser, admins }) => {
     return (
         <div className='adminProfile d-flex px-4'>
             <div className='set-admin-status'>
-                <p className='m-0'>Set status</p>
-                <div className='set-status-buttons d-flex p-2 online'>
+                <span style={{color: "var(--font-text)"}}>
+                    <p className='m-0'>Set status</p>
+                </span>
+                <div className='set-status-buttons d-flex p-2 my-2 online'>
                     <div className={`set-online p-2 ${activeStatus === 'online' ? 'active' : ''}`} onClick={() => handleSetStatus('online')}>
                         <i className="fa-solid fa-circle"/> Online
                     </div>

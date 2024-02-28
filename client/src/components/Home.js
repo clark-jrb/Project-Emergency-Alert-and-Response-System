@@ -1,6 +1,6 @@
 import React from 'react'
 import HomeContainer from '../views/Home/HomeContainer'
-import '../views/Home/Home.css'
+import '../styles/Home.css'
 
 const Home = () => {
     return (

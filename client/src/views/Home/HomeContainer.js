@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../Home/clsu_logo.png'
+import logo from '../../images/logo/clsu_logo.png'
 import { useNavigate } from 'react-router-dom'
 
 const HomeContainer = () => {
