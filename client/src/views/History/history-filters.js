@@ -8,6 +8,7 @@ const HistoryFilters = () => {
     const { setTheLevelFilter, setTheMonthFilter, setTheYearFilter } = useRequestsFilterContext()
     const [month, setMonth] = useState('Month')
     const [year, setYear] = useState('Year')
+    const [filterLvlActive, setFilterLvlActive] = useState('all')
 
     // Handler function to update the selected value
     const handleMonthChange  = (event) => {
@@ -32,13 +33,15 @@ const HistoryFilters = () => {
         setTheYearFilter('')
     }
 
-    const resetLevel = () => {
+    const resetLevel = (e) => {
         setTheLevelFilter('')
+        setFilterLvlActive(e)
     }
 
     // HandleClick to filter emergency level
-    const handleFilterLevel = (event) => {
-        setTheLevelFilter(event)
+    const handleFilterLevel = (e) => {
+        setTheLevelFilter(e)
+        setFilterLvlActive(e)
     }
 
     // List of months for the dropdown
@@ -89,12 +92,13 @@ const HistoryFilters = () => {
             <div className='sortByLevel px-4 pt-3'>
                 <div className='sort-title pt-2'>
                     <p className='m-0 lvl-title'>Level of Emergency</p>
-                    <div className='all-btn' onClick={resetLevel}>
+                    {/* set all */}
+                    <div className={`all-btn ${filterLvlActive === 'all' ? 'active' : ''}`} onClick={() => resetLevel('all')}>
                         All <i className="fa-solid fa-check-double"></i>
                     </div>
                 </div>
                 {/* LEVEL 1 */}
-                <div className='forLvl one d-flex mt-3' onClick={() => handleFilterLevel('1')}>
+                <div className={`forLvl one d-flex mt-3 ${filterLvlActive === '1' ? 'active' : ''}`} onClick={() => handleFilterLevel('1')}>
                     <div className='lvl-logo one w-25'>
                         <p className='m-0'>L1</p>
                     </div>
@@ -106,7 +110,7 @@ const HistoryFilters = () => {
                     </div>
                 </div>
                 {/* LEVEL 2 */}
-                <div className='forLvl two d-flex mt-3' onClick={() => handleFilterLevel('2')}>
+                <div className={`forLvl two d-flex mt-3 ${filterLvlActive === '2' ? 'active' : ''}`} onClick={() => handleFilterLevel('2')}>
                     <div className='lvl-logo two w-25'>
                         <p className='m-0'>L2</p>
                     </div>
@@ -118,7 +122,7 @@ const HistoryFilters = () => {
                     </div>
                 </div>
                 {/* LEVEL 3 */}
-                <div className='forLvl three d-flex mt-3' onClick={() => handleFilterLevel('3')}>
+                <div className={`forLvl three d-flex mt-3 ${filterLvlActive === '3' ? 'active' : ''}`} onClick={() => handleFilterLevel('3')}>
                     <div className='lvl-logo three w-25'>
                         <p className='m-0'>L3</p>
                     </div>
@@ -130,7 +134,7 @@ const HistoryFilters = () => {
                     </div>
                 </div>
                 {/* LEVEL 4 */}
-                <div className='forLvl four d-flex mt-3' onClick={() => handleFilterLevel('4')}>
+                <div className={`forLvl four d-flex mt-3 ${filterLvlActive === '4' ? 'active' : ''}`} onClick={() => handleFilterLevel('4')}>
                     <div className='lvl-logo four w-25'>
                         <p className='m-0'>L4</p>
                     </div>

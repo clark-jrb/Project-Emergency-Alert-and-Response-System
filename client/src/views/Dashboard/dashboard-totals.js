@@ -7,10 +7,12 @@ import Checked from '../../images/logo/checked.png'
 import moment from 'moment';
 import { useNavActiveContext } from '../../context/NavActiveContext';
 import { useActiveContext } from '../../context/ActiveContext';
+import { useLocateContext } from '../../context/LocateContext';
 
 const DashboardTotals = ({ requests, currentUser, admins }) => {
     const { setTheNav } = useNavActiveContext()
     const { setTheActive } = useActiveContext()
+    const { setLocation } = useLocateContext()
     const navigate = useNavigate()
 
     let totalRequest = requests.length;
@@ -29,6 +31,11 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
         navigate(`/${currentAdmin.route}/emergencies`)
         setTheActive(e)
         setTheNav('emergencies')
+    }
+
+    const handleLocateBtn = (e) => {
+        setLocation(e)
+        navigate(`/${currentAdmin.route}/map`)
     }
 
     return (
@@ -142,7 +149,7 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                                                     <button className='go-to-details p-1 px-2 mx-1' onClick={() => handleDetailsBtn(data.id)}>
                                                         Details
                                                     </button>
-                                                    <button className='go-to-location p-1 px-2 mx-1'>Locate</button>
+                                                    <button className='go-to-location p-1 px-2 mx-1' onClick={() => handleLocateBtn(data.location)}>Locate</button>
                                                 </> : 
                                                 <></>}
                                         </td>

@@ -97,6 +97,10 @@ option {
     cursor: pointer;
 }
 
+.all-btn.active {
+    color: var(--green);
+}
+
 .reset-btn {
     color: var(--font-text);
 }
@@ -145,6 +149,10 @@ option {
     background-color: rgb(45, 156, 219, .20);
 }
 
+.forLvl.one.active {
+    border: var(--blue) solid 3px;
+}
+
 .lvl-logo.one {
     background-color: var(--blue);
     border: var(--light-blue) solid 3px;
@@ -152,6 +160,10 @@ option {
 
 .forLvl.two  {
     background-color: rgb(0, 176, 116, .20);
+}
+
+.forLvl.two.active {
+    border: var(--green) solid 3px;
 }
 
 .lvl-logo.two {
@@ -163,6 +175,10 @@ option {
     background-color: rgb(247, 198, 4, .20);
 }
 
+.forLvl.three.active {
+    border: var(--yellow) solid 3px;
+}
+
 .lvl-logo.three {
     background-color: var(--yellow);
     border: var(--light-yellow) solid 3px;
@@ -170,6 +186,10 @@ option {
 
 .forLvl.four  {
     background-color: rgb(254, 91, 91, .20);
+}
+
+.forLvl.four.active {
+    border: var(--red) solid 3px;
 }
 
 .lvl-logo.four {

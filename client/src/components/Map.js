@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'leaflet/dist/leaflet.css'
@@ -10,8 +10,10 @@ import { useAuth } from '../context/AuthContext'
 import { useUsersContext } from '../context/UsersContext'
 import { useActiveContext } from '../context/ActiveContext'
 import { useNavActiveContext } from '../context/NavActiveContext'
+import { useLocateContext } from '../context/LocateContext'
 
 const Map = () => {
+    const { toLocate } = useLocateContext()
     const mapRef = useRef(null);
     const { setTheNav } = useNavActiveContext()
     const { setTheActive } = useActiveContext()
@@ -22,7 +24,18 @@ const Map = () => {
     // const [center, setCenter] = useState([15.735976, 120.931406])
     // const map = useMap();
 
-    const currentAdmin = admins.find(admin => admin.id === currentUser.uid)
+    const currentAdmin = admins.find(admin => admin.id === currentUser.uid)   
+
+    const panToThisLocation = [toLocate._lat, toLocate._long]
+    
+    useEffect(() => {
+        // Check if mapRef has been initialized
+        if (mapRef.current && panToThisLocation != []) {
+            
+            mapRef.current.panTo(panToThisLocation, 17);
+        }
+        console.log(toLocate._long);
+    }, [panToThisLocation]);
 
     const handleDetailsBtn = (e) => {
         navigate(`/${currentAdmin.route}/emergencies`)
@@ -31,24 +44,23 @@ const Map = () => {
     }
 
     const handleClickCenter = async (e) => {
-        e.originalEvent.preventDefault();
+        // e.originalEvent.preventDefault();
         const markerPosition = e.target.getLatLng();
         const setThePosition = [markerPosition.lat, markerPosition.lng];
 
-        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${setThePosition[0].toFixed(7)}&lon=${setThePosition[1].toFixed(7)}`);
-        const data = await response.json();
+        // const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${setThePosition[0].toFixed(7)}&lon=${setThePosition[1].toFixed(7)}`);
+        // const data = await response.json();
 
-        if (data && data.display_name) {
-            const locationName = data.display_name;
-            console.log('Location Name:', locationName);
-            // Do something with the location name, e.g., display it in a tooltip or popup.
-        } else {
-            console.log('Location name not found.');
-        }
-        // setCenter(setThePosition)
+        // if (data && data.display_name) {
+        //     const locationName = data.display_name;
+        //     console.log('Location Name:', locationName);
+        //     // Do something with the location name, e.g., display it in a tooltip or popup.
+        // } else {
+        //     console.log('Location name not found.');
+        // }
+        
         mapRef.current.panTo(setThePosition);
         // mapRef.current.setView(setThePosition, mapRef.current.getZoom())
-        // console.log('click');
         console.log('possition: ', setThePosition);
     }
 
