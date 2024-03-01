@@ -1,12 +1,10 @@
-import React from 'react';
-import { useActiveContext } from '../../context/ActiveContext';
+import React, { useState } from 'react';
 import { collection, updateDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase'
 
 const DashboardEdit = ({ currentUser, admins }) => {
-    const { activeStatus, setTheActiveStatus } = useActiveContext()
-
     const findAdmin = admins.find(admin => admin.id === currentUser.uid);
+    const [activeStatus, setActiveStatus] = useState(findAdmin.status)
 
     // console.log(findAdmin.id);
 
@@ -14,7 +12,7 @@ const DashboardEdit = ({ currentUser, admins }) => {
     const specDoc = doc(rtCollection, findAdmin.id)
 
     const handleSetStatus = (e) => {
-        setTheActiveStatus(e)
+        setActiveStatus(e)
 
         updateDoc(specDoc, {
             status: e
