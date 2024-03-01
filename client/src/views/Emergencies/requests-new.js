@@ -45,9 +45,9 @@ const New = () => {
                                 }
                             </p>
                         </div>
-                        <div className='req-information d-flex'>
+                        <div className='req-information d-flex ps-2'>
                             <div>
-                                <p className='m-0'>
+                                <p className='m-0' style={{fontSize: "medium"}}>
                                     {request.emergency_level === '1' ? 
                                         "NON-URGENT" : request.emergency_level === '2' ? 
                                         "SEMI-URGENT" : request.emergency_level === '3' ? 
@@ -80,4 +80,4 @@ const New = () => {
     )
 }
 
-export default New
+export default React.memo(New)

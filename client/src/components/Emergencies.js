@@ -23,4 +23,4 @@ const Emergencies = () => {
     )
 }
 
-export default Emergencies
+export default React.memo(Emergencies)

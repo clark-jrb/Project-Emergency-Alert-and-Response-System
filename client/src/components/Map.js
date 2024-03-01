@@ -120,4 +120,4 @@ const Map = () => {
     )
 }
 
-export default Map
+export default React.memo(Map)

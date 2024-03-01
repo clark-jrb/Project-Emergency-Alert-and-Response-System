@@ -148,8 +148,10 @@
 }
 
 .req-information {
+    font-size: small;
+    justify-content: center;
+    align-items: center;
     width: auto;
-    padding: 0 .5rem;
     color: var(--font-text);
 }
 

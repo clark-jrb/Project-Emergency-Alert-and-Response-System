@@ -16,4 +16,4 @@ const History = () => {
     )
 }
 
-export default History
+export default React.memo(History)
