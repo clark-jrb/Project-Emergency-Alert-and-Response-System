@@ -52,7 +52,16 @@
     font-size: x-large;
 }
 
+.total-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .total-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1;
     text-align: center;
 }

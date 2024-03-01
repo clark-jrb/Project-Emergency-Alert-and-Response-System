@@ -47,8 +47,10 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                         <img src={Siren} alt='siren-logo'/>
                     </div>
                     <div className='total-title'>
-                        <p className='m-0 total-count'>{totalRequest}</p>
-                        <p className='m-0'>Total Emergencies</p>
+                        <div>
+                            <p className='m-0 total-count'>{totalRequest}</p>
+                            <p className='m-0' style={{fontSize: 'small'}}>Total Emergencies</p>
+                        </div>
                     </div>
                 </div>
 
@@ -57,8 +59,10 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                         <img src={Ongoing} alt='ongoing-logo'/>
                     </div>
                     <div className='total-title'>
-                        <p className='m-0 total-count'>{ongoingRequest}</p>
-                        <p className='m-0'>Total On Going</p>
+                        <div>
+                            <p className='m-0 total-count'>{ongoingRequest}</p>
+                            <p className='m-0' style={{fontSize: 'small'}}>Total On Going</p>
+                        </div>
                     </div>
                 </div>
 
@@ -67,8 +71,10 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                         <img src={Checked} alt='checked-logo'/>
                     </div>
                     <div className='total-title'>
-                        <p className='m-0 total-count'>{completedRequest}</p>
-                        <p className='m-0'>Total Completed</p>
+                        <div>
+                            <p className='m-0 total-count'>{completedRequest}</p>
+                            <p className='m-0' style={{fontSize: 'small'}}>Total Completed</p>
+                        </div>
                     </div>
                 </div>
 
@@ -77,8 +83,10 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                         <img src={Cancel} alt='cancel-logo'/>
                     </div>
                     <div className='total-title'>
-                        <p className='m-0 total-count'>{canceledRequest}</p>
-                        <p className='m-0'>Total Canceled</p>
+                        <div>
+                            <p className='m-0 total-count'>{canceledRequest}</p>
+                            <p className='m-0' style={{fontSize: 'small'}}>Total Canceled</p>
+                        </div>
                     </div>
                 </div>
             </div>

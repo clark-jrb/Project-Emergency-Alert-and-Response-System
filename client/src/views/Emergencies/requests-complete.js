@@ -70,7 +70,9 @@ const Complete = () => {
                     </div>
 
                     <div className='duration'>
-                        <p className='m-0'><TimeAgo date={request.date} time={request.time}></TimeAgo></p>
+                        <p className='m-0'>
+                            <TimeAgo date={request.date} time={request.time}></TimeAgo>
+                        </p>
                     </div>
                 </div>
             ))}

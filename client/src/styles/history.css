@@ -39,7 +39,7 @@
     border: var(--green) solid 2px;
     border-radius: 10px;
     height: 40px;
-    width: 150px;
+    width: 100px;
     cursor: pointer;
     transition: border-color 0.2s ease-in-out
 }
@@ -63,7 +63,8 @@ option {
 }
 
 .title-date {
-    width: 85px;
+    flex: 1;
+    /* width: 150px; */
     color: var(--font-text);
 }
 
@@ -113,7 +114,6 @@ option {
 .forMonth, .forYear {
     gap: 10px;
     align-items: center;
-    justify-content: space-between;
 }
 
 .forLvl {
