@@ -50,7 +50,7 @@
     color: var(--font-text);
     user-select: none;
     border-radius: 10px;
-    transition: background-color .2s ease;
+    transition: background-color .3s ease;
 }
 
 .new:hover, 
@@ -89,6 +89,7 @@
     align-items: center;
     cursor: pointer;
     /* user-select: none; */
+    transition: .3s ease;
 }
 
 .req-data:hover {
@@ -455,10 +456,20 @@ p {
 
 .accept-btn {
     background-color: var(--green);
+    transition: .3s ease;
+}
+
+.accept-btn:hover {
+    background-color: var(--hover-green);
 }
 
 .decline-btn {
     background-color: var(--red);
+    transition: .3s ease;
+}
+
+.decline-btn:hover {
+    background-color: var(--hover-red);
 }
 
 .call-btn, .chat-btn {
@@ -471,6 +482,11 @@ p {
 
 .complete-btn {
     background-color: var(--green);
+    transition: .3s ease;
+}
+
+.complete-btn:hover {
+    background-color: var(--hover-green);
 }
 
 .ongoing-cont-status {
@@ -520,7 +536,7 @@ p {
 .close-request-btn:hover {
     cursor: pointer;
     color: #ccc;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 

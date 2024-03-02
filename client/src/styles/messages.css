@@ -175,7 +175,7 @@
 .close-btn:hover {
     cursor: pointer;
     color: #ccc;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .mess-chat {
@@ -215,7 +215,7 @@
 
 .chat-input-field:focus {
     border: var(--font-text) 2px solid;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .send-btn {

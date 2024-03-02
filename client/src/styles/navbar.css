@@ -11,10 +11,8 @@
     --light-blue: #D5EBF8;
     --light-yellow: #FEF4CC;
 
-    --bottom-green: #00895b;
-    --bottom-blue: #e8cbcb;
-    /* --bottom-yellow: ;
-    --bottom-red: ; */
+    --hover-green: #019b68;
+    --hover-red: #ed5555;
 }
 
 .navbar {
@@ -92,7 +90,7 @@
     gap: 5px;
     padding: 0px 15px;
     color: var(--font-text);
-    transition: color .2s ease;
+    transition: color .3s ease;
 }
 
 /* .nav-bottom ul li a:is(:link, :active, :visited) {
@@ -120,7 +118,7 @@
 
 .dashboard-icon, .emergency-icon, .map-icon {
     fill: var(--font-text);
-    transition: fill .2s ease;
+    transition: fill .3s ease;
 }
 
 .nav-bottom li:hover .dashboard-icon,
@@ -134,7 +132,7 @@
 
 .messages-icon, .history-icon {
     stroke: var(--font-text);
-    transition: stroke .2s ease;
+    transition: stroke .3s ease;
 }
 
 .nav-bottom li:hover .messages-icon,

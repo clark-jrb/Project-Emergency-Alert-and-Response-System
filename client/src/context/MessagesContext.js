@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
-import { collection, count, getDocs, onSnapshot, updateDoc, doc } from 'firebase/firestore'
+import { collection, onSnapshot, updateDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase'
 import moment from 'moment'
 import { useAuth } from './AuthContext'
@@ -30,12 +30,9 @@ export const MessageProvider = ({ children }) => {
     
     useEffect(() => {
         onSnapshot(messageCollection, (messageSnapshot) => {
-            // console.log('Main collection updated:', messageSnapshot.docs.map(doc => doc.data()));
 
             if (messageSnapshot.docs.length === 0) {
                 // Handle empty collection
-                console.log('Collection is empty');
-                // You can set state or handle it in any way you prefer
                 setMessages([]);
                 setMessCount(0);
                 return;
@@ -62,7 +59,7 @@ export const MessageProvider = ({ children }) => {
             setMessCount(readFalseCount)
             setLoadingMessages(false)
         });
-    }, []);
+    }, [messageCollection]);
 
     useEffect(() => {
         if (activeMessage != null) {
@@ -70,7 +67,6 @@ export const MessageProvider = ({ children }) => {
 
             if (chatsCollection) {
                 onSnapshot(chatsCollection, (chatsSnapshot) => {
-                    // console.log('Sub-collection updated:', chatsSnapshot.docs.map(doc => doc.data()));
                     const chatData = chatsSnapshot.docs.map((chatDoc) => {
                         const chatTimestamp = chatDoc.data().timestamp.toDate()
                         const chatDate = moment(chatTimestamp).format('LL')
@@ -111,22 +107,7 @@ export const MessageProvider = ({ children }) => {
         } else {
             setChats([])
         }
-    }, [activeMessage]);
-
-
-    // useEffect(() => {
-    //     if (messages.length > 0) {
-    //         console.log(messages);
-    //     }
-    // }, [messages]);
-
-    // useEffect(() => {
-    //     if (chats.length > 0) {
-    //         console.log(chats);
-    //     } else {
-    //         console.log('no chat selected');
-    //     }
-    // }, [chats]);
+    }, [activeMessage, messageCollection]);
 
     return (
         <MessageContext.Provider value={{ 

@@ -41,7 +41,7 @@
     height: 40px;
     width: 100px;
     cursor: pointer;
-    transition: border-color 0.2s ease-in-out
+    transition: border-color 0.3s ease-in-out
 }
 
 .select-box:focus {

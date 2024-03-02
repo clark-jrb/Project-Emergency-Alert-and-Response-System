@@ -254,10 +254,15 @@
     flex: 1;
     border-radius: 10px;
     color: var(--font-text);
+    transition: .3s ease;
 }
 
 .set-online:hover, .set-away:hover {
     cursor: pointer;
+}
+
+.set-online:hover, .set-away:hover{
+    background-color: #ccc;
 }
 
 .set-online.active {
@@ -265,6 +270,7 @@
     background-color: var(--light-green);
     box-shadow: 0 1.5px 3px 0 #ccc;
     color: var(--green);
+    cursor: default;
 }
 
 .set-away.active {
@@ -272,4 +278,5 @@
     background-color: var(--light-red);
     box-shadow: 0 1.5px 3px 0 #ccc;
     color: var(--red);
+    cursor: default;
 }
