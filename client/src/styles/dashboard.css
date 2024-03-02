@@ -175,24 +175,32 @@
     color: var(--red);
 }
 
-/* .today-requests {
+.today-requests {
+    flex-direction: column;
     height: 100%;
-} */
+}
+
+.today-request-table {
+    display: flex;
+    height: 90%;
+}
+
+.the-table {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
 .table-tbody {
-    height: 300px;
-    display: block;
+    flex: 1;
     overflow: auto;
 }
 
-.history-section {
-    flex: 1;
-    /* height: 80%; */
-}
 
 .today-request-title-date {
     font-size: medium;
     color: var(--font-text);
+    height: 10%;
 }
 
 .tr-table.tr-table-dash {

@@ -41,7 +41,7 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
     return (
         <div className='forContent d-flex'>
 
-            <div className='totals-section d-flex px-4'>
+            <div className='totals-section d-flex px-4 h-25'>
                 <div className='total-emergency d-flex p-4'>
                     <div className='total-icon'>
                         <img src={Siren} alt='siren-logo'/>
@@ -49,7 +49,7 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                     <div className='total-title'>
                         <div>
                             <p className='m-0 total-count'>{totalRequest}</p>
-                            <p className='m-0' style={{fontSize: 'small'}}>Total Emergencies</p>
+                            <p className='m-0'>Total Emergencies</p>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                     <div className='total-title'>
                         <div>
                             <p className='m-0 total-count'>{ongoingRequest}</p>
-                            <p className='m-0' style={{fontSize: 'small'}}>Total On Going</p>
+                            <p className='m-0'>Total On Going</p>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                     <div className='total-title'>
                         <div>
                             <p className='m-0 total-count'>{completedRequest}</p>
-                            <p className='m-0' style={{fontSize: 'small'}}>Total Completed</p>
+                            <p className='m-0'>Total Completed</p>
                         </div>
                     </div>
                 </div>
@@ -85,21 +85,21 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                     <div className='total-title'>
                         <div>
                             <p className='m-0 total-count'>{canceledRequest}</p>
-                            <p className='m-0' style={{fontSize: 'small'}}>Total Canceled</p>
+                            <p className='m-0'>Total Canceled</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className='history-section d-flex p-4'>
-                <div className='today-requests w-75'>
+            <div className='history-section d-flex px-4 pt-4 h-75'>
+                <div className='today-requests d-flex w-75'>
                     <div className='today-request-title-date'>
                         <p className=''>Today's Emergencies » <span style={{fontWeight: "bold", fontSize: "large"}}>{moment().format('LL')}</span></p>
                     </div>
 
                     <div className='today-request-table'>
-                        <table>
-                            <thead className='mb-2'>
+                        <table className='the-table'>
+                            <thead className='mb-1'>
                                 <tr>
                                     <th className='table-num px-1'>#</th>
                                     <th className='table-level'>Level</th>
