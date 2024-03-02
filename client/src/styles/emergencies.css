@@ -272,7 +272,7 @@
     border: #ccc solid 1px;
     border-radius: 10px;
     width: 50dvw;
-    height: auto;
+    height: fit-content;
 }
 
 .data {
@@ -481,8 +481,17 @@ p {
     color: var(--font-text);
 }
 
-.completed-cont {
+.completed-cont, .inqueue-cont {
     width: 100%;
+}
+
+.inqueue-bar {
+    text-align: center;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    color: var(--font-text);
+    font-weight: bold;
+    font-size: large;
 }
 
 .completed-bar {

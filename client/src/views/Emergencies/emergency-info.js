@@ -162,8 +162,15 @@ const Emergency_info = () => {
                                     <CompleteButton reqID={specificReq.id} adminRoute={findAdmin.route}/>
                                 )}
                                 {specificReq.status === 'Inqueue' && (
-                                    <div className="w-100">
-                                        <p className="m-0">In Queue</p>
+                                    <div className="inqueue-cont">
+                                        <div className="status-title">
+                                            <p className="mb-2">Status:</p>
+                                        </div>
+                                        <div className='inqueue-bar py-2'>
+                                            <p className="m-0">
+                                                <i className="fa-regular fa-clock"></i>  In Queue
+                                            </p>
+                                        </div>
                                     </div>
                                 )}
                                 {specificReq.status === 'Complete' && (
@@ -172,14 +179,16 @@ const Emergency_info = () => {
                                             <p className="mb-2">Status:</p>
                                         </div>
                                         <div className="completed-bar py-2">
-                                            <p className="m-0">Completed <i className="fa-regular fa-circle-check"></i></p>
+                                            <p className="m-0">
+                                                <i className="fa-regular fa-circle-check"></i> Complete
+                                            </p>
                                         </div>
                                         <div className="status-complete py-2">
                                             <p>Completed at » {specificReq.time_completed}</p>
                                         </div>
                                     </div>
                                 )}
-                                {['New', 'Ongoing', 'Complete'].indexOf(specificReq.status) === -1 && 'N/A'}
+                                {['New', 'Ongoing', 'Complete', 'Inqueue'].indexOf(specificReq.status) === -1 && 'N/A'}
                             </div>
                         </div>
 
@@ -219,7 +228,7 @@ const Emergency_info = () => {
                                             <p className='m-0 py-2'>» {user.email}</p>
                                         </div>
                                     </div>
-
+                                    {/* 
                                     <div className='button_cont mt-3 px-2 py-3'>
                                         <div className='call_message d-flex'>
                                             <button className='call-btn py-2'><i className="fa-regular fa-message"></i> Message</button>
@@ -228,7 +237,7 @@ const Emergency_info = () => {
                                             </div>
                                             <button className='chat-btn py-2'><i className="fa-solid fa-phone"></i> Call</button>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                 </div>
                             ))}
