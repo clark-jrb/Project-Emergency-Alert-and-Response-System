@@ -14,16 +14,12 @@ export const useRequestContext = () => {
 export const RequestProvider = ({ children }) => {
     const { currentUser } = useAuth()
     const { admins } = useUsersContext()
-    const [requests, setRequests] = useState([])
     const [count, setCount] = useState(0)
-    const [recentRequest, setRecentRequest] = useState([])
     const [loading, setLoading] = useState(true)
-
-    // const [adminRoute, setAdminRoute] = useState(null);
+    const [requests, setRequests] = useState([])
+    const [recentRequest, setRecentRequest] = useState([])
 
     const findAdmin = admins.find(admin => admin.email === currentUser.email)
-
-    // console.log('admin route: ', findAdmin.route);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, `alert_${findAdmin.route}`), (snapshot) => {
@@ -38,6 +34,7 @@ export const RequestProvider = ({ children }) => {
                     id: doc.id,
                     date: dataComponent,
                     time: timeComponent,
+                    timestamp: timepoint,
                     ...rest
                 }
             })
@@ -70,17 +67,8 @@ export const RequestProvider = ({ children }) => {
         return () => unsubscribe()
     }, [findAdmin.route])
 
-    // Reload requests
-    // const reloadRequests = () => {
-    //     fetchRequests()
-    // }
-
-    const setRRCount = (e) => {
-        setRecentRequest(e)
-    }
-
     return (
-        <RequestContext.Provider value={{ requests, count, recentRequest, setRRCount }}>
+        <RequestContext.Provider value={{ requests, count, recentRequest }}>
             {!loading && children}
         </RequestContext.Provider>
     )

@@ -9,7 +9,6 @@ import { ReactComponent as SecuritySVG } from '../../images/icons/security.svg'
 import { ReactComponent as AssistSVG } from '../../images/icons/assistance.svg'
 import { ReactComponent as ViolenceSVG } from '../../images/icons/violence.svg'
 import { ReactComponent as AccidentSVG } from '../../images/icons/accident.svg'
-
 import DeclineButton from '../../hooks/buttons/DeclineButton'
 import CompleteButton from '../../hooks/buttons/CompleteButton'
 import AcceptButton from '../../hooks/buttons/AcceptButton'
