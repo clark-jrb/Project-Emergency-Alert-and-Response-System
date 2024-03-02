@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'leaflet/dist/leaflet.css'
@@ -13,29 +13,30 @@ import { useNavActiveContext } from '../context/NavActiveContext'
 import { useLocateContext } from '../context/LocateContext'
 
 const Map = () => {
-    const { toLocate } = useLocateContext()
     const mapRef = useRef(null);
+    const { toLocate } = useLocateContext()
     const { setTheNav } = useNavActiveContext()
     const { setTheActive } = useActiveContext()
     const { admins } = useUsersContext()
     const { currentUser } = useAuth()
     const { requests } = useRequestContext()
     const navigate = useNavigate()
-    // const [center, setCenter] = useState([15.735976, 120.931406])
-    // const map = useMap();
+    const [toThisLoc, setToThisLoc] = useState([])
 
     const currentAdmin = admins.find(admin => admin.id === currentUser.uid)   
-
-    const panToThisLocation = [toLocate._lat, toLocate._long]
     
     useEffect(() => {
+        if (toLocate.length > 0) {
+            setToThisLoc(toLocate)
+            // console.log(toLocate);
+        } 
         // Check if mapRef has been initialized
-        if (mapRef.current && panToThisLocation != []) {
-            
-            mapRef.current.panTo(panToThisLocation, 17);
+        if (mapRef.current && toThisLoc.length > 0) {
+            mapRef.current.panTo(toThisLoc, 17);
+            // console.log(toThisLoc);
         }
-        console.log(toLocate._long);
-    }, [panToThisLocation]);
+    }, [toThisLoc, toLocate]);
+
 
     const handleDetailsBtn = (e) => {
         navigate(`/${currentAdmin.route}/emergencies`)
@@ -60,7 +61,6 @@ const Map = () => {
         // }
         
         mapRef.current.panTo(setThePosition);
-        // mapRef.current.setView(setThePosition, mapRef.current.getZoom())
         console.log('possition: ', setThePosition);
     }
 
