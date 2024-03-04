@@ -134,7 +134,7 @@ const Emergency_info = () => {
                             <div className='section-2'>
                                 <div className='emer-type'>
                                     <p className='m-0 pt-3 highlight'><i className="fa-solid fa-notes-medical"></i> Emergency Type:</p>
-                                    <p className='m-0 py-2 data fs-5'>{specificReq.emergency_type}</p>
+                                    <p className='m-0 py-2 data fs-5' style={{fontWeight: "bold"}}>{specificReq.emergency_type}</p>
                                 </div>
                             </div>
                             {/* Location Section */}

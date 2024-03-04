@@ -76,7 +76,6 @@
     float: left;
     padding: 5px;
     user-select: none;
-
 }
 
 .nav-bottom li a{
@@ -90,7 +89,8 @@
     gap: 5px;
     padding: 0px 15px;
     color: var(--font-text);
-    transition: color .3s ease;
+    transition: color .3s ease, background-color .3s ease;
+    
 }
 
 /* .nav-bottom ul li a:is(:link, :active, :visited) {
@@ -112,6 +112,7 @@
 
 .nav-bottom ul li:hover a {
     color: var(--green);
+    background-color: whitesmoke;
 }
 
 /* ICONS  */
