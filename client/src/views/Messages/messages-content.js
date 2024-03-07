@@ -19,16 +19,6 @@ const MessagesContent = () => {
     const user = users.find(user => user.id === activeUser)
 
     const findAdmin = admins.find(admin => admin.email === currentUser.email)
-    
-    // useEffect(() => {
-    //     if (filteredMessage) {
-            // console.log(filteredMessage);
-    //     }
-    // }, []);
-
-    // useEffect(() => {
-    //     console.log(activeMessage);
-    // }, [activeMessage]);
 
     const messagesCollection = collection(db, `message_${findAdmin.route}`) 
 
@@ -86,47 +76,45 @@ const MessagesContent = () => {
     }
 
     return (
-        <div className='mess-content'>
-            {filteredMessage && (
-                <div className='mess-contents p-4 d-flex'>
+        filteredMessage && (
+            <div className='mess-contents p-4 d-flex'>
 
-                    <div className='mess-header pb-2 d-flex'>
-                        <div className='chat-person-name'>
-                            {user && (
-                                <p className='m-0'>{user.fullname}</p>
-                            )}
-                        </div>
-                        <div className='close-btn' onClick={() => handleCloseBtn(null)}>
-                            <i className="fa-solid fa-xmark"></i>
-                        </div>
+                <div className='mess-header pb-2 d-flex'>
+                    <div className='chat-person-name'>
+                        {user && (
+                            <p className='m-0'>{user.fullname}</p>
+                        )}
                     </div>
-
-                    <div className='mess-body py-2'>
-                        {chats.map(({ id, message, sender }) => (
-                            <div className='mess-chat p-2 px-3' key={id}>
-                                <div className={`mess-chat-container p-2 px-3 ${sender === 'TXmvnpBMntCramMNxwNs' ? 'sender': ''}`}>
-                                    <p className='m-0'>
-                                        {message}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+                    <div className='close-btn' onClick={() => handleCloseBtn(null)}>
+                        <i className="fa-solid fa-xmark"></i>
                     </div>
-
-                    <div className='mess-footer pt-2 '>
-                        <form onSubmit={sendChat}>
-                            <div className='mess-foot-cont d-flex w-50'>
-                                <input className='chat-input-field px-2' value={formValue} onChange={handleInputChange} ></input>
-                                <button className='send-btn px-2' type='submit'>
-                                    <i className="fa-regular fa-paper-plane"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    
                 </div>
-            )}
-        </div>
+
+                <div className='mess-body py-2'>
+                    {chats.map(({ id, message, sender }) => (
+                        <div className='mess-chat p-2 px-3' key={id}>
+                            <div className={`mess-chat-container p-2 px-3 ${sender === 'TXmvnpBMntCramMNxwNs' ? 'sender': ''}`}>
+                                <p className='m-0'>
+                                    {message}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className='mess-footer pt-2 '>
+                    <form onSubmit={sendChat}>
+                        <div className='mess-foot-cont d-flex w-50'>
+                            <input className='chat-input-field px-2' value={formValue} onChange={handleInputChange} ></input>
+                            <button className='send-btn px-2' type='submit'>
+                                <i className="fa-regular fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        )
         
     )
 }

@@ -508,6 +508,7 @@ p {
     color: var(--font-text);
     font-weight: bold;
     font-size: large;
+    box-shadow: inset 0 1.5px 3px 0 #ccc;
 }
 
 .completed-bar {
@@ -558,14 +559,17 @@ p {
 }
 
 .set-limit-button {
+    height: 100%;
     color: white;
     border-radius: 10px;
     background-color: var(--green);
-    border: var(--green) solid 2px;
+    border: none;
+    /* border: var(--green) solid 2px; */
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
 .set-limit-button[disabled] {
     background-color: #ccc;
-    border: #ccc solid 2px;
+    /* border: #ccc solid 2px; */
+    box-shadow: inset 0 1.5px 3px 0 #a0a0a0;
 }
