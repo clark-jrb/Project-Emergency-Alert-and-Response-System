@@ -4,13 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import MessagesList from '../views/Messages/messages-list'
 import MessagesContent from '../views/Messages/messages-content'
 import { FilterListProvider } from '../context/FilterListContext'
+import { ChatsProvider } from '../context/ChatsContext'
 
 const Messages = () => {
     return (
         <div className='messages-content p-4'>
             <FilterListProvider>
                 <MessagesList/>
-                <MessagesContent/>
+
+                <ChatsProvider>
+                    <MessagesContent/>
+                </ChatsProvider>
+                
             </FilterListProvider>
         </div>
     )
