@@ -8,6 +8,10 @@ import { useMessageContext } from './MessagesContext'
 
 const ChatsContext = createContext()
 
+export const useChatsContext = () => {
+    return useContext(ChatsContext)
+}
+
 export const ChatsProvider = ({ children }) => {
     const { currentUser } = useAuth()
     const { admins } = useUsersContext()
@@ -18,6 +22,7 @@ export const ChatsProvider = ({ children }) => {
     const findAdmin = useMemo(() => admins.find(admin => admin.email === currentUser.email), [admins, currentUser.email])
 
     useEffect(() => {
+        
         if (!activeMessage) return // Don't proceed if admin or active message is null
     
         const messageCollection = collection(db, `message_${findAdmin.route}`)
@@ -49,12 +54,10 @@ export const ChatsProvider = ({ children }) => {
     }, [findAdmin.route, activeMessage])
 
     return (
-    <ChatsContext.Provider value={{ chats }}>
-        {!loadingChats && children}
-    </ChatsContext.Provider>
+        <ChatsContext.Provider value={{ chats }}>
+            {!loadingChats && children}
+        </ChatsContext.Provider>
     )
 }
 
-export const useChatsContext = () => {
-    return useContext(ChatsContext)
-}
+

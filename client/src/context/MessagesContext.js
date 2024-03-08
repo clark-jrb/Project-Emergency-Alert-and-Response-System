@@ -40,7 +40,7 @@ export const MessageProvider = ({ children }) => {
 
                 const chatsCollection = collection(doc.ref, 'chats');
                 const unsubscribeChats = onSnapshot(
-                    query(chatsCollection, orderBy('timestamp', 'desc'), limit(1)), // Add limit(1) to get the first document
+                    query(chatsCollection, orderBy('timestamp', 'desc')), // Add limit(1) to get the first document
                     async (chatsSnapshot) => {
                         const addedChats = chatsSnapshot.docChanges().filter((change) => change.type === 'added');
                     
