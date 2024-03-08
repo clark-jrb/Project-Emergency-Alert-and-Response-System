@@ -451,7 +451,7 @@ p {
     border: none;
     border-radius: 10px;
     color: white;
-    box-shadow: 0 1.5px 3px 0 #ccc;
+    transition: box-shadow .3s ease;
 }
 
 .accept-btn {
@@ -461,6 +461,8 @@ p {
 
 .accept-btn:hover {
     background-color: var(--hover-green);
+    box-shadow: 0 1.5px 3px 0 #ccc;
+
 }
 
 .decline-btn {
@@ -470,6 +472,7 @@ p {
 
 .decline-btn:hover {
     background-color: var(--hover-red);
+    box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
 .call-btn, .chat-btn {
@@ -487,6 +490,7 @@ p {
 
 .complete-btn:hover {
     background-color: var(--hover-green);
+    box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
 .ongoing-cont-status {

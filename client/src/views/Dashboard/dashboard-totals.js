@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Siren from '../../images/logo/siren.png'
 import Ongoing from '../../images/logo/ongoing.png'
 import Cancel from  '../../images/logo/cancel.png'
 import Checked from '../../images/logo/checked.png'
-import moment from 'moment';
-import { useNavActiveContext } from '../../context/NavActiveContext';
-import { useActiveContext } from '../../context/ActiveContext';
-import { useLocateContext } from '../../context/LocateContext';
+import moment from 'moment'
+import { useNavActiveContext } from '../../context/NavActiveContext'
+import { useActiveContext } from '../../context/ActiveContext'
+import { useLocateContext } from '../../context/LocateContext'
 
 const DashboardTotals = ({ requests, currentUser, admins }) => {
     const { setTheNav } = useNavActiveContext()
     const { setTheActive } = useActiveContext()
     const { setLocation } = useLocateContext()
+    const [ascending, setAscending] = useState(true)
     const navigate = useNavigate()
 
-    let totalRequest = requests.length;
-    let completedRequest = requests.filter(request => request.status === 'Complete').length;
-    let ongoingRequest = requests.filter(request => request.status === 'Ongoing').length;
-    let canceledRequest = requests.filter(request => request.status === 'Declined').length;
+    let totalRequest = requests.length
+    let completedRequest = requests.filter(request => request.status === 'Complete').length
+    let ongoingRequest = requests.filter(request => request.status === 'Ongoing').length
+    let canceledRequest = requests.filter(request => request.status === 'Declined').length
 
     const currentAdmin = admins.find(admin => admin.id === currentUser.uid)
 
     const getLvlTotals = (lvl) => {
-        let lvlTotal = requests.filter(request => request.emergency_level === lvl).length;
+        let lvlTotal = requests.filter(request => request.emergency_level === lvl).length
         return lvlTotal
     }
 
@@ -37,6 +38,15 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
         setLocation(e)
         navigate(`/${currentAdmin.route}/map`)
     }
+
+    const toggleSortOrder = () => {
+        setAscending((prevAscending) => !prevAscending)
+    }
+
+    const sortedRequests = [...requests].sort((a, b) => {
+        const sortOrder = ascending ? 1 : -1
+        return sortOrder * (b.request_no - a.request_no)
+    })
 
     return (
         <div className='forContent d-flex'>
@@ -101,7 +111,9 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                         <table className='the-table'>
                             <thead className='mb-1'>
                                 <tr>
-                                    <th className='table-num px-1'>#</th>
+                                    <th className='table-num px-1' onClick={toggleSortOrder}>
+                                        # <i className="fa-solid fa-sort" style={{fontSize: 'x-small'}}/>
+                                    </th>
                                     <th className='table-level'>Level</th>
                                     <th className='table-time-dash'>Time</th>
                                     <th className='table-ET-dash'>Emergency Type</th>
@@ -110,7 +122,7 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                                 </tr>
                             </thead>
                             <tbody className='table-tbody'>
-                                {requests.map((data) => (
+                                {sortedRequests.map((data) => (
                                     <tr key={data.id} className='tr-table tr-table-dash'>
                                         <td className='table-num px-1'>{data.request_no}</td>
                                         <td className='table-level td-level px-2'>

@@ -210,6 +210,13 @@
 
 .table-num {
     color: var(--font-text);
+    border-radius: 10px;
+    transition: box-shadow .3s ease;
+}
+
+.table-num:hover {
+    cursor: pointer;
+    box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
 .table-time-dash {

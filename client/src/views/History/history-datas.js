@@ -8,6 +8,7 @@ const HistoryDatas = () => {
     const { levelFilter, statusFilter, monthFilter, yearFilter } = useRequestsFilterContext()
     const { requests } = useRequestContext()
     const [currentPage, setCurrentPage] = useState(1)
+    const [ascending, setAscending] = useState(false)
     const itemsPerPage = 10
 
     // Pagination 
@@ -16,16 +17,16 @@ const HistoryDatas = () => {
     const currentRequests = requests.slice(indexOfFirstItem, indexOfLastItem)
 
     const paginate = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
+        setCurrentPage(pageNumber)
+    }
     
     const nextPage = () => {
-        setCurrentPage((prevPage) => prevPage + 1);
-    };
+        setCurrentPage((prevPage) => prevPage + 1)
+    }
     
     const prevPage = () => {
-        setCurrentPage((prevPage) => prevPage - 1);
-    };
+        setCurrentPage((prevPage) => prevPage - 1)
+    }
 
     const filteredRequests = currentRequests.filter((data) => {
         // Apply filters based on state variables
@@ -39,6 +40,15 @@ const HistoryDatas = () => {
         return levelMatch && statusMatch && dateMatch && yearMatch
     })
 
+    const toggleSortOrder = () => {
+        setAscending((prevAscending) => !prevAscending)
+    }
+
+    const sortedRequests = [...filteredRequests].sort((a, b) => {
+        const sortOrder = ascending ? 1 : -1
+        return sortOrder * (b.request_no - a.request_no)
+    })
+
     return (
         <div className='history-datas p-4'>
             <div className='datas-title px-3 mb-3'>
@@ -48,7 +58,9 @@ const HistoryDatas = () => {
                 <table>
                     <thead className='mb-2'>
                         <tr>
-                            <th className='table-num px-1'>#</th>
+                            <th className='table-num px-1' onClick={toggleSortOrder}>
+                                # <i className="fa-solid fa-sort" style={{fontSize: 'x-small'}}/>
+                            </th>
                             <th className='table-level'>Level</th>
                             <th className='table-date'>Date</th>
                             <th className='table-time'>Time</th>
@@ -58,7 +70,7 @@ const HistoryDatas = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredRequests.map((data) => (
+                        {sortedRequests.map((data) => (
                             <tr key={data.id} className='tr-table'>
                                 <td className='table-num px-1'>{data.request_no}</td>
                                 <td className='table-level td-level px-2'>
