@@ -21,8 +21,24 @@ const AcceptButton = ({ reqID, adminRoute }) => {
             updateDoc(specReq, {
                 status: setGoing
             })
+            
+            const response = await fetch('http://localhost:4000/send-notification', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: 'USF test',
+                    body: 'Request Accepted! A responder has been dispatched',
+                }),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to send notification to server');
+            }
+            console.log('Notification sent to server successfully');
 
             setTheFilter(setGoing)
+
         } catch (error) {
             console.error('Error updating request:', error.message)
         }
