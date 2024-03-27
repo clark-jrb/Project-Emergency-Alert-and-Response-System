@@ -3,13 +3,15 @@ import { useFilterListContext } from '../../context/FilterListContext'
 import { useOngoingArray } from '../../context/OngoingArray'
 import { collection, updateDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase'
+import sendNotification from '../../context/Notification'
 
-const AcceptButton = ({ reqID, adminRoute }) => {
+const AcceptButton = ({ reqID, adminRoute, adminName, reqType }) => {
     const { maxSlots, ongoingArray } = useOngoingArray()
     const { setTheFilter } = useFilterListContext()
     const setGoing = "Ongoing"
     const setQueue = "Inqueue"
     const [isLoading, setIsLoading] = useState(false)
+    const { sendNotif } = sendNotification()
 
     const alertsCollection = collection(db, `alert_${adminRoute}`) 
     const specReq = doc(alertsCollection, reqID)
@@ -22,21 +24,10 @@ const AcceptButton = ({ reqID, adminRoute }) => {
                 status: setGoing
             })
             
-            const response = await fetch('http://localhost:4000/send-notification', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    title: 'USF test',
-                    body: 'Request Accepted! A responder has been dispatched',
-                }),
-            });
-            if (!response.ok) {
-                throw new Error('Failed to send notification to server');
-            }
-            console.log('Notification sent to server successfully');
-
+            sendNotif({
+                title: adminName + ' - ' + reqType,
+                body: 'Request accepted! A responder has been dispatched!'
+            })
             setTheFilter(setGoing)
 
         } catch (error) {
@@ -50,6 +41,11 @@ const AcceptButton = ({ reqID, adminRoute }) => {
 
             updateDoc(specReq, {
                 status: setQueue
+            })
+
+            sendNotif({
+                title: adminName + ' - ' + reqType,
+                body: 'Request received! We will be there soon!'
             })
 
             setTheFilter('New')

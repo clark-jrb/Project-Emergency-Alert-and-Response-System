@@ -151,7 +151,7 @@ const Emergency_info = () => {
                                         <p className="mb-2">Are you ready to take action?</p>
                                     </div>
                                     <div className="d-flex w-100 gap-3">
-                                        <AcceptButton reqID={specificReq.id} adminRoute={findAdmin.route}/>
+                                        <AcceptButton reqID={specificReq.id} adminRoute={findAdmin.route} adminName={findAdmin.userName} reqType={specificReq.emergency_type}/>
                                         <DeclineButton />
                                     </div>
                                 </div>
