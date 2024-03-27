@@ -3,13 +3,15 @@ import { useFilterListContext } from '../../context/FilterListContext'
 import moment from 'moment'
 import { collection, updateDoc, doc, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../firebase'
+import sendNotification from '../../context/Notification'
 
-const CompleteButton = ({ reqID, adminRoute }) => {
+const CompleteButton = ({ reqID, adminRoute, adminName, reqType }) => {
     const { setTheFilter } = useFilterListContext()
     const setStatus = 'Complete'
     const currentDateTime = moment().format('LLLL')
     const [isLoading, setIsLoading] = useState(false)
-    
+    const { sendNotif } = sendNotification()
+
     const alertsCollection = collection(db, `alert_${adminRoute}`)
     const specReq = doc(alertsCollection, reqID)
 
@@ -43,6 +45,11 @@ const CompleteButton = ({ reqID, adminRoute }) => {
 
             setQueueToOngoing()
             setTheFilter(setStatus)
+
+            sendNotif({
+                title: adminName + ' - ' + reqType,
+                body: 'Request complete!'
+            })
             console.log('Request complete')
         } catch (error) {
             console.error('Error completing request:', error.message)

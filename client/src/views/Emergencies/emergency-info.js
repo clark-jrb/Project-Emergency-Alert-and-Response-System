@@ -151,13 +151,28 @@ const Emergency_info = () => {
                                         <p className="mb-2">Are you ready to take action?</p>
                                     </div>
                                     <div className="d-flex w-100 gap-3">
-                                        <AcceptButton reqID={specificReq.id} adminRoute={findAdmin.route} adminName={findAdmin.userName} reqType={specificReq.emergency_type}/>
-                                        <DeclineButton />
+                                        <AcceptButton 
+                                            reqID={specificReq.id} 
+                                            adminRoute={findAdmin.route} 
+                                            adminName={findAdmin.userName} 
+                                            reqType={specificReq.emergency_type}
+                                        />
+                                        <DeclineButton 
+                                            reqID={specificReq.id} 
+                                            adminRoute={findAdmin.route} 
+                                            adminName={findAdmin.userName} 
+                                            reqType={specificReq.emergency_type}
+                                        />
                                     </div>
                                 </div>
                             )}
                             {specificReq.status === 'Ongoing' && (
-                                <CompleteButton reqID={specificReq.id} adminRoute={findAdmin.route}/>
+                                <CompleteButton 
+                                    reqID={specificReq.id} 
+                                    adminRoute={findAdmin.route}
+                                    adminName={findAdmin.userName} 
+                                    reqType={specificReq.emergency_type}
+                                />
                             )}
                             {specificReq.status === 'Inqueue' && (
                                 <div className="inqueue-cont">
