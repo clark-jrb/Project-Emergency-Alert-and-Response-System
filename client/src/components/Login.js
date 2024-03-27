@@ -5,9 +5,8 @@ import { auth } from '../firebase'
 import '../styles/login.css'
 import { useUsersContext } from '../context/UsersContext'
 import { useActiveContext } from '../context/ActiveContext'
-import doktor from '../images/logo/doktor.png'
-import sekyu from '../images/logo/sekyu.png'
-import kap from '../images/logo/kap.png'
+import badge from '../images/logo/badge.png'
+import redcross from '../images/logo/redcross.png'
 
 const Login = () => {
     const { admins } = useUsersContext()
@@ -49,49 +48,54 @@ const Login = () => {
         <div className='login-con'>
             <div className='login-form p-3'>
                 <div className='loginTitle m-3'>
-                    <h2>Log in as</h2>
+                    <span style={{ color: 'var(--green)' }}>
+                        <h2 style={{ fontWeight: 'bold' }}>Hello responders!</h2>
+                    </span>
+                    <p className='m-0' style={{ fontSize: 'medium' }}>Please login according to your role below</p>
                 </div>
-
-                {error && <div className='m-3' style={{ color: 'red' }}>{error}</div>}
 
                 {/* <div className='forEmail m-3'>
                     <input className='form-control' type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div> */}
 
-                <div className='pick-responder d-flex m-3'>
+                <div className='pick-responder d-flex mx-3 py-3'>
 
                     <div className='pick-usf w-50'>
-                        <div className='pick-usf-title'>
-                            <p className='m-0'>USF</p>
-                        </div>
                         <div 
-                            className={`pick-usf-logo d-flex ${activeAdmin === 'usf@example.com' ? 'active' : ''}`} 
+                            className={`pick-usf-logo d-flex p-4 ${activeAdmin === 'usf@example.com' ? 'active' : ''}`} 
                             onClick={() => {handleAdmin('usf@example.com')}}
                         >
-                            <img src={kap} alt='sekyu-logo'></img>
+                            <img src={badge} alt='sekyu-logo'></img>
+                        </div>
+                        <div className='pick-usf-title py-2'>
+                            <p className='m-0'>University Security Force</p>
                         </div>
                     </div>
 
+                    <div className='line'></div>
+
                     <div className='pick-infi w-50'>
-                        <div className='pick-infi-title'>
-                            <p className='m-0'>Infirmary</p>
-                        </div>
                         <div 
-                            className={`pick-infi-logo d-flex ${activeAdmin === 'infirmary@example.com' ? 'active' : ''}`} 
+                            className={`pick-infi-logo d-flex p-4 ${activeAdmin === 'infirmary@example.com' ? 'active' : ''}`} 
                             onClick={() => {handleAdmin('infirmary@example.com')}}
                         >
-                            <img src={doktor} alt='doktor-logo'></img>
+                            <img src={redcross} alt='doktor-logo'></img>
+                        </div>
+                        <div className='pick-infi-title py-2'>
+                            <p className='m-0'>University Infirmary</p>
                         </div>
                     </div>
 
                 </div>
+
+                {error && <div className='error-cont m-3 p-1 px-3' style={{ color: 'var(--red)' }}>{error}</div>}
                 
                 <div className='forPass m-3'>
-                    <input className='form-control' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <input className='input-pass p-2 px-3' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
             
                 <div className='forBtn m-3'>
-                    <button className='btn btn-success' onClick={handleLogin}>Log In</button>
+                    <button className='login-btn w-100 p-2' onClick={handleLogin}>Log In</button>
                 </div>
             </div>
         </div>

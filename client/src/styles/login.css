@@ -10,15 +10,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--light-green);
+    /* background-color: var(--light-green); */
+    background-image: url('../images/background.png');
+    background-position: center;
 }
 
 .login-form {
     width: auto;
     border-radius: 10px;
     /* border: #ccc solid 1px; */
-    box-shadow: 0 1.5px 3px 0 #ccc;
-    background-color: white;
+    /* box-shadow: 0 1.5px 3px 0 #ccc; */
+    background-color: whitesmoke;
+    /* background-color: rgba(255, 255, 255, 0.9); */
+    /* backdrop-filter: blur(5px); */
 }
 
 /* .forEmail, .forPass {
@@ -26,7 +30,7 @@
 } */
 
 .loginTitle {
-    text-align: center;
+    text-align: left;
     color: var(--font-text);
 }
 
@@ -43,13 +47,12 @@
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-    transition: border 0.3s ease;
-
+    transition: border 0.2s ease;
 }
 
 .pick-usf-logo:hover, .pick-infi-logo:hover {
     cursor: pointer;
-    border: var(--green) solid 2px;
+    border: #ccc solid 2px;
 }
 
 .pick-usf-logo.active, .pick-infi-logo.active {
@@ -57,12 +60,55 @@
 }
 
 .pick-usf-logo img, .pick-infi-logo img {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
 }
 
 .pick-usf-title, .pick-infi-title {
     text-align: center;
     color: var(--font-text);
-    font-size: large;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.line {
+    /* width: 1%; */
+    /* height: 100%; */
+    border: solid 1px whitesmoke;
+}
+
+.input-pass {
+    width: 100%;
+    border-radius: 10px;
+    border: #ccc solid 2px;
+    outline: none;
+    transition: border .2s;
+}
+
+.input-pass::placeholder {
+    transition: color .2s ease;
+    color: #ccc;
+
+}
+
+.input-pass:focus {
+    border: var(--green) solid 2px;
+}
+
+.login-btn {
+    background-color: var(--green);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    transition: box-shadow .3s ease, background-color .3s ease;
+}
+
+.login-btn:hover {
+    background-color: var(--hover-green);
+    box-shadow: 0 1.5px 3px 0 #ccc;
+}
+
+.error-cont {
+    border-radius: 5px;
+    background-color: var(--light-red);
 }
