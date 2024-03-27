@@ -6,6 +6,7 @@ import { useChatsContext } from '../../context/ChatsContext'
 import { useAuth } from '../../context/AuthContext'
 import { addDoc, collection, updateDoc, doc, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase'
+import sendNotification from '../../context/Notification'
 
 const MessagesContent = () => {
     const { currentUser } = useAuth()
@@ -14,6 +15,7 @@ const MessagesContent = () => {
     const { users, admins } = useUsersContext()
     const { activeUser } = useActiveContext()
     const [ formValue, setFormValue ] = useState('')
+    const { sendNotif } = sendNotification()
 
     const filteredMessage = messages.find(messages => messages.id === activeMessage)
     const user = users.find(user => user.id === activeUser)
@@ -45,6 +47,11 @@ const MessagesContent = () => {
         const specDoc = doc(messagesCollection, activeMessage)
         updateDoc(specDoc, {
             read: true
+        })
+
+        sendNotif({
+            title: findAdmin.userName,
+            body: formValue
         })
 
         setFormValue('')
