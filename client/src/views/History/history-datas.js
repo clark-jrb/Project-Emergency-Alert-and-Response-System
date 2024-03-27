@@ -31,10 +31,10 @@ const HistoryDatas = () => {
     const filteredRequests = currentRequests.filter((data) => {
         // Apply filters based on state variables
 
-        const levelMatch = !levelFilter || data.emergency_level === levelFilter
-        const statusMatch = !statusFilter || data.status === statusFilter
-        const dateMatch = !monthFilter || data.date.includes(monthFilter)
-        const yearMatch = !yearFilter || data.date.includes(yearFilter)
+        const levelMatch = !levelFilter | data.emergency_level === levelFilter
+        const statusMatch = !statusFilter | data.status === statusFilter | data.status === 'Declined'
+        const dateMatch = !monthFilter | data.date.includes(monthFilter)
+        const yearMatch = !yearFilter | data.date.includes(yearFilter)
     
         // Return true if all filters match
         return levelMatch && statusMatch && dateMatch && yearMatch
@@ -88,7 +88,19 @@ const HistoryDatas = () => {
                                 <td className='table-time'>{moment(data.timestamp).format('LT')}</td>
                                 <td className='table-ET'>{data.emergency_type}</td>
                                 <td className='userID-text px-3'>{data.userID}</td>
-                                <td className='data-status'><i className="fa-regular fa-circle-check"></i> {data.status}</td>
+                                <td className={`data-status 
+                                    ${data.status === 'Complete' ? 'ds-complete' : 
+                                        data.status === 'Declined' ? 'ds-declined' : 'ds-na'}`}
+                                >
+                                    {data.status === 'Complete' ? 
+                                        <>
+                                        <i className="fa-regular fa-circle-check"></i> {data.status}
+                                        </> : data.status === 'Declined' ? 
+                                        <> 
+                                        <i className="fa-solid fa-xmark"></i> {data.status}
+                                        </> : 'N/A'
+                                    }
+                                </td>
                             </tr>
                         ))}
                     </tbody>

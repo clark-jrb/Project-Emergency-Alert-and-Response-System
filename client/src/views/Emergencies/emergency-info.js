@@ -201,7 +201,22 @@ const Emergency_info = () => {
                                     </div>
                                 </div>
                             )}
-                            {['New', 'Ongoing', 'Complete', 'Inqueue'].indexOf(specificReq.status) === -1 && 'N/A'}
+                            {specificReq.status === 'Declined' && (
+                                <div className="declined-cont">
+                                    <div className="status-title">
+                                        <p className="mb-2">Status:</p>
+                                    </div>
+                                    <div className="declined-bar py-2">
+                                        <p className="m-0">
+                                            <i className="fa-solid fa-xmark"></i> Declined
+                                        </p>
+                                    </div>
+                                    <div className="status-complete py-2">
+                                        <p>Declined » {specificReq.time_completed}</p>
+                                    </div>
+                                </div>
+                            )}
+                            {['New', 'Ongoing', 'Complete', 'Inqueue', 'Declined'].indexOf(specificReq.status) === -1 && 'N/A'}
                         </div>
                     </div>
 

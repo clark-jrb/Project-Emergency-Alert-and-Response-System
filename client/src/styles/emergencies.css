@@ -176,6 +176,10 @@
     color: var(--font-text);
 }
 
+.req-status.declined-status {
+    color: var(--red);
+}
+
 /* For Information */
 
 .emer-title {
@@ -501,7 +505,7 @@ p {
     color: var(--font-text);
 }
 
-.completed-cont, .inqueue-cont {
+.completed-cont, .inqueue-cont, .declined-cont {
     width: 100%;
 }
 
@@ -520,6 +524,15 @@ p {
     border-radius: 10px;
     background-color: var(--light-green);
     color: var(--green);
+    font-weight: bold;
+    font-size: large;
+}
+
+.declined-bar {
+    text-align: center;
+    border-radius: 10px;
+    background-color: var(--light-red);
+    color: var(--red);
     font-weight: bold;
     font-size: large;
 }

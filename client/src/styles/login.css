@@ -43,7 +43,7 @@
 } */
 
 .pick-usf-logo, .pick-infi-logo {
-    border: whitesmoke solid 2px;
+    border: #ccc solid 2px;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
@@ -52,7 +52,7 @@
 
 .pick-usf-logo:hover, .pick-infi-logo:hover {
     cursor: pointer;
-    border: #ccc solid 2px;
+    /* border: var(--font-text) solid 2px; */
 }
 
 .pick-usf-logo.active, .pick-infi-logo.active {

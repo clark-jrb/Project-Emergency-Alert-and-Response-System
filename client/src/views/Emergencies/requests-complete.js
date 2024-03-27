@@ -17,7 +17,7 @@ const Complete = () => {
 
     return (
         <div className='request-complete d-flex py-3'>
-            {requests.filter(request => request.status === 'Complete').map(request => (
+            {requests.filter(request => request.status === 'Complete' | request.status === 'Declined').map(request => (
                 <div 
                     className={`req-data container d-flex py-2 px-0 ${active === request.id ? 'active' : ''}`} 
                     key={request.id} 
@@ -61,11 +61,26 @@ const Complete = () => {
                     </div>
 
                     <div className='req-status-con w-25'>
-                        <p className={`m-0 req-status complete-status`}>
-                            <i className="fa-regular fa-circle-check"></i>
-                            {/* <br/> */}
-                            &nbsp;
-                            {request.status}
+                        <p className={`m-0 req-status complete-status 
+                            ${request.status === 'Complete' ? 'complete-status' :
+                                request.status === 'Declined' ? 'declined-status' : "N/A"
+                            }
+                        `}>
+                            {request.status === 'Complete' ? 
+                                <>
+                                    <i className="fa-regular fa-circle-check"></i>
+                                    &nbsp;
+                                    {request.status}
+                                </> 
+                                : request.status === 'Declined' ? 
+                                <>
+                                    <i className="fa-solid fa-xmark"></i>
+                                    &nbsp;
+                                    {request.status}
+                                </> 
+                                :
+                                'N/A'
+                            }
                         </p>
                     </div>
 
