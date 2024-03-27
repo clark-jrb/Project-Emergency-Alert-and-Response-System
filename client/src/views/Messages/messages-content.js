@@ -43,18 +43,19 @@ const MessagesContent = () => {
         };
 
         await addDoc(chatsCollection, chat);
+        setFormValue('')
 
         const specDoc = doc(messagesCollection, activeMessage)
         updateDoc(specDoc, {
             read: true
         })
-
+        
         sendNotif({
             title: findAdmin.userName,
             body: formValue
         })
 
-        setFormValue('')
+        
     }
 
     const handleInputChange = async (e) => {
