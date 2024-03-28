@@ -74,7 +74,8 @@ export const MessageProvider = ({ children }) => {
 
             const resolvedData = await Promise.all(data);
 
-            const readFalseCount = data.filter(item => item.read === false).length
+            const readFalseCount = resolvedData.filter(item => item.read === false).length
+            console.log('read false count: ' + readFalseCount);
 
             setMessages(resolvedData)
             setMessCount(readFalseCount)
