@@ -6,8 +6,6 @@ const DashboardEdit = ({ currentUser, admins }) => {
     const findAdmin = admins.find(admin => admin.id === currentUser.uid);
     const [activeStatus, setActiveStatus] = useState(findAdmin.status)
 
-    // console.log(findAdmin.id);
-
     const rtCollection = collection(db, `response_team`) 
     const specDoc = doc(rtCollection, findAdmin.id)
 

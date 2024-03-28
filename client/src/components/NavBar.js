@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Dropdown } from 'react-bootstrap'
 import '../styles/navbar.css'
+import { Dropdown } from 'react-bootstrap'
 import { Link, useLocation } from "react-router-dom"
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -15,6 +15,8 @@ import { useNavActiveContext } from "../context/NavActiveContext"
 import { useRequestContext } from "../context/RequestContext"
 import { useUsersContext } from "../context/UsersContext"
 import { useMessageContext } from "../context/MessagesContext"
+import { collection, updateDoc, doc } from 'firebase/firestore'
+import { db } from "../firebase"
 
 const NavBar = () => {
     const { messCount } = useMessageContext()
@@ -25,6 +27,11 @@ const NavBar = () => {
     const location = useLocation()
     const { NavActive, setTheNav } = useNavActiveContext()
 
+    const findAdmin = admins.find(admin => admin.id === currentUser.uid);
+
+    const rtCollection = collection(db, `response_team`) 
+    const specDoc = doc(rtCollection, findAdmin.id)
+
     useEffect(() => {
         const pathSegments = location.pathname.split('/')
         const lastSegment = pathSegments[pathSegments.length - 1]
@@ -32,6 +39,11 @@ const NavBar = () => {
     }, [location, setTheNav])
 
     const handleSignOut = async () => {
+
+        updateDoc(specDoc, {
+            status: 'offline'
+        })
+        
         await signOut()
         navigate('/')
     }

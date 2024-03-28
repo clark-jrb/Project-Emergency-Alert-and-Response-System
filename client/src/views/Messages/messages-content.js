@@ -47,7 +47,8 @@ const MessagesContent = () => {
 
         const specDoc = doc(messagesCollection, activeMessage)
         updateDoc(specDoc, {
-            read: true
+            read: true,
+            user_read: false
         })
         
         sendNotif({

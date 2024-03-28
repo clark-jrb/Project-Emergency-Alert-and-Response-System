@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useMemo } from 'react'
-import { collection, onSnapshot, query, orderBy, updateDoc, limit } from 'firebase/firestore'
+import { collection, onSnapshot, query, orderBy, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import moment from 'moment'
 import { useAuth } from './AuthContext'

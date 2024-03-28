@@ -100,7 +100,7 @@
     border: none;
     border-radius: 10px;
     color: white;
-    transition: box-shadow .3s ease, background-color .3s ease;
+    transition: box-shadow .2s ease, background-color .2s ease;
 }
 
 .login-btn:hover {
