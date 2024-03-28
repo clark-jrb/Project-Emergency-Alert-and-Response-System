@@ -70,7 +70,13 @@ const NavBar = () => {
                                         "yellow" : recentRequest.emergency_level === '4' ? 
                                         "red" : "") : ''
                     }`}>
-                        <i className="fa-regular fa-bell fa-xl"></i>
+                        {count > 0 ? 
+                        <>
+                            <i className="fa-regular fa-bell fa-shake fa-xl"></i>
+                        </> : 
+                        <>
+                            <i className="fa-regular fa-bell fa-xl"></i>
+                        </>}
                     </div>
 
                     <div className="notif-message p-2 px-3 d-flex">
