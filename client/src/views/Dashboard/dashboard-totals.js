@@ -111,7 +111,7 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                         <table className='the-table'>
                             <thead className='mb-1'>
                                 <tr>
-                                    <th className='table-num px-1' onClick={toggleSortOrder}>
+                                    <th className='table-num-h px-1' onClick={toggleSortOrder}>
                                         # <i className="fa-solid fa-sort" style={{fontSize: 'x-small'}}/>
                                     </th>
                                     <th className='table-level'>Level</th>
@@ -159,8 +159,12 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                                                     <span style={{ color: "var(--green)"}}>
                                                         <i className="fa-regular fa-circle-check"></i> {data.status}
                                                     </span>
-                                                </> :
-                                                <></>
+                                                </> : data.status === 'Declined' ?
+                                                <>
+                                                    <span style={{ color: "var(--red)"}}>
+                                                        <i className="fa-solid fa-xmark"></i> {data.status}
+                                                    </span>
+                                                </> : <></>
                                             }
                                         </td>
                                         <td className='table-actions'>
@@ -171,7 +175,8 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
                                                     </button>
                                                     <button className='go-to-location p-1 px-2 mx-1' onClick={() => handleLocateBtn(data.location)}>Locate</button>
                                                 </> : 
-                                                <></>}
+                                                <>
+                                                </>}
                                         </td>
                                     </tr>
                                 ))}

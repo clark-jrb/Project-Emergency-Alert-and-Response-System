@@ -208,13 +208,13 @@
     height: 60px;
 }
 
-.table-num {
+.table-num-h {
     color: var(--font-text);
     border-radius: 10px;
     transition: box-shadow .3s ease;
 }
 
-.table-num:hover {
+.table-num-h:hover {
     cursor: pointer;
     box-shadow: 0 1.5px 3px 0 #ccc;
 }

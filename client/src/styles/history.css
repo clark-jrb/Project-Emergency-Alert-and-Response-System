@@ -246,9 +246,13 @@ tr {
     border-bottom: 1px #ccc solid;
 }
 
-.table-num {
+.table-num-h {
     width: 50px;
     color: var(--font-text);
+}
+
+.table-num {
+    width: 50px;
 }
 
 .table-date {

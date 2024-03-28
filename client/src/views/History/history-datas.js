@@ -58,7 +58,7 @@ const HistoryDatas = () => {
                 <table>
                     <thead className='mb-2'>
                         <tr>
-                            <th className='table-num px-1' onClick={toggleSortOrder}>
+                            <th className='table-num-h px-1' onClick={toggleSortOrder}>
                                 # <i className="fa-solid fa-sort" style={{fontSize: 'x-small'}}/>
                             </th>
                             <th className='table-level'>Level</th>
