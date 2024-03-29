@@ -81,7 +81,13 @@ const NavBar = () => {
 
                     <div className="notif-message p-2 px-3 d-flex">
                         <div className="mess-icon">
-                            <i className="fa-regular fa-message fa-xl"></i>
+                            {messCount > 0 ? 
+                            <>
+                                <i class="fa-regular fa-message fa-bounce fa-xl"></i>
+                            </> : 
+                            <>
+                                <i className="fa-regular fa-message fa-xl"></i>
+                            </>}
                         </div>
 
                         {messCount > 0 ? 

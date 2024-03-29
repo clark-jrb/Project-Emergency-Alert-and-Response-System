@@ -156,6 +156,26 @@
     color: var(--font-text);
 }
 
+.ri-1 {
+    color: var(--blue);
+}
+
+.ri-2 {
+    color: var(--green);
+}
+
+.ri-3 {
+    color: var(--yellow);
+}
+
+.ri-4 {
+    color: var(--red);
+}
+
+.ri-1, .ri-2, .ri-3, .ri-4 {
+    font-weight: bold;
+}
+
 .req-status {
     text-align: center;
     font-size: small;

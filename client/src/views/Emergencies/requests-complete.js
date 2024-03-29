@@ -47,7 +47,14 @@ const Complete = () => {
 
                         <div className='req-information d-flex ps-2'>
                             <div>
-                                <p className='m-0' style={{fontSize: "medium"}}>
+                                <p 
+                                className={`m-0 ${request.emergency_level === '1' ? 
+                                "ri-1" : request.emergency_level === '2' ? 
+                                "ri-2" : request.emergency_level === '3' ? 
+                                "ri-3" : request.emergency_level === '4' ? 
+                                "ri-4" : "N/A"}`} 
+                                
+                                style={{fontSize: "medium"}}>
                                     {request.emergency_level === '1' ? 
                                         "NON-URGENT" : request.emergency_level === '2' ? 
                                         "SEMI-URGENT" : request.emergency_level === '3' ? 

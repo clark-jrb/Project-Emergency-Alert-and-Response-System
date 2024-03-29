@@ -162,10 +162,10 @@
 
 /* RED NOTIF */
 
-.notif-animation:hover {
+/* .notif-animation:hover {
     box-shadow: 0 1.5px 3px 0 #ccc;
     cursor: pointer;
-}
+} */
 
 .notif-animation.red{
     box-shadow: 0 1.5px 3px 0 #ccc;
