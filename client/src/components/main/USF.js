@@ -21,17 +21,17 @@ const USF = () => {
     const { currentUser } = useAuth()
     const { admins } = useUsersContext()
 
-    const findAdmin = admins.find(admin => admin.id === currentUser.uid);
+    const findAdmin = admins.find(admin => admin.id === currentUser.uid)
 
-    const rtCollection = collection(db, `response_team`) 
+    const rtCollection = collection(db, `response_team`)
     const specDoc = doc(rtCollection, findAdmin.id)
 
     useEffect(() => {
         updateDoc(specDoc, {
             status: 'online'
         })
-        console.log('Welcome USF, you are now online!');
-    }, []);
+        console.log('Welcome USF, you are now online!')
+    }, [])
 
     return (
             <div className="usf-container">

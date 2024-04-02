@@ -9,9 +9,9 @@ const HomeContainer = () => {
         navigate('/login')
     }
 
-    const registerPage = () => {
-        navigate('/register')
-    }
+    // const registerPage = () => {
+    //     navigate('/register')
+    // }
 
     return (
         <div className="container home-container">
@@ -28,9 +28,9 @@ const HomeContainer = () => {
                     <button className="btn btn-success login-btn" onClick={loginPage}>Login</button>
                 </div>
 
-                <div className="forRegister p-2">
+                {/* <div className="forRegister p-2">
                     <button className="btn btn-success reg-btn" onClick={registerPage}>Register</button>
-                </div>
+                </div> */}
             </div>
         </div>
     )

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form } from 'react-bootstrap'
 import { useRequestsFilterContext } from '../../context/RequestsFilterContext'
 
 const HistoryFilters = () => {

@@ -20,7 +20,8 @@ const Login = () => {
 
     // console.log(findEmail);
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault()
         try {
             await signInWithEmailAndPassword(auth, email, password)
             console.log('Sign-in successful')
@@ -46,7 +47,7 @@ const Login = () => {
 
     return (
         <div className='login-con'>
-            <div className='login-form p-3'>
+            <form className='login-form p-3' onSubmit={handleLogin}>
                 <div className='loginTitle m-3'>
                     <span style={{ color: 'var(--green)' }}>
                         <h2 style={{ fontWeight: 'bold' }}>Hello responders!</h2>
@@ -95,10 +96,11 @@ const Login = () => {
                 </div>
             
                 <div className='forBtn m-3'>
-                    <button className='login-btn w-100 p-2' onClick={handleLogin}>Log In</button>
+                    <button className='login-btn w-100 p-2' type='submit'>Log In</button>
                 </div>
-            </div>
+            </form>
         </div>
+        
     )
 }
 
