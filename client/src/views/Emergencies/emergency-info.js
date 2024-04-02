@@ -9,6 +9,9 @@ import { ReactComponent as AssistSVG } from '../../images/icons/assistance.svg'
 import { ReactComponent as SecuritySVG } from '../../images/icons/security.svg'
 import { ReactComponent as ViolenceSVG } from '../../images/icons/violence.svg'
 import { ReactComponent as AccidentSVG } from '../../images/icons/accident.svg'
+import { ReactComponent as AmbulanceSVG } from '../../images/icons/ambulance.svg'
+import { ReactComponent as InjurySVG } from '../../images/icons/injury.svg'
+import { ReactComponent as MedicSVG } from '../../images/icons/medic.svg'
 import DeclineButton from '../../hooks/buttons/DeclineButton'
 import CompleteButton from '../../hooks/buttons/CompleteButton'
 import AcceptButton from '../../hooks/buttons/AcceptButton'
@@ -123,7 +126,27 @@ const Emergency_info = () => {
                                             "blue" : specificReq.emergency_level === '2' ? 
                                             "green" : specificReq.emergency_level === '3' ? 
                                             "yellow" : specificReq.emergency_level === '4' ? 
-                                            "red" : ""}`} height="65" width="65"></ViolenceSVG> : 'N/A'
+                                            "red" : ""}`} height="65" width="65"></ViolenceSVG> : specificReq.emergency_type === 'Ambulance' 
+                                        ?
+                                            <AmbulanceSVG className={`ambulance-icon ${specificReq.emergency_level === '1' ? 
+                                            "blue" : specificReq.emergency_level === '2' ? 
+                                            "green" : specificReq.emergency_level === '3' ? 
+                                            "yellow" : specificReq.emergency_level === '4' ? 
+                                            "red" : ""}`} height="65" width="65"></AmbulanceSVG> : 
+                                            specificReq.emergency_type === 'Injury' 
+                                        ?
+                                            <InjurySVG className={`injury-icon ${specificReq.emergency_level === '1' ? 
+                                            "blue" : specificReq.emergency_level === '2' ? 
+                                            "green" : specificReq.emergency_level === '3' ? 
+                                            "yellow" : specificReq.emergency_level === '4' ? 
+                                            "red" : ""}`} height="65" width="65"></InjurySVG> :
+                                            specificReq.emergency_type === 'Medic'
+                                        ?
+                                            <MedicSVG className={`medic-icon ${specificReq.emergency_level === '1' ? 
+                                            "blue" : specificReq.emergency_level === '2' ? 
+                                            "green" : specificReq.emergency_level === '3' ? 
+                                            "yellow" : specificReq.emergency_level === '4' ? 
+                                            "red" : ""}`} height="65" width="65"></MedicSVG> : 'N/A'
                                     }
 
                                 </div>

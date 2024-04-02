@@ -469,6 +469,73 @@ p {
     fill: var(--yellow);
 }
 
+/* for Ambulance icon  */
+
+.ambulance-icon {
+    fill: black;
+}
+
+.ambulance-icon.blue {
+    fill: var(--blue);
+}
+
+.ambulance-icon.red {
+    fill: var(--red);
+}
+
+.ambulance-icon.green {
+    fill: var(--green);
+}
+
+.ambulance-icon.yellow {
+    fill: var(--yellow);
+}
+
+/* for injury icon  */
+
+.injury-icon {
+    fill: black;
+}
+
+.injury-icon.blue {
+    fill: var(--blue);
+}
+
+.injury-icon.red {
+    fill: var(--red);
+}
+
+.injury-icon.green {
+    fill: var(--green);
+}
+
+.injury-icon.yellow {
+    fill: var(--yellow);
+}
+
+/* for medic icon  */
+
+.medic-icon {
+    fill: black;
+}
+
+.medic-icon.blue {
+    fill: var(--blue);
+}
+
+.medic-icon.red {
+    fill: var(--red);
+}
+
+.medic-icon.green {
+    fill: var(--green);
+}
+
+.medic-icon.yellow {
+    fill: var(--yellow);
+}
+
+
 /* BUTTONS  */
 
 .accept-btn, .decline-btn, .complete-btn {

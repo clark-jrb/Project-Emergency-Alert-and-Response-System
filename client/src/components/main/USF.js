@@ -11,7 +11,7 @@ import { NavActiveProvider } from "../../context/NavActiveContext"
 import { RequestProvider } from "../../context/RequestContext"
 import { MessageProvider } from "../../context/MessagesContext"
 import { LocateProvider } from "../../context/LocateContext"
-import trylang from '../../images/logo/clsu_logo_nav.png'
+import clsu_logo_nav from '../../images/logo/clsu_logo_nav.png'
 
 const USF = () => {
     return (
@@ -19,7 +19,7 @@ const USF = () => {
                 <RequestProvider>
                     <MessageProvider>
                         <NavActiveProvider>
-                                <NavBar logo={trylang}/>
+                                <NavBar logo={clsu_logo_nav}/>
                                     <LocateProvider>
                                         <div className="content">
                                             <Routes>

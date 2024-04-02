@@ -11,6 +11,7 @@ import { NavActiveProvider } from "../../context/NavActiveContext"
 import { RequestProvider } from "../../context/RequestContext"
 import { MessageProvider } from "../../context/MessagesContext"
 import { LocateProvider } from "../../context/LocateContext"
+import clsu_logo_nav from '../../images/logo/clsu_logo_nav.png'
 
 const Infirmary = () => {
     return (
@@ -18,7 +19,7 @@ const Infirmary = () => {
             <RequestProvider>
                 <MessageProvider>
                     <NavActiveProvider>
-                            <NavBar/>
+                            <NavBar logo={clsu_logo_nav}/>
                                 <LocateProvider>
                                     <div className="content">
                                         <Routes>
