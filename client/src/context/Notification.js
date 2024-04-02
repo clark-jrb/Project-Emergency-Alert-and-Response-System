@@ -2,7 +2,7 @@
 const sendNotification = () => {
     const sendNotif = async (notifData) => {
         try {
-            const response = await fetch('http://localhost:4000/send-notification', {
+            const response = await fetch('https://project-ears-server.onrender.com/send-notification', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -5,7 +5,6 @@ import { Dropdown } from 'react-bootstrap'
 import { Link, useLocation } from "react-router-dom"
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import logo from '../images/logo/clsu_logo.png'
 import { ReactComponent as DashboardIcon } from '../images/icons/dashboard.svg'
 import { ReactComponent as EmergencyIcon } from '../images/icons/emergency.svg'
 import { ReactComponent as MessagesIcon } from '../images/icons/message.svg'
@@ -18,7 +17,7 @@ import { useMessageContext } from "../context/MessagesContext"
 import { collection, updateDoc, doc } from 'firebase/firestore'
 import { db } from "../firebase"
 
-const NavBar = () => {
+const NavBar = ({ logo }) => {
     const { messCount } = useMessageContext()
     const { currentUser, signOut } = useAuth()
     const { admins } = useUsersContext()
@@ -56,7 +55,7 @@ const NavBar = () => {
         <nav className="navbar">
             <div className="nav-top p-1 px-3">
                 <a className="navbar-brand mx-2" href="dashboard">
-                    <img src={logo} alt="logo" width="35" height="35" className="d-inline-block align-text-middle"></img>
+                    <img src={logo} alt="logo-clsu"></img>
                     <span className="system-name mx-1">EARS</span>
                 </a>
                 

@@ -70,7 +70,7 @@ const Map = () => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             />
-            {requests.filter(request => request.status === 'New' || request.status === 'Ongoing').map(request => (
+            {requests.length > 0 && requests.filter(request => request.status === 'New' || request.status === 'Ongoing').map(request => (
                 <Marker 
                     key={request.id} 
                     position={[request.location.latitude, request.location.longitude]} 
