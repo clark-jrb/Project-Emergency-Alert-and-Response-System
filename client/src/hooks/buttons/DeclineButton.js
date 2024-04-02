@@ -4,7 +4,7 @@ import { collection, updateDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase'
 import sendNotification from '../../context/Notification'
 
-const DeclineButton = ({ reqID, adminRoute, adminName, reqType }) => {
+const DeclineButton = ({ reqID, adminRoute, adminName, reqType, token }) => {
     const [isLoading, setIsLoading] = useState(false)
     const { setTheFilter } = useFilterListContext()
     const setDecline = 'Declined'
@@ -23,7 +23,8 @@ const DeclineButton = ({ reqID, adminRoute, adminName, reqType }) => {
             
             sendNotif({
                 title: adminName + ' - ' + reqType,
-                body: 'Request declined'
+                body: 'Request declined',
+                token: token
             })
             setTheFilter('Complete')
 

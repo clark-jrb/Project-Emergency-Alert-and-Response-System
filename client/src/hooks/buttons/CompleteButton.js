@@ -5,7 +5,7 @@ import { collection, updateDoc, doc, getDocs, query, where } from 'firebase/fire
 import { db } from '../../firebase'
 import sendNotification from '../../context/Notification'
 
-const CompleteButton = ({ reqID, adminRoute, adminName, reqType }) => {
+const CompleteButton = ({ reqID, adminRoute, adminName, reqType, token }) => {
     const { setTheFilter } = useFilterListContext()
     const setStatus = 'Complete'
     const currentDateTime = moment().format('LLLL')
@@ -21,7 +21,7 @@ const CompleteButton = ({ reqID, adminRoute, adminName, reqType }) => {
 
             updateDoc(specReq, {
                 status: setStatus,
-                time_completed: currentDateTime
+                time_completed: currentDateTime,
             })
 
             const setQueueToOngoing = async () => {
@@ -48,7 +48,8 @@ const CompleteButton = ({ reqID, adminRoute, adminName, reqType }) => {
 
             sendNotif({
                 title: adminName + ' - ' + reqType,
-                body: 'Request complete!'
+                body: 'Request complete!',
+                token: token
             })
             console.log('Request complete')
         } catch (error) {

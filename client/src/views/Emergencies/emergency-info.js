@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import moment from 'moment'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
@@ -23,6 +23,11 @@ const Emergency_info = () => {
     const { active, setTheActive } = useActiveContext()
 
     const specificReq = requests.find(request => request.id === active)
+    const specificUserReq = users.find(user => specificReq.userID === user.id)
+
+    // useEffect(() => {
+    //     console.log('token id: ' + specificUserReq.fcmToken);
+    // }, [specificUserReq]);
 
     // for Route
     const findAdmin = admins.find(admin => admin.email === currentUser.email)
@@ -179,12 +184,14 @@ const Emergency_info = () => {
                                             adminRoute={findAdmin.route} 
                                             adminName={findAdmin.userName} 
                                             reqType={specificReq.emergency_type}
+                                            token={specificUserReq.fcmToken}
                                         />
                                         <DeclineButton 
                                             reqID={specificReq.id} 
                                             adminRoute={findAdmin.route} 
                                             adminName={findAdmin.userName} 
                                             reqType={specificReq.emergency_type}
+                                            token={specificUserReq.fcmToken}
                                         />
                                     </div>
                                 </div>
@@ -195,6 +202,7 @@ const Emergency_info = () => {
                                     adminRoute={findAdmin.route}
                                     adminName={findAdmin.userName} 
                                     reqType={specificReq.emergency_type}
+                                    token={specificUserReq.fcmToken}
                                 />
                             )}
                             {specificReq.status === 'Inqueue' && (

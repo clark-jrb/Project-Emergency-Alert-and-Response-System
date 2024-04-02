@@ -5,7 +5,7 @@ import { collection, updateDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase'
 import sendNotification from '../../context/Notification'
 
-const AcceptButton = ({ reqID, adminRoute, adminName, reqType }) => {
+const AcceptButton = ({ reqID, adminRoute, adminName, reqType, token }) => {
     const { maxSlots, ongoingArray } = useOngoingArray()
     const { setTheFilter } = useFilterListContext()
     const setGoing = "Ongoing"
@@ -26,7 +26,8 @@ const AcceptButton = ({ reqID, adminRoute, adminName, reqType }) => {
             
             sendNotif({
                 title: adminName + ' - ' + reqType,
-                body: 'Request accepted! A responder has been dispatched!'
+                body: 'Request accepted! A responder has been dispatched!',
+                token: token
             })
             setTheFilter(setGoing)
 
@@ -45,7 +46,8 @@ const AcceptButton = ({ reqID, adminRoute, adminName, reqType }) => {
 
             sendNotif({
                 title: adminName + ' - ' + reqType,
-                body: 'Request received! We will be there soon!'
+                body: 'Request received! We will be there soon!',
+                token: token
             })
 
             setTheFilter('New')
