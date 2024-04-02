@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 import Dashboard from "../Dashboard"
 import Emergencies from "../Emergencies"
@@ -12,8 +12,27 @@ import { RequestProvider } from "../../context/RequestContext"
 import { MessageProvider } from "../../context/MessagesContext"
 import { LocateProvider } from "../../context/LocateContext"
 import clsu_logo_nav from '../../images/logo/clsu_logo_nav.png'
+import { collection, updateDoc, doc } from 'firebase/firestore'
+import { useUsersContext } from "../../context/UsersContext"
+import { useAuth } from "../../context/AuthContext"
+import { db } from '../../firebase.js'
 
 const Infirmary = () => {
+    const { currentUser } = useAuth()
+    const { admins } = useUsersContext()
+
+    const findAdmin = admins.find(admin => admin.id === currentUser.uid);
+
+    const rtCollection = collection(db, `response_team`) 
+    const specDoc = doc(rtCollection, findAdmin.id)
+
+    useEffect(() => {
+        updateDoc(specDoc, {
+            status: 'online'
+        })
+        console.log('Welcome Infirmary, you are now online!');
+    }, []);
+    
     return (
         <div className="infi-container">
             <RequestProvider>

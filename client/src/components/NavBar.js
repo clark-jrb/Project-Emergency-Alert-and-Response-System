@@ -82,7 +82,7 @@ const NavBar = ({ logo }) => {
                         <div className="mess-icon">
                             {messCount > 0 ? 
                             <>
-                                <i class="fa-regular fa-message fa-bounce fa-xl"></i>
+                                <i className="fa-regular fa-message fa-bounce fa-xl"></i>
                             </> : 
                             <>
                                 <i className="fa-regular fa-message fa-xl"></i>

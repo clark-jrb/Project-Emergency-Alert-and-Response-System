@@ -6,25 +6,23 @@ import { useRequestContext } from '../context/RequestContext'
 import '../styles/dashboard.css'
 import DashboardTotals from '../views/Dashboard/dashboard-totals'
 import DashboardEdit from '../views/Dashboard/dashboard-edit'
-import { collection, updateDoc, doc } from 'firebase/firestore'
-import { db } from '../firebase'
 
 const Dashboard = () => {
     const { currentUser } = useAuth()
     const { admins } = useUsersContext()
     const { requests } = useRequestContext()
 
-    const findAdmin = admins.find(admin => admin.id === currentUser.uid);
+    // const findAdmin = admins.find(admin => admin.id === currentUser.uid);
 
-    const rtCollection = collection(db, `response_team`) 
-    const specDoc = doc(rtCollection, findAdmin.id)
+    // const rtCollection = collection(db, `response_team`) 
+    // const specDoc = doc(rtCollection, findAdmin.id)
 
-    useEffect(() => {
-        updateDoc(specDoc, {
-            status: 'online'
-        })
-        // console.log('Welcome, you are now online!');
-    }, [specDoc]);
+    // useEffect(() => {
+    //     updateDoc(specDoc, {
+    //         status: 'online'
+    //     })
+    //     // console.log('Welcome, you are now online!');
+    // }, [specDoc]);
 
     // const isResponder = admins.some(admin => admin.id === currentUser.uid);
 
