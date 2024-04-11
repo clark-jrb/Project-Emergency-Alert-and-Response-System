@@ -18,7 +18,9 @@ const New = () => {
     return (
         <div className='request-new d-flex py-3'>
             {requests.length > 0 ? 
-                requests.filter(request => request.status === 'New' || request.status === 'Inqueue').map(request => (
+                requests
+                .filter(request => request.status === 'New' || request.status === 'Inqueue')
+                .map(request => (
                 <div 
                     className={`req-data container d-flex py-2 px-0 ${active === request.id ? 'active' : ''}`} 
                     key={request.id} 

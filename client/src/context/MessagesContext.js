@@ -74,6 +74,13 @@ export const MessageProvider = ({ children }) => {
 
             const resolvedData = await Promise.all(data);
 
+            resolvedData.sort((a, b) => {
+                const dateA = new Date(`${a.date} ${a.time}`);
+                const dateB = new Date(`${b.date} ${b.time}`);
+
+                return dateB - dateA;
+            });
+
             const readFalseCount = resolvedData.filter(item => item.read === false).length
             console.log('read false count: ' + readFalseCount);
 

@@ -47,7 +47,7 @@ export const RequestProvider = ({ children }) => {
                 const dateA = new Date(`${a.date} ${a.time}`);
                 const dateB = new Date(`${b.date} ${b.time}`);
 
-                return dateA - dateB;
+                return dateB - dateA;
             });
 
             const newSortedData = sortedData.filter(item => item.status === 'New')
