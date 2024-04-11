@@ -199,6 +199,11 @@
 
 }
 
+.mess-image-container img {
+    height: 250px;
+    border-radius: 10px;
+}
+
 .mess-chat-container.sender {
     background-color: var(--light-green);
     float: right;

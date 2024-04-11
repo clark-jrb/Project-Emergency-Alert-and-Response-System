@@ -102,11 +102,18 @@ const MessagesContent = () => {
                 <div className='mess-body py-2'>
                     {chats.map(({ id, message, sender }) => (
                         <div className='mess-chat p-2 px-3' key={id}>
-                            <div className={`mess-chat-container p-2 px-3 ${sender === 'TXmvnpBMntCramMNxwNs' ? 'sender': ''}`}>
-                                <p className='m-0'>
-                                    {message}
-                                </p>
-                            </div>
+                            {message.includes('https://firebasestorage.googleapis.com') ?
+                                <div className='mess-image-container'>
+                                    <img src={message} alt='chat_photo'></img> 
+                                </div>
+                            :
+                                <div className={`mess-chat-container p-2 px-3 ${sender === 'TXmvnpBMntCramMNxwNs' ? 'sender': ''}`}> 
+                                    
+                                    <p className='m-0'>
+                                        {message}
+                                    </p>
+                                </div>
+                            }
                         </div>
                     ))}
                 </div>
