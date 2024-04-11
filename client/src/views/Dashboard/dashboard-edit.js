@@ -5,6 +5,7 @@ import { db } from '../../firebase'
 const DashboardEdit = ({ currentUser, admins }) => {
     const findAdmin = admins.find(admin => admin.id === currentUser.uid);
     const [activeStatus, setActiveStatus] = useState(findAdmin.status)
+    // const roomID = 'room_usf'
 
     const rtCollection = collection(db, `response_team`) 
     const specDoc = doc(rtCollection, findAdmin.id)
@@ -32,8 +33,6 @@ const DashboardEdit = ({ currentUser, admins }) => {
                     </div>
                 </div>
             </div>
-
-            <div className=''></div>
 
             <div className=''></div>
         </div>

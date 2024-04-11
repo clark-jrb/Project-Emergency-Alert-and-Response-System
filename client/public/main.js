@@ -5,6 +5,7 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 1440,
         height: 1024,
+        icon: path.join(__dirname, 'src/images/logo/ears_logo'),
         webPreferences: {
             nodeIntegration: true,
         },
@@ -15,7 +16,7 @@ function createWindow() {
     win.loadURL(
         app.isPackaged
         ? 'https://project-ears-58af9.web.app'
-        : `file://${path.join(__dirname, 'build/index.html')}`
+        : `file://${path.join(__dirname, '../build/index.html')}`
     );
 
     // win.loadFile(path.join('build', 'index.html'));
