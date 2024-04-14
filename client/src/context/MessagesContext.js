@@ -32,11 +32,19 @@ export const MessageProvider = ({ children }) => {
         // const chatsCollection = collection(messageCollection, 'chats');
 
         const unsubscribe = onSnapshot(messageCollection, async(messageSnapshot) => {
-            const data = messageSnapshot.docs.map(async (doc) => {
+            const validDocs = messageSnapshot.docs.filter(doc => doc.data().timestamp);
+
+            if (validDocs.length < 1) { // Check if there are no valid documents
+                setMessages([]); // Set messages to an empty array
+                setLoadingMessages(false); // Set loadingMessages to false
+                return; // Exit early
+            }
+
+            const data = validDocs.map(async (doc) => {
                 const { timestamp, ...rest } = doc.data()
                 const timepoint = timestamp.toDate()
                 const dataComponent = moment(timepoint).format('LL')
-                const timeComponent = moment(timepoint).format('LT')
+                const timeComponent = moment(timepoint).format('LTS')
 
                 const chatsCollection = collection(doc.ref, 'chats');
                 const unsubscribeChats = onSnapshot(

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useMessageContext } from '../../context/MessagesContext'
 import { useUsersContext } from '../../context/UsersContext'
 import { useActiveContext } from '../../context/ActiveContext'
@@ -21,6 +21,11 @@ const MessagesContent = () => {
     const user = users.find(user => user.id === activeUser)
 
     const findAdmin = admins.find(admin => admin.email === currentUser.email)
+    const adminUID = findAdmin.id
+
+    useEffect(() => {
+        console.log(adminUID);
+    }, [adminUID]);
 
     const messagesCollection = collection(db, `message_${findAdmin.route}`) 
 
@@ -37,7 +42,7 @@ const MessagesContent = () => {
             message: formValue,
             timestamp: new Date(),
             receiver: activeUser,
-            sender: 'TXmvnpBMntCramMNxwNs',
+            sender: adminUID,
             seen: false,
             delivered: true
         };
@@ -107,7 +112,7 @@ const MessagesContent = () => {
                                     <img src={message} alt='chat_photo'></img> 
                                 </div>
                             :
-                                <div className={`mess-chat-container p-2 px-3 ${sender === 'TXmvnpBMntCramMNxwNs' ? 'sender': ''}`}> 
+                                <div className={`mess-chat-container p-2 px-3 ${sender === adminUID ? 'sender': ''}`}> 
                                     
                                     <p className='m-0'>
                                         {message}
