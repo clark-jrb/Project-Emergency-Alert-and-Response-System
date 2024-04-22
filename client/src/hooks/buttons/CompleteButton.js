@@ -21,7 +21,7 @@ const CompleteButton = ({ reqID, adminRoute, adminName, reqType, token }) => {
 
             updateDoc(specReq, {
                 status: setStatus,
-                time_completed: currentDateTime,
+                time_completed: currentDateTime
             })
 
             const setQueueToOngoing = async () => {

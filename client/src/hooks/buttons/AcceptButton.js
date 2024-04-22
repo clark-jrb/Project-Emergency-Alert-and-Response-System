@@ -16,6 +16,8 @@ const AcceptButton = ({ reqID, adminRoute, adminName, reqType, token }) => {
     const alertsCollection = collection(db, `alert_${adminRoute}`) 
     const specReq = doc(alertsCollection, reqID)
 
+
+
     const setOngoing = async () => {
         try {
             setIsLoading(true)

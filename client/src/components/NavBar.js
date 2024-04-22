@@ -54,10 +54,10 @@ const NavBar = ({ logo }) => {
     return (
         <nav className="navbar">
             <div className="nav-top p-1 px-3">
-                <a className="navbar-brand mx-2" href="dashboard">
+                <p className="ears-brand mx-2 mb-0">
                     <img src={logo} alt="logo-clsu"></img>
                     <span className="system-name mx-1">EARS</span>
-                </a>
+                </p>
                 
                 {/* NOTIFICATION BELL  */}
                 <div className="status-bar d-flex align-items-center">

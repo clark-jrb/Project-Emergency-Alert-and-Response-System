@@ -148,8 +148,11 @@
 
 /* END ICONS  */
 
-.navbar-brand {
+.ears-brand {
+    display: flex;
+    align-items: center;
     color: var(--font-text);
+    font-size: large;
 }
 
 .status-bar {

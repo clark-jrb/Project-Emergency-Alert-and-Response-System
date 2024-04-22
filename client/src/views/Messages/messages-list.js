@@ -18,15 +18,15 @@ const MessagesList = () => {
                         <i className="fa-regular fa-message"></i> Messages
                     </h6>
                 </div>
-                <div className={`calls-section flex-fill p-2 ${activeMessFilter === 'Calls' ? 'active' : ''}`} onClick={() => handleClick('Calls')}>
+                {/* <div className={`calls-section flex-fill p-2 ${activeMessFilter === 'Calls' ? 'active' : ''}`} onClick={() => handleClick('Calls')}>
                     <h6 className='m-0'>
                         <i className="fa-solid fa-phone"></i> Calls
                     </h6>
-                </div>
+                </div> */}
             </div>
             <div className='mess-calls d-flex mt-3'>
                 {activeMessFilter === 'Messages' && <GetMessages/>}
-                {activeMessFilter === 'Calls' && <GetCalls />}
+                {/* {activeMessFilter === 'Calls' && <GetCalls />} */}
             </div>
         </div>
     )
