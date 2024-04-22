@@ -31,6 +31,9 @@ function createWindow() {
     if (process.env.NODE_ENV === 'development') {
         win.webContents.openDevTools();
     }
+
+    Menu.setApplicationMenu(null);
+
 }
 
 app.on('ready', createWindow)
