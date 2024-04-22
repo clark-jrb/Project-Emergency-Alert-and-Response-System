@@ -54,10 +54,12 @@ export const RequestProvider = ({ children }) => {
             // Take the first element (most recent request) from the sorted array
             const mostRecent = newSortedData.length > 0 ? newSortedData[0] : null
 
+            const sortedDataByNum = data.sort((a, b) => b.request_no - a.request_no);
+
             console.log('Count of "New" status:', newStatusCount)
             console.log('Recent request: ', mostRecent)
 
-            setRequests(data)
+            setRequests(sortedDataByNum)
             setCount(newStatusCount)
             setRecentRequest(mostRecent)
             setLoading(false)
