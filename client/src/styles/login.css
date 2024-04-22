@@ -5,7 +5,7 @@
     --light-green: #CCEFE3;
 }
 
-.login-con {
+.login-con, .reg-con {
     height: 100dvh;
     display: flex;
     justify-content: center;
@@ -15,7 +15,7 @@
     background-position: center;
 }
 
-.login-form {
+.login-form, .reg-form {
     width: auto;
     border-radius: 10px;
     /* border: #ccc solid 1px; */
@@ -25,11 +25,11 @@
     /* backdrop-filter: blur(5px); */
 }
 
-/* .forEmail, .forPass {
+.forEmail label, .forPass label, .forRole label {
+    color: var(--font-text);
+}
 
-} */
-
-.loginTitle {
+.loginTitle, .regTitle {
     text-align: left;
     color: var(--font-text);
 }
@@ -78,7 +78,7 @@
     border: solid 1px whitesmoke;
 }
 
-.input-pass {
+.input-pass, .input-email {
     width: 100%;
     border-radius: 10px;
     border: #ccc solid 2px;
@@ -86,17 +86,16 @@
     transition: border .2s;
 }
 
-.input-pass::placeholder {
+.input-pass::placeholder, .input-email::placeholder {
     transition: color .2s ease;
     color: #ccc;
-
 }
 
-.input-pass:focus {
+.input-pass:focus, .input-email:focus {
     border: var(--green) solid 2px;
 }
 
-.login-btn {
+.login-btn, .reg-btn {
     background-color: var(--green);
     border: none;
     border-radius: 10px;
@@ -104,7 +103,7 @@
     transition: box-shadow .2s ease, background-color .2s ease;
 }
 
-.login-btn:hover {
+.login-btn:hover, .reg-btn:hover {
     background-color: var(--hover-green);
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
@@ -112,4 +111,30 @@
 .error-cont {
     border-radius: 5px;
     background-color: var(--light-red);
+}
+
+.reg-form #role {
+    background-color: var(--light-green);
+    border: var(--green) solid 2px;
+    border-radius: 10px;
+    color: var(--green);
+    transition: box-shadow .2s ease, background-color .2s ease;
+}
+
+.reg-form #role:active {
+    border: var(--green) solid 2px;
+    outline: none;
+}
+
+.reg-form #role option {
+    /* Add your custom styles here */
+    /* Example styles: */
+    background-color: white;
+    color: var(--font-text);
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.reg-form #role option:hover {
+    background-color: whitesmoke;
+    color: var(--your-hover-option-text-color);
 }

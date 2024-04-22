@@ -1,6 +1,6 @@
 import React from 'react'
 import GetMessages from './get-messages'
-import GetCalls from './get-calls'
+// import GetCalls from './get-calls'
 import { useFilterListContext } from '../../context/FilterListContext'
 
 const MessagesList = () => {

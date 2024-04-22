@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../images/logo/clsu_logo.png'
+import logo from '../../images/logo/ears_logo.png'
 import { useNavigate } from 'react-router-dom'
 
 const HomeContainer = () => {
@@ -9,9 +9,9 @@ const HomeContainer = () => {
         navigate('/login')
     }
 
-    // const registerPage = () => {
-    //     navigate('/register')
-    // }
+    const registerPage = () => {
+        navigate('/register')
+    }
 
     return (
         <div className="container home-container">
@@ -25,12 +25,12 @@ const HomeContainer = () => {
             </div>
             <div className="container form-container p-3">
                 <div className="forLogin p-2">
-                    <button className="btn btn-success login-btn" onClick={loginPage}>Login</button>
+                    <button className="p-2 login-btn" onClick={loginPage}>Login</button>
                 </div>
 
-                {/* <div className="forRegister p-2">
-                    <button className="btn btn-success reg-btn" onClick={registerPage}>Register</button>
-                </div> */}
+                <div className="forRegister p-2">
+                    <button className="p-2 reg-btn" onClick={registerPage}>Register</button>
+                </div>
             </div>
         </div>
     )
