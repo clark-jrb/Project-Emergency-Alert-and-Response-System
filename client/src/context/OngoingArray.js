@@ -7,12 +7,12 @@ const OngoingArray = createContext()
 
 export const OngoingArrayProvider = ({ children }) => {
     const { requests } = useRequestContext()
-    const { currentUser } = useAuth()
+    const { currentUserRole } = useAuth()
     const { admins } = useUsersContext()
     let ongoingArray = []
 
     const ongoingRequests = requests.filter(request => request.status === 'Ongoing');
-    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+    const findAdmin = admins.find(admin => admin.route === currentUserRole)
     const maxSlots = findAdmin.available;
 
     function addToOngoingArray(element) {

@@ -19,14 +19,14 @@ import { db } from "../firebase"
 
 const NavBar = ({ logo }) => {
     const { messCount } = useMessageContext()
-    const { currentUser, signOut } = useAuth()
+    const { currentUser, signOut, currentUserRole } = useAuth()
     const { admins } = useUsersContext()
     const navigate = useNavigate()
     const { count, recentRequest } = useRequestContext()
     const location = useLocation()
     const { NavActive, setTheNav } = useNavActiveContext()
 
-    const findAdmin = admins.find(admin => admin.id === currentUser.uid);
+    const findAdmin = admins.find(admin => admin.route === currentUserRole);
 
     const rtCollection = collection(db, `response_team`) 
     const specDoc = doc(rtCollection, findAdmin.id)

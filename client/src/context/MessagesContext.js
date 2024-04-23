@@ -12,14 +12,14 @@ export const useMessageContext = () => {
 }
 
 export const MessageProvider = ({ children }) => {
-    const { currentUser } = useAuth()
+    const { currentUserRole } = useAuth()
     const { admins } = useUsersContext()
     const [messages, setMessages] = useState([])
     const [messCount, setMessCount] = useState(0);
     const [activeMessage, setActiveMessage] = useState(null)
     const [loadingMessages, setLoadingMessages] = useState(true)
 
-    const findAdmin = useMemo(() => admins.find(admin => admin.email === currentUser.email), [admins, currentUser.email])
+    const findAdmin = useMemo(() => admins.find(admin => admin.route === currentUserRole), [admins, currentUserRole])
 
     const setTheMessageActive = (id) => {
         setActiveMessage(id)

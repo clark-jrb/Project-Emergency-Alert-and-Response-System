@@ -12,14 +12,18 @@ export const useRequestContext = () => {
 }
 
 export const RequestProvider = ({ children }) => {
-    const { currentUser } = useAuth()
+    const { currentUserRole } = useAuth()
     const { admins } = useUsersContext()
     const [count, setCount] = useState(0)
     const [loading, setLoading] = useState(true)
     const [requests, setRequests] = useState([])
     const [recentRequest, setRecentRequest] = useState([])
 
-    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+    const findAdmin = admins.find(admin => admin.route === currentUserRole)
+
+    // useEffect(() => {
+    //     console.log(currentUserRole.role);
+    // }, [currentUserRole.role]);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, `alert_${findAdmin.route}`), (snapshot) => {

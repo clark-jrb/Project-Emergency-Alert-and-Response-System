@@ -13,13 +13,13 @@ export const useChatsContext = () => {
 }
 
 export const ChatsProvider = ({ children }) => {
-    const { currentUser } = useAuth()
+    const { currentUserRole } = useAuth()
     const { admins } = useUsersContext()
     const { activeMessage } = useMessageContext()
     const [loadingChats, setLoadingChats] = useState(true)
     const [chats, setChats] = useState([])
 
-    const findAdmin = useMemo(() => admins.find(admin => admin.email === currentUser.email), [admins, currentUser.email])
+    const findAdmin = useMemo(() => admins.find(admin => admin.route === currentUserRole), [admins, currentUserRole])
 
     useEffect(() => {
         

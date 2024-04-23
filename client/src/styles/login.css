@@ -16,7 +16,7 @@
 }
 
 .login-form, .reg-form {
-    width: auto;
+    width: 450px;
     border-radius: 10px;
     /* border: #ccc solid 1px; */
     /* box-shadow: 0 1.5px 3px 0 #ccc; */
@@ -27,6 +27,7 @@
 
 .forEmail label, .forPass label, .forRole label {
     color: var(--font-text);
+    font-size: small;
 }
 
 .loginTitle, .regTitle {

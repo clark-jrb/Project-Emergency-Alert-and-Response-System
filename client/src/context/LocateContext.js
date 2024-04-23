@@ -6,12 +6,12 @@ import { useUsersContext } from './UsersContext'
 const LocateContext = createContext()
 
 export const LocateProvider = ({ children }) => {
-    const { currentUser } = useAuth()
+    const { currentUserRole } = useAuth()
     const { admins } = useUsersContext()
     const [toLocate, setToLocate] = useState([])
     const location = useLocation()
 
-    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+    const findAdmin = admins.find(admin => admin.route === currentUserRole)
 
     const setLocation = (id) => {
         setToLocate([id.latitude, id.longitude])

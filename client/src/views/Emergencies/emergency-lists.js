@@ -12,12 +12,12 @@ import { db } from '../../firebase'
 
 const Emergency_lists = () => {
     const { ongoingArray } = useOngoingArray()
-    const { currentUser } = useAuth()
+    const { currentUserRole } = useAuth()
     const { admins } = useUsersContext()
     const { activeFilter, setTheFilter } = useFilterListContext()
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     
-    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+    const findAdmin = admins.find(admin => admin.route === currentUserRole)
     const [limit, setLimit] = useState(findAdmin.available)
 
     const handleClick = (component) => {

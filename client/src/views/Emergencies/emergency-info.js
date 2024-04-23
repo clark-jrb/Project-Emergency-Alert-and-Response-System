@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import moment from 'moment'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
@@ -17,7 +17,7 @@ import CompleteButton from '../../hooks/buttons/CompleteButton'
 import AcceptButton from '../../hooks/buttons/AcceptButton'
 
 const Emergency_info = () => {
-    const { currentUser } = useAuth()
+    const { currentUserRole } = useAuth()
     const { requests } = useRequestContext()
     const { users, admins } = useUsersContext()
     const { active, setTheActive } = useActiveContext()
@@ -30,7 +30,7 @@ const Emergency_info = () => {
     // }, [specificUserReq]);
 
     // for Route
-    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+    const findAdmin = admins.find(admin => admin.route === currentUserRole)
 
     const handleCloseBtn = (e) => {
         setTheActive(e)

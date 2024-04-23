@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { collection, updateDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase'
 
-const DashboardEdit = ({ currentUser, admins }) => {
-    const findAdmin = admins.find(admin => admin.id === currentUser.uid);
+const DashboardEdit = ({ currentUserRole, admins }) => {
+    const findAdmin = admins.find(admin => admin.route === currentUserRole);
     const [activeStatus, setActiveStatus] = useState(findAdmin.status)
     // const roomID = 'room_usf'
 

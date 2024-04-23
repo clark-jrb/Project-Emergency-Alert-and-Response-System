@@ -9,7 +9,7 @@ import { useNavActiveContext } from '../../context/NavActiveContext'
 import { useActiveContext } from '../../context/ActiveContext'
 import { useLocateContext } from '../../context/LocateContext'
 
-const DashboardTotals = ({ requests, currentUser, admins }) => {
+const DashboardTotals = ({ requests, currentUserRole, admins }) => {
     const { setTheNav } = useNavActiveContext()
     const { setTheActive } = useActiveContext()
     const { setLocation } = useLocateContext()
@@ -21,7 +21,7 @@ const DashboardTotals = ({ requests, currentUser, admins }) => {
     let ongoingRequest = requests.filter(request => request.status === 'Ongoing').length
     let canceledRequest = requests.filter(request => request.status === 'Declined').length
 
-    const currentAdmin = admins.find(admin => admin.id === currentUser.uid)
+    const currentAdmin = admins.find(admin => admin.route === currentUserRole)
 
     const getLvlTotals = (lvl) => {
         let lvlTotal = requests.filter(request => request.emergency_level === lvl).length

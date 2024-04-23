@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Routes, Route } from "react-router-dom"
 import Dashboard from "../Dashboard"
 import Emergencies from "../Emergencies"
@@ -12,26 +12,30 @@ import { RequestProvider } from "../../context/RequestContext"
 import { MessageProvider } from "../../context/MessagesContext"
 import { LocateProvider } from "../../context/LocateContext"
 import clsu_logo_nav from '../../images/logo/clsu_logo_nav.png'
-import { collection, updateDoc, doc } from 'firebase/firestore'
-import { useUsersContext } from "../../context/UsersContext"
-import { useAuth } from "../../context/AuthContext"
-import { db } from '../../firebase.js'
+// import { collection, updateDoc, doc } from 'firebase/firestore'
+// import { useUsersContext } from "../../context/UsersContext"
+// import { useAuth } from "../../context/AuthContext"
+// import { db } from '../../firebase.js'
 
 const USF = () => {
-    const { currentUser } = useAuth()
-    const { admins } = useUsersContext()
+    // const { currentUserRole, currentUser } = useAuth()
+    // const { admins } = useUsersContext()
 
-    const findAdmin = admins.find(admin => admin.id === currentUser.uid)
+    // const findAdmin = admins.find(admin => admin.route === currentUserRole)
+    // console.log(currentUserRole);
 
-    const rtCollection = collection(db, `response_team`)
-    const specDoc = doc(rtCollection, findAdmin.id)
+    // const rtCollection = collection(db, `response_team`)
+    // const specDoc = doc(rtCollection, findAdmin.id)
 
-    useEffect(() => {
-        updateDoc(specDoc, {
-            status: 'online'
-        })
-        console.log('Welcome USF, you are now online!')
-    }, [])
+    // console.log(findAdmin.id);
+
+
+    // useEffect(() => {
+    //     updateDoc(specDoc, {
+    //         status: 'online'
+    //     })
+    //     console.log('Welcome USF, you are now online!')
+    // }, [specDoc])
 
     return (
             <div className="usf-container">

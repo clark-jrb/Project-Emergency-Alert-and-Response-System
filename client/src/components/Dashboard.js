@@ -8,7 +8,7 @@ import DashboardTotals from '../views/Dashboard/dashboard-totals'
 import DashboardEdit from '../views/Dashboard/dashboard-edit'
 
 const Dashboard = () => {
-    const { currentUser } = useAuth()
+    const { currentUserRole } = useAuth()
     const { admins } = useUsersContext()
     const { requests } = useRequestContext()
 
@@ -29,8 +29,8 @@ const Dashboard = () => {
     return (
         <div className='dashboard-content p-4'>
             <div className='dashboard py-4 d-flex'>
-                <DashboardEdit requests={requests} currentUser={currentUser} admins={admins}/>
-                <DashboardTotals requests={requests} currentUser={currentUser} admins={admins}/>
+                <DashboardEdit requests={requests} currentUser={currentUserRole} admins={admins}/>
+                <DashboardTotals requests={requests} currentUser={currentUserRole} admins={admins}/>
             </div>
             {/* {currentUser.uid ? (
                 <>

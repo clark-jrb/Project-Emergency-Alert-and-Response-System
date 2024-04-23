@@ -9,7 +9,7 @@ import { db } from '../../firebase'
 import sendNotification from '../../context/Notification'
 
 const MessagesContent = () => {
-    const { currentUser } = useAuth()
+    const { currentUserRole } = useAuth()
     const { activeMessage, setTheMessageActive, messages } = useMessageContext()
     const { chats } = useChatsContext()
     const { users, admins } = useUsersContext()
@@ -20,7 +20,7 @@ const MessagesContent = () => {
     const filteredMessage = messages.find(messages => messages.id === activeMessage)
     const user = users.find(user => user.id === activeUser)
 
-    const findAdmin = admins.find(admin => admin.email === currentUser.email)
+    const findAdmin = admins.find(admin => admin.route === currentUserRole)
     const adminUID = findAdmin.id
 
     useEffect(() => {
