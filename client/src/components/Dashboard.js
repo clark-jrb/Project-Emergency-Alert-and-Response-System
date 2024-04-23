@@ -29,8 +29,8 @@ const Dashboard = () => {
     return (
         <div className='dashboard-content p-4'>
             <div className='dashboard py-4 d-flex'>
-                <DashboardEdit requests={requests} currentUser={currentUserRole} admins={admins}/>
-                <DashboardTotals requests={requests} currentUser={currentUserRole} admins={admins}/>
+                <DashboardEdit requests={requests} currentUserRole={currentUserRole} admins={admins}/>
+                <DashboardTotals requests={requests} currentUserRole={currentUserRole} admins={admins}/>
             </div>
             {/* {currentUser.uid ? (
                 <>
