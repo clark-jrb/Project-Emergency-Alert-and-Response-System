@@ -244,6 +244,11 @@
     background-color: var(--green);
     color: white;
     box-shadow: 0 1.5px 3px 0 #ccc;
+    transition: 0.2s background-color;
+}
+
+.go-to-details:hover, .go-to-location:hover {
+    background-color: var(--hover-green);
 }
 
 /* ADMIN PROFILE  */

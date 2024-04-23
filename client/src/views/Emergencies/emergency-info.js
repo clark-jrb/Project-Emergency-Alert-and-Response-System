@@ -4,7 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
 import { useActiveContext } from '../../context/ActiveContext'
 import { useUsersContext } from '../../context/UsersContext'
+import { useLocateContext } from '../../context/LocateContext'
 import { useAuth } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 import { ReactComponent as AssistSVG } from '../../images/icons/assistance.svg'
 import { ReactComponent as SecuritySVG } from '../../images/icons/security.svg'
 import { ReactComponent as ViolenceSVG } from '../../images/icons/violence.svg'
@@ -21,6 +23,9 @@ const Emergency_info = () => {
     const { requests } = useRequestContext()
     const { users, admins } = useUsersContext()
     const { active, setTheActive } = useActiveContext()
+    const { setLocation } = useLocateContext()
+    const navigate = useNavigate()
+
 
     const specificReq = requests.find(request => request.id === active)
     const specificUserReq = users.find(user => specificReq.userID === user.id)
@@ -36,6 +41,11 @@ const Emergency_info = () => {
         setTheActive(e)
     }
 
+    const handleLocateBtn = (e) => {
+        setLocation(e)
+        navigate(`/${findAdmin.route}/map`)
+    }
+    
     return (
         // Emergency Information 
         specificReq && (
@@ -160,15 +170,29 @@ const Emergency_info = () => {
                         {/* Emergency Type Section */}
                         <div className='section-2'>
                             <div className='emer-type'>
-                                <p className='m-0 pt-3 highlight'><i className="fa-solid fa-notes-medical"></i> Emergency Type:</p>
-                                <p className='m-0 py-2 data fs-5' style={{fontWeight: "bold"}}>{specificReq.emergency_type}</p>
+                                <p className='m-0 pt-3 highlight'>
+                                    <i className="fa-solid fa-notes-medical"></i> 
+                                    &nbsp;Emergency Concern:
+                                </p>
+                                <p className='m-0 py-2 data fs-5' style={{fontWeight: "bold"}}> 
+                                    {specificReq.emergency_type}
+                                </p>
                             </div>
                         </div>
                         {/* Location Section */}
                         <div className='section-3'>
                             <div className='location'>
-                                <p className='m-0 pt-3 highlight'><i className="fa-solid fa-location-arrow"></i> Location:</p>
-                                <p className='m-0 py-2 data fs-5'>Location</p>
+                                <p className='m-0 pt-3 highlight'>
+                                    <i className="fa-solid fa-map-location-dot"></i>
+                                </p>
+                                <div className='m-0 py-3 data fs-5'>
+                                    <button 
+                                        className='go-to-location p-1 px-2 mx-1 w-100' 
+                                        onClick={() => handleLocateBtn(specificReq.location)}
+                                    >
+                                        <i className="fa-solid fa-location-crosshairs"></i> Locate
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         {/* Buttons Section */}

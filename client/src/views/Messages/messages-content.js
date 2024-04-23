@@ -23,9 +23,9 @@ const MessagesContent = () => {
     const findAdmin = admins.find(admin => admin.route === currentUserRole)
     const adminUID = findAdmin.id
 
-    useEffect(() => {
-        console.log(adminUID);
-    }, [adminUID]);
+    // useEffect(() => {
+    //     console.log(adminUID);
+    // }, [adminUID]);
 
     const messagesCollection = collection(db, `message_${findAdmin.route}`) 
 
