@@ -7,32 +7,10 @@ const UsersContext = createContext()
 export const UsersProvider = ({ children }) => {
     const [users, setUsers] = useState([])
     const [admins, setAdmins] = useState([])
-    // const hasFetched = useRef(false)
-    // const [loading, setLoading] = useState(true);
+    const [rtUsers, setRTUsers] = useState([])
     const [loadingUsers, setLoadingUsers] = useState(true);
     const [loadingAdmins, setLoadingAdmins] = useState(true);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             setLoading(true);
-
-    //             const userQuerySnapshot = await getDocs(collection(db, 'users'));
-    //             const userData = userQuerySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    //             setUsers(userData);
-
-    //             const adminQuerySnapshot = await getDocs(collection(db, 'response_team'));
-    //             const adminData = adminQuerySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    //             setAdmins(adminData);
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, []);
+    const [loadingRTUsers, setLoadingRTUsers] = useState(true);
 
     useEffect(() => {
         const unsubscribeUsers = onSnapshot(collection(db, 'users'), (userQuerySnapshot) => {
@@ -60,6 +38,19 @@ export const UsersProvider = ({ children }) => {
         };
     }, []);
 
+    useEffect(() => {
+        const unsubscribeRTUsers = onSnapshot(collection(db, 'rt_users'), (rtUsersQuerySnapshot) => {
+            const rtUserData = rtUsersQuerySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            setRTUsers(rtUserData);
+            setLoadingRTUsers(false)
+        });
+    
+        return () => {
+            // Unsubscribe from the 'response_team' snapshots when the component unmounts
+            unsubscribeRTUsers();
+        };
+    }, []);
+
     // useEffect(() => {
     //     if (admins.length > 0) {
     //         console.log(admins);
@@ -67,8 +58,8 @@ export const UsersProvider = ({ children }) => {
     // }, [admins]);
 
     return (
-        <UsersContext.Provider value={ { users, admins } }>
-            {!loadingAdmins && !loadingUsers && children}
+        <UsersContext.Provider value={ { users, admins, rtUsers } }>
+            {!loadingAdmins && !loadingUsers && !loadingRTUsers && children}
         </UsersContext.Provider>
     )
 }

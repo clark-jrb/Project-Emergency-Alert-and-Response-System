@@ -257,3 +257,11 @@
     /* box-shadow: 0 1.5px 3px 0 #ccc; */
     /* border-radius: 10px; */
 }
+
+.icon-usf-font {
+    color: var(--yellow);
+}
+
+.icon-infirmary-font {
+    color: var(--red);
+}

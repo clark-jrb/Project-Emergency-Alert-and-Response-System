@@ -18,15 +18,21 @@ import { collection, updateDoc, doc } from 'firebase/firestore'
 import { db } from "../firebase"
 
 const NavBar = ({ logo }) => {
-    const { messCount } = useMessageContext()
     const { currentUser, signOut, currentUserRole } = useAuth()
-    const { admins } = useUsersContext()
-    const navigate = useNavigate()
-    const { count, recentRequest } = useRequestContext()
-    const location = useLocation()
     const { NavActive, setTheNav } = useNavActiveContext()
+    const { count, recentRequest } = useRequestContext()
+    const { messCount } = useMessageContext()
+    const { admins, rtUsers } = useUsersContext()
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const findAdmin = admins.find(admin => admin.route === currentUserRole);
+    const findRTUser = rtUsers.find(rt => rt.email === currentUser.email)
+
+    // useEffect(() => {
+    //     console.log(findRTUser);
+        
+    // }, [findRTUser]);
 
     const rtCollection = collection(db, `response_team`) 
     const specDoc = doc(rtCollection, findAdmin.id)
@@ -107,13 +113,20 @@ const NavBar = ({ logo }) => {
 
                 <Dropdown className="mx-2">
                     <Dropdown.Toggle variant="custom" id="dropdown-basic" className="dropdown-profile">
-                        {admins.filter(admin => admin.id === currentUser.uid).map(admin => (
-                            <span className="user-name px-1" key={admin.id}>
-                                <i className="fa-solid fa-circle-user"/>
+                            <span className="user-name px-1">
+                                {findRTUser.role === 'usf' ? 
+                                <>
+                                    <i className="fa-solid fa-shield-halved icon-usf-font"></i>
+                                </> : findRTUser.role === 'infirmary' ? 
+                                <>
+                                    <i className="fa-solid fa-house-medical icon-infirmary-font"></i>
+                                </> :
+                                <>
+                                    <i className="fa-solid fa-circle-user"/>
+                                </>}
                                 &nbsp;
-                                {admin.userName}
+                                {findRTUser.displayName}
                             </span>
-                        ))}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>

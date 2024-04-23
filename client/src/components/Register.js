@@ -9,6 +9,7 @@ import { Form } from 'react-bootstrap'
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [displayName, setDisplayName] = useState('');
     const [selectedRole, setSelectedRole] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -20,13 +21,14 @@ const Register = () => {
     const handleRegister = async (e) => {
         e.preventDefault()
         try {
-            if (selectedRole !== '' && email !== '' && password !== '') {
+            if (selectedRole !== '' && email !== '' && password !== '' && displayName !== '') {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
                 
                 await addDoc(collection(db, 'rt_users'), {
                     email: user.email,
-                    role: selectedRole
+                    role: selectedRole,
+                    displayName: displayName
                 });
                 
                 console.log('User registered successfully');
@@ -74,6 +76,11 @@ const Register = () => {
                         <option value="usf" >USF</option>
                         <option value="infirmary">Infirmary</option>
                     </Form.Select>
+                </div>
+
+                <div className='forDisplayName mx-3 py-2'>
+                    <label htmlFor="displayName">Display Name:</label>
+                    <input id="displayName" className='input-displayName p-2 px-3' type="text" placeholder="Display Name" value={displayName} onChange={(e) => setDisplayName(e.target.value)}/>
                 </div>
 
                 <div className='forEmail mx-3 py-2'>

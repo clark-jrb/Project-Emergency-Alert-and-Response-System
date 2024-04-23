@@ -25,7 +25,7 @@
     /* backdrop-filter: blur(5px); */
 }
 
-.forEmail label, .forPass label, .forRole label {
+.forEmail label, .forPass label, .forRole label, .forDisplayName label {
     color: var(--font-text);
     font-size: small;
 }
@@ -79,7 +79,7 @@
     border: solid 1px whitesmoke;
 }
 
-.input-pass, .input-email {
+.input-pass, .input-email, .input-displayName {
     width: 100%;
     border-radius: 10px;
     border: #ccc solid 2px;
@@ -87,12 +87,12 @@
     transition: border .2s;
 }
 
-.input-pass::placeholder, .input-email::placeholder {
+.input-pass::placeholder, .input-email::placeholder, .input-displayName::placeholder {
     transition: color .2s ease;
     color: #ccc;
 }
 
-.input-pass:focus, .input-email:focus {
+.input-pass:focus, .input-email:focus, .input-displayName:focus {
     border: var(--green) solid 2px;
 }
 
