@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import moment from 'moment'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRequestContext } from '../../context/RequestContext'
@@ -31,8 +31,8 @@ const Emergency_info = () => {
     const specificUserReq = users.find(user => specificReq.userID === user.id)
 
     // useEffect(() => {
-    //     console.log('token id: ' + specificUserReq.fcmToken);
-    // }, [specificUserReq]);
+    //     console.log(specificReq);
+    // }, [specificReq]);
 
     // for Route
     const findAdmin = admins.find(admin => admin.route === currentUserRole)

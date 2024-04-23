@@ -11,7 +11,7 @@
     background-color: white;
     height: 100%;
     width: 30%;
-    border: #ccc solid 1px;
+    border: #ccc solid 2px;
     border-radius: 10px;
     /* margin: 5px; */
     display: flex;
@@ -23,7 +23,7 @@
     background-color: white;
     height: 100%;
     width: 68%;
-    border: #ccc solid 1px;
+    border: #ccc solid 2px;
     border-radius: 10px;
     /* margin: 5px;
     margin-left: 15px; */
@@ -84,7 +84,7 @@
 .req-data {
     height: 70px;
     border-radius: 10px;
-    border: 1px #ccc solid;
+    border: 2px #ccc solid;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
@@ -293,8 +293,8 @@
 }
 
 .info-right {
-    box-shadow: 0 1.5px 3px 0 #ccc;
-    border: #ccc solid 1px;
+    /* box-shadow: 0 1.5px 3px 0 #ccc; */
+    border: #ccc solid 2px;
     border-radius: 10px;
     width: 50dvw;
     height: fit-content;
