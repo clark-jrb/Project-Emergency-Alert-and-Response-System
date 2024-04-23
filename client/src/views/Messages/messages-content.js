@@ -58,7 +58,8 @@ const MessagesContent = () => {
         
         sendNotif({
             title: findAdmin.userName,
-            body: formValue
+            body: formValue,
+            token: user.fcmToken
         })
 
         
