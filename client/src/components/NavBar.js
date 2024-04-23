@@ -59,10 +59,6 @@ const NavBar = ({ logo }) => {
         setTheNav(e)
     }
 
-    const click = () => {
-        console.log('click!');
-    }
-
     return (
         <nav className="navbar">
             <div className="nav-top p-1 px-3">

@@ -22,3 +22,19 @@
     color: var(--font-text);
     font-weight: bold;
 }
+
+.user-log-table table td {
+    border-bottom: #ccc solid 1px;
+}
+
+.user-log-table table tbody tr:hover {
+    background-color: whitesmoke;
+}
+
+#sign_in {
+    color: var(--green);
+}
+
+#sign_out {
+    color: var(--red);
+}

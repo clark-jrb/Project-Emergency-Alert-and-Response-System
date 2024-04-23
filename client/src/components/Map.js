@@ -18,7 +18,7 @@ const Map = () => {
     const { setTheNav } = useNavActiveContext()
     const { setTheActive } = useActiveContext()
     const { admins } = useUsersContext()
-    const { currentUser, currentUserRole } = useAuth()
+    const { currentUserRole } = useAuth()
     const { requests } = useRequestContext()
     const navigate = useNavigate()
     const [toThisLoc, setToThisLoc] = useState([])
