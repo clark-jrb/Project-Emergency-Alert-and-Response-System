@@ -181,6 +181,13 @@ const NavBar = ({ logo }) => {
                             History
                         </Link>
                     </li>
+
+                    <li className={NavActive === 'logs' ? 'active' : ''}>
+                        <Link to="logs" onClick={() => handleClick('logs')}>
+                            <i class="fa-regular fa-file-lines fa-lg"></i>
+                            User Logs
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </nav>

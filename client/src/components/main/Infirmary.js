@@ -7,18 +7,14 @@ import Map from "../Map"
 import History from "../History"
 import Settings from "../Settings"
 import NavBar from "../NavBar"
+import Logs from "../Logs"
 import { NavActiveProvider } from "../../context/NavActiveContext"
 import { RequestProvider } from "../../context/RequestContext"
 import { MessageProvider } from "../../context/MessagesContext"
 import { LocateProvider } from "../../context/LocateContext"
 import clsu_logo_nav from '../../images/logo/clsu_logo_nav.png'
-// import { collection, updateDoc, doc } from 'firebase/firestore'
-// import { useUsersContext } from "../../context/UsersContext"
-// import { useAuth } from "../../context/AuthContext"
-// import { db } from '../../firebase.js'
 
 const Infirmary = () => {
-    
     return (
         <div className="infi-container">
             <RequestProvider>
@@ -33,7 +29,7 @@ const Infirmary = () => {
                                             <Route path="messages" element={<Messages/>}></Route>
                                             <Route path="map" element={<Map/>}></Route>
                                             <Route path="history" element={<History/>}></Route>
-                                            <Route path="settings" element={<Settings/>}></Route>
+                                            <Route path="logs" element={<Logs/>}></Route>
                                         </Routes>
                                     </div>
                                 </LocateProvider>
