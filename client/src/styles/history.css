@@ -12,7 +12,7 @@
     background-color: white;
     height: 100%;
     width: 20%;
-    border: #ccc solid 1px;
+    border: #ccc solid 2px;
     border-radius: 10px;
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
@@ -21,7 +21,7 @@
     background-color: white;
     height: 100%;
     width: 78%;
-    border: #ccc solid 1px;
+    border: #ccc solid 2px;
     border-radius: 10px;
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
