@@ -6,6 +6,7 @@ import { collection, where, query, getDocs, doc as firebaseDoc, updateDoc } from
 import '../styles/login.css'
 import { useUsersContext } from '../context/UsersContext'
 import { logUserAction } from '../utils/LogsAction'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
     const { admins } = useUsersContext()
@@ -82,6 +83,12 @@ const Login = () => {
                     <button className='login-btn w-100 p-2' type='submit'>Log In</button>
                 </div>
             </form>
+            <div className="go-back p-3">
+                <Link to="/">
+                    <i className="fa-solid fa-arrow-left"></i>
+                    &nbsp;Go back
+                </Link>
+            </div>
         </div>
         
     )

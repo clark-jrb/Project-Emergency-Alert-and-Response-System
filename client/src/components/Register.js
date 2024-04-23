@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '../firebase'
 import '../styles/login.css'
 import { Form } from 'react-bootstrap' 
+import { Link } from 'react-router-dom'
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -99,6 +100,12 @@ const Register = () => {
                     <button className='reg-btn w-100 p-2' type='submit'>Register</button>
                 </div>
             </form>
+            <div className="go-back p-3">
+                <Link to="/">
+                    <i className="fa-solid fa-arrow-left"></i>
+                    &nbsp;Go back
+                </Link>
+            </div>
         </div>
     )
 }
