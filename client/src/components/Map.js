@@ -18,12 +18,12 @@ const Map = () => {
     const { setTheNav } = useNavActiveContext()
     const { setTheActive } = useActiveContext()
     const { admins } = useUsersContext()
-    const { currentUser } = useAuth()
+    const { currentUser, currentUserRole } = useAuth()
     const { requests } = useRequestContext()
     const navigate = useNavigate()
     const [toThisLoc, setToThisLoc] = useState([])
 
-    const currentAdmin = admins.find(admin => admin.id === currentUser.uid)   
+    const currentAdmin = admins.find(admin => admin.route === currentUserRole)   
     
     useEffect(() => {
         if (toLocate.length > 0) {
@@ -61,7 +61,7 @@ const Map = () => {
         // }
         
         mapRef.current.panTo(setThePosition);
-        console.log('possition: ', setThePosition);
+        // console.log('possition: ', setThePosition);
     }
 
     return (
