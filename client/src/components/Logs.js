@@ -15,7 +15,7 @@ const Logs = () => {
                     User Logs
                 </div>
                 <div className="user-log-table px-3">
-                    <table>
+                    <table className='the-table'>
                         <thead className='mb-2'>
                             <tr>
                                 <th className='table-num-h px-1'>#</th>
@@ -24,7 +24,7 @@ const Logs = () => {
                                 <th className='table-time'>Name</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='table-tbody'>
                             {logs
                                 .filter(log => log.role === currentUserRole)
                                 .map((log, index) => (

@@ -24,7 +24,8 @@
 }
 
 .user-log-table {
-    overflow-y: auto;
+    display: flex;
+    height: 90%;
 }
 
 .user-log-table table td {
