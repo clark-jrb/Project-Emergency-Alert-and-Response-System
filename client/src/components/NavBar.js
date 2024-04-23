@@ -57,6 +57,10 @@ const NavBar = ({ logo }) => {
         setTheNav(e)
     }
 
+    const click = () => {
+        console.log('click!');
+    }
+
     return (
         <nav className="navbar">
             <div className="nav-top p-1 px-3">
@@ -74,25 +78,30 @@ const NavBar = ({ logo }) => {
                                         "green" : recentRequest.emergency_level === '3' ? 
                                         "yellow" : recentRequest.emergency_level === '4' ? 
                                         "red" : "") : ''
-                    }`}>
-                        {count > 0 ? 
-                        <>
-                            <i className="fa-regular fa-bell fa-shake fa-xl"></i>
-                        </> : 
-                        <>
-                            <i className="fa-regular fa-bell fa-xl"></i>
-                        </>}
+                    }`}
+                    >
+                        <Link to="emergencies" onClick={() => handleClick('emergencies')}>
+                            {count > 0 ? 
+                            <>
+                                <i className="fa-regular fa-bell fa-shake fa-xl"></i>
+                            </> : 
+                            <>
+                                <i className="fa-regular fa-bell fa-xl"></i>
+                            </>}
+                        </Link>
                     </div>
 
                     <div className="notif-message p-2 px-3 d-flex">
                         <div className="mess-icon">
-                            {messCount > 0 ? 
-                            <>
-                                <i className="fa-regular fa-message fa-bounce fa-xl"></i>
-                            </> : 
-                            <>
-                                <i className="fa-regular fa-message fa-xl"></i>
-                            </>}
+                            <Link to="messages" onClick={() => handleClick('messages')}>
+                                {messCount > 0 ? 
+                                <>
+                                    <i className="fa-regular fa-message fa-bounce fa-xl"></i>
+                                </> : 
+                                <>
+                                    <i className="fa-regular fa-message fa-xl"></i>
+                                </>}
+                            </Link>
                         </div>
 
                         {messCount > 0 ? 

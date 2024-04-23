@@ -160,6 +160,10 @@
     gap: 10px;
 }
 
+.status-bar a {
+    color: var(--font-text);
+}
+
 
 /* NOTIF BELL ANIMATION */
 
