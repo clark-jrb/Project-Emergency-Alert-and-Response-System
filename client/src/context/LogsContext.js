@@ -19,6 +19,8 @@ export const LogsProvider = ({ children }) => {
                     ...rest
                 }
             })
+            data.sort((a, b) => b.timestamp - a.timestamp);
+
             setLogs(data)
         })
         return () => unsubscribe()

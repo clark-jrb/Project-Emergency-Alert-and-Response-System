@@ -23,6 +23,10 @@
     font-weight: bold;
 }
 
+.user-log-table {
+    overflow-y: auto;
+}
+
 .user-log-table table td {
     border-bottom: #ccc solid 1px;
 }
