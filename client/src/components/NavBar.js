@@ -16,6 +16,7 @@ import { useUsersContext } from "../context/UsersContext"
 import { useMessageContext } from "../context/MessagesContext"
 import { collection, updateDoc, doc } from 'firebase/firestore'
 import { db } from "../firebase"
+import { logUserAction } from "../utils/LogsAction"
 
 const NavBar = ({ logo }) => {
     const { currentUser, signOut, currentUserRole } = useAuth()
@@ -50,6 +51,7 @@ const NavBar = ({ logo }) => {
         })
         
         await signOut()
+        logUserAction('sign_out', findRTUser)
         navigate('/')
     }
 
@@ -184,7 +186,7 @@ const NavBar = ({ logo }) => {
 
                     <li className={NavActive === 'logs' ? 'active' : ''}>
                         <Link to="logs" onClick={() => handleClick('logs')}>
-                            <i class="fa-regular fa-file-lines fa-lg"></i>
+                            <i className="fa-regular fa-file-lines fa-lg"></i>
                             User Logs
                         </Link>
                     </li>

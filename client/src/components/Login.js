@@ -4,24 +4,15 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '../firebase'
 import { collection, where, query, getDocs, doc as firebaseDoc, updateDoc } from 'firebase/firestore'
 import '../styles/login.css'
-// import { useUsersContext } from '../context/UsersContext'
-// import { useActiveContext } from '../context/ActiveContext'
-// import badge from '../images/logo/badge.png'
-// import redcross from '../images/logo/redcross.png'
 import { useUsersContext } from '../context/UsersContext'
+import { logUserAction } from '../utils/LogsAction'
 
 const Login = () => {
     const { admins } = useUsersContext()
-    // const { activeAdmin, setTheActiveAdmin } = useActiveContext()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate()
-
-    // const findEmail = admins.find(admin => admin.email === email)
-
-    // console.log(db);
-    // console.log(admins);
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -40,7 +31,7 @@ const Login = () => {
 
                 const rtCollection = collection(db, `response_team`)
                 const specDoc = firebaseDoc(rtCollection, findAdmin.id)
-                console.log(specDoc);
+                // console.log(specDoc);
 
                 // Navigate based on the user's role
                 if (userRole) {
@@ -48,6 +39,7 @@ const Login = () => {
                         status: 'online'
                     })
                     console.log('welcome you are now online!');
+                    logUserAction('sign_in', userData)
                     navigate(`/${userRole}/dashboard`);
                 } else {
                     console.log('no role exist');
