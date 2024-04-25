@@ -273,54 +273,72 @@ const Emergency_info = () => {
                     </div>
 
                     {/* Info-right */}
-                        {users.filter(user => user.id === specificReq.userID ).map(user => (
-                            <div className='info-right p-3 mt-3' key={user.id}>
-
-                                <div className='person-info py-2 px-3'>
-                                    <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>
-                                </div>
-
-                                <div className='name_gender d-flex mt-3 px-2'>
-                                    <div className='person_name w-50'>
-                                        <p className='m-0 forLabel'>Name</p>
-                                        <p className='m-0 py-2'>» {user.fullname}</p>
+                        <div className='info-right p-3 d-flex'>
+                            {specificReq.additional_information && (
+                                <div className="additional-cont pb-3">
+                                    <div>
+                                        <p className="m-0">
+                                            <i className="fa-solid fa-circle-info"></i> Additional Information:
+                                        </p>
                                     </div>
-                                    <div className='person_gender w-50 ps-3'>
-                                        <p className='m-0 forLabel'>Gender</p>
-                                        <p className='m-0 py-2'>» {user.gender}</p>
+                                    
+                                    <div className="add-info py-2">
+                                        {specificReq.additional_information}
                                     </div>
                                 </div>
-
-                                <div className='occup_cont d-flex mt-3 px-2'>
-                                    <div className='person_occupation w-50'>
-                                        <p className='m-0 forLabel'>Occupation</p>
-                                        <p className='m-0 py-2'>» {user.occupation}</p>
+                            )}
+                            
+                            {users.filter(user => user.id === specificReq.userID ).map(user => (
+                                <div className="person-info-cont p-3" key={user.id}>
+                                    <div className='person-info py-2 px-3'>
+                                        <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>
                                     </div>
-                                    <div className='person_contact w-50 ps-3'>
-                                        <p className='m-0 forLabel'>Contact</p>
-                                        <p className='m-0 py-2'>» {user.contact}</p>
-                                    </div>
-                                </div>
-
-                                <div className='email_cont mt-3 px-2'>
-                                    <div className='person_email'>
-                                        <p className='m-0 forLabel'>Email</p>
-                                        <p className='m-0 py-2'>» {user.email}</p>
-                                    </div>
-                                </div>
-                                {/* 
-                                <div className='button_cont mt-3 px-2 py-3'>
-                                    <div className='call_message d-flex'>
-                                        <button className='call-btn py-2'><i className="fa-regular fa-message"></i> Message</button>
-                                        <div className='forOr d-flex'>
-                                            <p className='m-0'>or</p>
+                                    <div className="py-2">
+                                        <div className='name_gender d-flex px-2'>
+                                            <div className='person_name w-50'>
+                                                <p className='m-0 forLabel'>Name</p>
+                                                <div className="overflow-y-auto">
+                                                    <p className='m-0 py-2'>» {user.fullname}</p>
+                                                </div>
+                                            </div>
+                                            <div className='person_gender w-50 ps-3'>
+                                                <p className='m-0 forLabel'>Gender</p>
+                                                <p className='m-0 py-2'>» {user.gender}</p>
+                                            </div>
                                         </div>
-                                        <button className='chat-btn py-2'><i className="fa-solid fa-phone"></i> Call</button>
-                                    </div>
-                                </div> */}
 
-                            </div>
-                        ))}
+                                        <div className='occup_cont d-flex px-2'>
+                                            <div className='person_occupation w-50'>
+                                                <p className='m-0 forLabel'>Occupation</p>
+                                                <p className='m-0 py-2'>» {user.occupation}</p>
+                                            </div>
+                                            <div className='person_contact w-50 ps-3'>
+                                                <p className='m-0 forLabel'>Contact</p>
+                                                <p className='m-0 py-2'>» {user.contact}</p>
+                                            </div>
+                                        </div>
+
+                                        <div className='email_cont px-2'>
+                                            <div className='person_email'>
+                                                <p className='m-0 forLabel'>Email</p>
+                                                <p className='m-0 py-2'>» {user.email}</p>
+                                            </div>
+                                        </div>
+                                        {/* 
+                                        <div className='button_cont mt-3 px-2 py-3'>
+                                            <div className='call_message d-flex'>
+                                                <button className='call-btn py-2'><i className="fa-regular fa-message"></i> Message</button>
+                                                <div className='forOr d-flex'>
+                                                    <p className='m-0'>or</p>
+                                                </div>
+                                                <button className='chat-btn py-2'><i className="fa-solid fa-phone"></i> Call</button>
+                                            </div>
+                                        </div> */}
+                                    </div>
+                                    
+                                </div>
+                            ))}
+                        </div>
                 </div>
             </div>
         )

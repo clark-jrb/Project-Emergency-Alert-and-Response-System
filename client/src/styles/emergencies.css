@@ -296,10 +296,31 @@
 
 .info-right {
     /* box-shadow: 0 1.5px 3px 0 #ccc; */
+    flex-direction: column;
+    /* border: red solid 2px; */
+    width: 50dvw;
+    height: 100%;
+}
+
+.person-info-cont {
     border: #ccc solid 2px;
     border-radius: 10px;
-    width: 50dvw;
-    height: fit-content;
+    height: 70%;
+}
+
+.additional-cont {
+    color: var(--font-text);
+    /* border: blue solid 2px; */
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-info {
+    border-bottom: #ccc solid 1px;
+    height: 70%;
+    flex: 1;
+    overflow-y: auto;
 }
 
 .data {
