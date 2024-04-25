@@ -128,7 +128,7 @@ const Emergency_info = () => {
 
                                     {specificReq.emergency_type === 'Earthquake' ? 
                                         <img src={earthquake} alt="earthquake"/>
-                                        : specificReq.emergency_type === 'Bullying/Harassment' ? 
+                                        : specificReq.emergency_type === 'Bullying_Harassment' ? 
                                         <img src={harassment} alt="harassment" />
                                         : specificReq.emergency_type === 'Seizure' ? 
                                         <img src={seizure} alt="seizure" />
@@ -138,7 +138,7 @@ const Emergency_info = () => {
                                         <img src={injury} alt="injury" />
                                         : specificReq.emergency_type === 'Abdominal Pain' ? 
                                         <img src={abdominal} alt="abdominal" />
-                                        : specificReq.emergency_type === 'Allergies/Anaphylaxis' ? 
+                                        : specificReq.emergency_type === 'Allergies_Anaphylaxis' ? 
                                         <img src={allergies} alt="allergies" />
                                         : specificReq.emergency_type === 'Fainting' ? 
                                         <img src={faint} alt="faint" />
@@ -152,7 +152,7 @@ const Emergency_info = () => {
                                         <img src={fire} alt="fire" />
                                         : specificReq.emergency_type === 'Road Accident' ? 
                                         <img src={roadaccident} alt="roadaccident" />
-                                        : specificReq.emergency_type === 'Theft/Property Damage' ? 
+                                        : specificReq.emergency_type === 'Theft_Property Damage' ? 
                                         <img src={theft} alt="theft" />
                                         : specificReq.emergency_type === 'Suspicious Activity' ? 
                                         <img src={suscpicious} alt="suscpicious" />
@@ -180,9 +180,9 @@ const Emergency_info = () => {
                         <div className='section-3'>
                             <div className='location'>
                                 <p className='m-0 pt-3 highlight'>
-                                    <i className="fa-solid fa-map-location-dot"></i>
+                                    <i className="fa-solid fa-map-location-dot"></i>&nbsp;Locate
                                 </p>
-                                <div className='m-0 py-3 data fs-5'>
+                                <div className='m-0 py-2 data fs-5'>
                                     <button 
                                         className='go-to-location p-1 px-2 mx-1 w-100' 
                                         onClick={() => handleLocateBtn(specificReq.location)}
