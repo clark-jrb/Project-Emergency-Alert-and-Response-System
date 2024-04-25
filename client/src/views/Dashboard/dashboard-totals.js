@@ -133,7 +133,12 @@ const DashboardTotals = ({ requests, currentUserRole, admins }) => {
                                                     "yellow" : data.emergency_level === '4' ? 
                                                     "red" : "N/A"
                                                 }`}>
-                                                L{data.emergency_level}
+                                                {data.emergency_level === '1' ? 
+                                                    "L1" : data.emergency_level === '2' ? 
+                                                    "L2" : data.emergency_level === '3' ? 
+                                                    "URG" : data.emergency_level === '4' ? 
+                                                    "IMM" : "N/A"
+                                                }
                                             </div>
                                         </td>
                                         <td className='table-time-dash'>{moment(data.timestamp).format('LT')}</td>

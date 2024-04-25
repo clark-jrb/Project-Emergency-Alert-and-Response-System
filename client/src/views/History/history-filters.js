@@ -123,7 +123,7 @@ const HistoryFilters = () => {
                 {/* LEVEL 3 */}
                 <div className={`forLvl three d-flex mt-3 ${filterLvlActive === '3' ? 'active' : ''}`} onClick={() => handleFilterLevel('3')}>
                     <div className='lvl-logo three w-25'>
-                        <p className='m-0'>L3</p>
+                        <p className='m-0'>URG</p>
                     </div>
                     <div className='lvl-info w-75'>
                         <div className='px-2'>
@@ -135,7 +135,7 @@ const HistoryFilters = () => {
                 {/* LEVEL 4 */}
                 <div className={`forLvl four d-flex mt-3 ${filterLvlActive === '4' ? 'active' : ''}`} onClick={() => handleFilterLevel('4')}>
                     <div className='lvl-logo four w-25'>
-                        <p className='m-0'>L4</p>
+                        <p className='m-0'>IMM</p>
                     </div>
                     <div className='lvl-info w-75'>
                         <div className='px-2'>

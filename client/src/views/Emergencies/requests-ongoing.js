@@ -41,8 +41,8 @@ const Ongoing = () => {
                                 {request.emergency_level === '1' ? 
                                     "L1" : request.emergency_level === '2' ? 
                                     "L2" : request.emergency_level === '3' ? 
-                                    "L3" : request.emergency_level === '4' ? 
-                                    "L4" : "N/A"
+                                    "URG" : request.emergency_level === '4' ? 
+                                    "IMM" : "N/A"
                                 }
                             </p>
                         </div>

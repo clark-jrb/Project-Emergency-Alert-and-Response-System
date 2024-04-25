@@ -133,7 +133,7 @@ option {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    font-size: x-large;
+    font-size: medium;
     font-weight: bold;
     /* box-shadow: 0 1.5px 3px 0 #ccc; */
     color: white;
@@ -307,6 +307,7 @@ tr {
     box-shadow: 0 1.5px 3px 0 #ccc;
     color: white;
     font-weight: bold;
+    font-size: small;
 }
 
 .td-level-con.blue {
