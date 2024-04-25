@@ -208,7 +208,7 @@
     color: var(--font-text);
     border-radius: 10px;
     justify-content: space-between;
-    box-shadow: 0 1.5px 3px 0 #ccc;
+    /* box-shadow: 0 1.5px 3px 0 #ccc; */
     /* width: 69.2%; */
     /* width:; */
     flex: 1;
@@ -220,10 +220,12 @@
 
 .emer-title.red {
     background-color: var(--light-red);
+    border: var(--red) solid 2px;
 }
 
 .emer-title.yellow {
     background-color: var(--light-yellow);
+    border: var(--yellow) solid 2px;
 }
 
 .emer-title.green {
@@ -357,14 +359,21 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* width: 300px; */
 }
 
 .emertype-icon {
     /* border: #ccc solid 1px; */
+    width: fit-content;
     border-radius: 10px;
-    box-shadow: 0 1.5px 3px 0 #ccc;
+    /* box-shadow: 0 1.5px 3px 0 #ccc; */
     justify-content: center;
     align-items: center;
+}
+
+.emertype-icon img {
+    height: 100px;
+    width: 100px;
 }
 
 .emertype-icon.blue {
@@ -373,6 +382,7 @@ p {
 
 .emertype-icon.red {
     background-color: var(--light-red);
+    border: var(--red) solid 2px;
 }
 
 .emertype-icon.green {
@@ -381,6 +391,7 @@ p {
 
 .emertype-icon.yellow {
     background-color: var(--light-yellow);
+    border: var(--yellow) solid 2px;
 }
 
 /* for security icon  */

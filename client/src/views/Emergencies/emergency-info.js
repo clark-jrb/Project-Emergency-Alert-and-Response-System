@@ -7,13 +7,22 @@ import { useUsersContext } from '../../context/UsersContext'
 import { useLocateContext } from '../../context/LocateContext'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import { ReactComponent as AssistSVG } from '../../images/icons/assistance.svg'
-import { ReactComponent as SecuritySVG } from '../../images/icons/security.svg'
-import { ReactComponent as ViolenceSVG } from '../../images/icons/violence.svg'
-import { ReactComponent as AccidentSVG } from '../../images/icons/accident.svg'
-import { ReactComponent as AmbulanceSVG } from '../../images/icons/ambulance.svg'
-import { ReactComponent as InjurySVG } from '../../images/icons/injury.svg'
-import { ReactComponent as MedicSVG } from '../../images/icons/medic.svg'
+import abdominal from '../../images/icons/i_abdominal.png'
+import earthquake from '../../images/icons/i_earthquake.png'
+import harassment from '../../images/icons/i_harassment.png'
+import allergies from '../../images/icons/i_allergies.png'
+import bleeding from '../../images/icons/i_bleeding.png'
+import breathing from '../../images/icons/i_breathing.png'
+import escort from '../../images/icons/i_escort.png'
+import faint from '../../images/icons/i_faint.png'
+import fire from '../../images/icons/i_fire.png'
+import injury from '../../images/icons/i_injury.png'
+import roadaccident from '../../images/icons/i_roadaccident.png'
+import seizure from '../../images/icons/i_seizure.png'
+import suscpicious from '../../images/icons/i_suscpicious.png'
+import theft from '../../images/icons/i_theft.png'
+import violence from '../../images/icons/i_violence.png'
+import infirmary_others from '../../images/icons/ic_infirmary_others.png'
 import DeclineButton from '../../hooks/buttons/DeclineButton'
 import CompleteButton from '../../hooks/buttons/CompleteButton'
 import AcceptButton from '../../hooks/buttons/AcceptButton'
@@ -110,58 +119,46 @@ const Emergency_info = () => {
                                 </span>
 
                             </div>
-                            <div className='emertype-icon-con w-50 pb-4'>
-                                <div className={`emertype-icon h-100 w-50 d-flex ${specificReq.emergency_level === '1' ? 
+                            <div className='emertype-icon-con w-50 px-3'>
+                                <div className={`emertype-icon p-3 d-flex ${specificReq.emergency_level === '1' ? 
                                 "blue" : specificReq.emergency_level === '2' ? 
                                 "green" : specificReq.emergency_level === '3' ? 
                                 "yellow" : specificReq.emergency_level === '4' ? 
                                 "red" : ""}`}>
 
-                                    {specificReq.emergency_type === 'Security' 
-                                        ? 
-                                            <SecuritySVG className={`security-icon ${specificReq.emergency_level === '1' ? 
-                                            "blue" : specificReq.emergency_level === '2' ? 
-                                            "green" : specificReq.emergency_level === '3' ? 
-                                            "yellow" : specificReq.emergency_level === '4' ? 
-                                            "red" : ""}`} height="65" width="65"></SecuritySVG> : specificReq.emergency_type === 'Accident' 
-                                        ? 
-                                            <AccidentSVG className={`accident-icon ${specificReq.emergency_level === '1' ? 
-                                            "blue" : specificReq.emergency_level === '2' ? 
-                                            "green" : specificReq.emergency_level === '3' ? 
-                                            "yellow" : specificReq.emergency_level === '4' ? 
-                                            "red" : ""}`} height="65" width="65"></AccidentSVG> : specificReq.emergency_type === 'Assistance' 
-                                        ? 
-                                            <AssistSVG className={`assist-icon ${specificReq.emergency_level === '1' ? 
-                                            "blue" : specificReq.emergency_level === '2' ? 
-                                            "green" : specificReq.emergency_level === '3' ? 
-                                            "yellow" : specificReq.emergency_level === '4' ? 
-                                            "red" : ""}`} height="65" width="65"></AssistSVG> : specificReq.emergency_type === 'Violence' 
-                                        ? 
-                                            <ViolenceSVG className={`violence-icon ${specificReq.emergency_level === '1' ? 
-                                            "blue" : specificReq.emergency_level === '2' ? 
-                                            "green" : specificReq.emergency_level === '3' ? 
-                                            "yellow" : specificReq.emergency_level === '4' ? 
-                                            "red" : ""}`} height="65" width="65"></ViolenceSVG> : specificReq.emergency_type === 'Ambulance' 
-                                        ?
-                                            <AmbulanceSVG className={`ambulance-icon ${specificReq.emergency_level === '1' ? 
-                                            "blue" : specificReq.emergency_level === '2' ? 
-                                            "green" : specificReq.emergency_level === '3' ? 
-                                            "yellow" : specificReq.emergency_level === '4' ? 
-                                            "red" : ""}`} height="65" width="65"></AmbulanceSVG> : 
-                                            specificReq.emergency_type === 'Injury' 
-                                        ?
-                                            <InjurySVG className={`injury-icon ${specificReq.emergency_level === '1' ? 
-                                            "blue" : specificReq.emergency_level === '2' ? 
-                                            "green" : specificReq.emergency_level === '3' ? 
-                                            "yellow" : specificReq.emergency_level === '4' ? 
-                                            "red" : ""}`} height="65" width="65"></InjurySVG> :
-                                            specificReq.emergency_type === 'Medic'
-                                        ?
-                                            <MedicSVG className={`medic-icon ${specificReq.emergency_level === '1' ? 
-                                            "blue" : specificReq.emergency_level === '2' ? 
-                                            "green" : specificReq.emergency_level === '3' ? 
-                                            "yellow" : specificReq.emergency_level === '4' ? 
-                                            "red" : ""}`} height="65" width="65"></MedicSVG> : 'N/A'
+                                    {specificReq.emergency_type === 'Earthquake' ? 
+                                        <img src={earthquake} alt="earthquake"/>
+                                        : specificReq.emergency_type === 'Bullying/Harassment' ? 
+                                        <img src={harassment} alt="harassment" />
+                                        : specificReq.emergency_type === 'Seizure' ? 
+                                        <img src={seizure} alt="seizure" />
+                                        : specificReq.emergency_type === 'Difficulty Breathing' ? 
+                                        <img src={breathing} alt="breathing" />
+                                        : specificReq.emergency_type === 'Physical Injury' ?
+                                        <img src={injury} alt="injury" />
+                                        : specificReq.emergency_type === 'Abdominal Pain' ? 
+                                        <img src={abdominal} alt="abdominal" />
+                                        : specificReq.emergency_type === 'Allergies/Anaphylaxis' ? 
+                                        <img src={allergies} alt="allergies" />
+                                        : specificReq.emergency_type === 'Fainting' ? 
+                                        <img src={faint} alt="faint" />
+                                        : specificReq.emergency_type === 'Bleeding' ? 
+                                        <img src={bleeding} alt="bleeding" />
+                                        : specificReq.emergency_type === 'Others' ? 
+                                        <img src={infirmary_others} alt="infirmary_others" />
+                                        : specificReq.emergency_type === 'Violence' ? 
+                                        <img src={violence} alt="violence" />
+                                        : specificReq.emergency_type === 'Fire Hazard' ? 
+                                        <img src={fire} alt="fire" />
+                                        : specificReq.emergency_type === 'Road Accident' ? 
+                                        <img src={roadaccident} alt="roadaccident" />
+                                        : specificReq.emergency_type === 'Theft/Property Damage' ? 
+                                        <img src={theft} alt="theft" />
+                                        : specificReq.emergency_type === 'Suspicious Activity' ? 
+                                        <img src={suscpicious} alt="suscpicious" />
+                                        : specificReq.emergency_type === 'Other Emergency' ? 
+                                        <img src={escort} alt="escort" />
+                                        : 'N/A'
                                     }
 
                                 </div>
