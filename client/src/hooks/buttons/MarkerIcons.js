@@ -10,7 +10,7 @@ const MarkerIcons = ({ level, type }) => {
         popupAnchor: [3, -50],
         shadowUrl: require('../../images/markers/shadow3.png'),
         shadowSize: [45, 20],
-        shadowAnchor: [13, 14],
+        shadowAnchor: [13, 18],
     });
 
     return markerIcon;
