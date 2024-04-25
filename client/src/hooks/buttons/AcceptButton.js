@@ -59,7 +59,7 @@ const AcceptButton = ({ reqID, adminRoute, adminName, reqType, token }) => {
     }
     
     return (
-        <div className='accept-cont w-50'>
+        <div className='accept-cont w-100'>
             <button 
                 className='accept-btn w-100 py-2' 
                 onClick={ongoingArray.length === maxSlots ? setInqueue : setOngoing} 

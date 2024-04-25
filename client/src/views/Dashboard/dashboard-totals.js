@@ -88,7 +88,7 @@ const DashboardTotals = ({ requests, currentUserRole, admins }) => {
                     </div>
                 </div>
 
-                <div className='total-canceled d-flex p-4'>
+                {/* <div className='total-canceled d-flex p-4'>
                     <div className='total-icon'>
                         <img src={Cancel} alt='cancel-logo'/>
                     </div>
@@ -98,7 +98,7 @@ const DashboardTotals = ({ requests, currentUserRole, admins }) => {
                             <p className='m-0'>Total Canceled</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <div className='history-section d-flex px-4 pt-4 h-75'>
@@ -188,9 +188,9 @@ const DashboardTotals = ({ requests, currentUserRole, admins }) => {
                 <div className='totals-per-level d-flex'>
                     <div className='totals-lvl4 p-2 d-flex'>
                         <div className='d-flex'>
-                            <div className='totals-lvl4-logo d-flex'>
+                            {/* <div className='totals-lvl4-logo d-flex'>
                                 <p className='m-0'>L4</p>
-                            </div>
+                            </div> */}
                             <div className='totals-lvl4-desc px-2'>
                                 <p className='m-0 lvl-desc'>Total</p>
                                 <p className='m-0'>Immediate</p>
@@ -204,9 +204,9 @@ const DashboardTotals = ({ requests, currentUserRole, admins }) => {
 
                     <div className='totals-lvl3 p-2 d-flex'>
                         <div className='d-flex'>
-                            <div className='totals-lvl3-logo d-flex'>
+                            {/* <div className='totals-lvl3-logo d-flex'>
                                 <p className='m-0'>L3</p>
-                            </div>
+                            </div> */}
                             <div className='totals-lvl3-desc px-2'>
                                 <p className='m-0 lvl-desc'>Total</p>
                                 <p className='m-0'>Urgent</p>
@@ -218,7 +218,7 @@ const DashboardTotals = ({ requests, currentUserRole, admins }) => {
                         </div>
                     </div>
 
-                    <div className='totals-lvl2 p-2 d-flex'>
+                    {/* <div className='totals-lvl2 p-2 d-flex'>
                         <div className='d-flex'>
                             <div className='totals-lvl2-logo d-flex'>
                                 <p className='m-0'>L2</p>
@@ -248,7 +248,7 @@ const DashboardTotals = ({ requests, currentUserRole, admins }) => {
                         <div className='totals-lvl1-count px-3'>
                             <p className='m-0'>{getLvlTotals('1')}</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

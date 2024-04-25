@@ -77,11 +77,14 @@
     gap: 10px;
 }
 
-.totals-lvl1, .totals-lvl2, .totals-lvl3, .totals-lvl4 {
+/* .totals-lvl1,
+.totals-lvl2,  */
+.totals-lvl3, 
+.totals-lvl4 {
     /* border: #ccc solid 1px; */
     border-radius: 10px;
     width: 100%;
-    flex: 1;
+    /* flex: 1; */
     justify-content: space-between;
     box-shadow: inset 0 1.5px 3px 0 #ccc;
 }

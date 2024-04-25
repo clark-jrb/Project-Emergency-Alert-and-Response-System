@@ -207,13 +207,13 @@ const Emergency_info = () => {
                                             reqType={specificReq.emergency_type}
                                             token={specificUserReq.fcmToken}
                                         />
-                                        <DeclineButton 
+                                        {/* <DeclineButton 
                                             reqID={specificReq.id} 
                                             adminRoute={findAdmin.route} 
                                             adminName={findAdmin.userName} 
                                             reqType={specificReq.emergency_type}
                                             token={specificUserReq.fcmToken}
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                             )}
