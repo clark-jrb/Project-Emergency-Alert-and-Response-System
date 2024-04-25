@@ -28,8 +28,8 @@ const Logs = () => {
                             {logs
                                 .filter(log => log.role === currentUserRole)
                                 .map((log, index) => (
-                                <tr key={index + 1}>
-                                    <td className='table-num px-1'>{index + 1}</td>
+                                <tr key={logs.length - index}>
+                                    <td className='table-num px-1'>{logs.length - index}</td>
                                     <td className='table-level' id={`${log.action}`}>{log.action}</td>
                                     <td className='table-date'>{moment(log.timestamp).format('llll')}</td>
                                     <td className='table-time'>{log.displayName}</td>
