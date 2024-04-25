@@ -18,6 +18,8 @@ const GetMessages = () => {
                 const userId = message.chatroomID.slice(0, message.chatroomID.indexOf('_'))
                 const user = users.find(user => user.id === userId)
 
+                // console.log(message.chatroomID);
+
                 const handleClick = () => {
                     setTheMessageActive(message.chatroomID.toString())
                     setTheActiveUser(user.id)

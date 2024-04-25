@@ -5,6 +5,7 @@ import { useRequestContext } from '../../context/RequestContext'
 import { useActiveContext } from '../../context/ActiveContext'
 import { useUsersContext } from '../../context/UsersContext'
 import { useLocateContext } from '../../context/LocateContext'
+import { useMessageContext } from '../../context/MessagesContext'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import abdominal from '../../images/icons/i_abdominal.png'
@@ -35,6 +36,9 @@ const Emergency_info = () => {
     const { setLocation } = useLocateContext()
     const navigate = useNavigate()
 
+    const { activeMessage, setTheMessageActive, messages } = useMessageContext()
+    const { setTheActiveUser } = useActiveContext()
+
 
     const specificReq = requests.find(request => request.id === active)
     const specificUserReq = users.find(user => specificReq.userID === user.id)
@@ -54,6 +58,16 @@ const Emergency_info = () => {
         setLocation(e)
         navigate(`/${findAdmin.route}/map`)
     }
+
+    const handleMessage = () => {
+        setTheMessageActive(specificUserReq.id + "_" + findAdmin.id)
+        setTheActiveUser(specificUserReq.id)
+        navigate(`/${findAdmin.route}/messages`)
+    }
+
+    // useEffect(() => {
+    //     console.log(specificUserReq.id + "_" + findAdmin.id);
+    // }, [specificUserReq.id, findAdmin.id]);
     
     return (
         // Emergency Information 
@@ -290,8 +304,15 @@ const Emergency_info = () => {
                             
                             {users.filter(user => user.id === specificReq.userID ).map(user => (
                                 <div className="person-info-cont p-3" key={user.id}>
-                                    <div className='person-info py-2 px-3'>
-                                        <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>
+                                    <div className='person-info py-2 px-3 d-flex align-items-center'>
+                                        <div>
+                                            <p className='m-0'><i className="fa-regular fa-user"></i> Person Information</p>
+                                        </div>
+                                        <div className="message-person-btn-cont ms-auto">
+                                            <button className='go-to-message p-1 px-3 mx-1' onClick={() => handleMessage()}>
+                                                <i className="fa-solid fa-message"></i>&nbsp;Message
+                                            </button>
+                                        </div>
                                     </div>
                                     <div className="py-2">
                                         <div className='name_gender d-flex px-2'>

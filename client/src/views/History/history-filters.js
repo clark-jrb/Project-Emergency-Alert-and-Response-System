@@ -97,7 +97,7 @@ const HistoryFilters = () => {
                     </div>
                 </div>
                 {/* LEVEL 1 */}
-                <div className={`forLvl one d-flex mt-3 ${filterLvlActive === '1' ? 'active' : ''}`} onClick={() => handleFilterLevel('1')}>
+                {/* <div className={`forLvl one d-flex mt-3 ${filterLvlActive === '1' ? 'active' : ''}`} onClick={() => handleFilterLevel('1')}>
                     <div className='lvl-logo one w-25'>
                         <p className='m-0'>L1</p>
                     </div>
@@ -107,9 +107,9 @@ const HistoryFilters = () => {
                             <p className='m-0 description'>Minor Emergency</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {/* LEVEL 2 */}
-                <div className={`forLvl two d-flex mt-3 ${filterLvlActive === '2' ? 'active' : ''}`} onClick={() => handleFilterLevel('2')}>
+                {/* <div className={`forLvl two d-flex mt-3 ${filterLvlActive === '2' ? 'active' : ''}`} onClick={() => handleFilterLevel('2')}>
                     <div className='lvl-logo two w-25'>
                         <p className='m-0'>L2</p>
                     </div>
@@ -119,7 +119,7 @@ const HistoryFilters = () => {
                             <p className='m-0 description'>Non Life Threatening</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {/* LEVEL 3 */}
                 <div className={`forLvl three d-flex mt-3 ${filterLvlActive === '3' ? 'active' : ''}`} onClick={() => handleFilterLevel('3')}>
                     <div className='lvl-logo three w-25'>

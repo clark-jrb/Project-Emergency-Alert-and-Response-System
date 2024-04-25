@@ -240,7 +240,7 @@
     width: fit-content;
 }
 
-.go-to-details, .go-to-location {
+.go-to-details, .go-to-location, .go-to-message {
     /* font-weight: bold; */
     border: none;
     border-radius: 10px;
@@ -250,7 +250,7 @@
     transition: 0.2s background-color;
 }
 
-.go-to-details:hover, .go-to-location:hover {
+.go-to-details:hover, .go-to-location:hover, .go-to-message:hover {
     background-color: var(--hover-green);
 }
 
