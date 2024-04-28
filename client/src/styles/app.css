@@ -6,6 +6,10 @@
     user-select: none;
 }
 
+body {
+    background-image: radial-gradient(circle at top right, rgb(0,142,95) 0%, rgb(0,142,95) 48%,rgb(1,155,104) 48%, rgb(1,155,104) 53%,rgb(0,176,116) 53%, rgb(0,176,116) 56%,rgb(0,193,129) 56%, rgb(0,193,129) 69%,rgb(204,239,227) 69%, rgb(204,239,227) 100%);
+}
+
 .usf-container, .infi-container {
     display: flex;
     flex-direction: column;

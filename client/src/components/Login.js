@@ -60,7 +60,7 @@ const Login = () => {
                     <span style={{ color: 'var(--green)' }}>
                         <h2 style={{ fontWeight: 'bold' }}>Hello responders!</h2>
                     </span>
-                    <p className='m-0' style={{ fontSize: 'medium' }}>Please login according to your role below</p>
+                    <p className='m-0' style={{ fontSize: 'medium' }}>Please login to your account below</p>
                 </div>
 
                 <div className='forEmail mx-3 py-2'>

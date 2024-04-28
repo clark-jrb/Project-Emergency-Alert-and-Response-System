@@ -15,7 +15,7 @@ const HomeContainer = () => {
 
     return (
         <div className="container home-container">
-            <div className="container logo-container border p-3">
+            <div className="container logo-container p-3">
                 <div className="forLogo p-2">
                     <img src={logo} alt="logo-clsu"></img>
                 </div>
