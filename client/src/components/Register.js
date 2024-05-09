@@ -6,6 +6,7 @@ import { auth, db } from '../firebase'
 import '../styles/login.css'
 import { Form } from 'react-bootstrap' 
 import { Link } from 'react-router-dom'
+import { logUserAction } from '../utils/LogsAction'
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -31,6 +32,12 @@ const Register = () => {
                     role: selectedRole,
                     displayName: displayName
                 });
+
+                logUserAction('sign_in', {
+                    email: user.email,
+                    role: selectedRole,
+                    displayName: displayName
+                })
                 
                 console.log('User registered successfully');
                 navigate(`/${selectedRole}/dashboard`); // Redirect to home page after registration
