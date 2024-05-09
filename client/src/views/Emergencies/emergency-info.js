@@ -24,7 +24,7 @@ import suscpicious from '../../images/icons/i_suscpicious.png'
 import theft from '../../images/icons/i_theft.png'
 import violence from '../../images/icons/i_violence.png'
 import infirmary_others from '../../images/icons/ic_infirmary_others.png'
-import DeclineButton from '../../hooks/buttons/DeclineButton'
+// import DeclineButton from '../../hooks/buttons/DeclineButton'
 import CompleteButton from '../../hooks/buttons/CompleteButton'
 import AcceptButton from '../../hooks/buttons/AcceptButton'
 
@@ -36,7 +36,7 @@ const Emergency_info = () => {
     const { setLocation } = useLocateContext()
     const navigate = useNavigate()
 
-    const { activeMessage, setTheMessageActive, messages } = useMessageContext()
+    const { setTheMessageActive } = useMessageContext()
     const { setTheActiveUser } = useActiveContext()
 
 

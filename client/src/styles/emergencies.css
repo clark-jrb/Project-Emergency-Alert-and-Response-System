@@ -570,7 +570,7 @@ p {
 
 /* BUTTONS  */
 
-.accept-btn, .decline-btn, .complete-btn {
+.accept-btn, .decline-btn, .complete-btn, .no-btn {
     border: none;
     border-radius: 10px;
     color: white;
@@ -588,12 +588,12 @@ p {
 
 }
 
-.decline-btn {
+.decline-btn, .no-btn {
     background-color: var(--red);
     transition: .3s ease;
 }
 
-.decline-btn:hover {
+.decline-btn:hover, .no-btn:hover {
     background-color: var(--hover-red);
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
@@ -709,3 +709,4 @@ p {
     /* border: #ccc solid 2px; */
     box-shadow: inset 0 1.5px 3px 0 #a0a0a0;
 }
+
