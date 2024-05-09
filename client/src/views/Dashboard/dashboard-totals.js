@@ -52,38 +52,45 @@ const DashboardTotals = ({ requests, currentUserRole, admins }) => {
         <div className='forContent d-flex'>
 
             <div className='totals-section d-flex px-4 h-25'>
-                <div className='total-emergency d-flex p-4'>
-                    <div className='total-icon'>
-                        <img src={Siren} alt='siren-logo'/>
+                <div className='total-emergency d-flex p-4 justify-content-center'>
+                    <div className="d-flex gap-2">
+                        <div className='total-icon'>
+                            <img src={Siren} alt='siren-logo'/>
+                        </div>
+                        <div className='total-title'>
+                            <div className='flex-fill'>
+                                <p className='m-0 total-count'>{totalRequest}</p>
+                                <p className='m-0'>Total Emergencies</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className='total-title'>
-                        <div>
-                            <p className='m-0 total-count'>{totalRequest}</p>
-                            <p className='m-0'>Total Emergencies</p>
+                    
+                </div>
+
+                <div className='total-ongoing d-flex p-4 justify-content-center'>
+                    <div className="d-flex gap-2">
+                        <div className='total-icon'>
+                            <img src={Ongoing} alt='ongoing-logo'/>
+                        </div>
+                        <div className='total-title'>
+                            <div className='flex-fill'>
+                                <p className='m-0 total-count'>{ongoingRequest}</p>
+                                <p className='m-0'>Total On Going</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div className='total-ongoing d-flex p-4'>
-                    <div className='total-icon'>
-                        <img src={Ongoing} alt='ongoing-logo'/>
-                    </div>
-                    <div className='total-title'>
-                        <div>
-                            <p className='m-0 total-count'>{ongoingRequest}</p>
-                            <p className='m-0'>Total On Going</p>
+                <div className='total-complete d-flex p-4 justify-content-center'>
+                    <div className="d-flex gap-2">
+                        <div className='total-icon'>
+                            <img src={Checked} alt='checked-logo'/>
                         </div>
-                    </div>
-                </div>
-
-                <div className='total-complete d-flex p-4'>
-                    <div className='total-icon'>
-                        <img src={Checked} alt='checked-logo'/>
-                    </div>
-                    <div className='total-title'>
-                        <div>
-                            <p className='m-0 total-count'>{completedRequest}</p>
-                            <p className='m-0'>Total Completed</p>
+                        <div className='total-title'>
+                            <div className='flex-fill'>
+                                <p className='m-0 total-count'>{completedRequest}</p>
+                                <p className='m-0'>Total Completed</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -164,7 +171,7 @@ const DashboardTotals = ({ requests, currentUserRole, admins }) => {
                                                     <span style={{ color: "var(--green)"}}>
                                                         <i className="fa-regular fa-circle-check"></i> {data.status}
                                                     </span>
-                                                </> : data.status === 'Declined' ?
+                                                </> : data.status === 'Cancelled' ?
                                                 <>
                                                     <span style={{ color: "var(--red)"}}>
                                                         <i className="fa-solid fa-xmark"></i> {data.status}

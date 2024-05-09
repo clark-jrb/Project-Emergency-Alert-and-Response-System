@@ -43,9 +43,9 @@ const Emergency_info = () => {
     const specificReq = requests.find(request => request.id === active)
     const specificUserReq = users.find(user => specificReq.userID === user.id)
 
-    useEffect(() => {
-        console.log(specificReq.location.longitude);
-    }, [specificReq]);
+    // useEffect(() => {
+    //     console.log(specificReq.location.longitude);
+    // }, [specificReq]);
 
     // for Route
     const findAdmin = admins.find(admin => admin.route === currentUserRole)
@@ -77,7 +77,7 @@ const Emergency_info = () => {
                 {/* Header  */}
                 <div className='d-flex emer-header-cont'>
                     <div className='forEmer-title px-3 py-2'>
-                        <p className='m-0 fs-5 fw-bold'>Emergency # {specificReq.request_no}</p>
+                        <p className='m-0 fw-bold'>Emergency # {specificReq.request_no}</p>
                     </div>
                     <div className={`emer-title d-flex px-3 py-2 ${specificReq.emergency_level === '1' ? 
                                     "blue" : specificReq.emergency_level === '2' ? 
@@ -200,7 +200,7 @@ const Emergency_info = () => {
                                 </p>
                                 <div className='m-0 py-2 data fs-5'>
                                     <button 
-                                        className='go-to-location p-1 px-2 mx-1 w-100' 
+                                        className='go-to-location p-1 px-2 w-100' 
                                         onClick={() => handleLocateBtn(specificReq.location)}
                                     >
                                         <i className="fa-solid fa-location-crosshairs"></i> Locate

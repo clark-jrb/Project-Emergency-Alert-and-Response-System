@@ -39,17 +39,17 @@
     border: #ccc solid 2px;
     border-radius: 10px;
     color: var(--font-text);
-    gap: 3px;
+    /* gap: 3px; */
     box-shadow: 0 1.5px 3px 0 #ccc;
 }
 
 :is(.total-emergency, .total-ongoing, .total-complete, .total-canceled) img {
-    height: 60px;
+    height: 70px;
 }
 
 .total-count {
     font-weight: bold;
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 .total-icon {
@@ -60,7 +60,7 @@
 
 .total-title {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex: 1;
     text-align: center;

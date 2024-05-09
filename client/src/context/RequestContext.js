@@ -61,7 +61,7 @@ export const RequestProvider = ({ children }) => {
             const sortedDataByNum = data.sort((a, b) => b.request_no - a.request_no);
 
             console.log('Count of "New" status:', newStatusCount)
-            console.log('Recent request: ', mostRecent)
+            // console.log('Recent request: ', mostRecent)
 
             setRequests(sortedDataByNum)
             setCount(newStatusCount)
