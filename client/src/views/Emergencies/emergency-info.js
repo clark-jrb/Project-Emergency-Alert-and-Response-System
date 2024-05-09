@@ -43,9 +43,9 @@ const Emergency_info = () => {
     const specificReq = requests.find(request => request.id === active)
     const specificUserReq = users.find(user => specificReq.userID === user.id)
 
-    // useEffect(() => {
-    //     console.log(specificReq);
-    // }, [specificReq]);
+    useEffect(() => {
+        console.log(specificReq.location.longitude);
+    }, [specificReq]);
 
     // for Route
     const findAdmin = admins.find(admin => admin.route === currentUserRole)
@@ -191,6 +191,8 @@ const Emergency_info = () => {
                             </div>
                         </div>
                         {/* Location Section */}
+                        {specificReq.location.longitude !== 0 && specificReq.status !== 'Complete'
+                        && (
                         <div className='section-3'>
                             <div className='location'>
                                 <p className='m-0 pt-3 highlight'>
@@ -206,6 +208,7 @@ const Emergency_info = () => {
                                 </div>
                             </div>
                         </div>
+                        )}
                         {/* Buttons Section */}
                         <div className="section-buttons d-flex py-3">
                             {specificReq.status === 'New' && (
