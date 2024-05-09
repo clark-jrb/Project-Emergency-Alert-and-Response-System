@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 import Dashboard from "../Dashboard"
 import Emergencies from "../Emergencies"
@@ -13,8 +13,15 @@ import { MessageProvider } from "../../context/MessagesContext"
 import { LocateProvider } from "../../context/LocateContext"
 import { LogsProvider } from "../../context/LogsContext"
 import clsu_logo_nav from '../../images/logo/clsu_logo_nav.png'
+// import { useActiveContext } from "../../context/ActiveContext"
 
 const USF = () => {
+    // const { active } = useActiveContext()
+
+    // useEffect(() => {
+    //     console.log('active request: ' + active);
+    // }, [active]);
+
     return (
             <div className="usf-container">
                 <RequestProvider>

@@ -14,12 +14,14 @@ import { useNavActiveContext } from "../context/NavActiveContext"
 import { useRequestContext } from "../context/RequestContext"
 import { useUsersContext } from "../context/UsersContext"
 import { useMessageContext } from "../context/MessagesContext"
+import { useActiveContext } from "../context/ActiveContext"
 import { collection, updateDoc, doc } from 'firebase/firestore'
 import { db } from "../firebase"
 import { logUserAction } from "../utils/LogsAction"
 
 const NavBar = ({ logo }) => {
     const { currentUser, signOut, currentUserRole } = useAuth()
+    const { setTheActive } = useActiveContext()
     const { NavActive, setTheNav } = useNavActiveContext()
     const { count, recentRequest } = useRequestContext()
     const { messCount } = useMessageContext()
@@ -45,7 +47,7 @@ const NavBar = ({ logo }) => {
     }, [location, setTheNav])
 
     const handleSignOut = async () => {
-
+        setTheActive(null)
         updateDoc(specDoc, {
             status: 'offline'
         })
