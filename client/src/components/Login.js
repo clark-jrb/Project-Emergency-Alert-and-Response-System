@@ -14,9 +14,11 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
 
     const handleLogin = async (e) => {
         e.preventDefault()
+        setLoading(true)
         try {
             await signInWithEmailAndPassword(auth, email, password)
             // console.log(email)
@@ -51,6 +53,7 @@ const Login = () => {
             setError('Incorrect credentials')
             console.error('Error signing in:', error.message)
         }
+        setLoading(false)
     };
 
     return (
@@ -62,6 +65,8 @@ const Login = () => {
                     </span>
                     <p className='m-0' style={{ fontSize: 'medium' }}>Please login to your account below</p>
                 </div>
+
+                
 
                 <div className='forEmail mx-3 py-2'>
                     <label htmlFor="email">Email:</label>
@@ -80,7 +85,11 @@ const Login = () => {
                 }
             
                 <div className='forBtn mx-3 py-2 pt-4'>
-                    <button className='login-btn w-100 p-2' type='submit'>Log In</button>
+                    <button className='login-btn w-100 p-2' type='submit'>
+                        {loading ? 
+                            <i className="fa-solid fa-spinner fa-spin"></i>
+                        : 'Log In'}
+                    </button>
                 </div>
             </form>
             <div className="go-back p-3">

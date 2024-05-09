@@ -17,6 +17,7 @@ const Register = () => {
     const [selectedRole, setSelectedRole] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const handleRoleChange = (e) => {
         setSelectedRole(e.target.value);
@@ -24,6 +25,7 @@ const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault()
+        setLoading(true)
         try {
             if (selectedRole !== '' && email !== '' && password !== '' && displayName !== '') {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -69,6 +71,8 @@ const Register = () => {
         } catch (error) {
             setError(error.message);
         }
+
+        setLoading(false)
     };
 
 
@@ -120,7 +124,11 @@ const Register = () => {
                 {error && <div className='error-cont m-3 p-1 px-3' style={{ color: 'var(--red)' }}>{error}</div>}
             
                 <div className='forBtn mx-3 py-2 pt-4'>
-                    <button className='reg-btn w-100 p-2' type='submit'>Register</button>
+                    <button className='reg-btn w-100 p-2' type='submit'>
+                        {loading ? 
+                            <i className="fa-solid fa-spinner fa-spin"></i>
+                        : 'Register'}
+                    </button>
                 </div>
             </form>
             <div className="go-back p-3">
