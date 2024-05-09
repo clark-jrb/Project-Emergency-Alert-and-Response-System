@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, doc as firebaseDoc, updateDoc } from 'firebase/firestore'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '../firebase'
 import '../styles/login.css'
 import { Form } from 'react-bootstrap' 
 import { Link } from 'react-router-dom'
 import { logUserAction } from '../utils/LogsAction'
+import { useUsersContext } from '../context/UsersContext'
 
 const Register = () => {
+    const { admins } = useUsersContext()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [displayName, setDisplayName] = useState('');
@@ -38,6 +40,20 @@ const Register = () => {
                     role: selectedRole,
                     displayName: displayName
                 })
+
+                const findAdmin = admins.find(admin => admin.route === selectedRole)
+
+                const rtCollection = collection(db, `response_team`)
+                const specDoc = firebaseDoc(rtCollection, findAdmin.id)
+
+                if (selectedRole) {
+                    updateDoc(specDoc, {
+                        status: 'online'
+                    })
+                    console.log('welcome you are now online!');
+                } else {
+                    console.log('no role exist');
+                }
                 
                 console.log('User registered successfully');
                 navigate(`/${selectedRole}/dashboard`); // Redirect to home page after registration
